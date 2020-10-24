@@ -1,0 +1,77 @@
+@extends('layouts.master')
+@section('content')
+@if(session('sukses'))
+    <div class="alert alert-success" role="alert">
+      {{session('sukses')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  @endif
+<div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">EDIT DATA ART</h4>
+                    </div>
+                </div>              
+	<div class="row">
+		<div class="col-sm-12">
+    <div class="white-box">
+<form action="/art/{{$art->id}}/update" method="POST">
+        	{{csrf_field()}}
+  <div class="form-group">
+    <label >Foto</label>
+    <input name="foto" type="text" class="form-control" id="foto" value="{{$art->foto}}">
+  </div>
+  <div class="form-group">
+    <label >Nama</label>
+    <input name="nama" type="text" class="form-control" id="nama" value="{{$art->nama}}">
+  </div>
+  <div class="form-group">
+          <label >No Hp</label>
+          <input name="nohp" type="text" class="form-control" id="nohp" value="{{$art->nohp}}"
+        </div>
+        <div class="form-group">
+          <label >Tanggal Lahir</label>
+          <input type="text" class="form-control" id="tanggallahir" name="tanggallahir" value="{{$art->tanggallahir}}">
+        </div>
+        <div class="form-group">
+          <label >Kecamatan</label>
+          <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{$art->kecamatan}}">
+        </div>
+        <div class="form-group">
+          <label >Alamat</label>
+          <input type="text" class="form-control" id="alamat" name="alamat" value="{{$art->alamat}}">
+        </div>
+        <div class="form-group">
+          <label >kode Pos</label>
+          <input type="text" class="form-control" id="kodepos" name="kodepos" value="{{$art->kodepos}}">
+        </div>
+        <div class="form-group">
+          <label >status</label>
+        <select class="form-control" id="status" name="status">
+        <option value="Available" @if($art->status == 'Availabe') selected @endif>Availabe</option>
+        <option value="Hired" @if($art->status == 'Hired') selected @endif>Hired</option>
+        </select>
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">Deskripsi</label>
+          <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" >{{$art->deskripsi}}</textarea>
+        </div>
+        <div class="form-group">
+          <label >username</label>
+          <input type="text" class="form-control" id="username" name="username" value="{{$art->username}}">
+        </div>
+        <div class="form-group">
+          <label >password</label>
+          <input type="text" class="form-control" id="password" name="password" value="{{$art->password}}">
+        </div>
+        <div class="col text-center">
+  <button type="submit" class="btn btn-primary" >update</button>
+  </div>
+      </form>
+      </div>
+      </div>
+      </div>
+@endsection
+
