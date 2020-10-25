@@ -73,7 +73,7 @@
 							Not a member?
 						</span>
 
-						<a class="txt1 bo1 hov1" href="/sigup">
+						<a class="txt1 bo1 hov1" href="/register">
 							Sign up now							
 						</a>
 					</div>
