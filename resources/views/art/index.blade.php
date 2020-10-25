@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 @if(session('sukses'))
+<!-- Modal -->
     <div class="alert alert-success" role="alert">
       {{session('sukses')}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -8,14 +9,6 @@
     </button>
     </div>
   @endif
- <div class="container-fluid">
-                <div class="row bg-title">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">DATA ART</h4>
-                    </div>
-                </div>              
-	<div class="row">
-		<div class="col-sm-12">
    
 <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -44,7 +37,7 @@
         </div>
         <div class="form-group">
           <label >Tanggal Lahir</label>
-          <input type="text" class="form-control" id="tanggallahir" name="tanggallahir">
+          <input type="number" class="form-control" id="tanggallahir" name="tanggallahir">
         </div>
         <div class="form-group">
           <label >Kecamatan</label>
@@ -57,7 +50,7 @@
         <div class="form-group">
           <label >kode Pos</label>
           <input type="text" class="form-control" id="kodepos" name="kodepos">
-        </div>
+        </div> 
         <div class="form-group">
           <label >status</label>
         <select class="form-control" id="status" name="status">
@@ -86,46 +79,61 @@
          </div>
       </div>
     </div>
-    <div class="col text-left">
+
+    <!-- <div class="col text-right"> -->
+<div class="row">
+  <div class="col-sm-12 col-md-6">
   <button type="button" class="btn btn-danger btn-rounded btn-outline
    hidden-xs hidden-sm waves-effect waves-light" data-toggle="modal" data-target="#exampleModal">
    <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>Tambah data</button>
+   </div>
 </div>
-<div class="white-box">
-<table class="table">
-    <tr>
-        <th>Foto</th>
-        <th>Nama</th>
-        <th>No HP</th>
-        <th>Tanggal Lahir</th>
-        <th>Kecamatan</th>
-        <th>Alamat</th>
-        <th>Kode Pos</th>
-        <th>Status</th>
-        <th>Deskripsi</th>
-        <th>Username</th>
-        <th>Password</th>
-        <th>aksi</th>
-    </tr>
-    @foreach($data_art as $art)
-    <tr>
-        <td>{{$art->foto}}</td>
-        <td>{{$art->nama}}</td>
-        <td>{{$art->nohp}}</td>
-        <td>{{$art->tanggallahir}}</td>
-        <td>{{$art->kecamatan}}</td>
-        <td>{{$art->alamat}}</td>
-        <td>{{$art->kodepos}}</td>
-        <td>{{$art->status}}</td>
-        <td>{{$art->deskripsi}}</td>
-        <td>{{$art->username}}</td>
-        <td>{{$art->password}}</td>
-        <td><a href="/art/{{$art->id}}/editw" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw"
-                                aria-hidden="true"></i>Edit</a></td>
-    </tr>
-    @endforeach
-</table>
+<!-- Table -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="col-sm-12 col-md-6">
+    <h6 class="m-0 font-weight-bold text-primary">Data ART</h6>
+    </div>
+  </div>
+  <div class="card-body" style="font-size: 15px;">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead style="background-color: #ddd;">
+          <tr>
+              <th>Foto</th>
+              <th>Nama</th>
+              <th>No HP</th>
+              <th>Tanggal Lahir</th>
+              <th>Kecamatan</th>
+              <th>Alamat</th>
+              <th>Kode Pos</th>
+              <th>Status</th>
+              <th>Deskripsi</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>aksi</th>
+          </tr>
+        </thead>
+              @foreach($data_art as $art)
+        <tbody>
+          <tr>
+              <td>{{$art->foto}}</td>
+              <td><a href="/art/profile/{{$art->id}}">{{$art->nama}}</a></td>
+              <td>{{$art->nohp}}</td>
+              <td>{{$art->tanggallahir}}</td>
+              <td>{{$art->kecamatan}}</td>
+              <td>{{$art->alamat}}</td>
+              <td>{{$art->kodepos}}</td>
+              <td>{{$art->status}}</td>
+              <td>{{$art->deskripsi}}</td>
+              <td>{{$art->username}}</td>
+              <td>{{$art->password}}</td>
+              <td><a href="/art/{{$art->id}}/editw" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a></td>
+          </tr>
+          </tbody>
+          @endforeach
+      </table>
+    </div>
+  </div>
 </div>
-</div>
-	</div>
-  @endsection
+@endsection

@@ -1,25 +1,14 @@
 @extends('layouts.master')
 @section('content')
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="cssload-speeding-wheel"></div>
-    </div>
-    <section id="wrapper" class="error-page">
-        <div class="error-box">
-            <div class="error-body text-center">
-                <h1>404</h1>
-                <h3 class="text-uppercase">Page Not Found !</h3>
-                <p class="text-muted m-t-30 m-b-30">FITUR BELUM DIBUAT</p>
-                <a href="index.html" class="btn btn-info btn-rounded waves-effect waves-light m-b-40">kembali ke menu utama</a>
-            </div>
-            <footer class="footer text-center"> 2020 &copy; Pixel Admin brought to you by <a
-                    href="https://www.wrappixel.com/">wrappixel.com</a> </footer>
+     <div class="container-fluid">
+
+          <!-- 404 Error Text -->
+          <div class="text-center">
+            <div class="error mx-auto" data-text="404">404</div>
+            <p class="lead text-gray-800 mb-5">Fitur belum tersedia</p>
+            <p class="text-gray-500 mb-0">Tunggu di Sprint berikutnya</p>
+            <a href="/">&larr; kembali ke Dashboard</a>
+          </div>
+
         </div>
-    </section>
-    <!-- jQuery -->
-    <script type="text/javascript">
-        $(function () {
-            $(".preloader").fadeOut();
-        });
-    </script>
 @endsection

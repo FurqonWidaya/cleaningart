@@ -8,15 +8,14 @@
     </button>
     </div>
   @endif
-<div class="container-fluid">
-                <div class="row bg-title">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">EDIT DATA ART</h4>
-                    </div>
-                </div>              
-	<div class="row">
-		<div class="col-sm-12">
-    <div class="white-box">
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="col-sm-12 col-md-6">
+    <h6 class="m-0 font-weight-bold text-primary">EDIT Data ART</h6>
+    </div>
+  </div>
+  <div class="card-body" style="font-size: 15px;">
+      <div class="table-responsive">
 <form action="/art/{{$art->id}}/update" method="POST">
         	{{csrf_field()}}
   <div class="form-group">

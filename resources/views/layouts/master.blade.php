@@ -2,95 +2,104 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, severny admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, pixel  design, pixel  dashboard bootstrap 4 dashboard template">
-    <meta name="description"
-        content="Pixel Admin is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>CLEANING ART</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/pixel-admin-lite/" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16"
-        href="https://wrappixel.com/demos/free-admin-templates/all-lite-landing-pages/assets/images/logos/pixel-favicon.png">
-    <!-- Bootstrap Core CSS -->
-    <link href="{{asset('admin/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- Menu CSS -->
-    <link href="{{asset('admin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css')}}" rel="stylesheet">
-    <!-- toast CSS -->
-    <link href="{{asset('admin/plugins/bower_components/toast-master/css/jquery.toast.css')}}" rel="stylesheet">
-    <!-- morris CSS -->
-    <link href="{{asset('admin/plugins/bower_components/morrisjs/morris.css')}}" rel="stylesheet">
-    <!-- animation CSS -->
-    <link href="{{asset('admin/css/animate.css')}}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
-    <!-- color CSS -->
-    <link href="{{asset('admin/css/colors/blue-dark.css')}}" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>CLEANING ART</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+
 </head>
 
-<body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="cssload-speeding-wheel"></div>
-    </div>
-    <div id="wrapper">
-        <!-- Navigation -->
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    @include('layouts.includes._leftbar')
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
         @include('layouts.includes._navbar')
-        <!-- Left navbar-header -->
-        @include('layouts.includes._leftbar')
-        <!-- Left navbar-header end -->
-        <!-- Page Content -->
-        <div id="page-wrapper">
-            @yield('content')
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2020 &copy;  ART CLEANING <a
-                    href="https://www.wrappixel.com/">artcleaning.com</a> </footer>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          @yield('content')
+            
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy;Cleaning ART 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
     </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="{{asset('admin/plugins/bower_components/jquery/dist/jquery.min.js')}}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{asset('admin/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <!-- Menu Plugin JavaScript -->
-    <script src="{{asset('admin/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js')}}"></script>
-    <!--slimscroll JavaScript -->
-    <script src="{{asset('admin/js/jquery.slimscroll.js')}}"></script>
-    <!--Wave Effects -->
-    <script src="{{asset('admin/js/waves.js')}}"></script>
-    <!--Counter js -->
-    <script src="{{asset('admin/plugins/bower_components/waypoints/lib/jquery.waypoints.js')}}"></script>
-    <script src="{{asset('admin/plugins/bower_components/counterup/jquery.counterup.min.js')}}"></script>
-    <!--Morris JavaScript -->
-    <script src="{{asset('admin/plugins/bower_components/raphael/raphael-min.js')}}"></script>
-    <script src="{{asset('admin/plugins/bower_components/morrisjs/morris.js')}}"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="{{asset('admin/js/custom.min.js')}}"></script>
-    <script src="{{asset('admin/js/dashboard1.js')}}"></script>
-    <script src="{{asset('admin/plugins/bower_components/toast-master/js/jquery.toast.js')}}"></script>
-    <!-- <script type="text/javascript">
-        $(document).ready(function () {
-            $.toast({
-                heading: 'Welcome to Pixel admin',
-                text: 'Use the predefined ones, or specify a custom position object.',
-                position: 'top-right',
-                loaderBg: '#ff6849',
-                icon: 'info',
-                hideAfter: 3500,
-                stack: 6
-            })
-        });
-    </script> -->
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+ <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{asset('admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{asset('admin/js/sb-admin-2.min.js')}}"></script>
+
 </body>
 
 </html>

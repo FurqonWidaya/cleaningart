@@ -25,11 +25,15 @@ class ArtController extends Controller
     public function editw($id){
         $art = \App\art::find($id);
         return view('art.editw', ['art' => $art]);
- }
- public function update(Request $request, $id){
-    $art = \App\art::find($id);
-    $art->update($request->all( ));
-    return redirect('/art')->with('sukses','data berhasil diupdate');
-}
+    }
+    public function update(Request $request, $id){
+        $art = \App\art::find($id);
+        $art->update($request->all());
+        return redirect('/art')->with('sukses','data berhasil diupdate');
+    }
+    public function profile($id){
+        $art = \App\art::find($id);
+        return view('art.profile', ['art' => $art]);
 
+    }
 }
