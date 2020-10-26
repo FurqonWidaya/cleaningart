@@ -19,15 +19,20 @@
 			<div class="inner">
 				<img src="{{asset('awal/register/images/image-1.png')}}" alt="" class="image-1">
 				<form action="/postregister" method="POST">
-					<h3>New Account?</h3>
+					<h3>BUAT AKUN</h3>
 					{{csrf_field()}}
 					<div class="form-holder">
-						<span class="lnr lnr-user"></span>
+						<span class="lnr lnr-users"></span>
 						<input type="text" class="form-control" placeholder="Nama" name="name" required>
 					</div>
 					<div class="form-holder">
-						<span class="lnr lnr-phone-handset"></span>
+						<span class="lnr lnr-inbox"></span>
 						<input type="text" class="form-control" placeholder="Email" name="email" data-validate = "Valid email is required: ex@abc.xyz" id="email" required>
+                          
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-user"></span>
+						<input type="text" class="form-control" placeholder="Username" name="username" id="email" required>
                           
 					</div>
 					<div class="form-holder">
