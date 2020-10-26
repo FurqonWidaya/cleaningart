@@ -14,7 +14,7 @@
 3. beri name folder dangan "cleaningart" (bebas juga sih)
 4. buka cmd
 5. pindah ke lokasi tempat file td di taruh (ex: cd /d d:\cleaningart)
-6. ketik copy .env.example.env
+6. ketik copy .env.example .env
 7. terus buka file .env edit seperti dibawah :
 
 	<p>DB_DATABASE=cleaningart</p>
