@@ -27,10 +27,18 @@ class ArtController extends Controller
         return view('art.editw', ['art' => $art]);
     }
     public function update(Request $request, $id){
+        //dd($request->all());
         $art = \App\art::find($id);
         $art->update($request->all());
-        return redirect('/art')->with('sukses','data berhasil diupdate');
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
+            $art->foto = $request->file('foto')->getClientOriginalName();
+            $art->save();
+        }
+        return redirect('/art')->with('sukses', 'data berhasil diubah');
+
     }
+
     public function profile($id){
         $art = \App\art::find($id);
         return view('art.profile', ['art' => $art]);

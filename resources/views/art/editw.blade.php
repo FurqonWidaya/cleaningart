@@ -16,11 +16,11 @@
   </div>
   <div class="card-body" style="font-size: 15px;">
       <div class="table-responsive">
-<form action="/art/{{$art->id}}/update" method="POST">
+<form action="/art/{{$art->id}}/update" method="POST" enctype="multipart/formdata">
         	{{csrf_field()}}
   <div class="form-group">
     <label >Foto</label>
-    <input name="foto" type="text" class="form-control" id="foto" value="{{$art->foto}}">
+    <input name="foto" type="file" class="form-control" value="{{$art->foto}}">
   </div>
   <div class="form-group">
     <label >Nama</label>
@@ -28,7 +28,7 @@
   </div>
   <div class="form-group">
           <label >No Hp</label>
-          <input name="nohp" type="text" class="form-control" id="nohp" value="{{$art->nohp}}"
+          <input name="nohp" type="text" class="form-control" id="nohp" value="{{$art->nohp}}">
         </div>
         <div class="form-group">
           <label >Tanggal Lahir</label>
@@ -66,7 +66,7 @@
           <input type="text" class="form-control" id="password" name="password" value="{{$art->password}}">
         </div>
         <div class="col text-center">
-  <button type="submit" class="btn btn-primary" >update</button>
+  <button type="submit" class="btn btn-primary">update</button>
   </div>
       </form>
       </div>

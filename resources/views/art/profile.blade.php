@@ -7,11 +7,11 @@
                 <div class="col-xl-2 sm-2 md-2">
                   <h4 style="text-align: center">{{$art->nama}}</h4>
                   <div class="img rounded-circle" style="text-align: center">
-                    <img src="{{asset('admin/img/users/genu.jpg')}}" alt="">
+                    <img src="{{$art->getPhoto()}}" alt="foto">
                   </div>
                   <h6 style="text-align: center">ART</h6>
                   <div class="text-center">
-                  	<a href="/editw" class="btn btn-danger">Edit</a>
+                  	<a href="/art/editw/{{$art->id}}" class="btn btn-danger">Edit</a>
                   </div>
                 </div>
                 <div class="col-xl-4 sm-4 md-4">
@@ -23,17 +23,17 @@
                 </div>
                 <div class="col-xl-2 sm-6 md-2">
                     <div class="col" style="text-align: center">
-                      <i class="fa fa-phone-volume fa-2x" > </i><br>{{$art->nohp}}
+                      <i class="fa fa-phone-volume fa-2x" ><hr></i><br>CP: {{$art->nohp}}
                     </div>
                 </div>
                 <div class="col-xl-2 sm-6 md-2">
                     <div class="col" style="text-align: center">
-                      <i class="fa fa-location-arrow fa-2x" > </i><br>{{$art->alamat}}<br>{{$art->kecamatan}} {{$art->kodepos}}
+                      <i class="fa fa-location-arrow fa-2x" ><hr></i><br>{{$art->alamat}}<br>{{$art->kecamatan}} {{$art->kodepos}}
                     </div>
                 </div>
                  <div class="col-xl-2 sm-6 md-2">
                     <div class="col" style="text-align: center">
-                      <i class="fa fa-bell fa-2x" s> </i><br>Status: {{$art->status}}
+                      <i class="fa fa-bell fa-2x"><hr></i><br>Status: {{$art->status}}
                     </div>
                 </div>
               </div>

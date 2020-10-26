@@ -10,4 +10,10 @@ class art extends Model
     protected $fillable= ['foto', 'nama', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
     'kodepos', 'status', 'deskripsi', 'username', 'password'
     ];
+    public function getPhoto(){
+    	if(!$this->foto){
+    		return asset('images/deafult.png');
+    	}
+    	return asset('images/'.$this->foto);
+    }
 }

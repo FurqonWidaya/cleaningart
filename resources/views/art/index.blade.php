@@ -21,11 +21,11 @@
             </button>
          </div>
     <div class="modal-body">
-    <form action="/art/create" method="POST">
+    <form action="/art/create" method="POST" enctype="multipart/form-data">
         	{{csrf_field()}}
         <div class="form-group">
           <label >Foto</label>
-          <input name="foto" type="text" class="form-control" id="foto">
+          <input name="foto" type="file" class="form-control" id="foto">
         </div>
         <div class="form-group">
           <label >Nama</label>
@@ -117,7 +117,7 @@
               @foreach($data_art as $art)
         <tbody>
           <tr>
-              <td>{{$art->foto}}</td>
+              <td><img src="{{$art->getPhoto()}}" style="width: 50px"></td>
               <td><a href="/art/profile/{{$art->id}}">{{$art->nama}}</a></td>
               <td>{{$art->nohp}}</td>
               <td>{{$art->tanggallahir}}</td>
@@ -128,7 +128,7 @@
               <td>{{$art->deskripsi}}</td>
               <td>{{$art->username}}</td>
               <td>{{$art->password}}</td>
-              <td><a href="/art/{{$art->id}}/editw" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a></td>
+              <td><a href="/art/editw/{{$art->id}}" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a></td>
           </tr>
           </tbody>
           @endforeach

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<title>Login CLEANING ART</title>
+	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('icon.png')}}">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -24,7 +25,15 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+	@if(session('sukses'))
+<!-- Modal -->
+    <div class="alert alert-success" role="alert">
+      {{session('sukses')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  @endif
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
@@ -70,11 +79,11 @@
 					</div>
 					<div class="text-center w-full p-t-115">
 						<span class="txt1">
-							Not a member?
+							Belum punya akun?
 						</span>
 
 						<a class="txt1 bo1 hov1" href="/register">
-							Sign up now							
+							Regitrasi dulu						
 						</a>
 					</div>
 				</form>

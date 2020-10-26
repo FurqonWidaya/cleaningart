@@ -21,6 +21,17 @@ class AuthController extends Controller
         return redirect ('/login');
     }
     public function register (){
-        return view ('auth.register');
+        return view ('/auth.register');
+    }
+    public function postregister(Request $request){
+         if ($request->has('submit')){
+            \App\User::create($request->all());
+             return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
+        }
+        return postregister::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ])->with(alert('Anda harus mengisi form dengan lengkap !'));  
     }
 }
