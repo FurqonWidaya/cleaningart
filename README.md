@@ -28,8 +28,7 @@
 12. kalo udah ketik php artisan key:generate
 13. php artisan migrate
 14. php artisan serve
-15. buka chrome (terserah sih), ketik http://localhost:8000/cleaningart
-16. seleseai
+15. buka chrome (terserah sih), ketik http://localhost:8000/
 
 ## Contributing
 
