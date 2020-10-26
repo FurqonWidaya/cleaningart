@@ -16,10 +16,11 @@
 5. pindah ke lokasi tempat file td di taruh (ex: cd /d d:\cleaningart)
 6. ketik copy .env.example.env
 7. terus buka file .env edit seperti dibawah :
-	DB_DATABASE=cleaningart
-	DB_USERNAME=root
-	DB_PASSWORD=
-	lainnya tetep terus save
+
+	=>DB_DATABASE=cleaningart
+	=>DB_USERNAME=root
+	=>DB_PASSWORD=
+    
 8. terus buka xampp hidupin apache sm mySQL
 9. klik admin di mySQL
 10. terus buat database baru kasih nama db sama dengan nomor langkah 7, "cleaningart"  tanpa td petik
