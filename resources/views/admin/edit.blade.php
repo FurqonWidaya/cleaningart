@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 @section('content')
 @if(session('sukses'))
     <div class="alert alert-success" role="alert">
@@ -20,7 +20,7 @@
         	{{csrf_field()}}
   <div class="form-group">
     <label >Foto</label>
-    <input name="foto" type="file" class="form-control" value="{{$art->foto}}">
+    <input name="foto" type="file" class="form-control" id="foto" value="{{$art->foto}}">
   </div>
   <div class="form-group">
     <label >Nama</label>
@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
           <label >Tanggal Lahir</label>
-          <input type="text" class="form-control" id="tanggallahir" name="tanggallahir" value="{{$art->tanggallahir}}">
+          <input type="date" class="form-control" id="tanggallahir" name="tanggallahir" value="{{$art->tanggallahir}}">
         </div>
         <div class="form-group">
           <label >Kecamatan</label>
@@ -57,7 +57,7 @@
           <label for="formGroupExampleInput2">Deskripsi</label>
           <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" >{{$art->deskripsi}}</textarea>
         </div>
-        <div class="form-group">
+        <!-- div class="form-group">
           <label >username</label>
           <input type="text" class="form-control" id="username" name="username" value="{{$art->username}}">
         </div>
@@ -65,7 +65,7 @@
           <label >password</label>
           <input type="text" class="form-control" id="password" name="password" value="{{$art->password}}">
         </div>
-        <div class="col text-center">
+        <div class="col text-center"> -->
   <button type="submit" class="btn btn-primary">update</button>
   </div>
       </form>

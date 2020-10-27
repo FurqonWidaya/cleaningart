@@ -19,9 +19,9 @@ class CreateMasterTable extends Migration
             $table->string('foto');
             $table->string('nama');
             $table->string('nohp');
-            $table->integer('email');
+            $table->string('email');
             $table->string('kecamatan');
-            $table->string('alamat');
+            $table->text('alamat');
             $table->string('kodepos');
             $table->string('username');
             $table->string('password');

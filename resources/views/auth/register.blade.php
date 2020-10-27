@@ -18,9 +18,10 @@
 		<div class="wrapper">
 			<div class="inner">
 				<img src="{{asset('awal/register/images/image-1.png')}}" alt="" class="image-1">
-				<form action="/postregister" method="POST">
+				<form action="/postregister" method="POST" >
 					<h3>BUAT AKUN</h3>
 					{{csrf_field()}}
+					<input type="text" placeholder="admin" name="role" value="admin" hidden>
 					<div class="form-holder">
 						<span class="lnr lnr-users"></span>
 						<input type="text" class="form-control" placeholder="Nama" name="name" required>
@@ -39,6 +40,9 @@
 						<span class="lnr lnr-lock"></span>
 						<input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
 					</div>
+
+					<!-- <input type="text" name="remember_token" value="{{value(str_random(60))}}" hidden> -->
+
 					<button name="submit">
 						<span>Register</span>
 					</button>

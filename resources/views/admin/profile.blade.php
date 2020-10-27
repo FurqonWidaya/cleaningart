@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 @section('content')
      <div class="row">
   <div class="col-sm col-md">
@@ -11,7 +11,7 @@
                   </div>
                   <h6 style="text-align: center">ART</h6>
                   <div class="text-center">
-                  	<a href="/art/editw/{{$art->id}}" class="btn btn-danger">Edit</a>
+                  	<a href="/art/edit/{{$art->id}}" class="btn btn-danger">Edit</a>
                   </div>
                 </div>
                 <div class="col-xl-4 sm-4 md-4">

@@ -26,7 +26,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    @include('layouts.includes._leftbar')
+    @include('admin.layouts.includes._leftbar')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -36,7 +36,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        @include('layouts.includes._navbar')
+        @include('admin.layouts.includes._navbar')
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->

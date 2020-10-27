@@ -14,18 +14,26 @@
 Route::get('/', function () {
     return view('index');
 });
+//Auth::Routes();
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin','AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
 Route::get('/register', 'AuthController@register');
 Route::post('/postregister', 'AuthController@postregister');
 
-Route::group(['middleware' => 'auth'], function(){
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/art', 'ArtController@index');
-Route::post('/art/create','ArtController@create');
-Route::get('/art/editw/{id}', 'ArtController@editw');
-Route::post('/art/{id}/update', 'ArtController@update');
+
+//ADMIN
+Route::group(['middleware' => ['auth', 'CheckRole:admin']], function(){
+Route::get('/dashboard', 'AdminController@dashboard');
+Route::get('/art', 'AdminController@dataart');
+Route::post('/art/create','AdminController@create');
+Route::get('/art/edit/{id}', 'AdminController@edit');
+Route::post('/art/{id}/update', 'AdminController@update');
 Route::get('/notfound', 'notfoundController@notfound');
-Route::get('art/profile/{id}','ArtController@profile');
+Route::get('art/profile/{id}','AdminController@profile');
+Route::get('admin/profile/{id}','AdminController@profile1');
+});
+
+Route::group(['middleware' => ['auth', 'CheckRole:art']], function(){
+Route::get('/home', 'ArtController@index');
 });

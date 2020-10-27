@@ -12,6 +12,7 @@ class AuthController extends Controller
      public function postlogin (Request $request){
      	if(Auth::attempt($request->only('username','password'))){
      		return redirect('/dashboard');
+            return redirect('/home');
      	}
      	return redirect('/login');
         //dd($request->all());
@@ -24,14 +25,18 @@ class AuthController extends Controller
         return view ('/auth.register');
     }
     public function postregister(Request $request){
+         $user = \App\User::create($request->all());
          if ($request->has('submit')){
-            \App\User::create($request->all());
+            $user ->password=bcrypt($user ->password);
+            $user->remember_token = str_random(60);
+             $user->save();
+            
              return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
         }
-        return postregister::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ])->with(alert('Anda harus mengisi form dengan lengkap !'));  
+        // return postregister::make($data, [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        // ])->with(alert('Anda harus mengisi form dengan lengkap !'));  
     }
 }
