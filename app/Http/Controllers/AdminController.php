@@ -53,11 +53,12 @@ class AdminController extends Controller
         //dd($request->all());
         $art = \App\art::find($id);
         $art->update($request->all());
-        // if ($request->hasFile('foto')) {
-        //     $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
-        //     $art->foto = $request->file('foto')->getClientOriginalName();
-        //     $art->save();
-        // }
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
+            $art->foto = $request->file('foto')->getClientOriginalName();
+            $art->update($request->all());
+            $art->save($request->all());
+        }
         return redirect('/art')->with('sukses', 'data berhasil diubah');
 
     }
