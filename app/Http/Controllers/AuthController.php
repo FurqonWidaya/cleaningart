@@ -70,15 +70,15 @@ class AuthController extends Controller
     //         return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
     //     }
 
-    // public function postregister(Request $request){
-    //      $user = \App\User::create($request->all());
-    //      if ($request->has('submit')){
-    //         $user ->password=bcrypt($user ->password);
-    //         $user->remember_token = str_random(60);
-    //          $user->save();
-    //          return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
-    //     }
-    // }
+    public function postregister(Request $request){
+         $user = \App\User::create($request->all());
+         if ($request->has('submit')){
+            $user ->password=bcrypt($user ->password);
+            $user->remember_token = str_random(60);
+             $user->save();
+             return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
+        }
+    }
 
     public function postregis(Request $request){
         $user = \App\User::create($request->all());
@@ -105,29 +105,29 @@ class AuthController extends Controller
     }
     
     
-      public function postregis(Request $request){
-        $user = \App\User::create($request->all());
-         $user->name= $request->name;
-          $user->role= $request->role;
-          $user->email= $request->email;
-           $user->username= $request->username;
-          $user->password= $request->password;
-          $user ->password=bcrypt($user ->password);
-            $user->remember_token = str_random(60);
-             $user->save();
-         if ($request->has('submit')){
-            $master = \App\master::create($request->all());
-         $master->name= $request->name;
-          $master->email= $request->email;
-           $master->username= $request->username;
-          $master->password= $request->password;
-          $master ->password=bcrypt($user ->password);
-            $master->remember_token = str_random(60);
-             $master->save();
+    //   public function postregister(Request $request){
+    //     $user = \App\User::create($request->all());
+    //      $user->name= $request->name;
+    //       $user->role= $request->role;
+    //       $user->email= $request->email;
+    //        $user->username= $request->username;
+    //       $user->password= $request->password;
+    //       $user ->password=bcrypt($user ->password);
+    //         $user->remember_token = str_random(60);
+    //          $user->save();
+    //      if ($request->has('submit')){
+    //         $master = \App\master::create($request->all());
+    //      $master->name= $request->name;
+    //       $master->email= $request->email;
+    //        $master->username= $request->username;
+    //       $master->password= $request->password;
+    //       $master ->password=bcrypt($user ->password);
+    //         $master->remember_token = str_random(60);
+    //          $master->save();
              
-             return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
-        }
-    }
+    //          return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
+    //     }
+    // }
     
     
 }
