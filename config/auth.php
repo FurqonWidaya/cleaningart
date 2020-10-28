@@ -46,6 +46,35 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        // 'admin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'admin',
+        // ],
+
+        // 'apiadmin' => [
+        //     'driver' => 'token',
+        //     'provider' => 'admin',
+        // ],
+        // 'master' => [
+        //     'driver' => 'session',
+        //     'provider' => 'master',
+        // ],
+
+        // 'apimaster' => [
+        //     'driver' => 'token',
+        //     'provider' => 'master',
+        // ],
+
+        // 'art' => [
+        //     'driver' => 'session',
+        //     'provider' => 'art',
+        // ],
+
+        // 'art' => [
+        //     'driver' => 'token',
+        //     'provider' => 'art',
+        // ],
+
     ],
 
     /*
@@ -70,6 +99,18 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        // 'admin' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\User::class,
+        // ],
+        // 'master' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\User::class,
+        // ],
+        // 'art' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\User::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',

@@ -6,25 +6,22 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    //
     public function dataart(Request $request){
         if ($request->has('cari')){
             $data_art = \App\art::where('nama', 'LIKE', '%' .$request->cari. '%')->get();
         }else{
             $data_art = \App\art::all();
         }
-        //dd($request->all());
-        //$data_art = \App\art::all();
         return view('admin.dataart',['data_art' => $data_art]);
     }
-     public function dashboard (){
-       return view ('admin.dashboard');
+
+    public function dashboard (){
+       return view ('/admin.dashboard');
     }
 
-    //
     public function create(Request $request){
         //insert ketable art
-        $art = \App\art::create($request->all());
+        //$art = \App\art::create($request->all());
         //insert ke table user
         $user = new \App\User;
         $user->role= 'art';
@@ -35,7 +32,7 @@ class AdminController extends Controller
         $user->remember_token = str_random(60);
         $user->save();
         $request->request->add(['user_id' => $user->id]);
-        //$art=\App\art::create($request->all());
+        $art=\App\art::create($request->all());
          if ($request->hasFile('foto')) {
             $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
             $art->foto = $request->file('foto')->getClientOriginalName();

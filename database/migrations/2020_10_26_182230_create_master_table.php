@@ -16,13 +16,13 @@ class CreateMasterTable extends Migration
         Schema::create('master', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('foto');
+            $table->binary('foto')->nullable();
             $table->string('nama');
             $table->string('nohp');
             $table->string('email');
-            $table->string('kecamatan');
-            $table->text('alamat');
-            $table->string('kodepos');
+            $table->string('kecamatan')->nullable();
+            $table->text('alamat')->nullable();
+            $table->string('kodepos')->nullable();
             $table->string('username');
             $table->string('password');
         });

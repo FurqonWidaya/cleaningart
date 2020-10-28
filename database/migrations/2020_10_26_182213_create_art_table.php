@@ -16,10 +16,10 @@ class CreateArtTable extends Migration
         Schema::create('art', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('foto');
+            $table->binary('foto')->nullable();
             $table->string('nama');
             $table->string('nohp')->nullable();
-            $table->string('tanggallahir')->nullable();
+            $table->date('tanggallahir')->nullable();
             $table->string('kecamatan')->nullable();
             $table->string('alamat')->nullable();
             $table->string('kodepos')->nullable();

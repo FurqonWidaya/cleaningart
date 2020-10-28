@@ -34,14 +34,24 @@
     </button>
     </div>
   @endif
+  @if(session('error'))
+<!-- Modal -->
+    <div class="alert alert-danger" role="alert">
+      {{session('error')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  @endif
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" action="/postlogin" method="POST">
+				<form class="login100-form validate-form" method="POST" action="/postlogin" >
+					{{csrf_field()}}
 					<span class="login100-form-title p-b-55">
 						Login
 					</span>
-						{{csrf_field()}}
+						
 					<div class="wrap-input100 validate-input m-b-16">
 						<input class="input100" type="text" name="username" placeholder="Username">
 						<span class="focus-input100"></span>
@@ -49,14 +59,6 @@
 							<span class="lnr lnr-envelope"></span>
 						</span>
 					</div>
-					<!-- <div class="wrap-input100 validate-input m-b-16" >
-						<input class="input100" type="text" name="username" placeholder="username">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-envelope"></span>
-						</span>
-					</div> -->
-
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
 						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
