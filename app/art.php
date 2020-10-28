@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class art extends Model
 {
     protected $table = 'art';
-    protected $fillable= [ 'user_id', 'foto', 'nama', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
+    protected $fillable= ['foto', 'name', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
     'kodepos', 'status', 'deskripsi','username', 'password' ];
 //'user_id'
 
     public function getPhoto(){
     	if(!$this->foto){
-    		return asset('images/deafult.png');
+    		return asset('images/default.png');
     	}
     	return asset('images/'.$this->foto);
     }

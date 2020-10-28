@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class MasterController extends Controller
 {
-     public function home (){
-       return view ('art.home');
+     public function master (){
+       return view ('master.homed');
+    }
+    public function __construct()
+    {
+    	$this->middleware('auth');
     }
 }

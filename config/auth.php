@@ -46,15 +46,15 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        // 'admin' => [
-        //     'driver' => 'session',
-        //     'provider' => 'admin',
-        // ],
+        'master' => [
+            'driver' => 'session',
+            'provider' => 'master',
+        ],
 
-        // 'apiadmin' => [
-        //     'driver' => 'token',
-        //     'provider' => 'admin',
-        // ],
+        'api-master' => [
+            'driver' => 'token',
+            'provider' => 'master',
+        ],
         // 'master' => [
         //     'driver' => 'session',
         //     'provider' => 'master',
@@ -103,10 +103,10 @@ return [
         //     'driver' => 'eloquent',
         //     'model' => App\User::class,
         // ],
-        // 'master' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\User::class,
-        // ],
+        'master' => [
+            'driver' => 'eloquent',
+            'model' => App\master::class,
+        ],
         // 'art' => [
         //     'driver' => 'eloquent',
         //     'model' => App\User::class,

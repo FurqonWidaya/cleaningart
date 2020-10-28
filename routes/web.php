@@ -27,21 +27,22 @@ Route::post('/postregis', 'AuthController@postregis');
 //ADMIN
 Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
 Route::get('/dashboard', 'AdminController@dashboard');
-Route::get('/art', 'AdminController@dataart');
+Route::get('/dataart', 'AdminController@dataart');
+Route::get('/datamaster', 'AdminController@datamaster');
 Route::post('/art/create','AdminController@create');
 Route::get('/art/edit/{id}', 'AdminController@edit');
 Route::post('/art/{id}/update', 'AdminController@update');
 Route::get('/notfound', 'notfoundController@notfound');
 Route::get('art/profile/{id}','AdminController@profile');
-Route::get('admin/profile/{id}','AdminController@profile1');
+Route::get('/profilku/{id}','AdminController@profilku');
 });
 
 //art
-Route::group(['middleware' => ['auth', 'checkrole: master']], function(){
-Route::get('/homed', 'MasterController@home');
+Route::group(['middleware' => ['auth', 'checkrole: art']], function(){
+Route::get('/maid', 'ArtController@maid');
 });
 
 //master
 Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
-Route::get('/home', 'MasterController@home');
+Route::get('/master', 'MasterController@master');
 });

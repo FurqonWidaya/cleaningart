@@ -34,12 +34,13 @@
                     <h2 class="title">DAFTARKAN DIRI ANDA SEKARANG</h2>
                     <form method="POST" action="/postregis" >
                         {{csrf_field()}}
-                        <input type="text" placeholder="master" name="role" value="master" hidden>
+                        <input type="text" placeholder="master" name="role" value="master" hidden >
+                        <input type="text"  name="remember_token" value="" hidden >
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Nama Lengkap</label>
-                                    <input class="input--style-4" type="text" name="nama" required="">
+                                    <input class="input--style-4" type="text" name="name" required="">
                                 </div>
                             </div>
                             <div class="col-2">

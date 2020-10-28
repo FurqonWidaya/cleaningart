@@ -21,15 +21,16 @@
             </button>
          </div>
     <div class="modal-body">
-    <form action="/art/create" method="POST" enctype="multipart/form-data">
+    <form action="/dataart/create" method="POST" enctype="multipart/form-data">
         	{{csrf_field()}}
+          <input type="text" name="role" value="art" hidden>
         <div class="form-group">
           <label >Foto</label>
           <input name="foto" type="file" class="form-control" id="foto">
         </div>
         <div class="form-group">
           <label >Nama</label>
-          <input name="nama" type="text" class="form-control" id="nama" required>
+          <input name="name" type="text" class="form-control" id="name" required>
         </div>
         <div class="form-group">
           <label >Email</label>
@@ -103,8 +104,9 @@
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead style="background-color: #ddd;">
-          <tr>
+          <tr class="text-center">
               <th>Foto</th>
+              <th>Username</th>
               <th>Nama</th>
               <th>No HP</th>
               <th>Tanggal Lahir</th>
@@ -113,16 +115,15 @@
               <th>Kode Pos</th>
               <th>Status</th>
               <th>Deskripsi</th>
-              <!-- <th>Username</th>
-              <th>Password</th> -->
               <th>aksi</th>
           </tr>
         </thead>
               @foreach($data_art as $art)
         <tbody>
-          <tr>
+          <tr class="text-center">
               <td><img src="{{$art->getPhoto()}}" style="width: 50px"></td>
-              <td><a href="/art/profile/{{$art->id}}">{{$art->nama}}</a></td>
+              <td><a href="/art/profile/{{$art->id}}">{{$art->username}}</a></td>
+              <td><a href="/art/profile/{{$art->id}}">{{$art->name}}</a></td>
               <td>{{$art->nohp}}</td>
               <td>{{$art->tanggallahir}}</td>
               <td>{{$art->kecamatan}}</td>
@@ -130,8 +131,6 @@
               <td>{{$art->kodepos}}</td>
               <td>{{$art->status}}</td>
               <td>{{$art->deskripsi}}</td>
-              <!-- <td>{{$art->username}}</td>
-              <td>{{$art->password}}</td> -->
               <td><a href="/art/edit/{{$art->id}}" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a></td>
           </tr>
           </tbody>

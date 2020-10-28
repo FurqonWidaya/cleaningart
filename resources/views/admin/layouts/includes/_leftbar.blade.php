@@ -45,8 +45,8 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/art">Data ART</a>
-            <a class="collapse-item" href="/notfound">Data Master</a>
+            <a class="collapse-item" href="/dataart">Data ART</a>
+            <a class="collapse-item" href="/datamaster">Data Master</a>
           </div>
         </div>
       </li>

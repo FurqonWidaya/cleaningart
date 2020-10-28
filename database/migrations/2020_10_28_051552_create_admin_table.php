@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArtTable extends Migration
+class CreateAdminTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,13 @@ class CreateArtTable extends Migration
      */
     public function up()
     {
-        Schema::create('art', function (Blueprint $table) {
+        Schema::create('admin', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //$table->integer('user_id');
+             //$table->integer('user_id');
             $table->timestamps();
-            $table->binary('foto')->nullable();
+            $table->string('role');
             $table->string('name');
-            $table->string('nohp')->nullable();
-            $table->date('tanggallahir')->nullable();
-            $table->string('kecamatan')->nullable();
-            $table->string('alamat')->nullable();
-            $table->string('kodepos')->nullable();
-            $table->string('status');
-            $table->text('deskripsi')->nullable();
+            $table->string('email');
             $table->string('username')->unique();
             $table->string('password');
         });
@@ -38,6 +32,6 @@ class CreateArtTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('art');
+        Schema::dropIfExists('admin');
     }
 }
