@@ -21,11 +21,11 @@
   <div class="form-group">
     <label >Foto</label>
     <input name="foto" type="file" class="form-control" id="foto" >
-    <i value="">{{$art->getPhoto()}}</i>
+    <i value="{{$art->foto}}">{{$art->getPhoto()}}</i>
   </div>
   <div class="form-group">
     <label >Nama</label>
-    <input name="nama" type="text" class="form-control" id="nama" value="{{$art->nama}}">
+    <input name="name" type="text" class="form-control" id="name" value="{{$art->name}}" readonly>
   </div>
   <div class="form-group">
           <label >No Hp</label>

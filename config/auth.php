@@ -46,14 +46,14 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        'master' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'master',
+            'provider' => 'admins',
         ],
 
-        'api-master' => [
+        'api-admin' => [
             'driver' => 'token',
-            'provider' => 'master',
+            'provider' => 'admins',
         ],
         // 'master' => [
         //     'driver' => 'session',
@@ -103,9 +103,9 @@ return [
         //     'driver' => 'eloquent',
         //     'model' => App\User::class,
         // ],
-        'master' => [
+        'admin' => [
             'driver' => 'eloquent',
-            'model' => App\master::class,
+            'model' => App\admin::class,
         ],
         // 'art' => [
         //     'driver' => 'eloquent',

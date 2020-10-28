@@ -73,7 +73,7 @@
         </div>
         <div class="form-group">
           <label >password</label>
-          <input type="text" class="form-control" id="password" name="password">
+          <input type="password" class="form-control" id="password" name="password">
         </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

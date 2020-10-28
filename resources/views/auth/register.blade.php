@@ -28,7 +28,7 @@
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-inbox"></span>
-						<input type="text" class="form-control" placeholder="Email" name="email" data-validate = "Valid email is required: ex@abc.xyz" id="email" required>
+						<input type="email" class="form-control" placeholder="Email" name="email" data-validate = "Valid email is required: ex@abc.xyz" id="email" required>
                           
 					</div>
 					<div class="form-holder">

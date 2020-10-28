@@ -13,4 +13,10 @@ class MasterController extends Controller
     {
     	$this->middleware('auth');
     }
+
+    public function error()
+    {
+    	return view('master.404');
+    }
+
 }

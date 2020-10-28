@@ -30,10 +30,10 @@ class AuthController extends Controller
                     return redirect('/dashboard');
                 } elseif($user->role == 'master'){
                     //Auth::guard('master')->LoginUsingId($user->id);
-                    return redirect('/master');
+                    return redirect('/home');
                 }elseif ($user->role == 'art') {
                 // Auth::guard('art')->LoginUsingId($user->id);
-                    return redirect('/maid');
+                    return redirect('/homes');
                   //dd($request->all());
                 }
             }
@@ -52,33 +52,16 @@ class AuthController extends Controller
         return view ('/auth.registermaster');
     }
 
+
     // public function postregister(Request $request){
+    //      $user = \App\User::create($request->all());
     //      if ($request->has('submit')){
-    //          $user = new \App\User;
-    //         $user ->role=('admin');
-    //         $user->name= $request->name;
-    //         $user->username= $request->username;
-    //         $user->email=$request->email;
     //         $user ->password=bcrypt($user ->password);
-    //         $user->remember_token = str_random(60); 
-    //         $user->save();
-    //         $request->request->add(['user_id' => $user->id]);
-    //         $admin = \App\admin::create($request->all()); 
-    //         $user->save();
-    //         }
-
-    //         return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
+    //         $user->remember_token = str_random(60);
+    //          $user->save();
+    //          return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
     //     }
-
-    public function postregister(Request $request){
-         $user = \App\User::create($request->all());
-         if ($request->has('submit')){
-            $user ->password=bcrypt($user ->password);
-            $user->remember_token = str_random(60);
-             $user->save();
-             return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
-        }
-    }
+    // }
 
     public function postregis(Request $request){
         $user = \App\User::create($request->all());
@@ -105,29 +88,28 @@ class AuthController extends Controller
     }
     
     
-    //   public function postregister(Request $request){
-    //     $user = \App\User::create($request->all());
-    //      $user->name= $request->name;
-    //       $user->role= $request->role;
-    //       $user->email= $request->email;
-    //        $user->username= $request->username;
-    //       $user->password= $request->password;
-    //       $user ->password=bcrypt($user ->password);
-    //         $user->remember_token = str_random(60);
-    //          $user->save();
-    //      if ($request->has('submit')){
-    //         $master = \App\master::create($request->all());
-    //      $master->name= $request->name;
-    //       $master->email= $request->email;
-    //        $master->username= $request->username;
-    //       $master->password= $request->password;
-    //       $master ->password=bcrypt($user ->password);
-    //         $master->remember_token = str_random(60);
-    //          $master->save();
+      public function postregister(Request $request){
+        $user = \App\User::create($request->all());
+         $user->name= $request->name;
+          $user->role= $request->role;
+          $user->email= $request->email;
+           $user->username= $request->username;
+          $user->password= $request->password;
+          $user ->password=bcrypt($user ->password);
+            $user->remember_token = str_random(60);
+             $user->save();
+         if ($request->has('submit')){
+            $admin = \App\admin::create($request->all());
+         $admin->name= $request->name;
+          $admin->email= $request->email;
+           $admin->username= $request->username;
+          $admin->password= $request->password;
+          $admin ->password=bcrypt($user ->password);
+             $admin->save();
              
-    //          return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
-    //     }
-    // }
+             return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
+        }
+    }
     
     
 }

@@ -9,7 +9,6 @@ class master extends Model
    // use Notifiable;
 
     protected $table = 'master';
-    protected $guard = 'master';
     protected $fillable= [ 'foto', 'name', 'nohp', 'email', 'kecamatan', 'alamat',
     'kodepos','username', 'password'];
 
