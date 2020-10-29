@@ -67,7 +67,8 @@
           <input type="text" class="form-control" id="password" name="password" value="{{$art->password}}">
         </div>
         <div class="col text-center"> -->
-  <button type="submit" class="btn btn-primary">update</button>
+   <button type="button" class="btn btn-secondary"><a href="/art/profile/{{$art->id}}" style="text-decoration: none; color: #fff">Batal</a></button>
+  <button type="submit" class="btn btn-primary">simpan</button>
   </div>
       </form>
       </div>

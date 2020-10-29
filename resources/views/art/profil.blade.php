@@ -1,5 +1,14 @@
 @extends('art.layouts.master')
 @section('content')
+@if(session('error'))
+<!-- Modal -->
+    <div class="alert alert-warning" role="alert">
+      {{session('error')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  @endif
 <div class="faq padding ptb-xs-40">
 	<br><br>
   <div class="container"> <h3>Profil Saya</h3>

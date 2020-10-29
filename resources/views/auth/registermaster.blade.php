@@ -8,10 +8,15 @@
     <meta name="description" content="Colorlib Templates">
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
-
+<style type="text/css">
+    .help-block{
+        color: #EB3C3C;
+        font-size: smaller;
+    }
+</style>
     <!-- Title Page-->
     <title>Daftar CLEANING ART</title>
-
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('icon.png')}}">
     <!-- Icons font CSS-->
     <link href="{{asset('awal/master/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('awal/master/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
@@ -25,7 +30,24 @@
     <!-- Main CSS-->
     <link href="{{asset('awal/master/css/main.css')}}" rel="stylesheet" media="all">
 </head>
-
+@if(session('error'))
+<!-- Modal -->
+    <div class="alert alert-danger" role="alert">
+      {{session('error')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  @endif
+  @if(session('error'))
+<!-- Modal -->
+    <div class="alert alert-danger" role="alert">
+      {{session('error')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  @endif
 <body>
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
@@ -40,49 +62,67 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Nama Lengkap</label>
-                                    <input class="input--style-4" type="text" name="name" required="">
+                                    <input class="input--style-4" type="text" name="name" value="{{old('name')}}">
+                                    @if($errors->has('name'))
+                                            <span class="help-block">{{($errors->first('name'))}}</span>
+                                     @endif
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">username</label>
-                                    <input class="input--style-4" type="text" name="username">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email" value="{{old('email')}}">
+                                    @if($errors->has('email'))
+                                            <span class="help-block">{{($errors->first('email'))}}</span>
+                                     @endif
                                 </div>
                             </div>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Tanggal Lahir</label>
-                                    <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
-                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                    </div>
+                                    <label class="label">username</label>
+                                    <input class="input--style-4" type="text" name="username" value="{{old('username')}}">
+                                    @if($errors->has('username'))
+                                            <span class="help-block">{{($errors->first('username'))}}</span>
+                                     @endif
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">password</label>
-                                    <input class="input--style-4" type="password" name="password" required="">
+                                    <input class="input--style-4" type="password" name="password" value="{{old('password')}}">
+                                    @if($errors->has('password'))
+                                            <span class="help-block">{{($errors->first('password'))}}</span>
+                                     @endif
                                 </div>
                             </div>
                         </div>
-                        <div class="row row-space">
+                      <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email" required="">
+                                    <label class="label">Tanggal Lahir</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" type="text" name="tanggallahir" value="{{old('tanggallahir')}}">
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                        @if($errors->has('tanggallahir'))
+                                            <span class="help-block">{{($errors->first('tanggallahir'))}}</span>
+                                     @endif
+                                    </div>
                                 </div>
+                            </div>  
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Nomor Handphone</label>
+                                <input class="input--style-4" type="text" name="nohp" value="{{old('nohp')}}">
+                                @if($errors->has('nohp'))
+                                        <span class="help-block">{{($errors->first('nohp'))}}</span>
+                                 @endif
                             </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Nomor Handphone</label>
-                                    <input class="input--style-4" type="text" name="nohp" required="">
-                                </div>
                             </div>
                         </div><hr>
                         <div class="p-t-15" style="text-align: center;">
-                            <button class="btn btn--radius-2 btn--blue" type="submit" name="submit">Submit</button>
+                            <button class="btn btn--radius-2 btn--blue" type="submit" name="submit">Daftar</button>
                         </div>
                     </form>
                     <div class="p-t-15" style="text-align: center;">
@@ -105,7 +145,6 @@
 
     <!-- Main JS-->
 <script src="{{asset('awal/master/js/global.js')}}"></script>
-
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>

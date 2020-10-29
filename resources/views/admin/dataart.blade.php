@@ -15,7 +15,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
          <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Tambah data</h5>
+           <h5 class="modal-title" id="exampleModalLabel">Form Daftar ART</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -26,58 +26,73 @@
           <input type="text" name="role" value="art" hidden>
         <div class="form-group">
           <label >Foto</label>
-          <input name="foto" type="file" class="form-control" id="foto">
+          <input name="foto" type="file" class="form-control" id="foto" value="{{old('foto')}}">
         </div>
-        <div class="form-group">
+        <div class="form-group ">
           <label >Nama</label>
-          <input name="name" type="text" class="form-control" id="name" required>
+          <input name="name" type="text" class="form-control" id="name" value="{{old('name')}}">
+           @if($errors->has('name'))
+            <span class="help-block">{{($errors->first('name'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >Email</label>
-          <input name="email" type="email" class="form-control" id="email" required>
+          <input name="email" type="email" class="form-control" id="email" value="{{old('email')}}">
+          @if($errors->has('email'))
+            <span class="help-block">{{($errors->first('email'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >No Hp</label>
-          <input name="nohp" type="text" class="form-control" id="nohp" required>
+          <input name="nohp" type="text" class="form-control" id="nohp" value="{{old('nohp')}}">
+          @if($errors->has('nohp'))
+            <span class="help-block">{{($errors->first('nohp'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >Tanggal Lahir</label>
-          <input type="date" class="form-control" id="tanggallahir" name="tanggallahir">
+          <input type="date" class="form-control" id="tanggallahir" name="tanggallahir" value="{{old('tanggallahir')}}">
         </div>
         <div class="form-group">
           <label >Kecamatan</label>
-          <input type="text" class="form-control" id="kecamatan" name="kecamatan">
+          <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{old('kecamatan')}}">
         </div>
         <div class="form-group">
           <label >Alamat</label>
-          <input type="text" class="form-control" id="alamat" name="alamat">
+          <input type="text" class="form-control" id="alamat" name="alamat" value="{{old('alamat')}}">
         </div>
         <div class="form-group">
           <label >kode Pos</label>
-          <input type="text" class="form-control" id="kodepos" name="kodepos">
+          <input type="text" class="form-control" id="kodepos" name="kodepos" value="{{old('kodepos')}}">
         </div> 
         <div class="form-group">
           <label >status</label>
-        <select class="form-control" id="status" name="status">
+        <select class="form-control" id="status" name="status" value="{{old('status')}}">
         <option value="Available" >Availabe</option>
         <option value="Hired" >Hired</option>
         </select>
         </div>
         <div class="form-group">
-          <label for="formGroupExampleInput2">Deskripsi</label>
+          <label for="formGroupExampleInput2" value="{{old('deskripsi')}}">Deskripsi</label>
           <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" ></textarea>
         </div>
         <div class="form-group">
           <label >username</label>
-          <input type="text" class="form-control" id="username" name="username">
+          <input type="text" class="form-control" id="username" name="username" value="{{old('username')}}">
+          @if($errors->has('username'))
+            <span class="help-block">{{($errors->first('username'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >password</label>
-          <input type="password" class="form-control" id="password" name="password">
+          <input type="password" class="form-control" id="password" name="password" value="{{old('password')}}">
+          @if($errors->has('password'))
+            <span class="help-block">{{($errors->first('password'))}}</span>
+          @endif
         </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Daftarkan</button>
             </div>
       </form>
     </div>
@@ -90,7 +105,7 @@
   <div class="col-sm-12 col-md-6">
   <button type="button" class="btn btn-danger btn-rounded btn-outline
    hidden-xs hidden-sm waves-effect waves-light" data-toggle="modal" data-target="#exampleModal">
-   <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>Tambah data</button>
+   <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>Tambah ART</button>
    </div>
 </div>
 <!-- Table -->
@@ -114,7 +129,7 @@
               <th>Alamat</th>
               <th>Kode Pos</th>
               <th>Status</th>
-              <th>Deskripsi</th>
+              <th style="width: 50%">Deskripsi</th>
               <th>aksi</th>
           </tr>
         </thead>
@@ -130,7 +145,7 @@
               <td>{{$art->alamat}}</td>
               <td>{{$art->kodepos}}</td>
               <td>{{$art->status}}</td>
-              <td>{{$art->deskripsi}}</td>
+              <td style="width: 50%">{{$art->deskripsi}}</td>
               <td><a href="/art/edit/{{$art->id}}" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a></td>
           </tr>
           </tbody>
@@ -140,3 +155,4 @@
   </div>
 </div>
 @endsection
+

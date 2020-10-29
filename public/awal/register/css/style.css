@@ -126,7 +126,10 @@ h3 {
     transform: translateY(1px); }
   .form-control:focus {
     border-bottom: 1px solid #accffe; }
-
+.help-block{
+        margin-top: 30px;
+        color: #EB3C3C;
+        font-size: smaller;}
 button {
   border: none;
   width: 100%;

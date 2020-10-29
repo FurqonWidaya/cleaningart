@@ -103,10 +103,10 @@
 										<a href="/myprofil/{{auth()->user()->id}}">Profilku</a>
 									</li>
 									<li>
-										<a href="/myprofil/setting/{{auth()->user()->id}}">Setting</a>
+										<a href="/setting/{{auth()->user()->id}}">Setting</a>
 									</li>
 									<li>
-										<a href="/login">log out</a>
+										<a href="/logout">log out</a>
 									</li>
 								</ul>
 								<!-- End Nav Dropdown -->

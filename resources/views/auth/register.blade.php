@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Register CLEANING ART</title>
+		<title>(ADMINISTRATOR) CLEANING ART</title>
 		<link rel="icon" type="image/png" sizes="16x16" href="{{asset('icon.png')}}">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,7 +11,6 @@
 		
 		<!-- STYLE CSS -->
 		<link rel="stylesheet" href="{{asset('awal/register/css/style.css')}}">
-
 	</head>
 
 	<body>
@@ -24,27 +23,37 @@
 					<input type="text" placeholder="admin" name="role" value="admin" hidden>
 					<div class="form-holder">
 						<span class="lnr lnr-users"></span>
-						<input type="text" class="form-control" placeholder="Nama" name="name" required>
+						<input type="text" class="form-control" placeholder="Nama" name="name" value="{{old('name')}}">
+						@if($errors->has('name'))
+                        <span class="help-block">{{($errors->first('name'))}}</span>
+                         @endif
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-inbox"></span>
-						<input type="email" class="form-control" placeholder="Email" name="email" data-validate = "Valid email is required: ex@abc.xyz" id="email" required>
-                          
+						<input type="text" class="form-control" placeholder="Email" name="email" id="email" value="{{old('email')}}">
+                          @if($errors->has('email'))
+                           <span class="help-block">{{($errors->first('email'))}}</span>
+                          @endif
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
-						<input type="text" class="form-control" placeholder="Username" name="username" id="email" required>
-                          
+						<input type="text" class="form-control" placeholder="Username" name="username" id="username" value="{{old('username')}}">
+                          @if($errors->has('username'))
+                          <span class="help-block">{{($errors->first('username'))}}</span>
+                           @endif
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-lock"></span>
-						<input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
+						<input type="password" class="form-control" placeholder="Password" name="password" id="password" value="{{old('username')}}">
+						@if($errors->has('password'))
+                        <span class="help-block">{{($errors->first('password'))}}</span>
+                         @endif
 					</div>
 
 					<!-- <input type="text" name="remember_token" value="{{value(str_random(60))}}" hidden> -->
 
 					<button name="submit">
-						<span>Register</span>
+						<span>Daftar</span>
 					</button>
 				</form>
 				<hr>

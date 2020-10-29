@@ -44,9 +44,9 @@ Route::get('dataku/{id}','AdminController@profiladmin');
 Route::group(['middleware' => ['auth', 'checkrole: art']], function(){
 Route::get('/homes', 'ArtController@maid');
 Route::get('/errors', 'ArtController@error');
-Route::get('/profilku/{id}', 'ArtController@profilku');
-Route::get('/profilku/setting/{id}', 'ArtController@setting');
-Route::post('/profilku/update/{id}', 'ArtController@update');
+Route::get('/profilku/{id}', 'ArtController@profil1');
+Route::get('/profilku/setting/{id}', 'ArtController@setting1');
+Route::post('/profilku/update/{id}', 'ArtController@update1');
 });
 
 //master
@@ -54,6 +54,6 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
 Route::get('/home', 'MasterController@master');
 Route::get('/error', 'MasterController@error');
 Route::get('/myprofil/{id}', 'MasterController@profilku');
-Route::get('/myprofil/setting/{id}', 'MasterController@setting');
-Route::post('/myprofil/update/{id}', 'MasterController@update');
+Route::get('/setting/{id}', 'MasterController@setting');
+Route::post('/update/{id}', 'MasterController@update');
 });

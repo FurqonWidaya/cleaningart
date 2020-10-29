@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Redirect; 
 use Illuminate\Http\Request;
-
 // use App\art;
 // use App\master;
 use App\User;
@@ -17,11 +16,6 @@ class AuthController extends Controller
         return view ('auth.login');
     }
      public function postlogin (Request $request){
-    //     if(Auth::attempt($request->only('username','password'))){
-    //         return redirect('/dashboard');
-    //     }
-    //     return redirect('/login');
-    // }
         $user = \App\User::All();
         if(Auth::attempt($request->only('username','password'))){
             $user = \App\User::where('username', $request->username)->first();
@@ -37,12 +31,14 @@ class AuthController extends Controller
                   //dd($request->all());
                 }
             }
-            return redirect('/login')->with('error', 'akun tidak ditemukan');
+            return redirect('/login')->with('error', 'Username atau Password salah silahkan isi kembali');
     }
+
      public function logout (){
         Auth::logout();
         return redirect ('/login');
     }
+
 
     //admin
     public function adminregister (){
@@ -64,31 +60,44 @@ class AuthController extends Controller
     // }
 
     public function postregis(Request $request){
+        $this->validate($request,[
+            'name' => 'required|min:4',
+            'nohp'=>'required|min:11|numeric',
+            'username'=>'required|min:5|unique:users',
+            'email'=>'required|email',
+            'tanggallahir'=>'date',
+            'password'=>'required|min:5',
+        ]);
         $user = \App\User::create($request->all());
-         $user->name= $request->name;
-          $user->role= $request->role;
-          $user->email= $request->email;
-           $user->username= $request->username;
-          $user->password= $request->password;
-          $user ->password=bcrypt($user ->password);
-            $user->remember_token = str_random(60);
-             $user->save();
-         if ($request->has('submit')){
+        $user->name= $request->name;
+        $user->role= $request->role;
+        $user->email= $request->email;
+        $user->username= $request->username;
+        $user->password= $request->password;
+        $user ->password=bcrypt($user ->password);
+        $user->remember_token = str_random(60);
+        $user->save();
+        if ($request->has('submit')){
             $master = \App\master::create($request->all());
-         $master->name= $request->name;
-          $master->email= $request->email;
-           $master->username= $request->username;
-          $master->password= $request->password;
-          $master ->password=bcrypt($user ->password);
+            $master->name= $request->name;
+            $master->email= $request->email;
+            $master->username= $request->username;
+            $master->password= $request->password;
+            $master ->password=bcrypt($user ->password);
             $master->remember_token = str_random(60);
-             $master->save();
-             
+            $master->save(); 
              return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
         }
     }
     
     
       public function postregister(Request $request){
+        $this->validate($request,[
+            'name' => 'required|min:4',
+            'username'=>'required|min:5|unique:users',
+            'email'=>'required|email',
+            'password'=>'required|min:5',
+        ]);
         $user = \App\User::create($request->all());
          $user->name= $request->name;
           $user->role= $request->role;
@@ -105,8 +114,7 @@ class AuthController extends Controller
            $admin->username= $request->username;
           $admin->password= $request->password;
           $admin ->password=bcrypt($user ->password);
-             $admin->save();
-             
+             $admin->save();     
              return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
         }
     }

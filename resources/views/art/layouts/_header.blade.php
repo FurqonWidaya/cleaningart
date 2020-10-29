@@ -72,7 +72,7 @@
 										<a href="/profilku/setting/{{auth()->user()->id}">Setting</a>
 									</li>
 									<li>
-										<a href="/login">Log Out</a>
+										<a href="/logout">Log Out</a>
 									</li>
 								</ul>
 								<!-- End Nav Dropdown -->

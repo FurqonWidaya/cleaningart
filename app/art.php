@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Foundation\Auth\User as Authenticatable;
-class art extends Model
+class art extends User
 {
     protected $table = 'art';
     protected $fillable= ['foto', 'name', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',

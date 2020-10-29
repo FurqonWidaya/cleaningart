@@ -9,10 +9,10 @@ class MasterController extends Controller
      public function master (){
        return view ('master.homed');
     }
-    public function __construct()
-    {
-    	$this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    // 	$this->middleware('auth');
+    // }
 
     public function error()
     {
@@ -29,6 +29,13 @@ class MasterController extends Controller
         return view('master.edit', ['users' => $users]);
     }
     public function update(Request $request, $id){
+         $this->validate($request,[
+            'name' => 'required|min:4',
+            'nohp'=>'required|min:11|numeric',
+            'username'=>'required|min:5|unique:users',
+            'email'=>'required|email',
+            'password'=>'required|min:5',
+        ]);
         //dd($request->all());
         $users = \App\user::find($id);
         //$users->password = bcrypt($users->password);

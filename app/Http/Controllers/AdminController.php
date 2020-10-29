@@ -32,6 +32,13 @@ class AdminController extends Controller
     }
 
     public function create(Request $request){
+        $this->validate($request,[
+            'name' => 'required|min:4',
+            'nohp'=>'required|min:11|numeric',
+            'username'=>'required|min:5|unique:users',
+            'email'=>'required|email',
+            'password'=>'required|min:5',
+        ]);
         $art=\App\art::create($request->all());
         $user = \App\User::create($request->all());
         $user->name= $request->name;
@@ -61,8 +68,8 @@ class AdminController extends Controller
         //dd($request->all());
         $art = \App\art::find($id);
         $art->update($request->all());
-        $user = \App\user::find($id);
-        $user->update($request->all());
+        // $user = \App\user::find($id);
+        // $user->update($request->all());
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
             $art->foto = $request->file('foto')->getClientOriginalName();
