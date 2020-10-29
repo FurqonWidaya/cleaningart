@@ -103,7 +103,7 @@
 										<a href="/myprofil/{{auth()->user()->id}}">Profilku</a>
 									</li>
 									<li>
-										<a href="/setting/{{auth()->user()->id}}">Setting</a>
+										<a href="/myprofil/setting/{{auth()->user()->id}}">Setting</a>
 									</li>
 									<li>
 										<a href="/logout">log out</a>

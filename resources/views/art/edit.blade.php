@@ -4,7 +4,7 @@
 <div class="faq padding ptb-xs-40">
   <div class="container"> <h3>Setting</h3>
   <form action="/profilku/update/{{auth()->user()->id}}" method="POST" >
-        	{{csrf_field()}}
+          {{csrf_field()}}
       <div class="form-group">
         <label >Nama</label>
         <input name="name" type="text" class="form-control" id="name" value="{{$users->name}}">
@@ -29,11 +29,11 @@
         <div class="form-group">
           <label >password</label>
           <input type="password" class="form-control" id="password" name="password" value="{{$users->password}}" readonly></div>
-           @if($errors->has('password'))
-            <span class="help-block">{{($errors->first('password'))}}</span>
+          @if($errors->has('username'))
+            <span class="help-block">{{($errors->first('username'))}}</span>
           @endif
-          <button type="button" class="btn btn-secondary"><a href="/profilku/{{$users->id}}/" >Batal</a></button>
-     <button type="submit" class="btn btn-primary">Simpan</button>
+          <button type="button" class="btn btn-secondary"><a href="/myprofil/{{$users->id}}/" >Batal</a></button>
+     <button type="submit" class="btn btn-primary">simpan</button>
      </div>
       </form>
   </div>

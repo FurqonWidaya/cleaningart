@@ -1,9 +1,9 @@
-@extends('art.layouts.master')
+@extends('master.layouts.master')
 @section('content')
 <br><br>
 <div class="faq padding ptb-xs-40">
   <div class="container"> <h3>Setting</h3>
-  <form action="/update/{{auth()->user()->id}}" method="POST" >
+  <form action="/myprofil/update/{{auth()->user()->id}}" method="POST" >
         	{{csrf_field()}}
       <div class="form-group">
         <label >Nama</label>

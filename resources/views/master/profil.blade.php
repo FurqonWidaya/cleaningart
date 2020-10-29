@@ -10,7 +10,7 @@
                   </div>
                   <h6 style="text-align: center;">{{auth()->user()->role}}</h6>
                   <div style=" margin-bottom: 10px">
-                    <a href="/setting/{{auth()->user()->id}}" class="btn btn-danger">Edit</a>
+                    <a href="/myprofil/setting/{{auth()->user()->id}}" class="btn btn-danger">Edit</a>
                   </div>
                 </div>
                 <div class="col-xl-12 sm-4 md-4 text-center">

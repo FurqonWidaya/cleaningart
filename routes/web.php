@@ -54,6 +54,6 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
 Route::get('/home', 'MasterController@master');
 Route::get('/error', 'MasterController@error');
 Route::get('/myprofil/{id}', 'MasterController@profilku');
-Route::get('/setting/{id}', 'MasterController@setting');
-Route::post('/update/{id}', 'MasterController@update');
+Route::get('/myprofil/setting/{id}', 'MasterController@setting');
+Route::post('/myprofil/update/{id}', 'MasterController@update');
 });

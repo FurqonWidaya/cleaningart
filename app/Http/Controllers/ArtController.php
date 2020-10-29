@@ -20,10 +20,8 @@ class ArtController extends Controller
         return view('art.profil');
     }
     public function setting1($id){
-        // $users = \App\User::find($id);
-        // return view('art.edit', ['users' => $users]);
-        $art = \App\art::find($id);
-        return view('admin.edit', ['art' => $art]);
+        $users = \App\User::find($id);
+        return view('master.edit', ['users' => $users]);
     }
     public function update1(Request $request, $id){
          $this->validate($request,[
