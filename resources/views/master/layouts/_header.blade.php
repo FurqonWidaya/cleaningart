@@ -100,13 +100,13 @@
 								<!-- Nav Dropdown -->
 								<ul class="sub-nav">
 									<li>
-										<a href="/error">Profilku</a>
+										<a href="/myprofil/{{auth()->user()->id}}">Profilku</a>
 									</li>
 									<li>
-										<a href="/error">Setting</a>
+										<a href="/myprofil/setting/{{auth()->user()->id}}">Setting</a>
 									</li>
 									<li>
-										<a href="/login">Log Out</a>
+										<a href="/login">log out</a>
 									</li>
 								</ul>
 								<!-- End Nav Dropdown -->

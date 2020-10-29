@@ -66,10 +66,10 @@
 								<!-- Nav Dropdown -->
 								<ul class="sub-nav">
 									<li>
-										<a href="/errors">Profilku</a>
+										<a href="/profilku/{{auth()->user()->id}">Profilku</a>
 									</li>
 									<li>
-										<a href="/errors">Setting</a>
+										<a href="/profilku/setting/{{auth()->user()->id}">Setting</a>
 									</li>
 									<li>
 										<a href="/login">Log Out</a>
