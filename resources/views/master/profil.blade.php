@@ -4,7 +4,7 @@
 	<br><br>
   <div class="container"> <h3>Profil Saya</h3>
    <div class="col-xl-12 sm-2 md-2 text-center">
-                  <h4 style="text-align: center; color: #000">{{auth()->user()->name}}</h4>
+                  <!-- <h4 style="text-align: center; color: #000">{{auth()->user()->name}}</h4> -->
                   <div class="img rounded-circle" style="text-align: center;">
                     <img src="/images/default.png" alt="foto" style="width: 90px;  margin-bottom: 15px;">
                   </div>

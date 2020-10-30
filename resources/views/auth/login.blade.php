@@ -59,17 +59,17 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password" id="username">
+						<input class="input100" type="password" name="password" placeholder="Password" id="password">
+
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>
 						</span>
 					</div>
-
 					<div class="contact100-form-checkbox m-l-4">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" onclick="pass()">
 						<label class="label-checkbox100" for="ckb1">
-							Remember me
+							Show Password
 						</label>
 					</div>
 					
@@ -104,6 +104,17 @@
 	<script src="{{asset('awal/vendor/select2/select2.min.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('awal/js/main.js')}}"></script>
+	<script type="text/javascript">
+		function pass(){
+ var pass = document.getElementById('password');
+ var show = document.getElementById('show');
+ if(pass.type == 'password'){
+  pass.type = 'text';
+ }else{
+  pass.type = 'password';
+ }
+}
+	</script>
 
 </body>
 </html>

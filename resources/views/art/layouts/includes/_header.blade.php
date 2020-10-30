@@ -39,7 +39,7 @@
 						<div class="row d-flex align-items-center">
 							<div class="col-md-3">
 								<div class="logo">
-									<a href="/home"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
+									<a href="/homes"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
 								</div>
 								<!-- Phone Menu button -->
 								<button id="menu" class="menu hidden-md-up"></button>
@@ -48,65 +48,31 @@
 								<nav class="navigation">
 									<ul>
 							<li>
-								<a href="/home">Home</a>
+								<a href="/homes">Home</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="/error">Tetang Kami</a>
+								<a href="/errors">Tetang Kami</a>
+								<i class="ion-ios-plus-empty hidden-md-up"></i>
+							</li>
+							</li>
+							<li>
+								<a href="javascript:avoid(0);">Orderanku</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="javascript:avoid(0);">Pesan Layanan</a>
-								<i class="ion-ios-plus-empty hidden-md-up"></i>
-								<ul class="sub-nav">
-									<li>
-										<a href="/error">Semua Layanan</a>
-									</li>
-									<li>
-										<a href="/error">Detail layanan</a>
-									</li>
-
-								</ul>
-							</li>
-							<li>
-								<a href="javascript:avoid(0);">Order</a>
-								<i class="ion-ios-plus-empty hidden-md-up"></i>
-							</li>
-							<li>
-								<a href="javascript:avoid(0);">Tim ART kami</a>
-								<i class="ion-ios-plus-empty hidden-md-up"></i>
-								<ul class="sub-nav">
-									<li>
-										<a href="#work">Gallery ART</a>
-									</li>
-									<li>
-										<a href="#artteam">TIM ART</a>
-									</li>
-
-									<li>
-										<a href="#testimoni">Testimoni</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="/error">Paket Layanan Pekerjaan</a>
-								<i class="ion-ios-plus-empty hidden-md-up"></i>
-								<!-- Nav Dropdown -->
-								<!-- End Nav Dropdown -->
-							</li>
-							<li>
-								<a href="#">{{auth()->user()->name}}</a>
+								<a href="#">{{auth()->user()->username}}</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 								<!-- Nav Dropdown -->
 								<ul class="sub-nav">
 									<li>
-										<a href="/myprofil/{{auth()->user()->id}}">Profilku</a>
+										<a href="/profilku/{{auth()->user()->id}}">Profilku</a>
 									</li>
 									<li>
-										<a href="/myprofil/setting/{{auth()->user()->id}}">Setting</a>
+										<a href="/profilku/setting/{{auth()->user()->id}}">Setting</a>
 									</li>
 									<li>
-										<a href="/logout">log out</a>
+										<a href="/logout">Log Out</a>
 									</li>
 								</ul>
 								<!-- End Nav Dropdown -->

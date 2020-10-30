@@ -10,6 +10,10 @@ class ArtController extends Controller
      public function maid (){
        return view ('art.home');
     }
+        public function __construct()
+    {
+        $this->middleware('auth');
+    }
      public function error()
     {
     	return view('art.404');
@@ -21,16 +25,16 @@ class ArtController extends Controller
     }
     public function setting1($id){
         $users = \App\User::find($id);
-        return view('master.edit', ['users' => $users]);
+        return view('art.edit', ['users' => $users]);
     }
     public function update1(Request $request, $id){
-         $this->validate($request,[
-            'name' => 'required|min:4',
-            'nohp'=>'required|min:11|numeric',
-            'username'=>'required|min:5|unique:users',
-            'email'=>'required|email',
-            'password'=>'required|min:5',
-        ]);
+        //  $this->validate($request,[
+        //     //'name' => 'required|min:4',
+        //     //'nohp'=>'required|min:11|numeric',
+        //     'username'=>'required|min:5|',
+        //     'email'=>'required|email',
+        //     //'password'=>'required|min:5',
+        // ]);
         //dd($request->all());
         $users = \App\user::find($id);
         //$users->password = bcrypt($users->password);

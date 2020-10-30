@@ -20,13 +20,13 @@ class CreateMasterTable extends Migration
             $table->binary('foto')->nullable();
             $table->string('name');
             $table->string('nohp');
-            $table->string('email');
+            //$table->string('email');
             $table->string('kecamatan')->nullable();
             $table->text('alamat')->nullable();
             $table->string('kodepos')->nullable();
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            // $table->string('username')->unique();
+            // $table->string('password');
+            // $table->rememberToken();
         });
     }
 

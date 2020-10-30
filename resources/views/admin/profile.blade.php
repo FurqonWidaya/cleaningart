@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-xl-4 sm-4 md-4">
                   <p style="margin-top: 30px; margin-bottom: 1rem;" class="text-justify">Deskripsi: {{$art->deskripsi}}</p>
-                  <p>@ {{$art->username}}</p>
+                 <!--  <p>@ {{$art->username}}</p> -->
                   <h6>
                    <span><i class="icon_clock_alt"></i>Dibuat: {{$art->created_at}}</span>
                    </h6>

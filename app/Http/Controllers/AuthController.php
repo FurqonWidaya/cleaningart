@@ -69,7 +69,7 @@ class AuthController extends Controller
             'password'=>'required|min:5',
         ]);
         $user = \App\User::create($request->all());
-        $user->name= $request->name;
+        //$user->name= $request->name;
         $user->role= $request->role;
         $user->email= $request->email;
         $user->username= $request->username;
@@ -80,11 +80,11 @@ class AuthController extends Controller
         if ($request->has('submit')){
             $master = \App\master::create($request->all());
             $master->name= $request->name;
-            $master->email= $request->email;
-            $master->username= $request->username;
-            $master->password= $request->password;
-            $master ->password=bcrypt($user ->password);
-            $master->remember_token = str_random(60);
+            // $master->email= $request->email;
+            // $master->username= $request->username;
+            // $master->password= $request->password;
+            // $master ->password=bcrypt($user ->password);
+            // $master->remember_token = str_random(60);
             $master->save(); 
              return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
         }
@@ -99,7 +99,7 @@ class AuthController extends Controller
             'password'=>'required|min:5',
         ]);
         $user = \App\User::create($request->all());
-         $user->name= $request->name;
+         //$user->name= $request->name;
           $user->role= $request->role;
           $user->email= $request->email;
            $user->username= $request->username;
@@ -107,16 +107,17 @@ class AuthController extends Controller
           $user ->password=bcrypt($user ->password);
             $user->remember_token = str_random(60);
              $user->save();
-         if ($request->has('submit')){
-            $admin = \App\admin::create($request->all());
-         $admin->name= $request->name;
-          $admin->email= $request->email;
-           $admin->username= $request->username;
-          $admin->password= $request->password;
-          $admin ->password=bcrypt($user ->password);
-             $admin->save();     
-             return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
-        }
+         // if ($request->has('submit')){
+         //    $admin = \App\admin::create($request->all());
+         // $admin->name= $request->name;
+         //  $admin->email= $request->email;
+         //   $admin->username= $request->username;
+         //  $admin->password= $request->password;
+         //  $admin ->password=bcrypt($user ->password);
+         //     $admin->save();     
+             
+        //}
+        return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
     }
     
     

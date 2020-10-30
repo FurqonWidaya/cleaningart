@@ -1,3 +1,1 @@
-@extends('layouts.master')
-@section('content')
-@stop
+hak akses tidak ada

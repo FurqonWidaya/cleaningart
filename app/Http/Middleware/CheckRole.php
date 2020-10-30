@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Auth;
 use Closure;
 
 class CheckRole
@@ -13,11 +13,11 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next,$role)
+    public function handle($request, Closure $next,...$roles)
     {
-        if ($request->User()->role){
+        if (in_array($request->User()->role,$roles)){
               return $next($request);   
         }
-      return redirect('/');
+      return redirect('/noacces');
     }
 }

@@ -9,7 +9,10 @@
     </button>
     </div>
   @endif
-   
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+
 <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -27,6 +30,9 @@
         <div class="form-group">
           <label >Foto</label>
           <input name="foto" type="file" class="form-control" id="foto" value="{{old('foto')}}">
+          @if($errors->has('foto'))
+            <span class="help-block">{{($errors->first('foto'))}}</span>
+          @endif
         </div>
         <div class="form-group ">
           <label >Nama</label>
@@ -64,6 +70,9 @@
         <div class="form-group">
           <label >kode Pos</label>
           <input type="text" class="form-control" id="kodepos" name="kodepos" value="{{old('kodepos')}}">
+          <!--  @if($errors->has('kodepos'))
+            <span class="help-block">{{($errors->first('kodepos'))}}</span>
+          @endif -->
         </div> 
         <div class="form-group">
           <label >status</label>
@@ -118,10 +127,33 @@
   <div class="card-body" style="font-size: 15px;">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <div class="row">
+    <!-- <div class="col-sm-12 col-md-10">
+    <div class="dataTables_length" id="dataTable_length">
+      <label style="display: inline-block;">Show Entries
+        <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+          <option value="1">1</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option></label>
+        </select>
+    </div>
+    </div> -->
+    <form  method="get" action="/dataart" role="search">
+    <div class="col-sm-12 col-md-4">
+      <div id="dataTable_filter" class="dataTables_filter">
+        <label>Search:<input name="cari" type="text" class="form-control form-control-sm" placeholder="" aria-describedby="basic-addon2"></label>
+        <button class="btn btn-outline-info" type="submit" style="height: 2rem" >
+          <i class="fas fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
+    </form>
+  </div>
           <thead style="background-color: #ddd;">
           <tr class="text-center">
               <th>Foto</th>
-              <th>Username</th>
+              <!-- <th>Username</th> -->
               <th>Nama</th>
               <th>No HP</th>
               <th>Tanggal Lahir</th>
@@ -137,7 +169,7 @@
         <tbody>
           <tr class="text-center">
               <td><img src="{{$art->getPhoto()}}" style="width: 50px"></td>
-              <td><a href="/art/profile/{{$art->id}}">{{$art->username}}</a></td>
+             <!--  <td><a href="/art/profile/{{$art->id}}">{{$art->username}}</a></td> -->
               <td><a href="/art/profile/{{$art->id}}">{{$art->name}}</a></td>
               <td>{{$art->nohp}}</td>
               <td>{{$art->tanggallahir}}</td>
@@ -154,5 +186,8 @@
     </div>
   </div>
 </div>
+ <script src="{{asset('assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('assets/js/demo/datatables-demo.js')}}"></script>
 @endsection
 

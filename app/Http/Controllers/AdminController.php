@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function dataart(Request $request){
         if ($request->has('cari')){
             $data_art = \App\art::where('name', 'LIKE', '%' 
@@ -17,13 +20,18 @@ class AdminController extends Controller
         return view('admin.dataart',['data_art' => $data_art]);
     }
 
-    public function dataadmin(Request $request)
-    {
-        $admin = \App\master::all();
-    }
+    // public function dataadmin(Request $request)
+    // {
+    //     $admin = \App\master::all();
+    // }
 
     public function datamaster(Request $request){
-        $data_master = \App\master::all();
+         if ($request->has('cari')){
+            $data_master = \App\master::where('name', 'LIKE', '%' 
+            .$request->cari. '%')->get();
+        }else{
+            $data_master = \App\master::all();
+        }
         return view('admin.datamaster',['data_master' => $data_master]);
     }
 
@@ -38,10 +46,12 @@ class AdminController extends Controller
             'username'=>'required|min:5|unique:users',
             'email'=>'required|email',
             'password'=>'required|min:5',
+            'foto' => 'mimes:jpg,png,jpeg',
+            //'kodepos' => 'numeric'
         ]);
         $art=\App\art::create($request->all());
         $user = \App\User::create($request->all());
-        $user->name= $request->name;
+        //$user->name= $request->name;
         $user->username= $request->username;
         $user->email=$request->email;
         $user->password = bcrypt($user->password);
@@ -69,14 +79,10 @@ class AdminController extends Controller
          $art = \App\art::find($id);
          $art->update($request->all());
         if ($request->hasFile('foto')) {
-            // $art = \App\art::find($id);
-            // $art->update($request->all());
             $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
             $art->foto = $request->file('foto')->getClientOriginalName();
-            $art->update($request->all());
             $art->save($request->all());
         }
-        //$usser=\App\User::find($id);
         return redirect('/dataart')->with('sukses', 'data berhasil diubah');
     }
     public function updateadmin(Request $request, $id){

@@ -8,8 +8,8 @@ class art extends User
 {
     protected $table = 'art';
     protected $fillable= ['foto', 'name', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
-    'kodepos', 'status', 'deskripsi','username', 'password' ];
-//'user_id'
+    'kodepos', 'status', 'deskripsi'];
+//'user_id','username', 'password' 
 
     public function getPhoto(){
     	if(!$this->foto){
@@ -17,8 +17,8 @@ class art extends User
     	}
     	return asset('images/'.$this->foto);
     }
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
+    // public function setPasswordAttribute($value)
+    // {
+    //     $this->attributes['password'] = bcrypt($value);
+    // }
 }

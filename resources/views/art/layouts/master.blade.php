@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Cleaning ART - ART</title>
+		<title>Cleaning ART</title>
 		<link rel="shortcut icon" type="image/x-icon" href="icon.png">
 		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet">
 		<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
@@ -48,14 +48,14 @@
 		<!--loader-->
 
 		<!-- HEADER -->
-		@include('art.layouts._header')
+		@include('art.layouts.includes._header')
 		<!-- END HEADER -->
 		<div class="content">
 			@yield('content')
 		</div>
 		
 		<!-- Footer_Section -->
-		@include('art.layouts._footer')
+		@include('art.layouts.includes._footer')
 		<!-- Footer_Section_End -->
 
 		<!-- Site Wraper End -->

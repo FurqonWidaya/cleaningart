@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/noacces', function () {
+    return view('welcome');
+});
 //Auth::Routes();
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin','AuthController@postlogin');
@@ -40,8 +43,8 @@ Route::get('master/profile/{id}','AdminController@profilmaster');
 Route::get('dataku/{id}','AdminController@profiladmin');
 });
 
-//art
-Route::group(['middleware' => ['auth', 'checkrole: art']], function(){
+// /art
+Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
 Route::get('/homes', 'ArtController@maid');
 Route::get('/errors', 'ArtController@error');
 Route::get('/profilku/{id}', 'ArtController@profil1');
@@ -49,7 +52,8 @@ Route::get('/profilku/setting/{id}', 'ArtController@setting1');
 Route::post('/profilku/update/{id}', 'ArtController@update1');
 });
 
-//master
+
+// //master
 Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
 Route::get('/home', 'MasterController@master');
 Route::get('/error', 'MasterController@error');

@@ -48,14 +48,14 @@
 		<!--loader-->
 
 		<!-- HEADER -->
-		@include('master.layouts._header')
+		@include('master.layouts.includes._header')
 		<!-- END HEADER -->
 		<div class="content">
 			@yield('content')
 		</div>
 		
 		<!-- Footer_Section -->
-		@include('master.layouts._footer')
+		@include('master.layouts.includes._footer')
 		<!-- Footer_Section_End -->
 
 		<!-- Site Wraper End -->

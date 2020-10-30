@@ -26,8 +26,8 @@ class CreateArtTable extends Migration
             $table->string('kodepos')->nullable();
             $table->string('status');
             $table->text('deskripsi')->nullable();
-            $table->string('username')->unique();
-            $table->string('password');
+            // $table->string('username')->unique();
+            // $table->string('password');
         });
     }
 

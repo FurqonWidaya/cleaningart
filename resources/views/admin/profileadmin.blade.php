@@ -6,7 +6,7 @@
             <h2 class="text-center" style="margin-top: 15px">PROFIL ADMIN</h2><hr>
                <div class="row col-12" style="margin-top: 5px;">
                 <div class="col-xl-3 sm-2 md-2">
-                  <h4 style="text-align: center; color: #000">{{auth()->user()->name}}</h4>
+                  <!-- <h4 style="text-align: center; color: #000">{{auth()->user()->name}}</h4> -->
                   <div class="img rounded-circle" style="text-align: center;">
                     <img src="/images/default.png" alt="foto" style="width: 90px;  margin-bottom: 15px;">
                   </div>

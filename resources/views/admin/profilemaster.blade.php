@@ -13,8 +13,8 @@
                   <h6 style="text-align: center">Master</h6>
                 </div>
                 <div class="col-xl-4 sm-4 md-4">
-                  <p style="margin-top: 30px; margin-bottom: 1rem;" class="text-justify">Email: {{$master->email}}</p>
-                  <p>username: @<span></span>{{$master->username}}</p>
+                  <!-- <p style="margin-top: 30px; margin-bottom: 1rem;" class="text-justify">Email: {{$master->email}}</p>
+                  <p>username: @<span></span>{{$master->username}}</p> -->
                   <h6>
                    <span><i class="icon_clock_alt"></i>Akun Dibuat: {{$master->created_at}}</span>
                    </h6>
