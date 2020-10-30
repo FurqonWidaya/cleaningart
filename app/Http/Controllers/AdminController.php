@@ -66,16 +66,17 @@ class AdminController extends Controller
 
     public function update(Request $request, $id){
         //dd($request->all());
-        $art = \App\art::find($id);
-        $art->update($request->all());
-        // $user = \App\user::find($id);
-        // $user->update($request->all());
+         $art = \App\art::find($id);
+         $art->update($request->all());
         if ($request->hasFile('foto')) {
+            // $art = \App\art::find($id);
+            // $art->update($request->all());
             $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
             $art->foto = $request->file('foto')->getClientOriginalName();
             $art->update($request->all());
             $art->save($request->all());
         }
+        //$usser=\App\User::find($id);
         return redirect('/dataart')->with('sukses', 'data berhasil diubah');
     }
     public function updateadmin(Request $request, $id){
