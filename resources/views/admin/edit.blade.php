@@ -8,6 +8,12 @@
     </button>
     </div>
   @endif
+   <ol class="breadcrumb">
+              <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
+              <li>&#47;&nbsp;<i class="fa fa-users"></i><a href="/dataart">&nbsp;Data ART&nbsp;</a></li>
+               <li>&#47;&nbsp;<i class="fa fa-user"></i><a href="/art/profile/{{$art->id}}">&nbsp;Profile&nbsp;</a></li>
+              <li>&#47;&nbsp;<i class="fa fa-cogs"></i>&nbsp;Setting</li>
+            </ol>
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <div class="col-sm-12 col-md-6">

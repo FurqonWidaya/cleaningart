@@ -110,6 +110,10 @@
     </div>
 
     <!-- <div class="col text-right"> -->
+        <ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
+        <li>&#47;&nbsp;<i class="fa fa-users"></i>&nbsp;Data ART</li>
+      </ol>
 <div class="row">
   <div class="col-sm-12 col-md-6">
   <button type="button" class="btn btn-danger btn-rounded btn-outline

@@ -1,5 +1,10 @@
 @extends('admin.layouts.master')
 @section('content')
+<ol class="breadcrumb">
+              <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
+              <li>&#47;&nbsp;<i class="fa fa-users"></i><a href="/dataart">&nbsp;Data ART&nbsp;</a></li>
+              <li>&#47;&nbsp;<i class="fa fa-user"></i>&nbsp;Profile</li>
+            </ol>
      <div class="row">
   <div class="col-sm col-md">
            <div class="card shadow">

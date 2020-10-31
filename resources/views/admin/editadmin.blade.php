@@ -8,6 +8,11 @@
     </button>
     </div>
   @endif
+   <ol class="breadcrumb">
+              <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
+              <li>&#47;&nbsp;<i class="fa fa-user"></i><a href="/dataku/{{$users->id}}/">&nbsp;Profile&nbsp;</a></li>
+              <li>&#47;&nbsp;<i class="fa fa-cogs"></i>&nbsp;Setting</li>
+            </ol>
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <div class="col-sm-12 col-md-6">
@@ -46,7 +51,7 @@
             <span class="help-block">{{($errors->first('password'))}}</span>
           @endif
           <button type="button" class="btn btn-secondary"><a href="/dataku/{{$users->id}}/" style="text-decoration: none; color: #fff">Batal</a></button>
-     <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
      </div>
       </form>
       </div>

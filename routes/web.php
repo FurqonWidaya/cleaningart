@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/noacces', function () {
+Route::get('/noaccess', function () {
     return view('welcome');
 });
 //Auth::Routes();

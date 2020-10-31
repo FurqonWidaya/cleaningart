@@ -1,6 +1,10 @@
 @extends('admin.layouts.master')
 @section('content')
     <!-- <div class="col text-right"> -->
+  <ol class="breadcrumb">
+    <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
+    <li>&#47;&nbsp;<i class="fa fa-users"></i>&nbsp;Data Master</li>
+  </ol>
 <div class="row">
 </div>
 <!-- Table -->

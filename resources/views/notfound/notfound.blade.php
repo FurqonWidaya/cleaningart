@@ -1,5 +1,9 @@
 @extends('admin.layouts.master')
 @section('content')
+<ol class="breadcrumb">
+        <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
+        <!-- <li>&#47;&nbsp;<i class="fa fa-users"></i>&nbsp;Data ART</li> -->
+      </ol>
      <div class="container-fluid">
 
           <!-- 404 Error Text -->
