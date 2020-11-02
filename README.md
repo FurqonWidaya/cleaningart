@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.pinimg.com/originals/a6/ab/5d/a6ab5dfc040546b50bb0b1576fe009fd.jpg" width="400"></p>
+<p align="center"><img src="https://www.gematsu.com/wp-content/uploads/2020/03/Genshin-Impact_2020_03-16-20_001.png" width="400"></p>
 <h1 align="center" color:"#3498DB" >CLEANING ART</h1>
 
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -33,7 +33,8 @@
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
+Thank you for tutorial to the [Youtube](https://www.youtube.com/)!
+Thank you for references to [Stack Overflow](https://stackoverflow.com/)! 
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
