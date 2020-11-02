@@ -33,8 +33,8 @@
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-Thank you for tutorial to the [Youtube](https://www.youtube.com/)!
-Thank you for references to [Stack Overflow](https://stackoverflow.com/)! 
+<br>Thank you for tutorial to the [Youtube](https://www.youtube.com/)!
+<br>Thank you for references to [Stack Overflow](https://stackoverflow.com/)! 
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
