@@ -30,6 +30,18 @@
 14. php artisan serve
 15. buka chrome (terserah sih), ketik http://localhost:8000/
 
+NB:
+ganti text yg ada file .env dg ini
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.googlemail.com
+MAIL_PORT=465
+MAIL_USERNAME=emailmu@gmail.com(mailmu)
+MAIL_PASSWORD=passwordmulah
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=cleaningart@bussiness.id
+MAIL_NAME_ADDRESS="CLEANING ART"
+
+
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
