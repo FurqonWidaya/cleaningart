@@ -25,8 +25,10 @@ Route::post('/forgot_pass', 'securityController@forgotpw');
 Route::get('/forgot_password/reset', 'securityController@verifytoken');
 Route::post('/activationtoken', 'securityController@postverifytoken');
 //resetpw
-Route::get('/forgot_password/reset/{$active_token}', 'securityController@reset')->name('reset');
+// Route::get('/resetpassword/{active_token}', 'securityController@reset')->name('resetpassword');
+Route::resource('/resetpassword', 'ResetPasswordController');
 Route::resource('/updatepassword', 'ResetPasswordController');
+//Route::get('/resetpassword/{id}', 'securityController@ubah')->name('resetpassword');
 
 Auth::Routes(['verify'=>true]);
 Route::get('/login', 'LoginController@login')->name('login');
@@ -40,18 +42,21 @@ Route::post('/postregis', 'AuthController@postregis');
 
 //ADMIN
 Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
-Route::get('/dashboard', 'AdminController@dashboard');
+Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dataart', 'AdminController@dataart');
 Route::get('/datamaster', 'AdminController@datamaster');
 Route::post('/dataart/create','AdminController@create');
 Route::get('/art/edit/{id}', 'AdminController@edit');
-Route::get('/edit/{id}', 'AdminController@editadmin');
 Route::post('/art/{id}/update', 'AdminController@update');
-Route::post('/admin/{id}/update', 'AdminController@updateadmin');
 Route::get('/notfound', 'notfoundController@notfound');
-Route::get('art/profile/{id}','AdminController@profilart');
-Route::get('master/profile/{id}','AdminController@profilmaster');
-Route::get('dataku/{id}','AdminController@profiladmin');
+Route::get('/art/profile/{id}','AdminController@profilart');
+Route::get('/master/profile/{id}','AdminController@profilmaster');
+//profil admin
+Route::get('/dataku/{id}','C_ProfileAdmin@profiladmin');
+Route::get('/dataku/edit/{id}', 'C_ProfileAdmin@editadmin');
+Route::post('/admin/{id}/update', 'C_ProfileAdmin@updateadmin');
+Route::get('/dataku/edit/gantipassword/{id}', 'C_ProfileAdmin@gantipw');
+Route::post('/updatepassword/{id}', 'C_ProfileAdmin@updatepass');
 });
 
 //art dan naster
@@ -72,7 +77,7 @@ Route::post('/profilku/update/{id}', 'ArtController@update1');
 
 // //master
 Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
-Route::get('/home', 'MasterController@master');
+Route::get('/home', 'C_home@home');
 Route::get('/error', 'MasterController@error');
 Route::get('/aboutus', 'MasterController@about');
 Route::get('/myprofil/{id}', 'MasterController@profilku');

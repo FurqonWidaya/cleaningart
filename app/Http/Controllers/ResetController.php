@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\User; 
 use App\Events\ForgotActivationEmail; 
 use Auth;
+use App\Http\Controllers\ResetController;
 use Mail;
+use App\Providers\RouteServiceProvider;
 class ResetController extends Controller
 {
     /**
@@ -38,16 +40,16 @@ class ResetController extends Controller
         'password' => 'required|min:5',
      ]);
         
-     $user = User::whereActive_token($id)->first();   
+     $user = User::whereEmail($email)->first();   
      //dd($user);
-     if($request->email !== $user->email){
-        return redirect('reset')->with('error', 'email tidak valid');
+     if($user->email !== null){
+        return redirect()->back()->with('error', 'email tidak valid');
              }
              else{
                 $user->update([
                     'password' => bcrypt($request['password']),
                     'active_token' => null,
-                    'email'=> $user->email,
+                    
                 ]);
                 return redirect('/login')->with('sukses','password berhasil diperbarui');
              }

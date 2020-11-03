@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+
+    //midleware
     public function __construct()
     {
         $this->middleware('auth');
     }
+
+    //cari art
     public function dataart(Request $request){
         if ($request->has('cari')){
             $data_art = \App\art::where('name', 'LIKE', '%' 
@@ -20,11 +24,7 @@ class AdminController extends Controller
         return view('admin.dataart',['data_art' => $data_art]);
     }
 
-    // public function dataadmin(Request $request)
-    // {
-    //     $admin = \App\master::all();
-    // }
-
+    //liat data master
     public function datamaster(Request $request){
          if ($request->has('cari')){
             $data_master = \App\master::where('name', 'LIKE', '%' 
@@ -34,11 +34,15 @@ class AdminController extends Controller
         }
         return view('admin.datamaster',['data_master' => $data_master]);
     }
-
-    public function dashboard (){
-       return view ('/admin.dashboard');
+    
+    //liat profil data master
+      public function profilmaster($id){
+        $master = \App\master::find($id); 
+        $user = \App\User::find($id);
+        return view('admin.profilemaster', ['master' => $master], ['user' => $user]);
     }
 
+    //buat data art
     public function create(Request $request){
         $this->validate($request,[
             'name' => 'required|min:4',
@@ -57,7 +61,6 @@ class AdminController extends Controller
         $user->password = bcrypt($user->password);
         $user->remember_token = str_random(60);
         $user->save();
-        // $art->tanggallahir = $request->tanggallahir->format('d/m/Y');
         $request->request->add(['user_id'=> $user->id]);
         $art = \App\art::create($request->all());
          if ($request->hasFile('foto')) {
@@ -68,15 +71,13 @@ class AdminController extends Controller
         return redirect('/dataart')->with('sukses','data berhasil ditambahkan');
     }
 
+    //edit data art
     public function edit($id){
         $art = \App\art::find($id);
-        return view('admin.edit', ['art' => $art]);
+        return view('admin.editart', ['art' => $art]);
     }
-    public function editadmin($id){
-        $users = \App\User::find($id);
-        return view('admin.editadmin', ['users' => $users]);
-    }
-
+    
+    //update dataart
     public function update(Request $request, $id){
         //dd($request->all());
          $art = \App\art::find($id);
@@ -88,32 +89,17 @@ class AdminController extends Controller
         }
         return redirect('/dataart')->with('sukses', 'data berhasil diubah');
     }
-    public function updateadmin(Request $request, $id){
-        //dd($request->all());
-        $users = \App\user::find($id);
-        //$users->password = bcrypt($users->password);
-        $users->update($request->all());
-        return redirect('/dataku/{id}')->with('sukses', 'data berhasil diubah');
-    }
-
+    
+    //liat profil data art
     public function profilart($id){
         $art = \App\art::find($id);
-        return view('admin.profile', ['art' => $art]);
-
+        return view('admin.profileart', ['art' => $art]);
     }
-      public function profilmaster($id){
-        $master = \App\master::find($id);
-       
-        return view('admin.profilemaster', ['master' => $master]);
-
-    }
-     public function profiladmin($id){
-        //$admin = \App\admin::find($id);
-        //dd($request->all());
-       return view('admin.profileadmin');
-    }
+     
+    //lom fungsi
     public function decrypt()
     {
         $decrypt = crypt::decryptString($user->password);
     }
+
 }

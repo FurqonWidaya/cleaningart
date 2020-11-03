@@ -6,7 +6,8 @@ Kofirmasi password baru
 
 <h1>Hello {{$user->username}}</h1>
 <p>
-	your password: {{$user->password}} masih dienkripsi ya hehehehe
+	your otp: {{$user->active_token}} 
+	<!-- <a href="{{url('resetpassword/'.$user->id)}}">klik disini untuk merubah password</a> -->
 </p>
 
 Thanks,<br>

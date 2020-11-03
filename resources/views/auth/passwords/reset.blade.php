@@ -45,13 +45,13 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" action="{{route('updatepassword.update','$user->token')}}" method="POST" >
+				<form class="login100-form validate-form" action="{{url('updatepassword.update/'.$user->id)}}" method="POST" >
 					<span class="login100-form-title p-b-20">
 						Reset Kata Sandi
 					</span>
 					{{csrf_field()}}
-					@method('PUT')
-					<input type="hidden" name="token" value="{{ '$user->token' }}">
+					<!-- @method('PUT') -->
+					<!-- <input type="hidden" name="token" value="{{ '$user->token' }}"> -->
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
 						<input class="input100" type="email" name="email" placeholder="email" id="email" required value="{{ old('email') }}" autocomplete="email" autofocus>
 						<span class="focus-input100"></span>

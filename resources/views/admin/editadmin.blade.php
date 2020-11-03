@@ -9,10 +9,10 @@
     </div>
   @endif
    <ol class="breadcrumb">
-              <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
-              <li>&#47;&nbsp;<i class="fa fa-user"></i><a href="/dataku/{{$users->id}}/">&nbsp;Profile&nbsp;</a></li>
-              <li>&#47;&nbsp;<i class="fa fa-cogs"></i>&nbsp;Setting</li>
-            </ol>
+      <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
+      <li>&#47;&nbsp;<i class="fa fa-user"></i><a href="/dataku/{{$users->id}}/">&nbsp;Profile&nbsp;</a></li>
+      <li>&#47;&nbsp;<i class="fa fa-cogs"></i>&nbsp;Setting</li>
+   </ol>
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <div class="col-sm-12 col-md-6">
@@ -23,13 +23,6 @@
       <div class="table-responsive">
 <form action="/admin/{{$users->id}}/update" method="POST" >
         	{{csrf_field()}}
-      <!-- <div class="form-group">
-        <label >Nama</label>
-        <input name="name" type="text" class="form-control" id="name" value="{{$users->name}}">
-        @if($errors->has('name'))
-            <span class="help-block">{{($errors->first('name'))}}</span>
-          @endif
-      </div> -->
        <div class="form-group">
           <label >username</label>
           <input type="text" class="form-control" id="username" name="username" value="{{$users->username}}">
@@ -45,11 +38,8 @@
           @endif
         </div>
         <div class="form-group">
-          <label >password</label>
-          <input type="password" class="form-control" id="password" name="password" value="{{$users->password}}" readonly></div>
-          @if($errors->has('password'))
-            <span class="help-block">{{($errors->first('password'))}}</span>
-          @endif
+          <label><a href="/dataku/edit/gantipassword/{{auth()->user()->id}}">Ganti Password</a></label>
+        </div>
           <button type="button" class="btn btn-secondary"><a href="/dataku/{{$users->id}}/" style="text-decoration: none; color: #fff">Batal</a></button>
         <button type="submit" class="btn btn-primary">Simpan</button>
      </div>

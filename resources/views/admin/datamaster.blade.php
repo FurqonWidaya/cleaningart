@@ -18,17 +18,6 @@
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <div class="row">
-    <!-- <div class="col-sm-12 col-md-10">
-    <div class="dataTables_length" id="dataTable_length">
-      <label style="display: inline-block;">Show Entries
-        <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-          <option value="1">1</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option></label>
-        </select>
-    </div>
-    </div> -->
     <form  method="get" action="/datamaster" role="search">
     <div class="col-sm-12 col-md-4">
       <div id="dataTable_filter" class="dataTables_filter">
@@ -44,7 +33,7 @@
           <tr class="text-center">
               <th>Foto</th>
               <th>Nama</th>
-              <!-- <th>username</th> -->
+              <th>username</th>
               <!-- <th>E-mail</th> -->
               <th>No HP</th>
               <th>Kecamatan</th>
@@ -57,7 +46,7 @@
           <tr class="text-center">
               <td><img src="{{$master->getPhoto()}}" style="width: 50px"></td>
               <td><a href="/master/profile/{{$master->id}}">{{$master->name}}</a></td>
-           <!--  <td><a href="/master/profile/{{$master->id}}">{{$master->username}}</a></td> -->
+            <td><a href="/master/profile/{{$master->id}}">{{$users->username}}</a></td>
               <!-- <td>{{$master->email}}</td> -->
               <td>{{$master->nohp}}</td>
               <td>{{$master->kecamatan}}</td>

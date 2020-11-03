@@ -34,8 +34,8 @@ class SecurityController extends Controller
       ]); 
        event(new ForgotActivationEmail($user));
     }
-    return redirect('/login')->with('success','password telah dikirim ke email mu');
-     // return redirect('/forgot_password/reset')->with('success','reset kode password telah dikirim ke email mu');
+   //return redirect('/login')->with('success','password telah dikirim ke email mu');
+      return redirect('/forgot_password/reset')->with('success','reset kode password telah dikirim ke email mu');
 }
 
 //kirim token   
@@ -44,20 +44,27 @@ class SecurityController extends Controller
 		return view('auth.verifytoken');
 	}
 
+public function ubah()
+  {
+    return view('emails.changepassword');
+  }
+
 	public function postverifytoken(Request $request)
 	{
 		$user=User::whereActive_token($request->active_token)->first();
 		//dd($user);
 		if($user == null){
     	return redirect()->back()->with('error', 'token tidak valid');
-   	  	}else{
-    		$user->update([
-    		'active_token'=>rand(100000,999999),
-    	]);
+   	  	}
+        else{
+    		// $user->update([
+    		// 'active_token'=>rand(100000,999999),
+    	//]);
     	
     
-        return redirect()->route('password.reset',[$user->active_token])->with('success','silahkan masukkan password baru' );}
-    	// return redirect('/forgot_password/reset/{$active_token}')->with('success','silahkan masukkan password baru' );}
+        // return redirect()->route('/resetpassword/{$active_token}')->with('success','silahkan masukkan password baru' );}
+    	return redirect()->route('password.reset',['$user->active_token'])->with('success','silahkan masukkan password baru' );
+    }
        
        
 	}
