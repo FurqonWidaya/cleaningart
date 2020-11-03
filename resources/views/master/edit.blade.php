@@ -15,24 +15,23 @@
       <div class="form-group">
         <label >Nama</label>
         <input name="name" type="text" class="form-control" id="name" value="{{auth()->user()->master->name}}">
-         <!-- @if($errors->has('name'))
+         @if($errors->has('name'))
             <span class="help-block">{{($errors->first('name'))}}</span>
-          @endif -->
+          @endif
       </div>
      <div class="form-group">
           <label >Email</label>
           <input name="email" type="email" class="form-control" id="email" value="{{$users->email}}">
-           <!-- @if($errors->has('email'))
+           @if($errors->has('email'))
             <span class="help-block">{{($errors->first('email'))}}</span>
-          @endif -->
+          @endif
         </div>
         <div class="form-group">
           <label >username</label>
           <input type="text" class="form-control" id="username" name="username" value="{{auth()->user()->username}}">
-
-           <!-- @if($errors->has('username'))
+           @if($errors->has('username'))
             <span class="help-block">{{($errors->first('username'))}}</span>
-          @endif -->
+          @endif
         </div>
           <div class="form-group">
           <label >No Handphone</label>

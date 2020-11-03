@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Hash;
+use App\User;
+use App\master;
 class MasterController extends Controller
 {
     //midleware 

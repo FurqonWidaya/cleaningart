@@ -43,6 +43,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(master::class);
     }
+    public function masters()
+    {
+        return $this->belongsTo(master::class);
+    }
 
     public function art()
     {
