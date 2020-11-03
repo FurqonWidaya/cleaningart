@@ -9,9 +9,15 @@
     </button>
     </div>
   @endif
-   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
- 
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+  @if(session('gagal'))
+<!-- Modal -->
+    <div class="alert alert-warning" role="alert">
+   {{session('gagal')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  @endif
 
 <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,17 +141,6 @@
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
   <div class="row">
-    <!-- <div class="col-sm-12 col-md-10">
-    <div class="dataTables_length" id="dataTable_length">
-      <label style="display: inline-block;">Show Entries
-        <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
-          <option value="1">1</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option></label>
-        </select>
-    </div>
-    </div> -->
     <form  method="get" action="/dataart" role="search">
     <div class="col-sm-12 col-md-4">
       <div id="dataTable_filter" class="dataTables_filter">
@@ -190,6 +185,7 @@
           </tbody>
           @endforeach
       </table>
+      {{$data_art->links()}}
     </div>
   </div>
 </div>

@@ -17,9 +17,9 @@ class AdminController extends Controller
     public function dataart(Request $request){
         if ($request->has('cari')){
             $data_art = \App\art::where('name', 'LIKE', '%' 
-            .$request->cari. '%')->get();
+            .$request->cari. '%')->paginate(10);
         }else{
-            $data_art = \App\art::all();
+            $data_art = \App\art::paginate(10);
         }
         return view('admin.dataart',['data_art' => $data_art]);
     }
@@ -54,7 +54,7 @@ class AdminController extends Controller
             'nohp'=>'required|min:11|max:13|regex:/(08)[0-9]{9}/',
             'kodepos' => 'numeric|min:4|nullable'
         ]);
-        $user = new \App\User;
+        $user = \App\user::create($request->all());
         $user->role= $request->role;
         $user->username= $request->username;
         $user->email=$request->email;

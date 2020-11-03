@@ -30,7 +30,7 @@ Route::resource('/resetpassword', 'ResetPasswordController');
 Route::resource('/updatepassword', 'ResetPasswordController');
 //Route::get('/resetpassword/{id}', 'securityController@ubah')->name('resetpassword');
 
-Auth::Routes(['verify'=>true]);
+//Auth::Routes(['verify'=>true]);
 Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/postlogin','LoginController@postlogin');
 Route::get('/logout', 'LoginController@logout');
@@ -60,10 +60,10 @@ Route::post('/updatepassword/{id}', 'C_ProfileAdmin@updatepass');
 });
 
 //art dan naster
-Route::group(['middleware' => ['auth', 'checkrole:master, art']], function(){
+// Route::group(['middleware' => ['auth', 'checkrole:master, art']], function(){
 
 
-});
+// });
 
 //art
 Route::group(['middleware' => ['auth', 'checkrole:art']], function(){

@@ -34,8 +34,8 @@ class SecurityController extends Controller
       ]); 
        event(new ForgotActivationEmail($user));
     }
-   //return redirect('/login')->with('success','password telah dikirim ke email mu');
-      return redirect('/forgot_password/reset')->with('success','reset kode password telah dikirim ke email mu');
+   return redirect('/login')->with('success','password telah dikirim ke email mu');
+      //return redirect('/forgot_password/reset')->with('success','reset kode password telah dikirim ke email mu');
 }
 
 //kirim token   
