@@ -32,14 +32,14 @@
 
 NB:
 ganti text yg ada file .env dg ini
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.googlemail.com
-MAIL_PORT=465
-MAIL_USERNAME=emailmu@gmail.com(mailmu)
-MAIL_PASSWORD=passwordmulah
-MAIL_ENCRYPTION=ssl
-MAIL_FROM_ADDRESS=cleaningart@bussiness.id
-MAIL_NAME_ADDRESS="CLEANING ART"
+<br>MAIL_MAILER=smtp
+<br>MAIL_HOST=smtp.googlemail.com
+<br>MAIL_PORT=465
+<br>MAIL_USERNAME=emailmu@gmail.com(mailmu)
+<br>MAIL_PASSWORD=passwordmulah
+<br>MAIL_ENCRYPTION=ssl
+<br>MAIL_FROM_ADDRESS=cleaningart@bussiness.id
+<br>MAIL_NAME_ADDRESS="CLEANING ART"
 
 
 ## Contributing
