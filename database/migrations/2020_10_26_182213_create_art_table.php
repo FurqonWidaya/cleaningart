@@ -15,7 +15,7 @@ class CreateArtTable extends Migration
     {
         Schema::create('art', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //$table->integer('user_id');
+            $table->integer('user_id');
             $table->timestamps();
             $table->binary('foto')->nullable();
             $table->string('name');
@@ -24,7 +24,7 @@ class CreateArtTable extends Migration
             $table->string('kecamatan')->nullable();
             $table->string('alamat')->nullable();
             $table->string('kodepos')->nullable();
-            $table->string('status');
+            $table->enum('status', ['Available', 'Hired']);
             $table->text('deskripsi')->nullable();
             // $table->string('username')->unique();
             // $table->string('password');

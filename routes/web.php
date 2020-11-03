@@ -17,10 +17,21 @@ Route::get('/', function () {
 Route::get('/noaccess', function () {
     return view('welcome');
 });
-//Auth::Routes();
-Route::get('/login', 'AuthController@login')->name('login');
-Route::post('/postlogin','AuthController@postlogin');
-Route::get('/logout', 'AuthController@logout');
+Route::post('/back', 'AuthController@back')->name('back');
+//lupapw
+Route::get('/forgot_password', 'securityController@forgot');
+Route::post('/forgot_pass', 'securityController@forgotpw');
+//veriftoken
+Route::get('/forgot_password/reset', 'securityController@verifytoken');
+Route::post('/activationtoken', 'securityController@postverifytoken');
+//resetpw
+Route::get('/forgot_password/reset/{$active_token}', 'securityController@reset')->name('reset');
+Route::resource('/updatepassword', 'ResetPasswordController');
+
+Auth::Routes(['verify'=>true]);
+Route::get('/login', 'LoginController@login')->name('login');
+Route::post('/postlogin','LoginController@postlogin');
+Route::get('/logout', 'LoginController@logout');
 Route::get('/admin/register', 'AuthController@adminregister');
 Route::post('/postregister', 'AuthController@postregister');
 Route::get('/register', 'AuthController@register');
@@ -43,7 +54,13 @@ Route::get('master/profile/{id}','AdminController@profilmaster');
 Route::get('dataku/{id}','AdminController@profiladmin');
 });
 
-// /art
+//art dan naster
+Route::group(['middleware' => ['auth', 'checkrole:master, art']], function(){
+
+
+});
+
+//art
 Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
 Route::get('/homes', 'ArtController@maid');
 Route::get('/errors', 'ArtController@error');
@@ -57,7 +74,10 @@ Route::post('/profilku/update/{id}', 'ArtController@update1');
 Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
 Route::get('/home', 'MasterController@master');
 Route::get('/error', 'MasterController@error');
+Route::get('/aboutus', 'MasterController@about');
 Route::get('/myprofil/{id}', 'MasterController@profilku');
 Route::get('/myprofil/setting/{id}', 'MasterController@setting');
 Route::post('/myprofil/update/{id}', 'MasterController@update');
+Route::get('/myprofil/changepassword/{id}', 'MasterController@changepw');
+Route::post('/postpassword/{id}', 'MasterController@postpass');
 });

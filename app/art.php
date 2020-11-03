@@ -3,13 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 class art extends User
 {
     protected $table = 'art';
-    protected $fillable= ['foto', 'name', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
+    protected $fillable= ['user_id', 'foto', 'name', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
     'kodepos', 'status', 'deskripsi'];
-//'user_id','username', 'password' 
+//,'username', 'password' 
 
     public function getPhoto(){
     	if(!$this->foto){
@@ -21,4 +21,12 @@ class art extends User
     // {
     //     $this->attributes['password'] = bcrypt($value);
     // }
+    public function Users()
+    {
+        return $this->hasOne(User::class);
+    }
+    private function getRandomRoomId() {
+    $art = \App\art::inRandomOrder()->first();
+    return $art->id;
+}
 }

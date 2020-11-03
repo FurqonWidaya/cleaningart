@@ -52,7 +52,7 @@
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="/error">Tetang Kami</a>
+								<a href="/aboutus">Tetang Kami</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
@@ -67,10 +67,6 @@
 									</li>
 
 								</ul>
-							</li>
-							<li>
-								<a href="javascript:avoid(0);">Order</a>
-								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
 								<a href="javascript:avoid(0);">Tim ART kami</a>
@@ -89,10 +85,8 @@
 								</ul>
 							</li>
 							<li>
-								<a href="/error">Paket Layanan Pekerjaan</a>
+								<a href="/error">Aduan dan Saran</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
-								<!-- Nav Dropdown -->
-								<!-- End Nav Dropdown -->
 							</li>
 							<li>
 								<a href="#">{{auth()->user()->username}}</a>

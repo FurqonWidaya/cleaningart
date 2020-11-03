@@ -26,7 +26,7 @@
     <div class="modal-body">
     <form action="/dataart/create" method="POST" enctype="multipart/form-data">
         	{{csrf_field()}}
-          <input type="text" name="role" value="art" hidden>
+          <input type="text" name="role" value="3" hidden>
         <div class="form-group">
           <label >Foto</label>
           <input name="foto" type="file" class="form-control" id="foto" value="{{old('foto')}}">
@@ -58,6 +58,9 @@
         <div class="form-group">
           <label >Tanggal Lahir</label>
           <input type="date" class="form-control" id="tanggallahir" name="tanggallahir" value="{{old('tanggallahir')}}">
+          @if($errors->has('tanggallahir'))
+            <span class="help-block">{{($errors->first('tanggallahir'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >Kecamatan</label>
@@ -70,15 +73,15 @@
         <div class="form-group">
           <label >kode Pos</label>
           <input type="text" class="form-control" id="kodepos" name="kodepos" value="{{old('kodepos')}}">
-          <!--  @if($errors->has('kodepos'))
+           @if($errors->has('kodepos'))
             <span class="help-block">{{($errors->first('kodepos'))}}</span>
-          @endif -->
+          @endif
         </div> 
         <div class="form-group">
           <label >status</label>
         <select class="form-control" id="status" name="status" value="{{old('status')}}">
-        <option value="Available" >Availabe</option>
-        <option value="Hired" >Hired</option>
+        <option value="1" >Availabe</option>
+        <option value="2" >Hired</option>
         </select>
         </div>
         <div class="form-group">

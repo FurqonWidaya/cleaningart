@@ -27,6 +27,7 @@ class CreateMasterTable extends Migration
             // $table->string('username')->unique();
             // $table->string('password');
             // $table->rememberToken();
+            $table->integer('user_id');
         });
     }
 

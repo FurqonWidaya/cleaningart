@@ -8,7 +8,7 @@ class admin extends User
 {
     protected $table = 'admin';
     protected $guard = 'admin';
-    protected $fillable= [ 'name', 'email', 'username', 'password', 'role'];
+    protected $fillable= [ 'name', 'email', 'username', 'password', 'role', 'user_id'];
 
 
     // public function getPhoto(){
@@ -21,4 +21,5 @@ class admin extends User
     {
         $this->attributes['password'] = bcrypt($value);
     }
+    
 }

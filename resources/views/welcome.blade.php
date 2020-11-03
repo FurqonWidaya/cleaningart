@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -17,6 +17,8 @@
   <p>The details of this user are not available to you</p>
   <hr>
   <p class="mb-0">please log back in according to the roles</p>
+  <form action="/{{ url()->previous() }}" method="POST">
+  <button name="back"><a href="/{{ url()->previous() }}" >BACK</a></button></form>
 </div>
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

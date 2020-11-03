@@ -20,7 +20,7 @@
 				<form action="/postregister" method="POST" >
 					<h3>BUAT AKUN</h3>
 					{{csrf_field()}}
-					<input type="text" placeholder="admin" name="role" value="admin" hidden>
+					<input type="text" placeholder="admin" name="role" value="1" hidden>
 					<div class="form-holder">
 						<span class="lnr lnr-users"></span>
 						<input type="text" class="form-control" placeholder="Nama" name="name" value="{{old('name')}}">

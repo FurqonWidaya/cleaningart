@@ -10,7 +10,7 @@ class master extends User
 
     protected $table = 'master';
     protected $fillable= [ 'foto', 'name', 'nohp', 'kecamatan', 'alamat',
-    'kodepos'];
+    'kodepos', 'user_id'];
     //,'username', 'password','email'
 
     // protected $hidden = [
@@ -27,5 +27,13 @@ class master extends User
     // {
     //     $this->attributes['password'] = bcrypt($value);
     // }
+    public function Users()
+    {
+        return $this->hasOne(User::class);
+    }
+    private function getRandomRoomId() {
+    $master = \App\master::inRandomOrder()->first();
+    return $master->id;
+}
 
 }

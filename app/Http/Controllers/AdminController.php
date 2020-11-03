@@ -42,21 +42,24 @@ class AdminController extends Controller
     public function create(Request $request){
         $this->validate($request,[
             'name' => 'required|min:4',
-            'nohp'=>'required|min:11|numeric',
             'username'=>'required|min:5|unique:users',
             'email'=>'required|email',
             'password'=>'required|min:5',
             'foto' => 'mimes:jpg,png,jpeg',
-            //'kodepos' => 'numeric'
+            'tanggallahir' => 'date|after:1960-12-12|before:2001-12-12|nullable',
+            'nohp'=>'required|min:11|max:13|regex:/(08)[0-9]{9}/',
+            'kodepos' => 'numeric|min:4|nullable'
         ]);
-        $art=\App\art::create($request->all());
-        $user = \App\User::create($request->all());
-        //$user->name= $request->name;
+        $user = new \App\User;
+        $user->role= $request->role;
         $user->username= $request->username;
         $user->email=$request->email;
         $user->password = bcrypt($user->password);
         $user->remember_token = str_random(60);
         $user->save();
+        // $art->tanggallahir = $request->tanggallahir->format('d/m/Y');
+        $request->request->add(['user_id'=> $user->id]);
+        $art = \App\art::create($request->all());
          if ($request->hasFile('foto')) {
             $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
             $art->foto = $request->file('foto')->getClientOriginalName();
@@ -108,5 +111,9 @@ class AdminController extends Controller
         //$admin = \App\admin::find($id);
         //dd($request->all());
        return view('admin.profileadmin');
+    }
+    public function decrypt()
+    {
+        $decrypt = crypt::decryptString($user->password);
     }
 }

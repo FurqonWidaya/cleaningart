@@ -56,7 +56,7 @@
                     <h2 class="title">DAFTARKAN DIRI ANDA SEKARANG</h2>
                     <form method="POST" action="/postregis" >
                         {{csrf_field()}}
-                        <input type="text" placeholder="master" name="role" value="master" hidden >
+                        <input type="text" placeholder="master" name="role" value="2" hidden >
                         <input type="text"  name="remember_token" value="" hidden >
                         <div class="row row-space">
                             <div class="col-2">
@@ -71,7 +71,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email" value="{{old('email')}}">
+                                    <input class="input--style-4" type="text" name="email" value="{{old('email')}}">
                                     @if($errors->has('email'))
                                             <span class="help-block">{{($errors->first('email'))}}</span>
                                      @endif
@@ -101,12 +101,11 @@
                       <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Tanggal Lahir</label>
+                                    <label class="label">Foto</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="tanggallahir" value="{{old('tanggallahir')}}">
-                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                        @if($errors->has('tanggallahir'))
-                                            <span class="help-block">{{($errors->first('tanggallahir'))}}</span>
+                                        <input class="input--style-4" type="file" name="foto" value="{{old('foto')}}">
+                                        @if($errors->has('foto'))
+                                            <span class="help-block">{{($errors->first('foto'))}}</span>
                                      @endif
                                     </div>
                                 </div>
