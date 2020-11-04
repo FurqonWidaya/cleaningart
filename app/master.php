@@ -11,7 +11,7 @@ class master extends User
     protected $table = 'master';
     protected $fillable= [ 'foto', 'name', 'nohp', 'kecamatan', 'alamat',
     'kodepos', 'user_id'];
-     protected $primaryKey = 'user_id';
+    //protected $primaryKey = 'user_id';
     //,'username', 'password','email'
 
     // protected $hidden = [
@@ -28,13 +28,14 @@ class master extends User
     // {
     //     $this->attributes['password'] = bcrypt($value);
     // }
-    public function Users()
-    {
-        return $this->hasOne(User::class);
-    }
-     public function Userss()
+     public function User()
     {
         return $this->belongsTo(User::class);
+    }
+
+     public function Users()
+    {
+        return $this->hasOne(User::class);
     }
     private function getRandomRoomId() {
     $master = \App\master::inRandomOrder()->first();

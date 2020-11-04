@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
+use Session;
+use Hash;
+use App\User;
+use App\master;
+use App\art;
 class AdminController extends Controller
 {
 
@@ -36,10 +41,10 @@ class AdminController extends Controller
     }
     
     //liat profil data master
-      public function profilmaster($id){
-        $master = \App\master::find($id); 
-        $user = \App\User::find($id);
-        return view('admin.profilemaster', ['master' => $master], ['user' => $user]);
+     public function profilmaster($id){
+        $master = \App\master::find($id);
+        return view('admin.profilemaster', ['master' => $master]);
+
     }
 
     //buat data art

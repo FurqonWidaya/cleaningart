@@ -7,11 +7,11 @@
         	{{csrf_field()}}
           <div class="form-group">
         <label >Foto</label>
-        <input name="foto" type="file" class="form-control" id="foto" value="{{auth()->user()->master->foto}}">
+        <input name="foto" type="file" class="form-control" id="foto" value="{{auth()->user()->masters->foto}}">
       </div>
       <div class="form-group">
         <label >Nama</label>
-        <input name="name" type="text" class="form-control" id="name" value="{{auth()->user()->master->name}}">
+        <input name="name" type="text" class="form-control" id="name" value="{{auth()->user()->masters->name}}">
          @if($errors->has('name'))
             <span class="help-block">{{($errors->first('name'))}}</span>
           @endif
@@ -32,16 +32,16 @@
         </div>
           <div class="form-group">
           <label >No Handphone</label>
-          <input type="text" class="form-control" id="nohp" name="nohp" value="{{auth()->user()->master->nohp}}"></div>
+          <input type="text" class="form-control" id="nohp" name="nohp" value="{{auth()->user()->masters->nohp}}"></div>
           <div class="form-group">
           <label >Kecamatan</label>
-          <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{auth()->user()->master->kecamatan}}"></div>
+          <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{auth()->user()->masters->kecamatan}}"></div>
           <div class="form-group">
           <label >Kode Pos</label>
-          <input type="text" class="form-control" id="kodepos" name="kodepos" value="{{auth()->user()->master->kodepos}}"></div>
+          <input type="text" class="form-control" id="kodepos" name="kodepos" value="{{auth()->user()->masters->kodepos}}"></div>
           <div class="form-group">
           <label >alamat</label>
-          <textarea class="form-control" id="alamat" name="alamat" >{{auth()->user()->master->alamat}}</textarea></div>
+          <textarea class="form-control" id="alamat" name="alamat" >{{auth()->user()->masters->alamat}}</textarea></div>
            <div class="additional-info">
           <label><a style="color: #3DABD8;" href="/myprofil/changepassword/{{auth()->user()->id}}">Ganti Password</a></Label>
         </div>

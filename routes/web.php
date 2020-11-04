@@ -43,13 +43,15 @@ Route::post('/postregis', 'AuthController@postregis');
 //ADMIN
 Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/notfound', 'notfoundController@notfound');
+
 Route::get('/dataart', 'AdminController@dataart');
-Route::get('/datamaster', 'AdminController@datamaster');
 Route::post('/dataart/create','AdminController@create');
 Route::get('/art/edit/{id}', 'AdminController@edit');
 Route::post('/art/{id}/update', 'AdminController@update');
-Route::get('/notfound', 'notfoundController@notfound');
+
 Route::get('/art/profile/{id}','AdminController@profilart');
+Route::get('/datamaster', 'AdminController@datamaster');
 Route::get('/master/profile/{id}','AdminController@profilmaster');
 //profil admin
 Route::get('/dataku/{id}','C_ProfileAdmin@profiladmin');

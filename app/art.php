@@ -9,12 +9,12 @@ class art extends User
     protected $table = 'art';
     protected $fillable= ['user_id', 'foto', 'name', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
     'kodepos', 'status', 'deskripsi'];
-    protected $primaryKey = 'user_id';
+    //protected $primaryKey = 'user_id';
 //,'username', 'password' 
 
     public function getPhoto(){
     	if(!$this->foto){
-    		return asset('images/default.png');
+    		return asset('/images/default.png');
     	}
     	return asset('images/'.$this->foto);
     }
@@ -26,7 +26,7 @@ class art extends User
     {
         return $this->hasOne(User::class);
     }
-    public function Userss()
+    public function User()
     {
         return $this->belongsTo(User::class);
     }

@@ -15,7 +15,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $table = 'users';
+    //protected $table = 'users';
     protected $fillable = [
          'email', 'username', 'password', 'role','active_token',
     ];
@@ -39,19 +39,32 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function master()
+
+    public function masters()
     {
         return $this->hasOne(master::class);
     }
-    public function masterart()
+
+    public function master()
     {
         return $this->belongsTo(master::class);
-        return $this->belongsTo(art::class);
     }
 
     public function art()
     {
+        return $this->belongsTo(art::class);
+    }
+
+    public function arts()
+    {
         return $this->hasOne(art::class);
+    }
+
+    public function getPhoto(){
+        if(!$this->foto){
+            return asset('images/default.png');
+        }
+        return asset('images/'.$this->foto);
     }
     
 }

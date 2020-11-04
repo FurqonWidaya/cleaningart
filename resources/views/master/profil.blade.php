@@ -13,7 +13,6 @@
 <div id="mission-section" class="ptb ptb-xs-180">
       <div class="container">
 
-   <!--  modal -->
         @if(session('message'))
           <div class="alert alert-success" role="alert">
           {{session('message')}}
@@ -48,15 +47,15 @@
           <div class="col-md-12 col-lg-12 border">
             <div class="about-block clearfix">
               <div class="fl width-25per box-shadow mt-15 mb-xs-15">
-                <img class="img-responsive" src="{{auth()->user()->master->getPhoto()}}" alt="Photo">
+                <img class="img-responsive" src="{{auth()->user()->masters->getPhoto()}}" alt="Photo">
               </div>
               <div class="text-box pt-45 pb-15 pl-70 pl-xs-0 width-75per fl">
                 <div class="box-title">
-                  <h3>{{auth()->user()->master->name}}</h3>
+                  <h3>{{auth()->user()->masters->name}}</h3>
                 </div>
                 <div class="text-content">
                   <p>Email: <span></span>{{auth()->user()->email}}</p>
-                   <p>No HP: <span></span>{{auth()->user()->master->nohp}}</p>
+                   <p>No HP: <span></span>{{auth()->user()->masters->nohp}}</p>
                 </div>
               </div>
               <div class="text-box pt-45 pb-15 pl-70 pl-xs-0 width-75per fl">
@@ -65,24 +64,24 @@
                 </div>
                 <div class="text-content">
                   <p>Kode Pos: <span></span>
-                    @if(auth()->user()->master->kodepos == null)
+                    @if(auth()->user()->masters->kodepos == null)
                      ——
                     @else()
-                   {{auth()->user()->master->kodepos}}
+                   {{auth()->user()->masters->kodepos}}
                     @endif
                   </p>
                    <p>Kecamatan: <span></span>
-                    @if(auth()->user()->master->kecamatan == null)
+                    @if(auth()->user()->masters->kecamatan == null)
                      ——
                     @else()
-                   {{auth()->user()->master->kecamatan}}
+                   {{auth()->user()->masters->kecamatan}}
                     @endif
                   </p>
                    <p>Alamat: <span></span>
-                    @if(auth()->user()->master->alamat == null)
+                    @if(auth()->user()->masters->alamat == null)
                      ——
                     @else()
-                   {{auth()->user()->master->alamat}}
+                   {{auth()->user()->masters->alamat}}
                     @endif</p>
                 </div>
               </div>
