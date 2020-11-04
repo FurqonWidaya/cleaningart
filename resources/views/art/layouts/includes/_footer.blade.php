@@ -5,7 +5,7 @@
 						<div class="col-md-4">
 							<div class="single_info__block">
 								<i class="fa fa-phone"></i>
-								<h4>0(000) 000 000 <span>Monday-Friday, 8am-7pm</span></h4>
+								<h4>Call Us +56 (0) 012 345 6789<span>Monday-Friday, 8am-7pm</span></h4>
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -16,8 +16,8 @@
 						</div>
 						<div class="col-md-4">
 							<div class="single_info__block">
-								<i class="fa fa-bullhorn"></i>
-								<h4>Request a quote <span>Get all the information</span></h4>
+								<i class="fa fa-map-marker"></i>
+								<h4>123 Main Street, St. NW Ste, 1 Washington, DC,USA.<span>Monday-Friday, 9am-5pm</span></h4>
 							</div>
 						</div>
 					</div>
@@ -26,89 +26,55 @@
 			<div class="main_footer__block pb-0 pt-60">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-3">
+						<div class="col-lg-5">
 							<div class="footer_box__block">
-								<h4>About Us</h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, architecto, asperiores. Recusandae ea a culpa eligendi, harum amet cumque quod.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid sequi, fuga rem aperiam expedita ipsum.
-								</p>
+								<h4>Information</h4>
+						<ul>
+							<li>
+								<a href="#">About us</a>
+							</li>
+							<li>
+								<a href="#">Service</a>
+							</li>
+							<li>
+								<a href="#">Contact Us</a>
+							</li>
+							<li>
+								<a href="#">Privacy Police</a>
+							</li>
+							<li>
+								<a href="#">Terms & Conditions</a>
+							</li>
+						</ul>
 							</div>
 						</div>
-						<div class="col-lg-3 mt-sm-30 mt-xs-30">
-							<div class="footer_box__block">
-								<h4>Latest Blog Post</h4>
-								<ul>
-									<li>
-										<a href="#">Start your own agency</a>
-									</li>
-									<li>
-										<a href="#">How to cool down quality</a>
-									</li>
-									<li>
-										<a href="#">Make something awesome</a>
-									</li>
-									<li>
-										<a href="#">Plane your summer vacation</a>
-									</li>
-									<li>
-										<a href="#">There are sunlight to enjoy</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-3 mt-xs-30 mt-sm-30">
-							<div class="footer_box__block">
-								<h4>Our Project</h4>
-								<ul>
-									<li>
-										<a href="#">Go get an ice-cream</a>
-									</li>
-									<li>
-										<a href="#">Become the best version</a>
-									</li>
-									<li>
-										<a href="#">Eat, Sleep and have fun</a>
-									</li>
-									<li>
-										<a href="#">Start the journy to the top</a>
-									</li>
-									<li>
-										<a href="#">Can you do this for us?</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-lg-3 mt-sm-30 mt-xs-30">
+
+						<div class="col-lg-5 mt-sm-30 mt-xs-30">
 							<div class="footer_box__block address-box">
-								<h4>Contact info</h4>
+								<h4>Social Media</h4>
 								<ul>
 									<li>
-										<i class="fa fa-phone"></i>
+										<i class="fa fa-facebook-official"></i>
 										<p>
-											Call Us +56 (0) 012 345 6789
+											<a href="#">Facebook</a>
 										</p>
 									</li>
 									<li>
-										<i class="fa fa-envelope-o"></i>
+										<i class="fa fa-twitter"></i>
 										<p>
-											<a href="mailto:info@example.com">business@support.com</a>
+											<a href="#">Twitter</a>
 										</p>
 									</li>
 									<li>
-										<i class="fa fa-map-marker"></i>
+										<i class="fa fa-instagram"></i>
 										<p>
-											123 Main Street, St. NW Ste, 1 Washington, DC,USA.
+											<a href="#">Instagram</a>
 										</p>
 									</li>
 									<li>
-										<i class="fa fa-clock-o"></i>
+										<i class="fa fa-youtube"></i>
 										<p>
-											Monday-Firday, 9am-6pm;
-											<br>
-											Sunday Closed
+											<a href="#">Youtube</a>
 										</p>
 									</li>
 								</ul>

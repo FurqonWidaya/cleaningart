@@ -9,6 +9,7 @@ class art extends User
     protected $table = 'art';
     protected $fillable= ['user_id', 'foto', 'name', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
     'kodepos', 'status', 'deskripsi'];
+    protected $primaryKey = 'user_id';
 //,'username', 'password' 
 
     public function getPhoto(){
@@ -24,6 +25,10 @@ class art extends User
     public function Users()
     {
         return $this->hasOne(User::class);
+    }
+    public function Userss()
+    {
+        return $this->belongsTo(User::class);
     }
     private function getRandomRoomId() {
     $art = \App\art::inRandomOrder()->first();

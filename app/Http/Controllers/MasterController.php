@@ -8,6 +8,7 @@ use Session;
 use Hash;
 use App\User;
 use App\master;
+use App\art;
 class MasterController extends Controller
 {
     //midleware 
@@ -76,6 +77,6 @@ class MasterController extends Controller
         $user = Auth::User();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
-        return redirect('/dataku/{id}')->with('sukses', 'password telah berganti');
+        return redirect('/myprofil/{id}')->with('sukses', 'password telah berganti');
     }
 }

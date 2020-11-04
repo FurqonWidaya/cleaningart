@@ -39,7 +39,7 @@
 						<div class="row d-flex align-items-center">
 							<div class="col-md-3">
 								<div class="logo">
-									<a href="/homes"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
+									<a href="/index"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
 								</div>
 								<!-- Phone Menu button -->
 								<button id="menu" class="menu hidden-md-up"></button>
@@ -48,16 +48,16 @@
 								<nav class="navigation">
 									<ul>
 							<li>
-								<a href="/homes">Home</a>
+								<a href="/index">Home</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="/errors">Tetang Kami</a>
+								<a href="/about_us">Tetang Kami</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							</li>
 							<li>
-								<a href="javascript:avoid(0);">Orderanku</a>
+								<a href="/errors">Orderanku</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
@@ -67,6 +67,9 @@
 								<ul class="sub-nav">
 									<li>
 										<a href="/profilku/{{auth()->user()->id}}">Profilku</a>
+									</li>
+									<li>
+										<a href="/errors">Keuanganku</a>
 									</li>
 									<li>
 										<a href="/profilku/setting/{{auth()->user()->id}}">Setting</a>

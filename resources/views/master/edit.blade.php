@@ -8,9 +8,6 @@
           <div class="form-group">
         <label >Foto</label>
         <input name="foto" type="file" class="form-control" id="foto" value="{{auth()->user()->master->foto}}">
-         <!-- @if($errors->has('name'))
-            <span class="help-block">{{($errors->first('name'))}}</span>
-          @endif -->
       </div>
       <div class="form-group">
         <label >Nama</label>

@@ -59,19 +59,19 @@ Route::get('/dataku/edit/gantipassword/{id}', 'C_ProfileAdmin@gantipw');
 Route::post('/updatepassword/{id}', 'C_ProfileAdmin@updatepass');
 });
 
-//art dan naster
-// Route::group(['middleware' => ['auth', 'checkrole:master, art']], function(){
-
-
-// });
 
 //art
 Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
-Route::get('/homes', 'ArtController@maid');
+Route::get('/index', 'ArtController@maid');
 Route::get('/errors', 'ArtController@error');
-Route::get('/profilku/{id}', 'ArtController@profil1');
-Route::get('/profilku/setting/{id}', 'ArtController@setting1');
-Route::post('/profilku/update/{id}', 'ArtController@update1');
+Route::get('/profilku/{id}', 'ArtController@profilart');
+Route::get('/profilku/setting/{id}', 'ArtController@settingart');
+Route::post('/profilku/update/{id}', 'ArtController@updateart');
+Route::post('/profilku/deskripsi/{id}', 'ArtController@updatedesk');
+Route::get('/profilku/changepassword/{id}', 'ArtController@editpass');
+Route::post('/postpass/{id}', 'ArtController@updatepass');
+Route::get('/about_us', 'ArtController@about');
+
 });
 
 
@@ -83,6 +83,6 @@ Route::get('/aboutus', 'MasterController@about');
 Route::get('/myprofil/{id}', 'MasterController@profilku');
 Route::get('/myprofil/setting/{id}', 'MasterController@setting');
 Route::post('/myprofil/update/{id}', 'MasterController@update');
-Route::get('/myprofil/changepassword/{id}', 'MasterController@changepw');
+Route::get('/myprofil/changepassword/{id}', 'MasterController@changepass');
 Route::post('/postpassword/{id}', 'MasterController@postpass');
 });

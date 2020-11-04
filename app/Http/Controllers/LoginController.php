@@ -25,7 +25,7 @@ class LoginController extends Controller
                     return redirect('/home');
                 }elseif ($user->role == 'art') {
                 // Auth::guard('art')->LoginUsingId($user->id);
-                    return redirect('/homes');
+                    return redirect('/index');
                   //dd($request->all());
                 }
             }

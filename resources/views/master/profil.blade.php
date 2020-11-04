@@ -8,8 +8,12 @@
 @extends('master.layouts.master')
 <br><br><br>
 @section('content')
+
+<!-- content -->
 <div id="mission-section" class="ptb ptb-xs-180">
       <div class="container">
+
+   <!--  modal -->
         @if(session('message'))
           <div class="alert alert-success" role="alert">
           {{session('message')}}
@@ -26,6 +30,8 @@
         </button>
         </div>
        @endif
+  <!--  end modal -->
+
         <div class="row">
           <div class="col-md-12 col-lg-12 dark-bg our-vision light-color">
             <div class="block-title v-line mb-35">
@@ -84,7 +90,6 @@
           </div>
           <p>Dibuat: {{auth()->user()->created_at}}</p>
         </div>
-      </div>
     </div>
 </div>
 @endsection
