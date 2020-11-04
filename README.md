@@ -20,16 +20,15 @@
 	<p>DB_DATABASE=cleaningart</p>
 	<p>DB_USERNAME=root</p>
 	<p>DB_PASSWORD=</p>
-    </p>
     NB:
-<br>MAIL_MAILER=smtp
-<br>MAIL_HOST=smtp.googlemail.com
-<br>MAIL_PORT=465
-<br>MAIL_USERNAME=emailmu@gmail.com(mailmu)
-<br>MAIL_PASSWORD=passwordmulah
-<br>MAIL_ENCRYPTION=ssl
-<br>MAIL_FROM_ADDRESS=cleaningart@bussiness.id
-<br>MAIL_NAME_ADDRESS="CLEANING ART"
+    MAIL_MAILER=smtp
+    <br>MAIL_HOST=smtp.googlemail.com
+    <br>MAIL_PORT=465
+    <br>MAIL_USERNAME=emailmu@gmail.com(mailmu)
+    <br>MAIL_PASSWORD=passwordmulah
+    <br>MAIL_ENCRYPTION=ssl
+    <br>MAIL_FROM_ADDRESS=cleaningart@bussiness.id
+    <br>MAIL_NAME_ADDRESS="CLEANING ART"
 
 8. terus buka xampp hidupin apache sm mySQL
 9. klik admin di mySQL
