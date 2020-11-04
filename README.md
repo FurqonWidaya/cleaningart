@@ -13,14 +13,13 @@
 2. letakan di c: atau d: (bebas)
 3. beri name folder dangan "cleaningart" (bebas juga sih)
 4. buka cmd
-5. pindah ke lokasi tempat file td di taruh (ex: cd /d d:\cleaningart)
+5. pindah ke lokasi tempat file td di taruh (ex: cd /d d:\cleaningart (sesuai lokasi path folder yang tadi))
 6. ketik copy .env.example .env
 7. terus buka file .env edit seperti dibawah :
 
 	<p>DB_DATABASE=cleaningart</p>
 	<p>DB_USERNAME=root</p>
 	<p>DB_PASSWORD=</p>
-    NB:
     MAIL_MAILER=smtp
     <br>MAIL_HOST=smtp.googlemail.com
     <br>MAIL_PORT=465
@@ -32,7 +31,7 @@
 
 8. terus buka xampp hidupin apache sm mySQL
 9. klik admin di mySQL
-10. terus buat database baru kasih nama db sama dengan nomor langkah 7, "cleaningart"  tanpa td petik
+10. terus buat database baru kasih nama DB_DATABASE sama dengan nomor langkah 7, "cleaningart"  tanpa td petik
 11. buka cmd lagi, ketik composer install (tunggu lama emang)
 12. kalo udah ketik php artisan key:generate
 13. php artisan migrate
