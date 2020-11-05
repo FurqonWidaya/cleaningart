@@ -32,10 +32,10 @@ class SecurityController extends Controller
       $user->update([
         'active_token'=>rand(100000,999999),
       ]); 
-       event(new ForgotActivationEmail($user));
+      // event(new ForgotActivationEmail($user));
     }
-   return redirect('/login')->with('success','password telah dikirim ke email mu');
-      //return redirect('/forgot_password/reset')->with('success','reset kode password telah dikirim ke email mu');
+   //return redirect('/login')->with('success','password telah dikirim ke email mu');
+      return redirect('/forgot_password/reset')->with('success','reset kode password telah dikirim ke email mu');
 }
 
 //kirim token   
@@ -57,14 +57,11 @@ public function ubah()
     	return redirect()->back()->with('error', 'token tidak valid');
    	  	}
         else{
-    		// $user->update([
-    		// 'active_token'=>rand(100000,999999),
-    	//]);
-    	
+
+            //dd($user);}
+       return redirect('/resetpassword/')->with('success','silahkan masukkan password baru' );}
+    	// return redirect()->route('password.reset',['$user->active_token'])->with('success','silahkan masukkan password baru' );
     
-        // return redirect()->route('/resetpassword/{$active_token}')->with('success','silahkan masukkan password baru' );}
-    	return redirect()->route('password.reset',['$user->active_token'])->with('success','silahkan masukkan password baru' );
-    }
        
        
 	}

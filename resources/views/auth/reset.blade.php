@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login CLEANING ART</title>
+	<title>RESET PASSWORD</title>
 	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('icon.png')}}">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,7 +45,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" action="{{url('updatepassword/'.'$user->token')}}" method="POST" >
+				<form class="login100-form validate-form" action="{{url('updatepassword.update','$user->id')}}" method="POST" >
 					<span class="login100-form-title p-b-20">
 						Reset Kata Sandi
 					</span>
@@ -70,6 +70,7 @@
 							<span class="lnr lnr-lock"></span>
 						</span>
 					</div>
+
 					<div class="container-login100-form-btn p-t-5">
 						<button type="submit" class="login100-form-btn" >
 							Kirim

@@ -155,7 +155,7 @@
           <thead style="background-color: #ddd;">
           <tr class="text-center">
               <th>Foto</th>
-              <!-- <th>Username</th> -->
+              <th>Username</th>
               <th>Nama</th>
               <th>No HP</th>
               <th>Tanggal Lahir</th>
@@ -171,7 +171,7 @@
         <tbody>
           <tr class="text-center">
               <td><img src="{{$art->getPhoto()}}" style="width: 50px"></td>
-             <!--  <td><a href="/art/profile/{{$art->id}}">{{$art->username}}</a></td> -->
+              <td><a href="/art/profile/{{$art->id}}">{{$art->user->username}}</a></td>
               <td><a href="/art/profile/{{$art->id}}">{{$art->name}}</a></td>
               <td>{{$art->nohp}}</td>
               <td>{{$art->tanggallahir}}</td>

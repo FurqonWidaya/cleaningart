@@ -1,6 +1,12 @@
 @extends('master.layouts.master')
 @section('content')
-
+<style type="text/css">
+	.border{
+	border-color: #ebebeb;
+    border-style: solid;
+    border-width: 0 1px 1px;
+	}
+</style>
 		<!--  Main Banner Start Here-->
 		<div class="main-banner banner_up">
 			<div id="rev_slider_34_1_wrapper" class="rev_slider_wrapper" data-alias="news-gallery34">
@@ -606,7 +612,7 @@
 		</section>
 		<!-- Testimonial_Section_End -->
 		<!-- Team_Section -->
-		<section class="padding ptb-xs-40 gray-bg" id="artteam">
+		<section class="padding ptb-xs-40" id="artteam">
 			<div class="container">
 				<div class="row pb-60 pb-xs-40">
 					<div class="col-md-8 offset-md-2 text-center">
@@ -616,78 +622,34 @@
 						</div>
 					</div>
 				</div>
-
+					
 				<div class="row">
-					<div class="col-md-6 mb-30">
-						<div class="color_box bg_light_red img-scale">
-							<div class="left_picher">
+					 @foreach($data_art as $art)
+					<div class="col-lg-3 col-md-6 border">
+						<div class="team_box img-scale">
+							<div class="team_picher">
 								<figure>
-									<img src="assets/images/team/team1.jpg" alt="" />
+									<img src="{{$art->getPhoto()}}" alt="foto" style="width: 255px; height: 255px;" />
 								</figure>
 							</div>
-							<div class="detail_box">
-								<h3>Aaron Finch</h3>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique vehicula porta.
+							<div class="team_detail">
+								<h3>{{$art->name}}</h3>
+								<span>Status:&nbsp;{{$art->status}}</span>
+								<hr>
+							</div>
+							<div class="team_text">
+								<p>@if($art->deskripsi == null)
+									Tidak ada deskripsi terbaru
+									@else()
+									{{$art->deskripsi}}
+									@endif
 								</p>
-								<h4>Status:<span>Availabe</span></h4>
 							</div>
 						</div>
 					</div>
-
-					<div class="col-md-6 mb-xs-30">
-						<div class="color_box bg_light_yellow img-scale">
-							<div class="left_picher">
-								<figure>
-									<img src="assets/images/team/team2.jpg" alt="" />
-								</figure>
-							</div>
-							<div class="detail_box">
-								<h3>Aaron Finch</h3>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique vehicula porta.
-								</p>
-								<h4>Status:<span>Availabe</span></h4>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6 mb-xs-30">
-						<div class="color_box bg_light_green img-scale">
-							<div class="left_picher">
-								<figure>
-									<img src="assets/images/team/team3.jpg" alt="" />
-								</figure>
-							</div>
-							<div class="detail_box">
-								<h3>Aaron Finch</h3>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique vehicula porta.
-								</p>
-								<h4>Status:<span>Availabe</span></h4>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="color_box bg_light_black img-scale">
-							<div class="left_picher">
-								<figure>
-									<img src="assets/images/team/team4.jpg" alt="" />
-								</figure>
-							</div>
-							<div class="detail_box">
-								<h3>Aaron Finch</h3>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tristique vehicula porta.
-								</p>
-								<h4>Status:<span>Availabe</span></h4>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
+				
+					 @endforeach
+					 {{$data_art->links()}}
 			</div>
 		</section>
 		<!-- Team_Section_End -->

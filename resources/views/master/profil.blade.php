@@ -87,7 +87,7 @@
               </div>
             </div>
           </div>
-          <p>Dibuat: {{auth()->user()->created_at}}</p>
+          <p>Bergabung: {{auth()->user()->created_at}}</p>
         </div>
     </div>
 </div>

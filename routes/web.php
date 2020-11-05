@@ -25,9 +25,9 @@ Route::post('/forgot_pass', 'securityController@forgotpw');
 Route::get('/forgot_password/reset', 'securityController@verifytoken');
 Route::post('/activationtoken', 'securityController@postverifytoken');
 //resetpw
-// Route::get('/resetpassword/{active_token}', 'securityController@reset')->name('resetpassword');
-Route::resource('/resetpassword', 'ResetPasswordController');
-Route::resource('/updatepassword', 'ResetPasswordController');
+Route::get('/resetpassword', 'securityController@reset')->name('resetpassword');
+// Route::resource('/resetpassword', 'ResetPasswordController');
+Route::resource('updatepassword', 'ResetPasswordController');
 //Route::get('/resetpassword/{id}', 'securityController@ubah')->name('resetpassword');
 
 //Auth::Routes(['verify'=>true]);

@@ -33,6 +33,8 @@
           <tr class="text-center">
               <th>Foto</th>
               <th>Nama</th>
+              <th>username</th>
+              <th>email</th>
               <th>No HP</th>
               <th>Kecamatan</th>
               <th>Alamat</th>
@@ -44,6 +46,8 @@
           <tr class="text-center">
               <td><img src="{{$master->getPhoto()}}" style="width: 50px"></td>
               <td><a href="/master/profile/{{$master->id}}">{{$master->name}}</a></td>
+              <td>{{$master->user->username}}</td>
+              <td>{{$master->user->email}}</td>
               <td>{{$master->nohp}}</td>
               <td>{{$master->kecamatan}}</td>
               <td>{{$master->alamat}}</td>
