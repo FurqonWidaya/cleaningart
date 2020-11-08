@@ -5,18 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 class master extends User
-{   
+{
    // use Notifiable;
 
     protected $table = 'master';
     protected $fillable= [ 'foto', 'name', 'nohp', 'kecamatan', 'alamat',
     'kodepos', 'user_id'];
     //protected $primaryKey = 'user_id';
-    //,'username', 'password','email'
 
-    // protected $hidden = [
-    //     'password', 'remember_token',
-    // ];
     public function getPhoto(){
         if(!$this->foto){
             return asset('images/default.png');

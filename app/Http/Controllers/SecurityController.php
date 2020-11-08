@@ -59,8 +59,8 @@ public function ubah()
         else{
 
             //dd($user);}
-       return redirect('/resetpassword/')->with('success','silahkan masukkan password baru' );}
-    	// return redirect()->route('password.reset',['$user->active_token'])->with('success','silahkan masukkan password baru' );
+       //return redirect('/resetpassword/')->with('success','silahkan masukkan password baru' );}
+    	 return redirect()->route('resetpassword',['$user->active_token'])->with('success','silahkan masukkan password baru' );}
     
        
        

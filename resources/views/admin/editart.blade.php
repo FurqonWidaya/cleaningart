@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@if(session('sukses'))
+@if(session('sukses')) 
     <div class="alert alert-success" role="alert">
       {{session('sukses')}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -70,6 +70,5 @@
       </form>
       </div>
       </div>
-      
-@endsection
 
+@endsection

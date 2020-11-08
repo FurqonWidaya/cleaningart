@@ -22,13 +22,6 @@
 					{{csrf_field()}}
 					<input type="text" placeholder="admin" name="role" value="1" hidden>
 					<div class="form-holder">
-						<span class="lnr lnr-users"></span>
-						<input type="text" class="form-control" placeholder="Nama" name="name" value="{{old('name')}}">
-						@if($errors->has('name'))
-                        <span class="help-block">{{($errors->first('name'))}}</span>
-                         @endif
-					</div>
-					<div class="form-holder">
 						<span class="lnr lnr-inbox"></span>
 						<input type="text" class="form-control" placeholder="Email" name="email" id="email" value="{{old('email')}}">
                           @if($errors->has('email'))
@@ -49,9 +42,6 @@
                         <span class="help-block">{{($errors->first('password'))}}</span>
                          @endif
 					</div>
-
-					<!-- <input type="text" name="remember_token" value="{{value(str_random(60))}}" hidden> -->
-
 					<button name="submit">
 						<span>Daftar</span>
 					</button>

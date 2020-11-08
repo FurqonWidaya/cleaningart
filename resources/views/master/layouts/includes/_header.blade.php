@@ -56,17 +56,17 @@
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="javascript:avoid(0);">Pesan Layanan</a>
-								<i class="ion-ios-plus-empty hidden-md-up"></i>
+								<a href="/paketpekerjaan">Pesan Paket Pekerjaan</a>
+								<!-- <i class="ion-ios-plus-empty hidden-md-up"></i>
 								<ul class="sub-nav">
 									<li>
-										<a href="/error">Semua Layanan</a>
+										<a href=""javascript:avoid(0);">Semua Paket pekerjaan</a>
 									</li>
 									<li>
-										<a href="/error">Detail layanan</a>
+										<a href="/error">Pesan Paket Pekerjaan</a>
 									</li>
 
-								</ul>
+								</ul> -->
 							</li>
 							<li>
 								<a href="javascript:avoid(0);">Tim ART kami</a>
@@ -85,7 +85,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="/error">Aduan dan Saran</a>
+								<a href="/contactus">Aduan dan Saran</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
@@ -100,7 +100,7 @@
 										<a href="/myprofil/setting/{{auth()->user()->id}}">Setting</a>
 									</li>
 									<li>
-										<a href="/logout">log out</a>
+										<a href="/logout" data-toggle="modal" data-target="#logoutModal">log out</a>
 									</li>
 								</ul>
 								<!-- End Nav Dropdown -->

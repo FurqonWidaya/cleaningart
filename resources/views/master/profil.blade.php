@@ -3,12 +3,28 @@
     border-color: #ebebeb;
     border-style: solid;
     border-width: 0 1px 1px;
+    background-color: #EAEAEA;
   }
 </style>
 @extends('master.layouts.master')
-<br><br><br>
 @section('content')
+<!-- CONTENT -->
+<!-- Intro Section -->
+<section class="inner-intro bg-img light-color overlay-before parallax-background">
+<div class="container">
+  <div class="row title">
+    <div class="title_row">
+      <h1 data-title="Contact"><span>Profile</span></h1>
+      <div class="page-breadcrumb">
+        <a>Home</a>/ <span>Profile</span>
+      </div>
 
+    </div>
+
+  </div>
+</div>
+</section>
+<!-- End Intro Section -->
 <!-- content -->
 <div id="mission-section" class="ptb ptb-xs-180">
       <div class="container">
@@ -35,7 +51,7 @@
           <div class="col-md-12 col-lg-12 dark-bg our-vision light-color">
             <div class="block-title v-line mb-35">
               <h2 class="row d-flex align-items-center">
-                <span class="col-md-10">@<span></span>{{auth()->user()->username}}<span></span>'s Profile</span> 
+                <span class="col-md-10">@<span></span>{{auth()->user()->username}}<span></span>'s Profile</span>
                 <a class="col-md-2" href="/myprofil/setting/{{auth()->user()->id}}" style="font-size: 20px;"><i class="fa fa-cog mr4"></i>Edit Profile</a></h2>
               <p style="text-decoration: underline;">
                {{auth()->user()->role}}

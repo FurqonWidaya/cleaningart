@@ -9,7 +9,7 @@
 
 ## Cara Menggunakan
 
-1. Extract File 
+1. Extract File
 2. letakan di c: atau d: (bebas)
 3. beri name folder dangan "cleaningart" (bebas juga sih)
 4. buka cmd
@@ -35,6 +35,7 @@
 11. buka cmd lagi, ketik composer install (tunggu lama emang)
 12. kalo udah ketik php artisan key:generate
 13. php artisan migrate
+14. php artisan db:seed
 14. php artisan serve
 15. buka chrome (terserah sih), ketik http://localhost:8000/
 
@@ -44,7 +45,7 @@
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 <br>Thank you for tutorial to the [Youtube](https://www.youtube.com/)!
-<br>Thank you for references to [Stack Overflow](https://stackoverflow.com/)! 
+<br>Thank you for references to [Stack Overflow](https://stackoverflow.com/)!
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
@@ -56,4 +57,3 @@ The Laravel framework is open-source software licensed under the [MIT license](h
 
 <p align="center"><img src="https://media1.tenor.com/images/e98a5d3d8a924d685e88361e93c5172a/tenor.gif?itemid=15792714" width="400"></p>
 <p align="center">
-

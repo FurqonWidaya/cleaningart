@@ -26,8 +26,6 @@ class CreateArtTable extends Migration
             $table->string('kodepos')->nullable();
             $table->enum('status', ['Available', 'Hired']);
             $table->text('deskripsi')->nullable();
-            // $table->string('username')->unique();
-            // $table->string('password');
         });
     }
 

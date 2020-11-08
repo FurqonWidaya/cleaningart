@@ -82,7 +82,7 @@
            @if($errors->has('kodepos'))
             <span class="help-block">{{($errors->first('kodepos'))}}</span>
           @endif
-        </div> 
+        </div>
         <div class="form-group">
           <label >status</label>
         <select class="form-control" id="status" name="status" value="{{old('status')}}">
@@ -91,8 +91,8 @@
         </select>
         </div>
         <div class="form-group">
-          <label for="formGroupExampleInput2" value="{{old('deskripsi')}}">Deskripsi</label>
-          <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" ></textarea>
+          <label for="formGroupExampleInput2" value="">Deskripsi</label>
+          <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" >{{old('deskripsi')}}</textarea>
         </div>
         <div class="form-group">
           <label >username</label>
@@ -193,4 +193,3 @@
   <script src="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('assets/js/demo/datatables-demo.js')}}"></script>
 @endsection
-

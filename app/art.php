@@ -10,7 +10,6 @@ class art extends User
     protected $fillable= ['user_id', 'foto', 'name', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
     'kodepos', 'status', 'deskripsi'];
     //protected $primaryKey = 'user_id';
-//,'username', 'password' 
 
     public function getPhoto(){
     	if(!$this->foto){
@@ -18,20 +17,15 @@ class art extends User
     	}
     	return asset('images/'.$this->foto);
     }
-    // public function setPasswordAttribute($value)
-    // {
-    //     $this->attributes['password'] = bcrypt($value);
-    // }
+
     public function Users()
     {
         return $this->hasOne(User::class);
     }
+
     public function User()
     {
         return $this->belongsTo(User::class);
     }
-    private function getRandomRoomId() {
-    $art = \App\art::inRandomOrder()->first();
-    return $art->id;
-}
+
 }

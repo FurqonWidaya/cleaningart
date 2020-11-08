@@ -11,7 +11,7 @@ use App\master;
 use App\art;
 class MasterController extends Controller
 {
-    //midleware 
+    //midleware
     public function __construct()
     {
     	$this->middleware('auth');
@@ -29,9 +29,15 @@ class MasterController extends Controller
         return view('master.aboutus');
     }
 
+    //contact
+    public function contact()
+    {
+        return view('master.contactus');
+    }
+
     //profil
     public function profilku($id)
-    {       
+    {
        // dd($request->all())   ;
         return view('master.profil');
     }
@@ -54,10 +60,10 @@ class MasterController extends Controller
             $master->save($request->all());}
         return redirect('/myprofil/{id}')->with('success', 'data berhasil diubah');
         }
-    
+
     //ganti password
     public function changepw($id)
-    {       
+    {
         return view('master.changepw');
     }
 

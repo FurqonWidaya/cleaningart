@@ -2,7 +2,8 @@
 @section('content')
 <br><br>
 <div class="faq padding ptb-xs-40">
-  <div class="container"> <h3>Setting</h3>
+  <div class="container">
+    <h2>Setting</h2>
   <form action="/myprofil/update/{{auth()->user()->id}}" method="POST" enctype="multipart/form-data">
         	{{csrf_field()}}
           <div class="form-group">
@@ -50,6 +51,6 @@
      </div>
       </form>
   </div>
-   
+
 </div>
 @endsection

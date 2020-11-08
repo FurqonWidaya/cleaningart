@@ -14,7 +14,7 @@
               <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
               <li>&#47;&nbsp;<i class="fa fa-user"></i>&nbsp;Profile</li>
             </ol>
-           <div class="card shadow text-primary ">
+           <div class="card shadow text-primary border-left-primary">
             <div class="card-header text-center"><h2><i class="fa fa-user">&nbsp;PROFIL ADMIN</i></h2></div><br>
                <div class="row col-12 card-text">
                 <div class="col-xl-3 sm-2 md-2 text-center ">

@@ -27,12 +27,12 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-people-carry"></i>
-          <span>Data Layanan Pekerjaan</span>
+          <span>Data Paket Pekerjaan</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/notfound">Detail Pekerjaan</a>
-            <a class="collapse-item" href="/notfound">Detail Order</a>
+            <a class="collapse-item" href="/paket_pekerjaan">Data Paket Pekerjaan</a>
+            <a class="collapse-item" href="/notfound">Data Order Paket</a>
           </div>
         </div>
       </li>

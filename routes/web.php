@@ -27,7 +27,7 @@ Route::post('/activationtoken', 'securityController@postverifytoken');
 //resetpw
 Route::get('/resetpassword', 'securityController@reset')->name('resetpassword');
 // Route::resource('/resetpassword', 'ResetPasswordController');
-Route::resource('updatepassword', 'ResetPasswordController');
+Route::resource('updatepassword', 'ResetController');
 //Route::get('/resetpassword/{id}', 'securityController@ubah')->name('resetpassword');
 
 //Auth::Routes(['verify'=>true]);
@@ -44,12 +44,12 @@ Route::post('/postregis', 'AuthController@postregis');
 Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/notfound', 'notfoundController@notfound');
-
+//data art
 Route::get('/dataart', 'AdminController@dataart');
 Route::post('/dataart/create','AdminController@create');
 Route::get('/art/edit/{id}', 'AdminController@edit');
 Route::post('/art/{id}/update', 'AdminController@update');
-
+//data master
 Route::get('/art/profile/{id}','AdminController@profilart');
 Route::get('/datamaster', 'AdminController@datamaster');
 Route::get('/master/profile/{id}','AdminController@profilmaster');
@@ -59,6 +59,12 @@ Route::get('/dataku/edit/{id}', 'C_ProfileAdmin@editadmin');
 Route::post('/admin/{id}/update', 'C_ProfileAdmin@updateadmin');
 Route::get('/dataku/edit/gantipassword/{id}', 'C_ProfileAdmin@gantipw');
 Route::post('/updatepassword/{id}', 'C_ProfileAdmin@updatepass');
+//data paket pekerjaan
+Route::get('/paket_pekerjaan', 'C_Paket_Pekerjaan@index');
+Route::post('/paket_pekerjaan/create','C_Paket_Pekerjaan@create');
+Route::get('/paket_pekerjaan/{id}', 'C_Paket_Pekerjaan@show');
+Route::get('/paket_pekerjaan/edit/{id}', 'C_Paket_Pekerjaan@edit');
+Route::post('/paket_pekerjaan/update/{id}', 'C_Paket_Pekerjaan@update');
 });
 
 
@@ -82,6 +88,7 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
 Route::get('/home', 'C_home@home');
 Route::get('/error', 'MasterController@error');
 Route::get('/aboutus', 'MasterController@about');
+Route::get('/contactus', 'MasterController@contact');
 Route::get('/myprofil/{id}', 'MasterController@profilku');
 Route::get('/myprofil/setting/{id}', 'MasterController@setting');
 Route::post('/myprofil/update/{id}', 'MasterController@update');

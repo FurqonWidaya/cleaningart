@@ -35,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
 
      */
-    
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -66,5 +66,5 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return asset('images/'.$this->foto);
     }
-    
+
 }

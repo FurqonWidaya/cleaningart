@@ -1,5 +1,5 @@
 <?php
- 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class AdminController extends Controller
     //cari art
     public function dataart(Request $request){
         if ($request->has('cari')){
-            $data_art = \App\art::where('name', 'LIKE', '%' 
+            $data_art = \App\art::where('name', 'LIKE', '%'
             .$request->cari. '%')->paginate(10);
         }else{
             $data_art = \App\art::paginate(10);
@@ -32,14 +32,14 @@ class AdminController extends Controller
     //liat data master
     public function datamaster(Request $request){
          if ($request->has('cari')){
-            $data_master = \App\master::where('name', 'LIKE', '%' 
+            $data_master = \App\master::where('name', 'LIKE', '%'
             .$request->cari. '%')->get();
         }else{
             $data_master = \App\master::all();
         }
         return view('admin.datamaster',['data_master' => $data_master]);
     }
-    
+
     //liat profil data master
      public function profilmaster($id){
         $master = \App\master::find($id);
@@ -81,10 +81,9 @@ class AdminController extends Controller
         $art = \App\art::find($id);
         return view('admin.editart', ['art' => $art]);
     }
-    
+
     //update dataart
     public function update(Request $request, $id){
-        //dd($request->all());
          $art = \App\art::find($id);
          $art->update($request->all());
         if ($request->hasFile('foto')) {
@@ -94,13 +93,13 @@ class AdminController extends Controller
         }
         return redirect('/dataart')->with('sukses', 'data berhasil diubah');
     }
-    
+
     //liat profil data art
     public function profilart($id){
         $art = \App\art::find($id);
         return view('admin.profileart', ['art' => $art]);
     }
-     
+
     //lom fungsi
     public function decrypt()
     {
