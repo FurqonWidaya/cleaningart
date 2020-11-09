@@ -57,6 +57,10 @@
 							</li>
 							</li>
 							<li>
+								<a href="/paketspekerjaan">Paket Pekerjaan</a>
+								<i class="ion-ios-plus-empty hidden-md-up"></i>
+							</li>
+							<li>
 								<a href="/errors">Orderanku</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>

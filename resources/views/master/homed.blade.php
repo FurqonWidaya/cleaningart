@@ -129,7 +129,7 @@
 		<div class="row pb-60 pb-xs-40">
 			<div class="col-md-8 offset-md-2 text-center">
 				<div class="section_tit">
-					<h2>How It Work</h2>
+					<h2>Kualitas Layanan Kami</h2>
 					<span class="three_line"></span>
 				</div>
 			</div>
@@ -208,381 +208,386 @@
 
 		<div class="row ">
 
-			<div class="col-md-12 border">
+			<div class="col-md-12">
 
 				<div class="slider_cours">
-						@foreach($paket as $peka)
-					<div class="courses_popular">
+					@foreach($paket as $peka)
+					<div class="courses_popular border" style="padding:20px;">
 						<div class="top_cours">
 							<figure>
 								<img src="{{asset('assets/images/service/img_1.jpg')}}" alt="" />
 							</figure>
 							<div class="apply_box d-flex align-items-center">
 								<div class="full_width">
-									<a href="#" class="btn-text">Read More</a>
+									<a href="/error" class="btn-text"><i class="fa fa-shopping-cart"></i>&nbsp;Pesan Paket</a>
 								</div>
 							</div>
 						</div>
-						<div class="courses_detail">
-							<h3><a href="#">{{$peka->nama_paket}}</a></h3>
+						<div class="courses_detail" style="text-align:center">
+							<h3><a href="javascript:avoid(0);">{{$peka->nama_paket}}</a></h3>
+							<h4 class="text-color text-center" >Rp {{$peka->harga_paket}}</h4><hr>
 							<p>{{$peka->deskripsi_paket}}</p>
 						</div>
 					</div>
 					@endforeach
+				</div>
+
 			</div>
 
 		</div>
+	</section>
+	<!-- Popular_Service_Section_End -->
 
-	</div>
-</section>
-<!-- Popular_Service_Section_End -->
-
-<!-- Gallery_Section -->
-<section id="work" class="padding ptb-xs-40">
-	<div class="container">
-		<div class="row pb-60 pb-xs-40">
-			<div class="col-md-8 offset-md-2 text-center">
-				<div class="section_tit">
-					<h2>Our Gallery</h2>
-					<span class="three_line"></span>
-				</div>
-			</div>
-		</div>
-		<!-- work Filter -->
-
-		<!-- End work Filter -->
-		<div class="row container-grid nf-col-3">
-
-			<div class="nf-item branding coffee spacing">
-				<div class="item-box">
-					<a> <img alt="1" src="assets/images/project/project_1.jpg" class="item-container"> </a>
-					<div class="link-zoom">
-						<a href="assets/images/project/project_1.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
-						<div class="gallery-heading">
-							<h4><a href="#">Cleaning Services</a></h4>
-						</div>
+	<!-- Gallery_Section -->
+	<section id="work" class="padding ptb-xs-40">
+		<div class="container">
+			<div class="row pb-60 pb-xs-40">
+				<div class="col-md-8 offset-md-2 text-center">
+					<div class="section_tit">
+						<h2>Galery Pekerjaan Kami</h2>
+						<span class="three_line"></span>
 					</div>
-
 				</div>
 			</div>
+			<!-- work Filter -->
 
-			<div class="nf-item photo spacing">
-				<div class="item-box">
-					<a> <img alt="1" src="assets/images/project/project_2.jpg" class="item-container"> </a>
-					<div class="link-zoom">
-						<a href="assets/images/project/project_2.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
-						<div class="gallery-heading">
-							<h4><a href="#">Cleaning Services</a></h4>
-						</div>
-					</div>
+			<!-- End work Filter -->
+			<div class="row container-grid nf-col-3">
 
-				</div>
-			</div>
-
-			<div class="nf-item branding coffee spacing">
-				<div class="item-box">
-					<a> <img alt="1" src="assets/images/project/project_3.jpg" class="item-container"> </a>
-					<div class="link-zoom">
-						<a href="assets/images/project/project_3.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
-						<div class="gallery-heading">
-							<h4><a href="#">Cleaning Services</a></h4>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="nf-item design spacing">
-				<div class="item-box">
-					<a> <img alt="1" src="assets/images/project/project_4.jpg" class="item-container"> </a>
-					<div class="link-zoom">
-						<a href="assets/images/project/project_4.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
-						<div class="gallery-heading">
-							<h4><a href="#">Cleaning Services</a></h4>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="nf-item branding spacing">
-				<div class="item-box">
-					<a> <img alt="1" src="assets/images/project/project_5.jpg" class="item-container"> </a>
-					<div class="link-zoom">
-						<a href="assets/images/project/project_5.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
-						<div class="gallery-heading">
-							<h4><a href="#">Cleaning Services</a></h4>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="nf-item photo spacing">
-				<div class="item-box">
-					<a> <img alt="1" src="assets/images/project/project_6.jpg" class="item-container"> </a>
-					<div class="link-zoom">
-						<a href="assets/images/project/project_6.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
-						<div class="gallery-heading">
-							<h4><a href="#">Cleaning Services</a></h4>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-
-	</div>
-</section>
-<!-- Testimonial_Section -->
-<section class="padding ptb-xs-40 testimonial_section" id="testimoni">
-	<div class="container">
-		<div class="row pb-60 pb-xs-40 light-color">
-			<div class="col-md-8 offset-md-2 text-center">
-				<div class="section_tit">
-					<h2>Testimoni Master</h2>
-					<span class="three_line"></span>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12">
-
-				<div class="say_testimonial dots_style owl-carousel">
-
-					<div class="item_testimonial">
-						<div class="patient_head d-flex align-items-stretch">
-							<div class="patient_img">
-								<figure>
-									<img src="assets/images/testimonial/1.jpg" alt="" />
-								</figure>
+				<div class="nf-item branding coffee spacing">
+					<div class="item-box">
+						<a> <img alt="1" src="assets/images/project/project_1.jpg" class="item-container"> </a>
+						<div class="link-zoom">
+							<a href="assets/images/project/project_1.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
+							<div class="gallery-heading">
+								<h4><a href="#">Cleaning Services</a></h4>
 							</div>
-							<div class="patient_detail d-flex align-items-center">
-								<div>
-									<h3>Vanessa Adams</h3>
+						</div>
 
+					</div>
+				</div>
+
+				<div class="nf-item photo spacing">
+					<div class="item-box">
+						<a> <img alt="1" src="assets/images/project/project_2.jpg" class="item-container"> </a>
+						<div class="link-zoom">
+							<a href="assets/images/project/project_2.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
+							<div class="gallery-heading">
+								<h4><a href="#">Cleaning Services</a></h4>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="nf-item branding coffee spacing">
+					<div class="item-box">
+						<a> <img alt="1" src="assets/images/project/project_3.jpg" class="item-container"> </a>
+						<div class="link-zoom">
+							<a href="assets/images/project/project_3.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
+							<div class="gallery-heading">
+								<h4><a href="#">Cleaning Services</a></h4>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="nf-item design spacing">
+					<div class="item-box">
+						<a> <img alt="1" src="assets/images/project/project_4.jpg" class="item-container"> </a>
+						<div class="link-zoom">
+							<a href="assets/images/project/project_4.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
+							<div class="gallery-heading">
+								<h4><a href="#">Cleaning Services</a></h4>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="nf-item branding spacing">
+					<div class="item-box">
+						<a> <img alt="1" src="assets/images/project/project_5.jpg" class="item-container"> </a>
+						<div class="link-zoom">
+							<a href="assets/images/project/project_5.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
+							<div class="gallery-heading">
+								<h4><a href="#">Cleaning Services</a></h4>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="nf-item photo spacing">
+					<div class="item-box">
+						<a> <img alt="1" src="assets/images/project/project_6.jpg" class="item-container"> </a>
+						<div class="link-zoom">
+							<a href="assets/images/project/project_6.jpg" class="fancylight popup-btn same_style" data-fancybox-group="light" > <i class="fa fa-search-plus"></i> </a>
+							<div class="gallery-heading">
+								<h4><a href="#">Cleaning Services</a></h4>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+	<!-- Testimonial_Section -->
+	<section class="padding ptb-xs-40 testimonial_section" id="testimoni">
+		<div class="container">
+			<div class="row pb-60 pb-xs-40 light-color">
+				<div class="col-md-8 offset-md-2 text-center">
+					<div class="section_tit">
+						<h2>Testimoni Master</h2>
+						<span class="three_line"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="say_testimonial dots_style owl-carousel">
+
+						<div class="item_testimonial">
+							<div class="patient_head d-flex align-items-stretch">
+								<div class="patient_img">
+									<figure>
+										<img src="assets/images/testimonial/1.jpg" alt="" />
+									</figure>
+								</div>
+								<div class="patient_detail d-flex align-items-center">
+									<div>
+										<h3>Vanessa Adams</h3>
+
+									</div>
 								</div>
 							</div>
+							<div class="patient_text">
+								<p>
+									Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+								</p>
+							</div>
 						</div>
-						<div class="patient_text">
-							<p>
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+
+						<div class="item_testimonial">
+							<div class="patient_head d-flex align-items-stretch">
+								<div class="patient_img">
+									<figure>
+										<img src="assets/images/testimonial/2.jpg" alt="" />
+									</figure>
+								</div>
+								<div class="patient_detail d-flex align-items-center">
+									<div>
+										<h3>Vanessa Adams</h3>
+
+									</div>
+								</div>
+							</div>
+							<div class="patient_text">
+								<p>
+									Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+								</p>
+							</div>
+						</div>
+
+						<div class="item_testimonial">
+							<div class="patient_head d-flex align-items-stretch">
+								<div class="patient_img">
+									<figure>
+										<img src="assets/images/testimonial/3.jpg" alt="" />
+									</figure>
+								</div>
+								<div class="patient_detail d-flex align-items-center">
+									<div>
+										<h3>Vanessa Adams</h3>
+
+									</div>
+								</div>
+							</div>
+							<div class="patient_text">
+								<p>
+									Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+								</p>
+							</div>
+						</div>
+
+						<div class="item_testimonial">
+							<div class="patient_head d-flex align-items-stretch">
+								<div class="patient_img">
+									<figure>
+										<img src="assets/images/testimonial/1.jpg" alt="" />
+									</figure>
+								</div>
+								<div class="patient_detail d-flex align-items-center">
+									<div>
+										<h3>Vanessa Adams</h3>
+
+									</div>
+								</div>
+							</div>
+							<div class="patient_text">
+								<p>
+									Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+								</p>
+							</div>
+						</div>
+
+						<div class="item_testimonial">
+							<div class="patient_head d-flex align-items-stretch">
+								<div class="patient_img">
+									<figure>
+										<img src="assets/images/testimonial/2.jpg" alt="" />
+									</figure>
+								</div>
+								<div class="patient_detail d-flex align-items-center">
+									<div>
+										<h3>Vanessa Adams</h3>
+										<span>CEO</span>
+									</div>
+								</div>
+							</div>
+							<div class="patient_text">
+								<p>
+									Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+								</p>
+							</div>
+						</div>
+
+						<div class="item_testimonial">
+							<div class="patient_head d-flex align-items-stretch">
+								<div class="patient_img">
+									<figure>
+										<img src="assets/images/testimonial/3.jpg" alt="" />
+									</figure>
+								</div>
+								<div class="patient_detail d-flex align-items-center">
+									<div>
+										<h3>Vanessa Adams</h3>
+
+									</div>
+								</div>
+							</div>
+							<div class="patient_text">
+								<p>
+									Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+								</p>
+							</div>
+						</div>
+
+						<div class="item_testimonial">
+							<div class="patient_head d-flex align-items-stretch">
+								<div class="patient_img">
+									<figure>
+										<img src="assets/images/testimonial/1.jpg" alt="" />
+									</figure>
+								</div>
+								<div class="patient_detail d-flex align-items-center">
+									<div>
+										<h3>Vanessa Adams</h3>
+
+									</div>
+								</div>
+							</div>
+							<div class="patient_text">
+								<p>
+									Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+								</p>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<!-- Testimonial_Section_End -->
+	<!-- Team_Section -->
+	<section class="padding ptb-xs-40" id="artteam">
+		<div class="container">
+			<div class="row pb-60 pb-xs-40">
+				<div class="col-md-8 offset-md-2 text-center">
+					<div class="section_tit">
+						<h2>Karyawan ART</h2>
+						<span class="three_line"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row border">
+				@if(([$data_art] == null))
+				@for($i = 0; $i < 4; $i++ )
+				<div class="col-lg-3 col-md-6 border" name>
+					<div class="team_box img-scale">
+						<div class="team_picher">
+							<figure>
+								<img src="assets/images/12.png" alt="foto" style="width: 255px; height: 255px;" />
+							</figure>
+						</div>
+						<div class="team_detail">
+							<h3>Dummy</h3>
+							<span>Status:&nbsp;Available</span>
+							<hr>
+						</div>
+						<div class="team_text">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 							</p>
 						</div>
 					</div>
-
-					<div class="item_testimonial">
-						<div class="patient_head d-flex align-items-stretch">
-							<div class="patient_img">
-								<figure>
-									<img src="assets/images/testimonial/2.jpg" alt="" />
-								</figure>
-							</div>
-							<div class="patient_detail d-flex align-items-center">
-								<div>
-									<h3>Vanessa Adams</h3>
-
-								</div>
-							</div>
-						</div>
-						<div class="patient_text">
-							<p>
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-						</div>
-					</div>
-
-					<div class="item_testimonial">
-						<div class="patient_head d-flex align-items-stretch">
-							<div class="patient_img">
-								<figure>
-									<img src="assets/images/testimonial/3.jpg" alt="" />
-								</figure>
-							</div>
-							<div class="patient_detail d-flex align-items-center">
-								<div>
-									<h3>Vanessa Adams</h3>
-
-								</div>
-							</div>
-						</div>
-						<div class="patient_text">
-							<p>
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-						</div>
-					</div>
-
-					<div class="item_testimonial">
-						<div class="patient_head d-flex align-items-stretch">
-							<div class="patient_img">
-								<figure>
-									<img src="assets/images/testimonial/1.jpg" alt="" />
-								</figure>
-							</div>
-							<div class="patient_detail d-flex align-items-center">
-								<div>
-									<h3>Vanessa Adams</h3>
-
-								</div>
-							</div>
-						</div>
-						<div class="patient_text">
-							<p>
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-						</div>
-					</div>
-
-					<div class="item_testimonial">
-						<div class="patient_head d-flex align-items-stretch">
-							<div class="patient_img">
-								<figure>
-									<img src="assets/images/testimonial/2.jpg" alt="" />
-								</figure>
-							</div>
-							<div class="patient_detail d-flex align-items-center">
-								<div>
-									<h3>Vanessa Adams</h3>
-									<span>CEO</span>
-								</div>
-							</div>
-						</div>
-						<div class="patient_text">
-							<p>
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-						</div>
-					</div>
-
-					<div class="item_testimonial">
-						<div class="patient_head d-flex align-items-stretch">
-							<div class="patient_img">
-								<figure>
-									<img src="assets/images/testimonial/3.jpg" alt="" />
-								</figure>
-							</div>
-							<div class="patient_detail d-flex align-items-center">
-								<div>
-									<h3>Vanessa Adams</h3>
-
-								</div>
-							</div>
-						</div>
-						<div class="patient_text">
-							<p>
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-						</div>
-					</div>
-
-					<div class="item_testimonial">
-						<div class="patient_head d-flex align-items-stretch">
-							<div class="patient_img">
-								<figure>
-									<img src="assets/images/testimonial/1.jpg" alt="" />
-								</figure>
-							</div>
-							<div class="patient_detail d-flex align-items-center">
-								<div>
-									<h3>Vanessa Adams</h3>
-
-								</div>
-							</div>
-						</div>
-						<div class="patient_text">
-							<p>
-								Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-							</p>
-						</div>
-					</div>
-
 				</div>
+				@endfor
+				@endif
+				@if($data_art != null)
+				@foreach($data_art as $art)
+				<div class="col-lg-3 col-md-6" style="padding:25px;" >
+					<div class="team_box img-scale">
+						<div class="team_picher">
+							<figure>
+								<img src="{{$art->getPhoto()}}" alt="foto" style="width: 255px; height: 255px;" />
+							</figure>
+						</div>
+						<div class="team_detail">
+							<h3>{{$art->name}}</h3>
+							<span>Status:&nbsp;{{$art->status}}</span>
+							<hr>
+						</div>
+						<div class="team_text">
+							<p>@if($art->deskripsi == null)
+								Tidak ada deskripsi terbaru
+								@else()
+								{{$art->deskripsi}}
+								@endif
+							</p>
+						</div>
+					</div>
+				</div>
+				@endforeach
 
+				@endif
 			</div>
 		</div>
+	</section>
+	<!-- Team_Section_End -->
 
-	</div>
-</section>
-<!-- Testimonial_Section_End -->
-<!-- Team_Section -->
-<section class="padding ptb-xs-40" id="artteam">
-	<div class="container">
-		<div class="row pb-60 pb-xs-40">
-			<div class="col-md-8 offset-md-2 text-center">
-				<div class="section_tit">
-					<h2>Karyawan ART</h2>
-					<span class="three_line"></span>
+	<!-- Section -->
+	<section class="padding ptb-xs-40 bg_contact light-color">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center call_headding">
+					<h3>Are you looking for professional Cleaner for your Home?</h3>
+					<div class="contact_info mt-30">
+						<span class="call-us"><i class="ion-ios-telephone-outline"></i>Call us:  +123 456 7890 </span><span>Or</span>
+						<a class="btn btn-text" href="/contactus">Contact us</a>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			@if(([$data_art] == null))
-			@for($i = 0; $i < 4; $i++ )
-			<div class="col-lg-3 col-md-6 border" name>
-				<div class="team_box img-scale">
-					<div class="team_picher">
-						<figure>
-							<img src="assets/images/12.png" alt="foto" style="width: 255px; height: 255px;" />
-						</figure>
-					</div>
-					<div class="team_detail">
-						<h3>Dummy</h3>
-						<span>Status:&nbsp;Available</span>
-						<hr>
-					</div>
-					<div class="team_text">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-						</p>
-					</div>
-				</div>
-			</div>
-			@endfor
-			@endif
-			@if($data_art != null)
-			@foreach($data_art as $art)
-			<div class="col-lg-3 col-md-6 border">
-				<div class="team_box img-scale">
-					<div class="team_picher">
-						<figure>
-							<img src="{{$art->getPhoto()}}" alt="foto" style="width: 255px; height: 255px;" />
-						</figure>
-					</div>
-					<div class="team_detail">
-						<h3>{{$art->name}}</h3>
-						<span>Status:&nbsp;{{$art->status}}</span>
-						<hr>
-					</div>
-					<div class="team_text">
-						<p>@if($art->deskripsi == null)
-							Tidak ada deskripsi terbaru
-							@else()
-							{{$art->deskripsi}}
-							@endif
-						</p>
-					</div>
-				</div>
-			</div>
-			@endforeach
-			{{$data_art->links()}}
-			@endif
-		</div>
-	</div>
-</section>
-<!-- Team_Section_End -->
-
-<!--Video Sec-->
-<section class="padding ptb-xs-40 video_sec">
-	<div class="opacity-extra-medium bg-black"></div>
-	<div class="container position-relative">
-		<div class="row">
-			<div class="col-lg-6 col-md-6 offset-md-3 text-center pop_section">
-				<a class="popup-youtube popup-youtube" href="https://www.youtube.com/watch?v=nrJtHemSPW4"><img src="assets/images/icon-play.png" alt="" data-no-retina=""></a>
-			</div>
-		</div>
-	</div>
-</section>
-<!--Video Sec End-->
-@endsection
+	</section>
+	<!-- Section_End -->
+	<!--Video Sec End-->
+	@endsection

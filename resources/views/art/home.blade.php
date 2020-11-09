@@ -123,103 +123,70 @@
 				<div class="row pb-60 pb-xs-40">
 					<div class="col-md-8 offset-md-2 text-center">
 						<div class="section_tit">
-							<h2>How It Work</h2>
+							<h2>Kualitas Layanan Kami</h2>
 							<span class="three_line"></span>
 						</div>
 					</div>
 				</div>
-
 				<div class="row">
-
 					<div class="col-lg-3 col-md-6 pt-70 mb-sm-30 mb-xs-30">
 						<div class="process_box">
-
 							<div class="triangle_box">
 								<img src="{{asset('assets/images/cleaning-lady-white.svg')}}" alt="" height="50" width="50">
 							</div>
 							<div class="process_detail">
 								<h3>Expert</h3>
 								<p>
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+									Menyediakan karyawan ART yang sudah berpengalaman dan terlatih.
 								</p>
-								<a href="#" class="color">Read More...</a>
 							</div>
-
 						</div>
 					</div>
-
 					<div class="col-lg-3 col-md-6 pt-70 mb-sm-30 mb-xs-30">
 						<div class="process_box">
-
 							<div class="triangle_box">
-								<img src="{{asset('{{assets/images/cleaner-white.svg')}}" alt="" height="50" width="50">
+								<img src="{{asset('assets/images/cleaner-white.svg')}}" alt="" height="50" width="50">
 							</div>
 							<div class="process_detail">
 								<h3>Secure Services</h3>
 								<p>
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+									Menyediakan Karyawan ART yang melakukan pekerjaan dengan jujur dan aman.
 								</p>
-								<a href="#" class="color">Read More...</a>
 							</div>
-
 						</div>
 					</div>
-
 					<div class="col-lg-3 col-md-6 pt-70 mb-xs-30">
 						<div class="process_box">
-
 							<div class="triangle_box">
 								<img src="{{asset('assets/images/clean-white.svg')}}" alt="" height="50" width="50">
 							</div>
 							<div class="process_detail">
 								<h3>Low Costing</h3>
 								<p>
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+									Menyediakan Layanan dengan biaya yang terjangkau dengan kualitas yang bagus.
 								</p>
-								<a href="#" class="color">Read More...</a>
+
 							</div>
 
 						</div>
 					</div>
-
 					<div class="col-lg-3 col-md-6 pt-70">
 						<div class="process_box">
-
 							<div class="triangle_box">
 								<img src="{{asset('assets/images/clean-1-white.svg')}}" alt="" height="50" width="50">
 							</div>
 							<div class="process_detail">
 								<h3>On Time</h3>
 								<p>
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+									Layanan yang diberikan oleh karyawan dalam melakukan penyelesaian pengerjaan selalu on time.
 								</p>
-								<a href="#" class="color">Read More...</a>
 							</div>
-
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 		</section>
 		<!-- How_it_Work_End -->
-
-		<!-- Section -->
-		<section class="padding ptb-xs-40 bg_contact light-color">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 offset-lg-2 text-center call_headding">
-						<h3>Are you looking for professional Cleaner for your new Home?</h3>
-						<div class="contact_info mt-30">
-							<span class="call-us"><i class="ion-ios-telephone-outline"></i>Call us:  +123 456 7890 </span><span>Or</span>
-							<a class="btn btn-text" href="#">Contact us</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Section_End -->
 
 		<!-- Popular_Service_Section -->
 		<section class="padding ptb-xs-40 gray-bg">
@@ -227,130 +194,43 @@
 				<div class="row pb-60 pb-xs-40">
 					<div class="col-md-8 offset-md-2 text-center">
 						<div class="section_tit">
-							<h2>Quality Services</h2>
+							<h2>Paket Pekerjaan Kami</h2>
 							<span class="three_line"></span>
 						</div>
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-md-12">
-						<div class="slider_cours">
+				<div class="row ">
 
-							<div class="courses_popular">
+					<div class="col-md-12">
+
+						<div class="slider_cours">
+							@foreach($paket as $peka)
+							<div class="courses_popular border" style="padding:20px;">
 								<div class="top_cours">
 									<figure>
 										<img src="{{asset('assets/images/service/img_1.jpg')}}" alt="" />
 									</figure>
 									<div class="apply_box d-flex align-items-center">
 										<div class="full_width">
-											<a href="#" class="btn-text">Read More</a>
+											<a href="/error" class="btn-text"><i class="fa fa-shopping-cart"></i>&nbsp;Ambil Pesanan</a>
 										</div>
 									</div>
 								</div>
-								<div class="courses_detail">
-									<h3><a href="#">House Cleaning</a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam quos aperiam ipsam modi dolor suscipit asperiores perspiciatis.</p>
+								<div class="courses_detail" style="text-align:center">
+									<h3><a href="javascript:avoid(0);">{{$peka->nama_paket}}</a></h3>
+									<h4 class="text-color text-center" >Rp {{$peka->harga_paket}}</h4><hr>
+									<p>{{$peka->deskripsi_paket}}</p>
 								</div>
 							</div>
-
-							<div class="courses_popular">
-								<div class="top_cours">
-									<figure>
-										<img src="{{asset('assets/images/service/img_2.jpg')}}" alt="" />
-									</figure>
-									<div class="apply_box d-flex align-items-center">
-										<div class="full_width">
-											<a href="#" class="btn-text">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="courses_detail">
-									<h3><a href="#">Apartment Cleaning</a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam quos aperiam ipsam modi dolor suscipit asperiores perspiciatis.</p>
-								</div>
-
-							</div>
-
-							<div class="courses_popular">
-								<div class="top_cours">
-									<figure>
-										<img src="assets/images/service/img_3.jpg" alt="" />
-									</figure>
-									<div class="apply_box d-flex align-items-center">
-										<div class="full_width">
-											<a href="#" class="btn-text">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="courses_detail">
-									<h3><a href="#">Carpet Cleaning</a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam quos aperiam ipsam modi dolor suscipit asperiores perspiciatis.</p>
-								</div>
-
-							</div>
-
-							<div class="courses_popular">
-								<div class="top_cours">
-									<figure>
-										<img src="assets/images/service/img_4.jpg" alt="" />
-									</figure>
-									<div class="apply_box d-flex align-items-center">
-										<div class="full_width">
-											<a href="#" class="btn-text">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="courses_detail">
-									<h3><a href="#">After Renovation</a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam quos aperiam ipsam modi dolor suscipit asperiores perspiciatis.</p>
-								</div>
-
-							</div>
-
-							<div class="courses_popular">
-								<div class="top_cours">
-									<figure>
-										<img src="assets/images/service/img_5.jpg" alt="" />
-									</figure>
-									<div class="apply_box d-flex align-items-center">
-										<div class="full_width">
-											<a href="#" class="btn-text">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="courses_detail">
-									<h3><a href="#">Commercial Cleaning</a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam quos aperiam ipsam modi dolor suscipit asperiores perspiciatis.</p>
-								</div>
-
-							</div>
-
-							<div class="courses_popular">
-								<div class="top_cours">
-									<figure>
-										<img src="assets/images/service/img_6.jpg" alt="" />
-									</figure>
-									<div class="apply_box d-flex align-items-center">
-										<div class="full_width">
-											<a href="#" class="btn-text">Read More</a>
-										</div>
-									</div>
-								</div>
-								<div class="courses_detail">
-									<h3><a href="#">Residential Cleaning</a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam quos aperiam ipsam modi dolor suscipit asperiores perspiciatis.</p>
-								</div>
-
-							</div>
-
+							@endforeach
 						</div>
-					</div>
-				</div>
 
-			</div>
-		</section>
-		<!-- Popular_Service_Section_End -->
+					</div>
+
+				</div>
+			</section>
+			<!-- Popular_Service_Section_End -->
 
 		<!--Video Sec-->
 		<section class="padding ptb-xs-40 video_sec">
@@ -396,13 +276,13 @@
 											<input class="input-sm form-full" id="email" type="text" name="form-email" placeholder="Email">
 										</div>
 									</div>
-									
+
 									<div class="col-md-6">
 										<div class="form-field">
 									<input class="input-sm form-full" id="phone" type="text" name="form-name" placeholder="Your phone No.">
 										</div>
 									</div>
-									
+
 									<div class="col-md-6">
 										<div class="form-field">
 									<input class="input-sm form-full" id="subject" type="text" name="form-name" placeholder="Your Subject">
@@ -425,8 +305,8 @@
 
 						</div>
 					</div>
-					
-					
+
+
 
 				</div>
 			</div>
@@ -439,7 +319,7 @@
 				<div class="row pb-60 pb-xs-40">
 					<div class="col-md-8 offset-md-2 text-center">
 						<div class="section_tit">
-							<h2>Our Gallery</h2>
+							<h2>Galery Pekerjaan Kami</h2>
 							<span class="three_line"></span>
 						</div>
 					</div>

@@ -1,4 +1,4 @@
-@extends('master.layouts.master')
+@extends('art.layouts.master')
 @section('content')
 <!-- Intro Section -->
 <section class="inner-intro bg-img light-color overlay-before parallax-background">
@@ -7,7 +7,7 @@
       <div class="title_row">
         <h1 data-title="Service"><span>Paket pekerjaan</span></h1>
         <div class="page-breadcrumb">
-          <a href="/home">Home</a>/ <span>Paket Pekerjaan</span>
+          <a href="/index">Home</a>/ <span>Paket Pekerjaan</span>
         </div>
 
       </div>
@@ -41,7 +41,7 @@
               {{$peka->deskripsi_paket}}
             </p>
             <div class="add-to-cart mb-20" >
-              <a href="/error" style="border: 3px solid #6e8900;"><i class="fa fa-shopping-cart"></i>&nbsp;Pesan Paket</a>
+              <a href="/error" style="border: 3px solid #6e8900;"><i class="fa fa-shopping-cart"></i>&nbsp;Join Paket</a>
             </div>
           </div>
         </div>
