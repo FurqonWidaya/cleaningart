@@ -49,13 +49,13 @@ class AuthController extends Controller
     
       public function postregister(Request $request){
         $this->validate($request,[
-            'name' => 'required|min:4',
+           
             'username'=>'required|min:5|unique:users',
             'email'=>'required|email',
             'password'=>'required|min:5',
         ]);
         $user = \App\User::create($request->all());
-         //$user->name= $request->name;
+         
           $user->role= $request->role;
           $user->email= $request->email;
            $user->username= $request->username;
