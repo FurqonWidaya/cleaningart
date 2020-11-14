@@ -54,7 +54,7 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">DAFTARKAN DIRI ANDA SEKARANG</h2>
-                    <form method="POST" action="/postregis" >
+                    <form method="POST" action="{{url('/postregis')}}" >
                         {{csrf_field()}}
                         <input type="text" placeholder="master" name="role" value="2" hidden >
                         <input type="text"  name="remember_token" value="" hidden >
@@ -125,13 +125,13 @@
                         </div>
                     </form>
                     <div class="p-t-15" style="text-align: center;">
-                            <span>sudah punya akun? <a href="/login" style="text-decoration: none"><h2>LOGIN</h2></a></span>
+                            <span>sudah punya akun? <a href="{{url('/login')}}" style="text-decoration: none"><h2>LOGIN</h2></a></span>
                         </div>
                 </div>
             </div>
         </div>
         <div class="p-t-15" style="text-align: center;">
-                            <a href="/admin/register" style="text-decoration: none"><h2 style="color:  #34495E  ">Daftar Administrator?</h2></a>
+                            <a href="{{url('/admin/register')}}" style="text-decoration: none"><h2 style="color:  #34495E  ">Daftar Administrator?</h2></a>
                         </div>
     </div>
 

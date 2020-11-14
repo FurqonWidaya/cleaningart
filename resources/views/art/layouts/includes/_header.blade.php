@@ -52,16 +52,16 @@
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="/about_us">Tetang Kami</a>
+								<a href="/about_us">Tentang Kami</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							</li>
 							<li>
-								<a href="/paketspekerjaan">Paket Pekerjaan</a>
+								<a href="/paket_pekerjaan">Paket Pekerjaan</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="/errors">Orderanku</a>
+								<a href="/errors">Pesananku</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>

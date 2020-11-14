@@ -29,36 +29,42 @@ Route::get('/resetpassword', 'securityController@reset')->name('resetpassword');
 // Route::resource('/resetpassword', 'ResetPasswordController');
 Route::resource('updatepassword', 'ResetController');
 //Route::get('/resetpassword/{id}', 'securityController@ubah')->name('resetpassword');
-
 //Auth::Routes(['verify'=>true]);
-Route::get('/login', 'LoginController@login')->name('login');
-Route::post('/postlogin','LoginController@postlogin');
-Route::get('/logout', 'LoginController@logout');
-Route::get('/admin/register', 'AuthController@adminregister');
-Route::post('/postregister', 'AuthController@postregister');
-Route::get('/register', 'AuthController@register');
-Route::post('/postregis', 'AuthController@postregis');
+
+
+//LOGIN dan register
+Route::get('/login', 'C_login@klikLogin')->name('login');
+Route::post('/postlogin','C_login@loginAction');
+Route::get('/logout', 'C_login@KlikLogout');
+Route::get('/admin/register', 'C_daftar@KlikDaftar');
+Route::post('/postregister', 'C_daftar@daftarAction');
+Route::get('/register', 'C_daftar@KlikDaftarmaster');
+Route::post('/postregis', 'C_daftar@daftarActionnaster');
 
 
 //ADMIN
 Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
-  Route::get('/dashboard', 'DashboardController@index');
+  Route::get('/dashboard', 'C_home@setviewhome');
   Route::get('/notfound', 'notfoundController@notfound');
+
   //data art
-  Route::get('/dataart', 'AdminController@dataart');
-  Route::post('/dataart/create','AdminController@create');
-  Route::get('/art/edit/{id}', 'AdminController@edit');
-  Route::post('/art/{id}/update', 'AdminController@update');
+  Route::get('/dataart', 'C_ART@dataart');
+  Route::post('/dataart/create','C_ART@create');
+  Route::get('/art/edit/{id}', 'C_ART@edit');
+  Route::post('/art/{id}/update', 'C_ART@update');
+  Route::get('/art/profile/{id}','C_ART@profilart');
+
   //data master
-  Route::get('/art/profile/{id}','AdminController@profilart');
-  Route::get('/datamaster', 'AdminController@datamaster');
-  Route::get('/master/profile/{id}','AdminController@profilmaster');
+  Route::get('/datamaster', 'C_Master@datamaster');
+  Route::get('/master/profile/{id}','C_Master@profilmaster');
+
   //profil admin
   Route::get('/dataku/{id}','C_ProfileAdmin@profiladmin');
   Route::get('/dataku/edit/{id}', 'C_ProfileAdmin@editadmin');
   Route::post('/admin/{id}/update', 'C_ProfileAdmin@updateadmin');
   Route::get('/dataku/edit/gantipassword/{id}', 'C_ProfileAdmin@gantipw');
   Route::post('/updatepassword/{id}', 'C_ProfileAdmin@updatepass');
+  
   //data paket pekerjaan
   Route::get('/paket_pekerjaan', 'C_Paket_Pekerjaan@index');
   Route::post('/paket_pekerjaan/create','C_Paket_Pekerjaan@create');
@@ -70,8 +76,8 @@ Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
 
 //art
 Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
-  Route::get('/index', 'ArtController@maid');
-  Route::get('/paketspekerjaan', 'ArtController@details');
+  Route::get('/index', 'C_home@setviewhomeart');
+  Route::get('/paket_pekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan_art');
   Route::get('/errors', 'ArtController@error');
   Route::get('/profilku/{id}', 'ArtController@profilart');
   Route::get('/profilku/setting/{id}', 'ArtController@settingart');
@@ -86,8 +92,8 @@ Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
 
 // //master
 Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
-  Route::get('/home', 'C_home@home');
-  Route::get('/paketpekerjaan', 'C_home@details');
+  Route::get('/home', 'C_home@setviewhomemaster');
+  Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
   Route::get('/error', 'MasterController@error');
   Route::get('/aboutus', 'MasterController@about');
   Route::get('/contactus', 'MasterController@contact');

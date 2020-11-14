@@ -10,6 +10,7 @@ use App\paket_pekerjaan;
 class C_Paket_Pekerjaan extends Controller
 {
 
+//ADMIN :
   //lihat paket
     public function index(Request $request)
     {
@@ -19,7 +20,7 @@ class C_Paket_Pekerjaan extends Controller
 
       }else{
         $data_paket = \App\paket_pekerjaan::paginate(5);}
-        return view ('admin.paket_pekerjaan', ['data_paket' => $data_paket]);
+        return view ('admin.v_paket_pekerjaan', ['data_paket' => $data_paket]);
     }
 
     //buat paket
@@ -31,9 +32,6 @@ class C_Paket_Pekerjaan extends Controller
           'deskripsi_paket' => '|min:20|'
       ]);
       $data_paket = \App\paket_pekerjaan::create($request->all());
-      // $paket->nama_paket= $request->nama_paket;
-      // $paket->harga_paket=$request->harga_paket;
-      // $paket->deskripsi_paket = $request->deskripsi_paket;
        if ($request->hasFile('foto_paket')) {
           $request->file('foto_paket')->move('images', $request->file('foto_paket')->getClientOriginalName());
           $data_paket->foto_paket = $request->file('foto_paket')->getClientOriginalName();
@@ -42,58 +40,47 @@ class C_Paket_Pekerjaan extends Controller
       return redirect('/paket_pekerjaan')->with('sukses','data berhasil ditambahkan');
     }
 
-
-
-    public function store(Request $request)
-    {
-        //
-    }
+    //lihat detail paket
     public function show($id)
     {
         $data_paket = \App\paket_pekerjaan::find($id);
           return view ('admin.detailsPaket', ['data_paket' => $data_paket]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //edit paket  
     public function edit($id)
     {
       $data_paket = \App\paket_pekerjaan::find($id);
       return view ('admin.editpaketpk', ['data_paket' => $data_paket]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //update paket
     public function update(Request $request, $id)
     {
       $data_paket = \App\paket_pekerjaan::find($id);
       $data_paket->update($request->all());
-     // if ($request->hasFile('foto_paket')) {
-     //     $request->file('foto_paket')->move('images', $request->file('foto_paket')->getClientOriginalName());
-     //     $data_paket->foto_paket = $request->file('foto_paket')->getClientOriginalName();
-     //     $data_paket->save($request->all());
-     // }
-
+     if ($request->hasFile('foto_paket')) {
+         $request->file('foto_paket')->move('images', $request->file('foto_paket')->getClientOriginalName());
+         $data_paket->foto_paket = $request->file('foto_paket')->getClientOriginalName();
+         $data_paket->save($request->all());
+     }
      return redirect('/paket_pekerjaan')->with('sukses', 'data berhasil diubah');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+   //Master
+     //lihat paket untuk master
+  public function paket_pekerjaan ()
+  {
+    $paket = \App\paket_pekerjaan::paginate(6);
+    return view('master.v_paket_pekerjaan',['paket' => $paket]);
+  }
+
+  //art
+  //lihat paket untuk art
+    public function paket_pekerjaan_art (){
+
+      $paket = \App\paket_pekerjaan::paginate(6);
+      return view('art.v_paket_pekerjaan', ['paket' => $paket]);
+
     }
 }

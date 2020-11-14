@@ -17,7 +17,7 @@
 		<div class="wrapper">
 			<div class="inner">
 				<img src="{{asset('awal/register/images/image-1.png')}}" alt="" class="image-1">
-				<form action="/postregister" method="POST" >
+				<form action="{{url('/postregister')}}" method="POST" >
 					<h3>BUAT AKUN</h3>
 					{{csrf_field()}}
 					<input type="text" placeholder="admin" name="role" value="1" hidden>
@@ -47,7 +47,7 @@
 					</button>
 				</form>
 				<hr>
-				<h3 class="text-center"><a href="/login">Login</a></h3>
+				<h3 class="text-center"><a href="{{url('/login')}}">Login</a></h3>
 				<img src="{{asset('awal/register/images/image-2.png')}}" alt="" class="image-2">
 			</div>
 			

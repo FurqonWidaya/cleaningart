@@ -6,14 +6,14 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
-class LoginController extends Controller
+class C_login extends Controller
 {
     //login all
-    public function login (){
-        return view ('auth.login');
+    public function klikLogin (){
+        return view ('auth.v_login');
     }
     
-     public function postlogin (Request $request){
+     public function loginAction (Request $request){
         $user = \App\User::All();
         if(Auth::attempt($request->only('username','password'))){
             $user = \App\User::where('username', $request->username)->first();
@@ -32,7 +32,8 @@ class LoginController extends Controller
             return redirect('/login')->with('error', 'Username atau Password salah silahkan isi kembali');
     }
 
-     public function logout (){
+    //logout all
+     public function KlikLogout (){
         Auth::logout();
         return redirect ('/login');
     }

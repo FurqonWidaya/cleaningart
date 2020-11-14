@@ -18,6 +18,15 @@
   </button>
 </div>
 @endif
+@if($errors->has([]))
+<!-- Modal -->
+    <div class="alert alert-danger" role="alert">
+           <span class="help-block">Data tidak boleh kosong / Data yang diisi tidak valid, isi data dengan benar</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  @endif
 <ol class="breadcrumb">
   <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
   <li>&#47;&nbsp;<i class="fas fa-people-carry"></i>&nbsp;Data Paket Pekerjaan&nbsp;</li>

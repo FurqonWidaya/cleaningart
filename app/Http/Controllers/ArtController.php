@@ -11,20 +11,7 @@ use App\master;
 use App\art;
 class ArtController extends Controller
 {
-    //home
-     public function maid (){
-       $paket = \App\paket_pekerjaan::paginate(3);
-       return view ('art.home', [ 'paket' => $paket]);
-    }
-
-    //paketpekerjaan
-    public function details (){
-
-      $paket = \App\paket_pekerjaan::paginate(6);
-      return view('art.datapekerjaan',['paket' => $paket]);
-
-    }
-
+    
      //notfound
      public function error()
     {

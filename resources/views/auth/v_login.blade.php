@@ -54,7 +54,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" method="POST" action="/postlogin" >
+				<form class="login100-form validate-form" method="POST" action="{{url('/postlogin')}}" >
 					{{csrf_field()}}
 					<span class="login100-form-title p-b-55">
 						Login
@@ -96,7 +96,7 @@
 							Belum punya akun?
 						</span>
 
-						<a class="txt1 bo1 hov1" href="/register">
+						<a class="txt1 bo1 hov1" href="{{url('/register')}}">
 							Regitrasi dulu						
 						</a>
 					</div>

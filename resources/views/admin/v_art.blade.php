@@ -9,10 +9,10 @@
     </button>
     </div>
   @endif
-  @if(session('gagal'))
+ @if($errors->has([]))
 <!-- Modal -->
-    <div class="alert alert-warning" role="alert">
-   {{session('gagal')}}
+    <div class="alert alert-danger" role="alert">
+           <span class="help-block">Data tidak boleh kosong / Data yang diisi tidak valid, isi data dengan benar</span>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -30,7 +30,7 @@
             </button>
          </div>
     <div class="modal-body">
-    <form action="/dataart/create" method="POST" enctype="multipart/form-data">
+    <form action="/dataart/create" method="POST" enctype="multipart/form-data" name="form">
         	{{csrf_field()}}
           <input type="text" name="role" value="3" hidden>
         <div class="form-group">
@@ -49,7 +49,7 @@
         </div>
         <div class="form-group">
           <label >Email</label>
-          <input name="email" type="email" class="form-control" id="email" value="{{old('email')}}">
+          <input name="email" type="text" class="form-control" id="email" value="{{old('email')}}">
           @if($errors->has('email'))
             <span class="help-block">{{($errors->first('email'))}}</span>
           @endif

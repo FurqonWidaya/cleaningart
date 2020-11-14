@@ -52,7 +52,7 @@
 									<i class="ion-ios-plus-empty hidden-md-up"></i>
 								</li>
 								<li>
-									<a href="/aboutus">Tetang Kami</a>
+									<a href="/aboutus">Tentang Kami</a>
 									<i class="ion-ios-plus-empty hidden-md-up"></i>
 								</li>
 								<li>
