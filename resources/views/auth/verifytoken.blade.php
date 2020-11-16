@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
 	<title>Login CLEANING ART</title>
 	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('icon.png')}}">
 	<meta charset="UTF-8">
@@ -46,7 +46,7 @@
 		<div class="container-login100">
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" method="POST" action="/activationtoken" >{{csrf_field()}}
+				<form class="login100-form validate-form" method="POST" action="{{url('/activationtoken')}}" >{{csrf_field()}}
 					<span class="login100-form-title p-b-20">
 						Masukkan Token
 					</span>

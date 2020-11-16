@@ -24,8 +24,10 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	@if(session('success'))
-<!-- Modal -->
+	
+	<div class="limiter">
+		@if(session('success'))
+<!-- Modal --> 
     <div class="alert alert-success" role="alert">
       {{session('success')}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -42,51 +44,22 @@
     </button>
     </div>
   @endif
-	<div class="limiter">
 		<div class="container-login100">
+			
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" action="{{url('updatepassword.update','$id')}}" method="POST" >
-					<span class="login100-form-title p-b-20">
-						Reset Kata Sandi
-					</span>
-					{{csrf_field()}}
-					@method('PUT')
-					<input type="hidden" name="token" value="{{ '$user->token' }}">
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-						<input class="input100" type="email" name="email" placeholder="email" id="email" required value="{{ old('email') }}" autocomplete="email" autofocus>
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-envelope"></span>
-						</span>
-						 @if($errors->has('email'))
-                                            <span class="help-block">{{($errors->first('email'))}}</span>
-                                     @endif
-					</div>
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password" id="password">
+				<form action="{{url('/resetnewpassword',$user->id)}}" method="POST">
+        	{{csrf_field()}}
 
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<span class="lnr lnr-lock"></span>
-						</span>
-					</div>
-
-					<div class="container-login100-form-btn p-t-5">
-						<button type="submit" class="login100-form-btn" >
-							Kirim
-						</button>
-					</div>
-					<div class="text-center w-full p-t-15">
-						<a class="txt1 bo1 hov1" href="/login">
-							Kembali ke login					
-						</a>
-					</div>
-					<div class="text-center w-full p-t-11">
-						<a class="txt1 bo1 hov1" href="/register">
-							Regitrasi					
-						</a>
-					</div>
-				</form>
+          <div class="form-group">
+          	<p>RESET PASSWORD {{$user->username}}</p>
+      </div>
+      <div class="form-group">
+        <label >Password Baru</label>
+        <input name="password" type="password" class="form-control" id="new_password">
+      </div>
+     <button type="submit" class="btn btn-primary">simpan</button>
+     </div>
+      </form>
 			</div>
 		</div>
 	</div>

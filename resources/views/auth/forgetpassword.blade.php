@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Login CLEANING ART</title>
+<head> 
+	<title>Lupa Password</title>
 	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('icon.png')}}">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

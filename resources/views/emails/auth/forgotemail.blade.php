@@ -1,14 +1,10 @@
 
 @component('mail::message')
-# Introduction
+# Hello Master {{$user->username}}
 
-Kofirmasi password baru
+INI ADALAH KODE TOKEN ANDA
+<p>{{$user->active_token}}</p>
 
-<h1>Hello {{$user->username}}</h1>
-<p>
-	<!-- your otp: {{ $user->password }} -->
-	<a href="{{url('resetpassword'.$user->id)}}">klik disini untuk merubah password</a>
-</p>
 
 Thanks,<br>
 {{ config('app.name') }}

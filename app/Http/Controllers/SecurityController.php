@@ -32,9 +32,8 @@ class SecurityController extends Controller
       $user->update([
         'active_token'=>rand(100000,999999),
       ]); 
-      // event(new ForgotActivationEmail($user));
+      event(new ForgotActivationEmail($user));
     }
-   //return redirect('/login')->with('success','password telah dikirim ke email mu');
       return redirect('/forgot_password/reset')->with('success','reset kode password telah dikirim ke email mu');
 }
 
@@ -52,6 +51,7 @@ public function ubah()
 	public function postverifytoken(Request $request)
 	{
 		$user=User::whereActive_token($request->active_token)->first();
+   
 		//dd($user);
 		if($user == null){
     	return redirect()->back()->with('error', 'token tidak valid');
@@ -60,17 +60,19 @@ public function ubah()
 
             //dd($user);}
        //return redirect('/resetpassword/')->with('success','silahkan masukkan password baru' );}
-    	 return redirect()->route('resetpassword',['$user->active_token'])->with('success','silahkan masukkan password baru' );}
-    
+    	 // return view('/resetpassword/'.['$user->id'])->with('success','silahkan masukkan password baru' );}
+     return redirect('/resetpassword/'.$user->id)->with('success','silahkan masukkan password baru' );}
        
        
 	}
 
   
 
-   public function reset()
+   public function reset($id)
    {
-   return view('auth.reset');
+     // $user=User::whereActive_token($request->active_token)->first();
+    $user = \App\User::find($id);
+   return view('auth.reset', ['user'=>$user]);
    }
 
    
@@ -90,5 +92,12 @@ public function ubah()
    		}
    	);
    }
-   
+         public function updatepass(Request $request,$id)
+    {
+        
+        $user = \App\User::find($id); 
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+        return redirect('/login')->with('sukses','password berhasil diperbarui');
+    }
 }

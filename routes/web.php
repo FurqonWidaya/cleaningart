@@ -23,13 +23,10 @@ Route::get('/forgot_password', 'securityController@forgot');
 Route::post('/forgot_pass', 'securityController@forgotpw');
 //veriftoken
 Route::get('/forgot_password/reset', 'securityController@verifytoken');
-Route::post('/activationtoken', 'securityController@postverifytoken');
+Route::post('/activationtoken/', 'securityController@postverifytoken');
 //resetpw
-Route::get('/resetpassword', 'securityController@reset')->name('resetpassword');
-// Route::resource('/resetpassword', 'ResetPasswordController');
-Route::resource('updatepassword', 'ResetController');
-//Route::get('/resetpassword/{id}', 'securityController@ubah')->name('resetpassword');
-//Auth::Routes(['verify'=>true]);
+Route::get('/resetpassword/{id}', 'securityController@reset')->name('resetpassword');
+Route::post('/resetnewpassword/{id}', 'securityController@updatepass');
 
 
 //LOGIN dan register
@@ -94,6 +91,7 @@ Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
 Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::get('/home', 'C_home@setviewhomemaster');
   Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
+   Route::get('/paketpekerjaan/{id}', 'C_order_paket@klikorder');
   Route::get('/error', 'MasterController@error');
   Route::get('/aboutus', 'MasterController@about');
   Route::get('/contactus', 'MasterController@contact');

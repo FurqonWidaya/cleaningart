@@ -21,8 +21,9 @@ class c_Home extends Controller
   //homenya master
   public function setviewhomemaster ()
   {
-    $data_art = \App\art::paginate(4);
-    $paket = \App\paket_pekerjaan::paginate(3);
+    $data_art = \App\art::inRandomOrder()->take(4)->get();
+    // $paket = \App\paket_pekerjaan::paginate(3);
+     $paket = \App\paket_pekerjaan::inRandomOrder()->take(3)->get();
     return view('master.v_home_master',['data_art' => $data_art, 'paket' => $paket]);
 
   }

@@ -59,4 +59,15 @@ class ResetPasswordController extends Controller
                 return redirect('/login')->with('sukses','password berhasil diperbarui');
              }
         }
+        public function updatepass(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:5'
+        ]);
+        $user = User::whereActive_token($id)->first();   
+        $user->password = bcrypt($request->get('new_password'));
+        $user->save();
+        return redirect('/login')->with('sukses','password berhasil diperbarui');
+    }
 }

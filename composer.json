@@ -13,6 +13,7 @@
         "fzaninotto/faker": "^1.9",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "laravolt/indonesia": "^0.27.0",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {

@@ -15,5 +15,18 @@ class paket_pekerjaan extends Model
     }
     return asset('images/'.$this->foto_paket);
   }
-  
+
+  public function getharga()
+  {
+    return money_format('Rp%i', $this->harga_paket);
+  }
+
+  public function masters()
+    {
+        return $this->hasOne(user::class);
+    }
+    public function master()
+    {
+        return $this->belongsTo(master::class, 'user_id');
+    }
 }
