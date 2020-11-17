@@ -32,7 +32,11 @@ class SecurityController extends Controller
       $user->update([
         'active_token'=>rand(100000,999999),
       ]); 
-      event(new ForgotActivationEmail($user));
+       try {
+      event(new ForgotActivationEmail($user));}
+      catch(\Exception $e) {
+            return view('auth.v_pesanerror');
+        }
     }
       return redirect('/forgot_password/reset')->with('success','reset kode password telah dikirim ke email mu');
 }
@@ -94,7 +98,9 @@ public function ubah()
    }
          public function updatepass(Request $request,$id)
     {
-        
+        $request->validate([
+            'password' => 'required|min:5'
+        ]);
         $user = \App\User::find($id); 
         $user->password = bcrypt($request->get('password'));
         $user->save();

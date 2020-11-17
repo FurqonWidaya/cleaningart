@@ -30,42 +30,42 @@
             </button>
          </div>
     <div class="modal-body">
-    <form action="/dataart/create" method="POST" enctype="multipart/form-data" name="form">
+    <form action="{{url('/dataart/create')}}" method="POST" enctype="multipart/form-data" name="form">
         	{{csrf_field()}}
           <input type="text" name="role" value="3" hidden>
         <div class="form-group">
           <label >Foto</label>
           <input name="foto" type="file" class="form-control" id="foto" value="{{old('foto')}}">
           @if($errors->has('foto'))
-            <span class="help-block">{{($errors->first('foto'))}}</span>
+            <span class="help-block"  style="color: #c80000">{{($errors->first('foto'))}}</span>
           @endif
         </div>
         <div class="form-group ">
           <label >Nama</label>
           <input name="name" type="text" class="form-control" id="name" value="{{old('name')}}">
            @if($errors->has('name'))
-            <span class="help-block">{{($errors->first('name'))}}</span>
+            <span class="help-block" style="color: #c80000">{{($errors->first('name'))}}</span>
           @endif
         </div>
         <div class="form-group">
           <label >Email</label>
           <input name="email" type="text" class="form-control" id="email" value="{{old('email')}}">
           @if($errors->has('email'))
-            <span class="help-block">{{($errors->first('email'))}}</span>
+            <span class="help-block" style="color: #c80000">{{($errors->first('email'))}}</span>
           @endif
         </div>
         <div class="form-group">
           <label >No Hp</label>
           <input name="nohp" type="text" class="form-control" id="nohp" value="{{old('nohp')}}">
           @if($errors->has('nohp'))
-            <span class="help-block">{{($errors->first('nohp'))}}</span>
+            <span class="help-block" style="color: #c80000">{{($errors->first('nohp'))}}</span>
           @endif
         </div>
         <div class="form-group">
           <label >Tanggal Lahir</label>
           <input type="date" class="form-control" id="tanggallahir" name="tanggallahir" value="{{old('tanggallahir')}}">
           @if($errors->has('tanggallahir'))
-            <span class="help-block">{{($errors->first('tanggallahir'))}}</span>
+            <span class="help-block" style="color: #c80000"> {{($errors->first('tanggallahir'))}}</span>
           @endif
         </div>
         <div class="form-group">
@@ -80,7 +80,7 @@
           <label >kode Pos</label>
           <input type="text" class="form-control" id="kodepos" name="kodepos" value="{{old('kodepos')}}">
            @if($errors->has('kodepos'))
-            <span class="help-block">{{($errors->first('kodepos'))}}</span>
+            <span class="help-block" style="color: #c80000">{{($errors->first('kodepos'))}}</span>
           @endif
         </div>
         <div class="form-group">
@@ -98,14 +98,14 @@
           <label >username</label>
           <input type="text" class="form-control" id="username" name="username" value="{{old('username')}}">
           @if($errors->has('username'))
-            <span class="help-block">{{($errors->first('username'))}}</span>
+            <span class="help-block" style="color: #c80000">{{($errors->first('username'))}}</span>
           @endif
         </div>
         <div class="form-group">
           <label >password</label>
           <input type="password" class="form-control" id="password" name="password" value="{{old('password')}}">
           @if($errors->has('password'))
-            <span class="help-block">{{($errors->first('password'))}}</span>
+            <span class="help-block" style="color: #c80000">{{($errors->first('password'))}}</span>
           @endif
         </div>
             <div class="modal-footer">
@@ -117,7 +117,7 @@
          </div>
       </div>
     </div>
-
+ 
     <!-- <div class="col text-right"> -->
         <ol class="breadcrumb">
         <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
@@ -171,8 +171,8 @@
         <tbody>
           <tr class="text-center">
               <td><img src="{{$art->getPhoto()}}" style="width: 50px"></td>
-              <td><a href="/art/profile/{{$art->id}}">{{$art->user->username}}</a></td>
-              <td><a href="/art/profile/{{$art->id}}">{{$art->name}}</a></td>
+              <td><a href="{{url('/art/profile/'.$art->id)}}">{{$art->user->username}}</a></td>
+              <td><a href="{{url('/art/profile/'.$art->id)}}">{{$art->name}}</a></td>
               <td>{{$art->nohp}}</td>
               <td>{{$art->tanggallahir}}</td>
               <td>{{$art->kecamatan}}</td>
@@ -180,7 +180,7 @@
               <td>{{$art->kodepos}}</td>
               <td>{{$art->status}}</td>
               <td style="width: 50%">{{$art->deskripsi}}</td>
-              <td><a href="/art/edit/{{$art->id}}" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a></td>
+              <td><a href="{{url('/art/edit/'.$art->id)}}" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a></td>
           </tr>
           </tbody>
           @endforeach

@@ -19,7 +19,9 @@ class CreateOrderArtTable extends Migration
             $table->integer('id_art');
             $table->integer('id_master');
             $table->integer('id_paket');
+             $table->integer('id_bank');
             $table->integer('id_status_penerimaan');
+
         });
     }
 

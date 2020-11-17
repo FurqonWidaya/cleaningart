@@ -14,6 +14,10 @@ class C_login extends Controller
     }
     
      public function loginAction (Request $request){
+        $this->validate($request,[         
+            'username'=>'required|exists:users',
+            'password'=>'required',
+        ]);
         $user = \App\User::All();
         if(Auth::attempt($request->only('username','password'))){
             $user = \App\User::where('username', $request->username)->first();

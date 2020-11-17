@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKecamatanTable extends Migration
+class CreatePajakTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateKecamatanTable extends Migration
      */
     public function up()
     {
-        Schema::create('kecamatan', function (Blueprint $table) {
+        Schema::create('pajak', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->string('kecamatan')->unique();
+             $table->enum('bank',['BNI', 'BRI', 'MANDIRI']);
+            $table->integer('pajak');
+            $table->enum('ongkir',['20000', '40000', '60000']);
+           
         });
     }
 
@@ -27,6 +29,6 @@ class CreateKecamatanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kecamatan');
+        Schema::dropIfExists('pajak');
     }
 }

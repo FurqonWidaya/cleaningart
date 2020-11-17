@@ -23,6 +23,8 @@ class UsersTableSeeder extends Seeder
             'remember_token' => str_random(60),
         ]);
 
+       
+
         $users = factory(User::class,10)->create();
           foreach( $users as $user)
           {
@@ -30,18 +32,19 @@ class UsersTableSeeder extends Seeder
             'user_id' => $user->id
 
        ]);
-
      }
 
-       // DB::table('users')->join('master', 'master.user_id', '=', 'users.id')->
-       // insert([
-       //      'role' => 2,
-       //      'email' => 'masterku@gmail.com',
-       //      'username' => 'master',
-       //      'password' => bcrypt('master'),
-       //      'remember_token' => str_random(60),
-       //
-       //  ]);
+     //   $users = factory(User::class,1)->create();
+     //      foreach( $users as $user)
+     //      {
+     //        if ($users->role == 2){
+     //        factory(master::class)->create([
+     //        'user_id' => $user->id
+
+     //   ]);
+     //      }
+     // }
+
 
 }
 }
