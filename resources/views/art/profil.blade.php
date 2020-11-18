@@ -12,7 +12,12 @@
 @extends('art.layouts.master')
 @section('content')
 <!-- Modal -->
-    @if(session('message'))
+   
+
+  <!-- Content -->
+  <div id="mission-section" class="ptb ptb-xs-180">
+      <div class="container">
+         @if(session('message'))
           <div class="alert alert-success" role="alert">
           {{session('message')}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -29,10 +34,6 @@
         </div>
       @endif
   <!-- End Modal -->
-
-  <!-- Content -->
-  <div id="mission-section" class="ptb ptb-xs-180">
-      <div class="container">
   <div class="row">
           <div class="col-md-12 col-lg-12 dark-bg our-vision light-color" style="background: rgb(50, 179, 232);">
             <div class="block-title v-line mb-35" style="border-color: #0F8CBF">

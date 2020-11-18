@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatusPenerimaanTable extends Migration
+class CreateBankTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateStatusPenerimaanTable extends Migration
      */
     public function up()
     {
-        Schema::create('status_penerimaan', function (Blueprint $table) {
+        Schema::create('bank', function (Blueprint $table) {
             $table->bigIncrements('id');
-             $table->enum('status_penerimaan',['terima', 'tolak'])->unique();
-            $table->timestamps();
+            $table->enum('bank',['BNI', 'BRI', 'MANDIRI'])->unique();
+            $table->string('no_rekening')->unique();
+             $table->string('nama');
+
         });
     }
 
@@ -27,6 +29,6 @@ class CreateStatusPenerimaanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status_penerimaan');
+        Schema::dropIfExists('bank');
     }
 }

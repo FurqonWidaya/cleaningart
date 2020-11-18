@@ -13,7 +13,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="/dashboard">
+        <a class="nav-link" href="{{url('/dashboard')}}">
           <i class="fas fa-fw fa-home"></i>
           <span>Dashboard</span></a>
       </li>
@@ -31,8 +31,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/paket_pekerjaan">Data Paket Pekerjaan</a>
-            <a class="collapse-item" href="/notfound">Data Order Paket</a>
+            <a class="collapse-item" href="{{url('/data_paket_pekerjaan')}}">Data Paket Pekerjaan</a>
+            <!-- <a class="collapse-item" href="/notfound">Data Order Paket</a> -->
           </div>
         </div>
       </li>
@@ -45,14 +45,26 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/dataart">Data ART</a>
-            <a class="collapse-item" href="/datamaster">Data Master</a>
+            <a class="collapse-item" href="{{url('/dataart')}}">Data ART</a>
+            <a class="collapse-item" href="{{url('/datamaster')}}">Data Master</a>
           </div>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/notfound">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">
           <i class="fas fa-handshake"></i>
+          <span>Data Order Paket</span>
+        </a>
+        <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{url('/data_order')}}">Data Order Paket</a>
+            <a class="collapse-item" href="{{url('/data_riwayat_order')}}">Riwayat Order Paket</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/notfound')}}">
+          <i class="fas fa-tasks"></i>
           <span>Data Transaksi</span></a>
       </li>
       <!-- Divider -->

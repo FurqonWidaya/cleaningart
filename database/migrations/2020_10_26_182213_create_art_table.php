@@ -15,7 +15,7 @@ class CreateArtTable extends Migration
     {
         Schema::create('art', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->biginteger('user_id')->unsigned();
             $table->timestamps();
             $table->binary('foto')->nullable();
             $table->string('name');
@@ -26,6 +26,8 @@ class CreateArtTable extends Migration
             $table->string('kodepos')->nullable();
             $table->enum('status', ['Available', 'Hired']);
             $table->text('deskripsi')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

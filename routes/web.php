@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/noaccess', function () {
   return view('welcome');
 });
-Route::post('/back', 'AuthController@back')->name('back');
+
 //lupapw
 Route::get('/forgot_password', 'securityController@forgot');
 Route::post('/forgot_pass', 'securityController@forgotpw');
@@ -63,11 +63,15 @@ Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
   Route::post('/updatepassword/{id}', 'C_ProfileAdmin@updatepass');
   
   //data paket pekerjaan
-  Route::get('/paket_pekerjaan', 'C_Paket_Pekerjaan@index');
+  Route::get('/data_paket_pekerjaan', 'C_Paket_Pekerjaan@index');
   Route::post('/paket_pekerjaan/create','C_Paket_Pekerjaan@create');
   Route::get('/paket_pekerjaan/{id}', 'C_Paket_Pekerjaan@show');
   Route::get('/paket_pekerjaan/edit/{id}', 'C_Paket_Pekerjaan@edit');
   Route::post('/paket_pekerjaan/update/{id}', 'C_Paket_Pekerjaan@update');
+
+  //data order paket
+   Route::get('/data_order', 'C_order_paket@lihatorder');
+   Route::get('/data_riwayat_order', 'C_order_paket@lihatriwayat');
 });
 
 
@@ -90,8 +94,6 @@ Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
 // //master
 Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::get('/home', 'C_home@setviewhomemaster');
-  Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
-   Route::get('/paketpekerjaan/{id}', 'C_order_paket@klikorder');
   Route::get('/error', 'MasterController@error');
   Route::get('/aboutus', 'MasterController@about');
   Route::get('/contactus', 'MasterController@contact');
@@ -100,5 +102,9 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::post('/myprofil/update/{id}', 'MasterController@update');
   Route::get('/myprofil/changepassword/{id}', 'MasterController@changepass');
   Route::post('/postpassword/{id}', 'MasterController@postpass');
-
+  Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
+  Route::get('/paketpekerjaan/{id}', 'C_order_paket@klikorder');
+  Route::post('/postorder', 'C_order_paket@postorder');
+    Route::get('/checkout', 'C_order_paket@checkout');
+    Route::get('/myorder', 'C_order_paket@myorder');
 });

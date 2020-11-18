@@ -6,7 +6,7 @@
   </button>
 
   <!-- Topbar Search -->
-  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="get" action="/dataart" role="search">
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="get" action="{{url('/dataart')}}" role="search">
     <div class="input-group">
       <input name="cari" type="text" class="form-control bg-light border-0 small" placeholder="cari data art..." aria-label="Search" aria-describedby="basic-addon2">
       <div class="input-group-append">
@@ -50,17 +50,17 @@
       </a>
       <!-- Dropdown - User Information -->
       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="/dataku/{{auth()->user()->id}}">
+        <a class="dropdown-item" href="{{url('/dataku/'.auth()->user()->id)}}">
           <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
           Profile
         </a>
-        <a class="dropdown-item" href="/dataku/edit/{{auth()->user()->id}}">
+        <a class="dropdown-item" href="{{url('/dataku/edit/'.auth()->user()->id)}}">
           <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
           Settings
         </a>
 
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/logout" data-toggle="modal" data-target="#logoutModal">
+        <a class="dropdown-item" href="{{url('/logout')}}" data-toggle="modal" data-target="#logoutModal">
           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
           Logout
         </a>

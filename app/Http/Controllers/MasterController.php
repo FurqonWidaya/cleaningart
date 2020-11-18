@@ -9,6 +9,7 @@ use Hash;
 use App\User;
 use App\master;
 use App\art;
+use DB;
 class MasterController extends Controller
 {
     //midleware
@@ -48,17 +49,34 @@ class MasterController extends Controller
         return view('master.edit', ['users' => $users]);
     }
 
-    //update profil
+    //update profil bug bosss
+    // public function update(Request $request, $id){
+    //     $users = \App\user::find($id);
+    //      $users->update($request->all());
+    //     $master = \App\master::find($id);
+    //     $master->update($request->all());
+    //     if ($request->hasFile('foto')) {
+    //         $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
+    //         $master->foto = $request->file('foto')->getClientOriginalName();
+    //         $master->save($request->all());}
+    //     return redirect('/myprofil/{id}')->with('success', 'data berhasil diubah');
+    //     }
+    //versi 2 update 
     public function update(Request $request, $id){
-        $users = \App\user::find($id);
-         $users->update($request->all());
-        $master = \App\master::find($id);
-        $master->update($request->all());
-        if ($request->hasFile('foto')) {
-            $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
-            $master->foto = $request->file('foto')->getClientOriginalName();
-            $master->save($request->all());}
-        return redirect('/myprofil/{id}')->with('success', 'data berhasil diubah');
+        $savefoto =  $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
+        DB::table('users as u')
+   ->join('master as m', 'u.id', '=', 'm.user_id')
+   ->update([ 
+        "username" => $request->username,
+        "email" => $request->email,
+        "name" => $request->name,
+        "nohp"=>  $request->nohp,
+        "kecamatan"=>  $request->kecamatan,
+        "alamat" => $request->alamat,
+        "kodepos" => $request->kodepos,
+        "foto" => $request->file('foto')->getClientOriginalName(),
+    ]);
+        return redirect(url('/myprofil/{id}'))->with('success', 'data berhasil diubah');
         }
 
     //ganti password
@@ -83,6 +101,6 @@ class MasterController extends Controller
         $user = Auth::User();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
-        return redirect('/myprofil/{id}')->with('sukses', 'password telah berganti');
+        return redirect(url('/myprofil/{id}'))->with('sukses', 'password telah berganti');
     }
 }

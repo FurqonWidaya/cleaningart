@@ -18,39 +18,12 @@
     </div>
   </div>
 </section>
-<!-- Modal -->
-    <div class="modal fade" id="pilihart" tabindex="-5" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-         <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalLabel">Pilih ART</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-    <div class="modal-body">
-    <form action="#" method="POST" enctype="multipart/form-data" name="form">
-        	{{csrf_field()}}
-        <div class="form-group ">
-        	@for($i = 0; $i < 4; $i++ )
-        	<input type="checkbox" name="vehicle1" value="Bike" id="cek">
-  			<label for="cek" >hallo <span>I have a bike</span> </label><br>
-  			@endfor
-        </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-      </form>
-    </div>
-         </div>
-      </div>
-    </div>
 @section('content')
 <section class="padding ptb-xs-40">
 				<div class="romana_chect_out_form_area sp">
 					<div class="container">
-						<form action="{{url('/paket/order/.$order->id')}}">
+						<form method="POST" action="{{url('/postorder')}}">
+							{{csrf_field()}}
 							<div class="romana_check_out_form">
 								<div class="row">
 									<div class="col-lg-8">
@@ -59,16 +32,16 @@
 												<h2><span>Detail&nbsp;</span>Pesanan</h2>
 												<span class="b-line l-left"></span>
 											</div>
-
+											<input name="master_id" value="{{auth()->user()->masters->user_id}}" hidden="" class="form-control">
 											<div class="row">
 												<div class="col-sm-6">
 
 													<span>Nama:</span>
-													<input type="text" name="name" value="{{auth()->user()->masters->name}}" readonly="">
+													<input type="text" name="name" value="{{auth()->user()->masters->name}}" readonly="" class="form-control">
 												</div>
 												<div class="col-sm-6">
 													<span>Username:</span>
-													<input type="text" name="username" value="{{auth()->user()->username}}" readonly="">
+													<input type="text" name="username" value="{{auth()->user()->username}}" readonly="" class="form-control">
 												</div>
 											</div>
 											
@@ -76,17 +49,26 @@
 												<div class="row">
 												<div class="col-sm-6">
 													<span>kecamatan:</span>
-													<input type="text" name="kecamatan" value="{{auth()->user()->masters->kecamatan}}" placeholder="silahkan isi kecamatan">
+													<input type="text" name="kecamatan" value="{{old('kecamatan')}}" placeholder="silahkan isi kecamatan" class="form-control @error('kecamatan') is-invalid @enderror" style="margin-bottom: 0px">
+													@if($errors->has('kecamatan'))
+													<span class="help-block" style="color: #c80000">{{($errors->first('kecamatan'))}}</span>
+													@endif
 												</div>
 												<div class="col-sm-6">
 													<span>Kodepos:</span>
-													<input type="text" name="kodepos" value="{{auth()->user()->masters->kodepos}}" placeholder="silahkan isi kodepos">
+													<input type="text" name="kodepos" value="{{old('kodepos')}}" placeholder="silahkan isi kodepos" class="form-control @error('kodepos') is-invalid @enderror" style="margin-bottom: 0px">
+													@if($errors->has('kodepos'))
+													<span class="help-block" style="color: #c80000">{{($errors->first('kodepos'))}}</span>
+													@endif
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-sm-12">
 													<span>Alamat:</span>
-													<textarea class="col-sm-12" name="alamat" placeholder="silahkan isi alamat">{{auth()->user()->masters->alamat}}</textarea>
+													<textarea class="col-sm-12" name="alamat" placeholder="silahkan isi alamat" style="margin-bottom: 0px">{{old('kecamatan')}}</textarea>
+													@if($errors->has('alamat'))
+													<span class="help-block" style="color: #c80000">{{($errors->first('alamat'))}}</span>
+													@endif
 												</div>
 											</div>
 										</div>
@@ -94,7 +76,7 @@
 									<div class="col-lg-4">
 										<div class="check_form_right bg-color light-color">
 											<div class="heading-box pb-15 ">
-												<h2><span>your</span> order</h2>
+												<h2><span>Pesanan</span> Kamu</h2>
 												<span class="b-line l-left secondary_bg"></span>
 
 											</div>
@@ -104,7 +86,10 @@
 													<li>
 														Nama Paket<span>Harga</span>
 													</li>
-													<li>{{$data_paket->nama_paket}}
+													<li>
+														<input name="paket_id" value="{{$data_paket->id}}" hidden="">
+														<input name="status_id" value="2" hidden="">
+														{{$data_paket->nama_paket}}
 														<span>
 													Rp {{$data_paket->harga_paket}}</span>
 													</li>
@@ -112,41 +97,42 @@
 													<li>
 														total:<span>Rp {{$data_paket->harga_paket}}</span>
 													</li>
-													<!-- <li>
-
-														<button  type="button" class="btn btn-danger btn-rounded btn-outline
-   hidden-xs hidden-sm waves-effect waves-light" data-toggle="modal" data-target="#pilihart">Pilih ART: </button><span><h4> Paimin</h4></span>
-													</li> -->
 													<li>
 														Pilih ART:<span>
-															<select name="id_art" class="form-control mb-25" style="color: #000; background-color: #479c18"> 
+															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;margin-bottom: 0px"> 
 															<option value="">
 																- pilih -
-															</option>
+															</option class="form-control mb-25" style="color: #000">
 															@foreach($art as $item)
-															<option value="{{$item->id}}">
+															<option value="{{$item->id}}" class="form-control mb-25" style="color: #000;" >
 																{{$item->name}}
 															</option>
 															@endforeach
 															</select> 
 														</span>
 													</li>
+													@if($errors->has('art'))
+													<span class="help-block " style="color: #c80000">{{($errors->first('art'))}}</span>
+													@endif
 												</ul>
 											</div>
-											<div class="romana_select_method border" style="    margin-top: 60px;">
-												<ul class="mb-20" style="padding: 10px">
+											<div class="romana_select_method border pt-15">
+												<ul style="padding: 10px">
 													Pilih Bank:
 													<li>
 														@foreach($bank as $item)
-														<input type="radio"  name="pajak_id" value="{{$item->id}}">
+														<input type="radio"  name="bank_id" value="{{($item->id)}}">
 														<label>{{$item->bank}}</label>
 														@endforeach
 													</li>
+													@if($errors->has('bank'))
+													<span class="help-block" style="color: #c80000">{{($errors->first('bank'))}}</span>
+													@endif
 												</ul>
 												
 											</div>
 											<div class="text-center pt-15" >
-											<button class="btn-text white-btn ">CheckOut</button> </div>
+											<button class="btn-text white-btn " type="submit">CheckOut</button> </div>
 										</div>
 									</div>
 								</div>

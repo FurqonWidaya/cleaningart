@@ -31,7 +31,7 @@ class C_master extends Controller
     //liat profil data master
      public function profilmaster($id){
         $master = \App\master::find($id);
-        return view('admin.profilemaster', ['master' => $master]);
+        return view('admin.v_profilemaster', ['master' => $master]);
 
     }
 

@@ -16,12 +16,12 @@ class CreateOrderArtTable extends Migration
         Schema::create('order_art', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->integer('id_art');
-            $table->integer('id_master');
-            $table->integer('id_paket');
-             $table->integer('id_bank');
-            $table->integer('id_status_penerimaan');
-
+            $table->biginteger('id_art')->unsigned();
+            $table->biginteger('id_master')->unsigned();
+            $table->biginteger('id_paket')->unsigned();
+             $table->biginteger('id_bank')->unsigned();
+            $table->biginteger('id_status_penerimaan')->unsigned();
+            $table->softDeletes();
         });
     }
 

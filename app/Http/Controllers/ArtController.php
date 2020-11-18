@@ -9,6 +9,7 @@ use Hash;
 use App\User;
 use App\master;
 use App\art;
+use DB;
 class ArtController extends Controller
 {
     
@@ -30,24 +31,46 @@ class ArtController extends Controller
         return view('art.edit', ['users' => $users]);
     }
 
-    //update data art
-    public function updateart(Request $request, $id){
-        $users = \App\user::find($id);
+    //update data art bug versi 1
+    // public function updateart(Request $request, $id){
+    //     $users = \App\user::find($id);
+    //     $users->update($request->all());
+    //     $art = \App\art::find($id);
+    //     $art->update($request->all());
+    //     if ($request->hasFile('foto')) {
+    //         $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
+    //         $art->foto = $request->file('foto')->getClientOriginalName();
+    //         $art->save($request->all());}
+    //     return redirect(url('/profilku/{id}'))->with('sukses', 'data berhasil diubah');
+    // }
+
+    //update data art versi 2 fix bug
+     public function updateart(Request $request, $id){
+          $users = \App\user::find($id);
         $users->update($request->all());
-        $art = \App\art::find($id);
-        $art->update($request->all());
-        if ($request->hasFile('foto')) {
-            $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
-            $art->foto = $request->file('foto')->getClientOriginalName();
-            $art->save($request->all());}
-        return redirect('/profilku/{id}')->with('sukses', 'data berhasil diubah');
-    }
+        $savefoto =  $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
+        DB::table('users as u')
+   ->join('art as ar', 'u.id', '=', 'ar.user_id')
+   ->update([ 
+
+        "name" => $request->name,
+        "nohp"=>  $request->nohp,
+        "kecamatan"=>  $request->kecamatan,
+        "alamat" => $request->alamat,
+        "kodepos" => $request->kodepos,
+        "foto" => $request->file('foto')->getClientOriginalName(),
+       
+    ]);
+        return redirect(url('/profilku/{id}'))->with('success', 'data berhasil diubah');
+        }
 
     public function updatedesk(Request $request, $id){
-        $art = \App\art::find($id);
-        $art->deskripsi=$request->deskripsi;
-        $art->save();
-        return redirect('/profilku/{id}')->with('sukses', 'data berhasil diubah');
+        DB::table('users as u')
+   ->join('art as ar', 'u.id', '=', 'ar.user_id')
+   ->update([ 
+        "deskripsi" => $request->deskripsi,
+        ]);
+        return redirect(url('/profilku/{id}'))->with('sukses', 'data berhasil diubah');
     }
 
     public function editpass($id)
@@ -71,10 +94,10 @@ class ArtController extends Controller
         $user = Auth::User();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
-        return redirect('/profilku/{id}')->with('sukses', 'password telah berganti');
+        return redirect(url('/profilku/{id}'))->with('sukses', 'password telah berganti');
     }
 
-    //about
+    //lihat about us
     public function about()
     {
         return view('art.aboutus');

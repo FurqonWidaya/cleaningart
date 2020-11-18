@@ -39,7 +39,7 @@
 				<div class="row d-flex align-items-center">
 					<div class="col-md-3">
 						<div class="logo">
-							<a href="/home"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
+							<a href="{{url('/home')}}"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
 						</div>
 						<!-- Phone Menu button -->
 						<button id="menu" class="menu hidden-md-up"></button>
@@ -48,25 +48,15 @@
 						<nav class="navigation">
 							<ul>
 								<li>
-									<a href="/home">Home</a>
+									<a href="{{url('/home')}}">Home</a>
 									<i class="ion-ios-plus-empty hidden-md-up"></i>
 								</li>
 								<li>
-									<a href="/aboutus">Tentang Kami</a>
+									<a href="{{url('/aboutus')}}">Tentang Kami</a>
 									<i class="ion-ios-plus-empty hidden-md-up"></i>
 								</li>
 								<li>
-									<a href="/paketpekerjaan">Pesan Paket Pekerjaan</a>
-									<!-- <i class="ion-ios-plus-empty hidden-md-up"></i>
-									<ul class="sub-nav">
-									<li>
-									<a href=""javascript:avoid(0);">Semua Paket pekerjaan</a>
-								</li>
-								<li>
-								<a href="/error">Pesan Paket Pekerjaan</a>
-							</li>
-
-						</ul> -->
+									<a href="{{url('/paketpekerjaan')}}">Pesan Paket Pekerjaan</a>
 					</li>
 					<li>
 						<a href="javascript:avoid(0);">Tim ART kami</a>
@@ -85,7 +75,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="/contactus">Aduan dan Saran</a>
+						<a href="{{url('/contactus')}}">Aduan dan Saran</a>
 						<i class="ion-ios-plus-empty hidden-md-up"></i>
 					</li>
 					<li>
@@ -94,13 +84,19 @@
 						<!-- Nav Dropdown -->
 						<ul class="sub-nav">
 							<li>
-								<a href="/myprofil/{{auth()->user()->id}}">Profilku</a>
+								<a href="{{url('/myprofil/'.auth()->user()->id)}}">Profilku</a>
 							</li>
 							<li>
-								<a href="/myprofil/setting/{{auth()->user()->id}}">Setting</a>
+								<a href="{{url('/myorder')}}">Pesanan saya</a>
 							</li>
 							<li>
-								<a href="/logout" data-toggle="modal" data-target="#logoutModal">log out</a>
+								<a href="{{url('/myorderhistory')}}">Riwayat Pesanan saya</a>
+							</li>
+							<li>
+								<a href="{{url('/myprofil/setting/'.auth()->user()->id)}}">Setting</a>
+							</li>
+							<li>
+								<a href="{{url('/logout')}}" data-toggle="modal" data-target="#logoutModal">log out</a>
 							</li>
 						</ul>
 						<!-- End Nav Dropdown -->

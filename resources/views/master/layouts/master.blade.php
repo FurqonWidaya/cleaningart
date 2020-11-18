@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Cleaning ART - Master</title>
-		<link rel="shortcut icon" type="image/x-icon" href="icon.png">
+		<link rel="icon" type="image/png" sizes="20x20" href="{{asset('icon.png')}}">
 		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet">
 		<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 		<link href="{{asset('assets/css/font-awesome.css')}}" rel="stylesheet" type="text/css">

@@ -22,7 +22,9 @@ class CreateMasterTable extends Migration
             $table->string('kecamatan')->nullable();
             $table->text('alamat')->nullable();
             $table->string('kodepos')->nullable();
-            $table->integer('user_id');
+            $table->biginteger('user_id')->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

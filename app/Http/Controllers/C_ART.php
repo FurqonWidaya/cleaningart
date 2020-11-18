@@ -11,7 +11,7 @@ use App\master;
 use App\art;
 class C_ART extends Controller
 {
-	//lihat smuaa art
+	//lihat semua art
 	public function dataart(Request $request){
 
 	    if ($request->has('cari')){
@@ -36,12 +36,9 @@ class C_ART extends Controller
             'kodepos' => 'numeric|min:4|nullable'
         ]);
         $user = \App\user::create($request->all());
-        $user->role= $request->role;
-        $user->username= $request->username;
-        $user->email=$request->email;
         $user->password = bcrypt($user->password);
         $user->remember_token = str_random(60);
-        
+        $user->save();
         $request->request->add(['user_id'=> $user->id]);
         $art = \App\art::create($request->all());
          if ($request->hasFile('foto')) {
@@ -49,19 +46,13 @@ class C_ART extends Controller
             $art->foto = $request->file('foto')->getClientOriginalName();
             $art->save();
         }
-        if ($user->save()) {
-        	return redirect('/dataart')->with('sukses','data berhasil ditambahkan');
-        } else {
-        	return redirect('/dataart')->with('sukses','data salah');
-        }
-        
-        
+        	return redirect(url('/dataart'))->with('sukses','data berhasil ditambahkan');
     }
 
     //edit data art
     public function edit($id){
         $art = \App\art::find($id);
-        return view('admin.editart', ['art' => $art]);
+        return view('admin.v_editart', ['art' => $art]);
     }
 
     //update dataart
@@ -74,13 +65,13 @@ class C_ART extends Controller
             $art->save($request->all());
         }
         if ( $art )
-        return redirect('/dataart')->with('sukses', 'data berhasil diubah');
+        return redirect(url('/dataart'))->with('sukses', 'data berhasil diubah');
     }
 
     //liat profil data art
     public function profilart($id){
         $art = \App\art::find($id);
-        return view('admin.profileart', ['art' => $art]);
+        return view('admin.v_profileart', ['art' => $art]);
     }
 
     

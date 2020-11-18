@@ -10,13 +10,13 @@ class C_ProfileAdmin extends Controller
 {
     //liat profil
 	public function profiladmin($id){
-       return view('admin.profileadmin');
+       return view('admin.v_profileadmin');
     }
 
     //editprofil
     public function editadmin($id){
         $users = \App\User::find($id);
-        return view('admin.editadmin', ['users' => $users]);
+        return view('admin.v_editadmin', ['users' => $users]);
     }
 
     //updateprofil

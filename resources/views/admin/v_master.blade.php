@@ -56,6 +56,7 @@
           </tbody>
           @endforeach
       </table>
+      {{$data_master->links()}}
     </div>
   </div>
 </div>

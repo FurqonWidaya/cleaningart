@@ -17,7 +17,10 @@ class C_login extends Controller
         $this->validate($request,[         
             'username'=>'required|exists:users',
             'password'=>'required',
-        ]);
+        ],[
+            'username.required' => 'username tidak ditemukan'
+        ]
+    );
         $user = \App\User::All();
         if(Auth::attempt($request->only('username','password'))){
             $user = \App\User::where('username', $request->username)->first();

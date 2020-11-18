@@ -5,7 +5,7 @@
 use App\master;
 use Faker\generator as Faker;
 
-$factory->define(\App\master::class, function (Faker $faker) {
+$factory->define(master::class, function (Faker $faker) {
     return [
       'user_id' => $faker->numberBetween($min = 5, $max = 9000),
       'name'=> $faker->name,

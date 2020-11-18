@@ -1,5 +1,4 @@
 @extends('master.layouts.master')
-@section('content')
 <!-- Intro Section -->
 <section class="inner-intro bg-img light-color overlay-before parallax-background">
   <div class="container">
@@ -15,6 +14,7 @@
     </div>
   </div>
 </section>
+@section('content')
 <!-- Intro Section -->
 <!-- Service Section -->
 <section class="padding ptb-xs-40">

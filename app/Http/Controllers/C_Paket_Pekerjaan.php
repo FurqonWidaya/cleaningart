@@ -44,14 +44,14 @@ class C_Paket_Pekerjaan extends Controller
     public function show($id)
     {
         $data_paket = \App\paket_pekerjaan::find($id);
-          return view ('admin.detailsPaket', ['data_paket' => $data_paket]);
+          return view ('admin.v_detailsPaket', ['data_paket' => $data_paket]);
     }
 
     //edit paket  
     public function edit($id)
     {
       $data_paket = \App\paket_pekerjaan::find($id);
-      return view ('admin.editpaketpk', ['data_paket' => $data_paket]);
+      return view ('admin.v_editpaketpk', ['data_paket' => $data_paket]);
     }
 
     //update paket
