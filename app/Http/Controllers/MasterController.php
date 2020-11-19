@@ -39,8 +39,8 @@ class MasterController extends Controller
     //profil
     public function profilku($id)
     {
-       // dd($request->all())   ;
-        return view('master.profil');
+       $master = auth()->user()->masters;
+        return view('master.v_profil', compact(['master']));
     }
 
     //edit profil
@@ -63,9 +63,12 @@ class MasterController extends Controller
     //     }
     //versi 2 update 
     public function update(Request $request, $id){
-        $savefoto =  $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
-        DB::table('users as u')
-   ->join('master as m', 'u.id', '=', 'm.user_id')
+        
+    $user = \Auth::user()->id;
+    if ($request->hasFile('foto')) {
+            $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
+           DB::table('users as u')
+   ->join('master as m', 'u.id', '=', 'm.user_id')->where('u.id', $user)
    ->update([ 
         "username" => $request->username,
         "email" => $request->email,
@@ -76,6 +79,21 @@ class MasterController extends Controller
         "kodepos" => $request->kodepos,
         "foto" => $request->file('foto')->getClientOriginalName(),
     ]);
+}
+        
+   else
+    {
+           DB::table('users as u')
+   ->join('master as m', 'u.id', '=', 'm.user_id')->where('u.id', $user )
+   ->update([ 
+        "username" => $request->username,
+        "email" => $request->email,
+        "name" => $request->name,
+        "nohp"=>  $request->nohp,
+        "kecamatan"=>  $request->kecamatan,
+        "alamat" => $request->alamat,
+        "kodepos" => $request->kodepos, ]);
+    }
         return redirect(url('/myprofil/{id}'))->with('success', 'data berhasil diubah');
         }
 

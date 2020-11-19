@@ -28,6 +28,7 @@
     </div>
 
     <div class="row">
+      @if (isset($paket) && count($paket) > 0)
       @foreach($paket as $peka)
       <div class="col-md-6 col-lg-4 mb-30" style="padding:30px;">
         <div class="service_box" style="border: 1px solid #dedede;text-align:center;">
@@ -41,12 +42,19 @@
               {{$peka->deskripsi_paket}}
             </p>
             <div class="add-to-cart mb-20" >
-              <a href="{{url('/paketpekerjaan/'.$peka->id)}}" style="border: 3px solid #6e8900;"><i class="fa fa-shopping-cart"></i>&nbsp;Pesan Paket</a>
+              <a href="{{url('/paketpekerjaan/order/'.$peka->id)}}" style="border: 3px solid #6e8900;"><i class="fa fa-shopping-cart"></i>&nbsp;Pesan Paket</a>
             </div>
           </div>
         </div>
       </div>
       @endforeach
+         @else
+         <div class="col-md-6 col-lg-12 mb-30 text-center">
+          <tr class="text-center">
+              <td colspan="4"><h4 style="background-color: #dadbdc"> Belum ada paket yang tersedia </h4></td>
+          </tr>
+        </div>
+      @endif
     </div>
     {{$paket->links()}}
   </div>

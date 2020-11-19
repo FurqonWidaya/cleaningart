@@ -48,19 +48,30 @@ class ArtController extends Controller
      public function updateart(Request $request, $id){
           $users = \App\user::find($id);
         $users->update($request->all());
-        $savefoto =  $request->file('foto')->move('images/', $request->file('foto')->getClientOriginalName());
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
         DB::table('users as u')
    ->join('art as ar', 'u.id', '=', 'ar.user_id')
    ->update([ 
-
         "name" => $request->name,
         "nohp"=>  $request->nohp,
         "kecamatan"=>  $request->kecamatan,
         "alamat" => $request->alamat,
         "kodepos" => $request->kodepos,
-        "foto" => $request->file('foto')->getClientOriginalName(),
-       
+        "foto" => $request->file('foto')->getClientOriginalName(),       
     ]);
+   else{
+      DB::table('users as u')
+   ->join('art as ar', 'u.id', '=', 'ar.user_id')
+   ->update([ 
+        "name" => $request->name,
+        "nohp"=>  $request->nohp,
+        "kecamatan"=>  $request->kecamatan,
+        "alamat" => $request->alamat,
+        "kodepos" => $request->kodepos,           
+    ]);
+   }
+}
         return redirect(url('/profilku/{id}'))->with('success', 'data berhasil diubah');
         }
 

@@ -18,7 +18,7 @@ class C_daftar extends Controller
 
 	public function daftarAction(Request $request){
         $this->validate($request,[         
-            'username'=>'required|min:5|unique:users',
+            'username'=>'required|min:5|unique:users|without_spaces',
             'email'=>'required|email',
             'password'=>'required|min:5',
         ]);

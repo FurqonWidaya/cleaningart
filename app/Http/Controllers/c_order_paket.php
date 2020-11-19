@@ -13,23 +13,25 @@ use App\art;
 use App\m_bank;
 use App\m_order_paket;
 use App\status_penerimaan;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class c_order_paket extends Controller
 {
   //untuk master
   //
    public function klikorder($id)
    {
+    $master = auth()->user()->masters;
 		$art =art::all();
 		$bank =m_bank::all();
 		$status = status_penerimaan::all();
 		$data_paket = \App\paket_pekerjaan::find($id);
-		return view ('master.v_order_paket', ['data_paket' => $data_paket], compact('art', 'bank', 'status'));
+		return view ('master.v_order_paket', compact('data_paket', 'art', 'bank', 'status', 'master'));
    }
    public function postorder(Request $request){
    	 $this->validate($request,[         
             'kecamatan'=>'required|min:3',
             'kodepos'=>'required',
-            'alamat'=>'required|min:8',
+            'alamat'=>'required|min:4',
               
         ],
         	[
@@ -42,14 +44,21 @@ class c_order_paket extends Controller
    	   // $order = m_order_paket::create($request->all());
    	   // return redirect('/checkout');
    	   // return $request;
+     $user =  \Auth::user()->id;
    	   $order = new m_order_paket;
-
         $order->id_art = $request->art_id;
         $order->id_master = $request->master_id;
        	$order->id_paket = $request->paket_id;
         $order->id_bank = $request->bank_id;
         $order->id_status_penerimaan =$request->status_id;
         $order->save();
+        DB::table('master')
+   ->where('user_id', $user )
+   ->update([ 
+        "kecamatan"=>  $request->kecamatan,
+        "alamat" => $request->alamat,
+        "kodepos" => $request->kodepos, ]);
+    
         return redirect(url("/checkout"))->with('success', 'pesanan berhasil dibuat');
    }
 
@@ -112,5 +121,11 @@ class c_order_paket extends Controller
 
       return redirect(url('/notfound'));
      
+     }
+
+     //batalkan pesan
+     public function batal_order()
+     {
+       # code...
      }
 }

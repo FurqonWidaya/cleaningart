@@ -9,31 +9,36 @@
           <div class="form-group">
         <label >Foto</label>
         <input name="foto" type="file" class="form-control" id="foto" value="{{auth()->user()->masters->foto}}">
+        <p>{{auth()->user()->masters->foto}}</p>
       </div>
       <div class="form-group">
         <label >Nama</label>
-        <input name="name" type="text" class="form-control" id="name" value="{{auth()->user()->masters->name}}">
+        <input name="name" type="text" class="form-control" id="name" value="{{auth()->user()->masters->name}}" required="">
          @if($errors->has('name'))
             <span class="help-block">{{($errors->first('name'))}}</span>
           @endif
       </div>
      <div class="form-group">
           <label >Email</label>
-          <input name="email" type="email" class="form-control" id="email" value="{{$users->email}}">
+          <input name="email" type="email" class="form-control" id="email" value="{{$users->email}}" required="">
            @if($errors->has('email'))
             <span class="help-block">{{($errors->first('email'))}}</span>
           @endif
         </div>
         <div class="form-group">
           <label >username</label>
-          <input type="text" class="form-control" id="username" name="username" value="{{auth()->user()->username}}">
+          <input type="text" class="form-control" id="username" name="username" value="{{auth()->user()->username}}" required="">
            @if($errors->has('username'))
             <span class="help-block">{{($errors->first('username'))}}</span>
           @endif
         </div>
           <div class="form-group">
           <label >No Handphone</label>
-          <input type="text" class="form-control" id="nohp" name="nohp" value="{{auth()->user()->masters->nohp}}"></div>
+          <input type="text" class="form-control" id="nohp" name="nohp" value="{{auth()->user()->masters->nohp}}" required="">
+           @if($errors->has('nohp'))
+            <span class="help-block">{{($errors->first('nohp'))}}</span>
+          @endif
+        </div>
           <div class="form-group">
           <label >Kecamatan</label>
           <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{auth()->user()->masters->kecamatan}}"></div>

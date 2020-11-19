@@ -33,7 +33,7 @@
               <th>Nomor</th>
               <th>Nama Master</th>
               <th>Paket</th>
-              <th>Total</th>
+              <th>Total harga</th>
               <th>Nama Art</th>
               <th>Status Penerimaan</th>
               <th>Tanggal Dibuat</th>
@@ -45,7 +45,7 @@
               <td>{{$order->nomor}}</td>
               <td>{{$order->nama_master}}<span style="font-weight: bold;">&nbsp;({{$order->username}})</span></td>
               <td>{{$order->paket}}</td>
-              <td>{{$order->harga}}</td>
+              <td>Rp {{$order->harga}}</td>
               <td>{{$order->nama_art}}</td>
               <td>{{$order->status_penerimaan}}</td>
               <td>{{$order->tanggal_dibuat}}</td>

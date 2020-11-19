@@ -103,7 +103,7 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::get('/myprofil/changepassword/{id}', 'MasterController@changepass');
   Route::post('/postpassword/{id}', 'MasterController@postpass');
   Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
-  Route::get('/paketpekerjaan/{id}', 'C_order_paket@klikorder');
+  Route::get('/paketpekerjaan/order/{id}', 'C_order_paket@klikorder');
   Route::post('/postorder', 'C_order_paket@postorder');
     Route::get('/checkout', 'C_order_paket@checkout');
     Route::get('/myorder', 'C_order_paket@myorder');

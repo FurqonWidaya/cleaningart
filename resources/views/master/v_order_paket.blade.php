@@ -32,20 +32,19 @@
 												<h2><span>Detail&nbsp;</span>Pesanan</h2>
 												<span class="b-line l-left"></span>
 											</div>
-											<input name="master_id" value="{{auth()->user()->masters->user_id}}" hidden="" class="form-control">
+											<input name="master_id" value="{{$master->user_id}}" hidden="" class="form-control">
 											<div class="row">
 												<div class="col-sm-6">
 
 													<span>Nama:</span>
-													<input type="text" name="name" value="{{auth()->user()->masters->name}}" readonly="" class="form-control">
+													<input type="text" name="name" value="{{$master->name}}" readonly="" class="form-control">
 												</div>
 												<div class="col-sm-6">
 													<span>Username:</span>
 													<input type="text" name="username" value="{{auth()->user()->username}}" readonly="" class="form-control">
 												</div>
 											</div>
-											
-										
+												  @if($master->kecamatan == null)
 												<div class="row">
 												<div class="col-sm-6">
 													<span>kecamatan:</span>
@@ -54,6 +53,17 @@
 													<span class="help-block" style="color: #c80000">{{($errors->first('kecamatan'))}}</span>
 													@endif
 												</div>
+												@else()
+												<div class="row">
+												<div class="col-sm-6">
+													<span>kecamatan:</span>
+													<input type="text" name="kecamatan" value="{{$master->kecamatan}}" placeholder="silahkan isi kecamatan" class="form-control @error('kecamatan') is-invalid @enderror" style="margin-bottom: 0px">
+													@if($errors->has('kecamatan'))
+													<span class="help-block" style="color: #c80000">{{($errors->first('kecamatan'))}}</span>
+													@endif
+												</div>
+												@endif
+												@if($master->kodepos == null)
 												<div class="col-sm-6">
 													<span>Kodepos:</span>
 													<input type="text" name="kodepos" value="{{old('kodepos')}}" placeholder="silahkan isi kodepos" class="form-control @error('kodepos') is-invalid @enderror" style="margin-bottom: 0px">
@@ -62,6 +72,17 @@
 													@endif
 												</div>
 											</div>
+											@else()
+											<div class="col-sm-6">
+													<span>Kodepos:</span>
+													<input type="text" name="kodepos" value="{{$master->kodepos}}" placeholder="silahkan isi kodepos" class="form-control @error('kodepos') is-invalid @enderror" style="margin-bottom: 0px">
+													@if($errors->has('kodepos'))
+													<span class="help-block" style="color: #c80000">{{($errors->first('kodepos'))}}</span>
+													@endif
+												</div>
+											</div>
+											@endif
+											@if($master->alamat == null)
 											<div class="row">
 												<div class="col-sm-12">
 													<span>Alamat:</span>
@@ -71,6 +92,17 @@
 													@endif
 												</div>
 											</div>
+											@else()
+											<div class="row">
+												<div class="col-sm-12">
+													<span>Alamat:</span>
+													<textarea class="col-sm-12" name="alamat" placeholder="silahkan isi alamat" style="margin-bottom: 0px">{{$master->alamat}}</textarea>
+													@if($errors->has('alamat'))
+													<span class="help-block" style="color: #c80000">{{($errors->first('alamat'))}}</span>
+													@endif
+												</div>
+											</div>
+											@endif
 										</div>
 									</div>
 									<div class="col-lg-4">
@@ -99,7 +131,7 @@
 													</li>
 													<li>
 														Pilih ART:<span>
-															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;margin-bottom: 0px"> 
+															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;margin-bottom: 0px" required=""> 
 															<option value="">
 																- pilih -
 															</option class="form-control mb-25" style="color: #000">
@@ -121,7 +153,7 @@
 													Pilih Bank:
 													<li>
 														@foreach($bank as $item)
-														<input type="radio"  name="bank_id" value="{{($item->id)}}">
+														<input type="radio"  name="bank_id" value="{{($item->id)}}" required="">
 														<label>{{$item->bank}}</label>
 														@endforeach
 													</li>

@@ -42,7 +42,6 @@
       <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
           <thead class="dark-bg">
           <tr>
-              <th>Nomor</th>
               <th>Nama Paket</th>
               <th>Total</th>
               <th>Nama Art</th>
@@ -54,7 +53,6 @@
               @foreach($data_order as $order)
         <tbody>
           <tr>
-              <td>{{$order->nomor}}</td>
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>
               <td>{{$order->nama_art}}</td>

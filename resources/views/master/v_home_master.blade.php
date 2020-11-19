@@ -211,6 +211,7 @@
 			<div class="col-md-12">
 
 				<div class="slider_cours">
+					 @if (isset($paket) && count($paket) > 0)
 					@foreach($paket as $peka)
 					<div class="courses_popular border" style="padding:20px;">
 						<div class="top_cours">
@@ -230,6 +231,13 @@
 						</div>
 					</div>
 					@endforeach
+					 @else
+        <div class="courses_detail col-lg-12 text-center">
+         
+             <h4 style="background-color: #dadbdc"> Belum ada paket yang tersedia </h4>
+          </tr>
+        </div>
+      @endif
 				</div>
 
 			</div>
@@ -520,30 +528,8 @@
 				</div>
 			</div>
 			<div class="row border">
-				@if(([$data_art] == null))
-				@for($i = 0; $i < 4; $i++ )
-				<div class="col-lg-3 col-md-6 border" name>
-					<div class="team_box img-scale">
-						<div class="team_picher">
-							<figure>
-								<img src="assets/images/12.png" alt="foto" style="width: 255px; height: 255px;" />
-							</figure>
-						</div>
-						<div class="team_detail">
-							<h3>Dummy</h3>
-							<span>Status:&nbsp;Available</span>
-							<hr>
-						</div>
-						<div class="team_text">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-							</p>
-						</div>
-					</div>
-				</div>
-				@endfor
-				@endif
-				@if($data_art != null)
-				@foreach($data_art as $art)
+				 @if (isset($data_art) && count($data_art) > 0)
+				 @foreach($data_art as $art)
 				<div class="col-lg-3 col-md-6" style="padding:25px;" >
 					<div class="team_box img-scale">
 						<div class="team_picher">
@@ -567,7 +553,27 @@
 					</div>
 				</div>
 				@endforeach
-
+				@else
+				@for($i = 0; $i < 4; $i++ )
+				<div class="col-lg-3 col-md-6 border" name>
+					<div class="team_box img-scale">
+						<div class="team_picher">
+							<figure>
+								<img src="assets/images/12.png" alt="foto" style="width: 255px; height: 255px;" />
+							</figure>
+						</div>
+						<div class="team_detail">
+							<h3>Dummy</h3>
+							<span>Status:&nbsp;Available</span>
+							<hr>
+						</div>
+						<div class="team_text">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+							</p>
+						</div>
+					</div>
+				</div>
+				@endfor
 				@endif
 			</div>
 		</div>

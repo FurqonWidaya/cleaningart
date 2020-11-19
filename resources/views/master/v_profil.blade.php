@@ -67,11 +67,11 @@
               </div>
               <div class="text-box pt-45 pb-15 pl-70 pl-xs-0 width-75per fl">
                 <div class="box-title">
-                  <h3>{{auth()->user()->masters->name}}</h3>
+                  <h3>{{$master->name}}</h3>
                 </div>
                 <div class="text-content">
                   <p>Email: <span></span>{{auth()->user()->email}}</p>
-                   <p>No HP: <span></span>{{auth()->user()->masters->nohp}}</p>
+                   <p>No HP: <span></span>{{$master->nohp}}</p>
                 </div>
               </div>
               <div class="text-box pt-45 pb-15 pl-70 pl-xs-0 width-75per fl">
@@ -80,24 +80,24 @@
                 </div>
                 <div class="text-content">
                   <p>Kode Pos: <span></span>
-                    @if(auth()->user()->masters->kodepos == null)
+                    @if($master->kodepos == null)
                      ——
                     @else()
-                   {{auth()->user()->masters->kodepos}}
+                   {{$master->kodepos}}
                     @endif
                   </p>
                    <p>Kecamatan: <span></span>
-                    @if(auth()->user()->masters->kecamatan == null)
+                    @if($master->kecamatan == null)
                      ——
                     @else()
-                   {{auth()->user()->masters->kecamatan}}
+                   {{$master->kecamatan}}
                     @endif
                   </p>
                    <p>Alamat: <span></span>
-                    @if(auth()->user()->masters->alamat == null)
+                    @if($master->alamat == null)
                      ——
                     @else()
-                   {{auth()->user()->masters->alamat}}
+                   {{$master->alamat}}
                     @endif</p>
                 </div>
               </div>
