@@ -1,4 +1,4 @@
-@extends('master.layouts.master')
+@extends('art.layouts.master')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/tab/templatemo-style.css')}}">
 <!-- Intro Section -->
 <section class="inner-intro bg-img light-color overlay-before parallax-background">
@@ -33,13 +33,7 @@
                 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Belum Bayar</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Menunggu Persetujuan</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Order Diterima</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tawaran Pekerjaan</a>
   </li>
 </ul>
 
@@ -50,27 +44,23 @@
       <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
           <thead class="dark-bg">
           <tr>
+             <th>Nama master</th>
               <th>Nama Paket</th>
               <th>Total</th>
-              <th>Nama Art</th>
               <th>Status Penerimaan</th>
-              <th>Bayar Sampai</th>
-              <th>Tindakan</th>
           </tr>
         </thead>
               @foreach($data_order as $order)
         <tbody>
           <tr>
+            <td>{{$order->nama_master}}</td>
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>
-              <td>{{$order->nama_art}}</td>
-              <td>{{$order->status_penerimaan}}</td>
-              <td>{{$order->tanggal_dibuat}}</td>
-              <td><a href="#" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a><br><br>
-                <form action="{{url('/batal_order/'.$order->id)}}" method="post">
+              <td><a href="#" class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>Terima</a><br><br>
+                <form action="#" method="post">
                   {{csrf_field()}}
                   
-                <button class='btn btn-warning btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>Batal</button></form>
+                <button class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>Tolak&nbsp;</button></form>
               </td>
           </tr>
           </tbody>

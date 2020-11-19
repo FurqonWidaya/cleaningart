@@ -22,13 +22,13 @@ class ArtController extends Controller
     //liat profil art
     public function profilart($id)
     {
-        return view('art.profil');
+        return view('art.v_profil');
     }
 
     //edit data art
     public function settingart($id){
         $users = \App\User::find($id);
-        return view('art.edit', ['users' => $users]);
+        return view('art.v_edit', ['users' => $users]);
     }
 
     //update data art bug versi 1
@@ -51,7 +51,7 @@ class ArtController extends Controller
         if ($request->hasFile('foto')) {
             $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
         DB::table('users as u')
-   ->join('art as ar', 'u.id', '=', 'ar.user_id')
+   ->join('art as ar', 'u.id', '=', 'ar.user_id')->where('ar.user_id',$id)
    ->update([ 
         "name" => $request->name,
         "nohp"=>  $request->nohp,
@@ -59,10 +59,10 @@ class ArtController extends Controller
         "alamat" => $request->alamat,
         "kodepos" => $request->kodepos,
         "foto" => $request->file('foto')->getClientOriginalName(),       
-    ]);
+    ]);}
    else{
       DB::table('users as u')
-   ->join('art as ar', 'u.id', '=', 'ar.user_id')
+   ->join('art as ar', 'u.id', '=', 'ar.user_id')->where('ar.user_id',$id)
    ->update([ 
         "name" => $request->name,
         "nohp"=>  $request->nohp,
@@ -71,7 +71,7 @@ class ArtController extends Controller
         "kodepos" => $request->kodepos,           
     ]);
    }
-}
+
         return redirect(url('/profilku/{id}'))->with('success', 'data berhasil diubah');
         }
 

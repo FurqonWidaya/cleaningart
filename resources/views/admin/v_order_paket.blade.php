@@ -28,9 +28,11 @@
     </div>
     </form>
   </div>
+          <?php $i = 1 ?>
           <thead style="background-color: #ddd;">
           <tr class="text-center">
-              <th>Nomor</th>
+             <th>Nomor</th>
+              <th>Id</th>
               <th>Nama Master</th>
               <th>Paket</th>
               <th>Total harga</th>
@@ -39,10 +41,12 @@
               <th>Tanggal Dibuat</th>
           </tr>
         </thead>
-              @foreach($data_order as $order)
+             
+              @foreach($data_order as $order)               
         <tbody>
           <tr class="text-center">
-              <td>{{$order->nomor}}</td>
+             <th>{{$i++}}</th>
+              <td>{{$order->id}}</td>
               <td>{{$order->nama_master}}<span style="font-weight: bold;">&nbsp;({{$order->username}})</span></td>
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>

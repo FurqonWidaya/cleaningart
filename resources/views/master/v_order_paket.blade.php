@@ -120,14 +120,18 @@
 													</li>
 													<li>
 														<input name="paket_id" value="{{$data_paket->id}}" hidden="">
-														<input name="status_id" value="2" hidden="">
-														{{$data_paket->nama_paket}}
+														<input name="status_id" value="3" hidden="">
+														{{$data_paket->nama_paket}} 
+
 														<span>
 													Rp {{$data_paket->harga_paket}}</span>
 													</li>
-													
+
 													<li>
-														total:<span>Rp {{$data_paket->harga_paket}}</span>
+														Pajak dll:<span>Rp --</span><hr>
+													</li>
+													<li>
+														Total:<span>Rp {{$data_paket->harga_paket}}</span>
 													</li>
 													<li>
 														Pilih ART:<span>
@@ -136,7 +140,7 @@
 																- pilih -
 															</option class="form-control mb-25" style="color: #000">
 															@foreach($art as $item)
-															<option value="{{$item->id}}" class="form-control mb-25" style="color: #000;" >
+															<option value="{{$item->user_id}}" class="form-control mb-25" style="color: #000;" >
 																{{$item->name}}
 															</option>
 															@endforeach

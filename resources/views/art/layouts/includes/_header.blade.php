@@ -39,7 +39,7 @@
 						<div class="row d-flex align-items-center">
 							<div class="col-md-3">
 								<div class="logo">
-									<a href="/index"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
+									<a href="{{url('/index')}}"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
 								</div>
 								<!-- Phone Menu button -->
 								<button id="menu" class="menu hidden-md-up"></button>
@@ -48,20 +48,20 @@
 								<nav class="navigation">
 									<ul>
 							<li>
-								<a href="/index">Home</a>
+								<a href="{{url('/index')}}">Home</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="/about_us">Tentang Kami</a>
+								<a href="{{url('/about_us')}}">Tentang Kami</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							</li>
 							<li>
-								<a href="/paket_pekerjaan">Paket Pekerjaan</a>
+								<a href="{{url('/paket_pekerjaan')}}">Paket Pekerjaan</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="/errors">Pesananku</a>
+								<a href="{{url('/pesananku')}}">Pesananku</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
@@ -70,16 +70,19 @@
 								<!-- Nav Dropdown -->
 								<ul class="sub-nav">
 									<li>
-										<a href="/profilku/{{auth()->user()->id}}">Profilku</a>
+										<a href="{{url('/profilku/'.auth()->user()->id)}}">Profilku</a>
 									</li>
 									<li>
-										<a href="/errors">Keuanganku</a>
+										<a href="{{url('/errors')}}">Keuanganku</a>
 									</li>
 									<li>
-										<a href="/profilku/setting/{{auth()->user()->id}}">Setting</a>
+										<a href="{{url('/errors')}}">Riwayat Pesanan</a>
 									</li>
 									<li>
-										<a href="/logout">Log Out</a>
+										<a href="{{url('/profilku/setting/'.auth()->user()->id)}}">Setting</a>
+									</li>
+									<li>
+										<a href="{{url('/logout')}}">Log Out</a>
 									</li>
 								</ul>
 								<!-- End Nav Dropdown -->
