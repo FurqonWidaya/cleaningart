@@ -56,12 +56,27 @@
             <td>{{$order->nama_master}}</td>
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>
-              <td><a href="#" class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>Terima</a><br><br>
-                <form action="#" method="post">
+              @if($order->sp == 3)
+              <td> <form action="{{url('/terima/'.$order->id)}}" method="post">
                   {{csrf_field()}}
-                  
+                  <input type="number" name="sp" value="1" readonly="" hidden="">
+                  <input type="text" name="status" value="2" readonly="" hidden="">
+                <button class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>Terima&nbsp;</button></form><br><br>
+                <form action="{{url('/tolak/'.$order->id)}}" method="post">
+                  {{csrf_field()}}
+                  <input type="number" name="sp" value="2" readonly="" hidden="">
                 <button class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>Tolak&nbsp;</button></form>
               </td>
+              @elseif($order->sp == 1)
+              <td> 
+                <a class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>Telah diterima&nbsp;</a></<
+              </td>
+              @else()
+               <td> 
+               
+                <a class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>telah ditolak&nbsp;</button>
+              </td>
+              @endif
           </tr>
           </tbody>
           @endforeach

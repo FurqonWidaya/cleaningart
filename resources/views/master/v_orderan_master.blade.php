@@ -54,7 +54,7 @@
               <th>Total</th>
               <th>Nama Art</th>
               <th>Status Penerimaan</th>
-              <th>Bayar Sampai</th>
+              <th>dibuat pada</th>
               <th>Tindakan</th>
           </tr>
         </thead>
@@ -64,13 +64,22 @@
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>
               <td>{{$order->nama_art}}</td>
-              <td>{{$order->status_penerimaan}}</td>
+
+              @if($order->sp == 1)
+              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
+
+              @elseif($order->sp == 2)
+              <td><p class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
+
+              @else()
+              <td><p class='btn btn-warning btn-sm'><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> {{$order->status_penerimaan}}</p></td>
+              @endif
+
               <td>{{$order->tanggal_dibuat}}</td>
-              <td><a href="#" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a><br><br>
+              <td><a href="{{url('/checkout/'.$order->id)}}" class='btn btn-primary btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Bayar Paket</a><br><br>
                 <form action="{{url('/batal_order/'.$order->id)}}" method="post">
                   {{csrf_field()}}
-                  
-                <button class='btn btn-warning btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>Batal</button></form>
+                <button class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>Batalkan Paket</button></form>
               </td>
           </tr>
           </tbody>

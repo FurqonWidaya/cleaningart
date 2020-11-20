@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class AddDeletedAtToOrderArtTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('order_art', function (Blueprint $table) {
@@ -18,11 +13,7 @@ class AddDeletedAtToOrderArtTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+   
     public function down()
     {
         Schema::table('order_art', function (Blueprint $table) {

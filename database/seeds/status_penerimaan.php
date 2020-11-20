@@ -17,5 +17,8 @@ class status_penerimaan extends Seeder
         DB::table('status_penerimaan')->insert([
             'status_penerimaan' => 2,
         ]);
+        DB::table('status_penerimaan')->insert([
+            'status_penerimaan' => 3,
+        ]);
     }
 }

@@ -88,6 +88,8 @@ Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
   Route::post('/postpass/{id}', 'ArtController@updatepass');
   Route::get('/about_us', 'ArtController@about');
  Route::get('/pesananku', 'C_order_paket@pesananku');
+ Route::post('/terima/{id}', 'C_order_paket@terima');
+ Route::post('/tolak/{id}', 'C_order_paket@terima');
 });
 
 
@@ -105,7 +107,8 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
   Route::get('/paketpekerjaan/order/{id}', 'C_order_paket@klikorder');
   Route::post('/postorder', 'C_order_paket@postorder');
-    Route::get('/checkout', 'C_order_paket@checkout');
+    Route::get('/checkout/{id}', 'C_order_paket@checkout');
     Route::get('/myorder', 'C_order_paket@myorder');
     Route::post('/batal_order/{id}', 'C_order_paket@batal_order');
+    Route::get('/myorderhistory', 'C_order_paket@myorderhistory');
 });

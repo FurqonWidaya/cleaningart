@@ -135,7 +135,7 @@
 													</li>
 													<li>
 														Pilih ART:<span>
-															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;margin-bottom: 0px" required=""> 
+															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;" required=""> 
 															<option value="">
 																- pilih -
 															</option class="form-control mb-25" style="color: #000">
@@ -151,8 +151,8 @@
 													<span class="help-block " style="color: #c80000">{{($errors->first('art'))}}</span>
 													@endif
 												</ul>
-											</div>
-											<div class="romana_select_method border pt-15">
+											</div><br>
+											<div class="romana_select_method border pt-15" >
 												<ul style="padding: 10px">
 													Pilih Bank:
 													<li>
@@ -168,12 +168,18 @@
 												
 											</div>
 											<div class="text-center pt-15" >
-											<button class="btn-text white-btn " type="submit">CheckOut</button> </div>
+											<button class="btn-text white-btn " type="submit">CheckOut</button> <span></span>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</form>
+						<div class="col-lg-12 text-right" style="padding-right: 80px">
+										
+						<button class="btn-text red-btn "><a href="{{url('/paketpekerjaan')}}"> Batal</a></button>
+					
+				</div>
 						<!-- column End -->
 					</div>
 					<!-- container End -->

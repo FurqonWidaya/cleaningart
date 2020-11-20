@@ -37,7 +37,7 @@ class C_Paket_Pekerjaan extends Controller
           $data_paket->foto_paket = $request->file('foto_paket')->getClientOriginalName();
       }
       $data_paket ->save();
-      return redirect('/paket_pekerjaan')->with('sukses','data berhasil ditambahkan');
+      return redirect('/data_paket_pekerjaan')->with('sukses','data berhasil ditambahkan');
     }
 
     //lihat detail paket

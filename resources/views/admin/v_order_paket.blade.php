@@ -46,7 +46,7 @@
         <tbody>
           <tr class="text-center">
              <th>{{$i++}}</th>
-              <td>{{$order->id}}</td>
+              <td>{{$order->nomor}}</td>
               <td>{{$order->nama_master}}<span style="font-weight: bold;">&nbsp;({{$order->username}})</span></td>
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>

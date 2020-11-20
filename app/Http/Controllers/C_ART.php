@@ -27,7 +27,7 @@ class C_ART extends Controller
     public function create(Request $request){
         $this->validate($request,[
             'name' => 'required|min:4',
-            'username'=>'required|min:5|unique:users',
+            'username'=>'required|min:5|unique:users|regex:/^\S*$/u',
             'email'=>'required|email',
             'password'=>'required|min:5',
             'foto' => 'mimes:jpg,png,jpeg',

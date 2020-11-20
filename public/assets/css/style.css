@@ -610,6 +610,11 @@ button:focus {
 	color: #222 !important;
 	background: #fff !important;
 }
+.red-btn {
+	border-color: #dc3545 !important;
+	color: #222 !important;
+	background: #dc3545 !important;
+}
 .icon-box {
 	width: 80px;
 	height: 80px;

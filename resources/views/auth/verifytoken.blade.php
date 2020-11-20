@@ -10,7 +10,7 @@
 					<span class="login100-form-title p-b-20">
 						Masukkan Token
 					</span>
-				
+				<!-- <input type="tel" autocomplete="one-time-code" maxlength="6" value="779140" style="width: 0.5px; height: 0px; outline: none; padding: 0px; border-width: 0px;"> -->
 					
 					<div class="wrap-input100">
 						<input class="input100" type="text" name="active_token" id="active_token" required="">
