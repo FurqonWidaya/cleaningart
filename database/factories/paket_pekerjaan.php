@@ -9,6 +9,6 @@ $factory->define(paket_pekerjaan::class, function (Faker $faker) {
     return [
         'nama_paket' => 'PAKET ART',
         'harga_paket' => $faker->numberBetween($min = 50000, $max = 900000),
-        'deskripsi_paket' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+        'deskripsi_paket' => $faker->realText($maxNbChars = 200, $indexSize = 2), 
     ];
 });
