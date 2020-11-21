@@ -170,7 +170,7 @@ class c_order_paket extends Controller
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
     ->select(DB::raw('oa.id as id, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp'))->where('oa.id_art', $user)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
     ->get();
-
+    
     return view('art.v_orderan_art', compact('data_order'));
    
    }
@@ -179,12 +179,12 @@ class c_order_paket extends Controller
      DB::table('order_art as oa')->join('art as ar', 'ar.user_id', '=', 'oa.id_art')->where('oa.id', $id)
    ->update([ 
         "id_status_penerimaan" => $request['sp'],
-        "status" => $request['status'],
+        "status" => $request['status_kerja'],
 
       ]);
    return redirect()->back();
    }
-   
+
    public function tolak(request $request, $id)
    {
      DB::table('order_art as oa')->join('art as ar', 'ar.user_id', '=', 'oa.id_art')->where('oa.id', $id)
