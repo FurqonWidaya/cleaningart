@@ -29,7 +29,7 @@ class C_ProfileAdmin extends Controller
 
     //liatgantipass
     public function gantipw($id){
-       return view('\admin.gantipwadmin');
+       return view('admin.v_gantipwadmin');
     }
 
     //updatepw
@@ -52,6 +52,6 @@ class C_ProfileAdmin extends Controller
         $user = Auth::User();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
-        return redirect('/dataku/{id}')->with('sukses', 'password telah berganti');
+        return redirect('/dataku/{id}')->with('sukses', 'password telah diperbarui');
     }
 }

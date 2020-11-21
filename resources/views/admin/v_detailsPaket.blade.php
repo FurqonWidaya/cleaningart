@@ -12,7 +12,7 @@
   <div class="col-sm col-md-12">
     <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
-              <li>&#47;&nbsp;<i class="fas fa-people-carry"></i><a href="/paket_pekerjaan">&nbsp;Data Paket Pekerjaan&nbsp;</a></li>
+              <li>&#47;&nbsp;<i class="fas fa-people-carry"></i><a href="{{url('/data_paket_pekerjaan')}}">&nbsp;Data Paket Pekerjaan&nbsp;</a></li>
               <li>&#47;&nbsp;<i class="fas fa-people-carry"></i>&nbsp;Detail Paket</li>
             </ol>
            <div class="card shadow text-primary border-bottom-info bg-gray-100">

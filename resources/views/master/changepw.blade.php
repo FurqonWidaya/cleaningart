@@ -1,7 +1,9 @@
     @extends('master.layouts.master')
 @section('content')
-<br><br>
-@if(session('error'))
+<div class="faq padding ptb-xs-40">
+  <br><br>
+  <div class="container"> <h3>Ganti Password</h3>
+    @if(session('error'))
 <!-- Modal -->
     <div class="alert alert-danger" role="alert">
       {{session('error')}}
@@ -10,8 +12,6 @@
     </button>
     </div>
   @endif
-<div class="faq padding ptb-xs-40">
-  <div class="container"> <h3>Ganti Password</h3>
   <form action="/postpassword/{{auth()->user()->id}}" method="POST">
         	{{csrf_field()}}
           <div class="form-group">

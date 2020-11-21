@@ -18,7 +18,7 @@ class CreatePaketPekerjaanTable extends Migration
             $table->binary('foto_paket')->nullable();
             $table->string('nama_paket')->unique();
             $table->string('deskripsi_paket');
-            $table->integer('harga_paket');
+            $table->biginteger('harga_paket');
             $table->timestamps();
         });
     }

@@ -9,8 +9,8 @@
 </div>
 @endif
 <ol class="breadcrumb">
-  <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
-  <li>&#47;&nbsp;<i class="fas fa-people-carry"></i><a href="/paket_pekerjaan">&nbsp;Data Paket Pekerjaan&nbsp;</a></li>
+  <li><i class="fa fa-home"></i><a href="{{url('/dashboard')}}">&nbsp;Home&nbsp;</a></li>
+  <li>&#47;&nbsp;<i class="fas fa-people-carry"></i><a href="{{url('/data_paket_pekerjaan')}}">&nbsp;Data Paket Pekerjaan&nbsp;</a></li>
   <li>&#47;&nbsp;<i class="fas fa-people-carry"></i><a href="/paket_pekerjaan/{{$data_paket->id}}">&nbsp;Detail Paket&nbsp;</a></li>
   <li>&#47;&nbsp;<i class="fa fa-cogs"></i>&nbsp;Setting</li>
 </ol>

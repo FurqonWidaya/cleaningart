@@ -15,12 +15,13 @@ class C_Paket_Pekerjaan extends Controller
     public function index(Request $request)
     {
       if ($request->has('cari')){
-          $data_paket = \App\paket_pekerjaan::where('nama_paket', 'LIKE', '%'
+          $data_paket = \App\paket_pekerjaan::orderBy('created_at', 'DESC')->where('nama_paket', 'LIKE', '%'
           .$request->cari. '%')->paginate(5);
 
       }else{
-        $data_paket = \App\paket_pekerjaan::paginate(5);}
-        return view ('admin.v_paket_pekerjaan', ['data_paket' => $data_paket]);
+        $data_paket = \App\paket_pekerjaan::orderBy('created_at', 'DESC')->paginate(5);
+      }
+        return view ('admin.v_paket_pekerjaan', compact('data_paket'));
     }
 
     //buat paket
@@ -57,6 +58,11 @@ class C_Paket_Pekerjaan extends Controller
     //update paket
     public function update(Request $request, $id)
     {
+       $this->validate($request,[
+          'nama_paket' => 'required|min:5|',
+          'harga_paket'=>'required|numeric|min:30000|max:10000000',
+          'deskripsi_paket' => '|min:20|'
+      ]);
       $data_paket = \App\paket_pekerjaan::find($id);
       $data_paket->update($request->all());
      if ($request->hasFile('foto_paket')) {
@@ -64,7 +70,7 @@ class C_Paket_Pekerjaan extends Controller
          $data_paket->foto_paket = $request->file('foto_paket')->getClientOriginalName();
          $data_paket->save($request->all());
      }
-     return redirect('/paket_pekerjaan')->with('sukses', 'data berhasil diubah');
+     return redirect('/data_paket_pekerjaan')->with('sukses', 'data berhasil diubah');
     }
 
    //Master

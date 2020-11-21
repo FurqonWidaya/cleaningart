@@ -98,7 +98,7 @@ class MasterController extends Controller
         }
 
     //ganti password
-    public function changepw($id)
+    public function changepass($id)
     {
         return view('master.changepw');
     }
@@ -119,6 +119,6 @@ class MasterController extends Controller
         $user = Auth::User();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
-        return redirect(url('/myprofil/{id}'))->with('sukses', 'password telah berganti');
+        return redirect(url('/myprofil/{id}'))->with('success', 'password telah berganti');
     }
 }

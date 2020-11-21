@@ -15,7 +15,7 @@ class CreatePajakTable extends Migration
     {
         Schema::create('pajak', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('pajak');
+            $table->biginteger('pajak');
             $table->enum('ongkir',['20000', '40000', '60000']);
            
         });

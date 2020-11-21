@@ -105,7 +105,7 @@ class ArtController extends Controller
         $user = Auth::User();
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
-        return redirect(url('/profilku/{id}'))->with('sukses', 'password telah berganti');
+        return redirect(url('/profilku/{id}'))->with('success', 'password telah berganti');
     }
 
     //lihat about us
