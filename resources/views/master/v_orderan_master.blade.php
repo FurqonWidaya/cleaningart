@@ -121,7 +121,7 @@
   <!-- penutup tab-->
   @endif
 
-@if (isset($data_order) && count($data_order) > 0)
+@if (isset($batal_order) && count($batal_order) > 0)
 <!-- pembuka tab batal -->
 <div class="tab-pane" id="dibatalkan" role="tabpanel" aria-labelledby="dibatalkan-tab">
     <br>
