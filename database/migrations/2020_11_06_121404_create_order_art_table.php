@@ -21,6 +21,7 @@ class CreateOrderArtTable extends Migration
             $table->biginteger('id_paket')->unsigned();
              $table->biginteger('id_bank')->unsigned();
             $table->biginteger('id_status_penerimaan')->unsigned();
+            $table->date('waktu_kerja');
              // $table->time('time_up');
             //$table->softDeletes();
         });

@@ -54,7 +54,7 @@ class c_order_paket extends Controller
        	$order->id_paket = $request->paket_id;
         $order->id_bank = $request->bank_id;
         $order->id_status_penerimaan =$request->status_id;
-         $order->time_up = $request->time_up;
+         $order->waktu_kerja = $request->waktu_kerja;
         $order->save();
         DB::table('master')
    ->where('user_id', $user )
