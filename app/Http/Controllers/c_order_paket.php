@@ -35,12 +35,16 @@ class c_order_paket extends Controller
    	 $this->validate($request,[         
             'kecamatan'=>'required|min:3',
             'kodepos'=>'required',
-            'alamat'=>'required|min:4',         
+            'alamat'=>'required|min:4',
+            'waktu_kerja' => 'required|date|date_format:Y-m-d|after:today|before:7 days',         
         ],
         	[
             'kecamatan.required' => 'masukkan kecamatan anda untuk melanjutkan',
              'kodepos.required' => 'masukkan kodepos anda untuk melanjutkan',
               'alamat.required' => 'masukkan alamat anda untuk melanjutkan',
+              'waktu_kerja.required' => 'tentukan waktu kerja',
+              'waktu_kerja.after' => 'pilihan waktu kerja harus diset setelah hari ini',
+              'waktu_kerja.before' => 'pilihan waktu kerja harus diset paling lama 7 hari kedepan'
         ]
     );
      $user =  \Auth::user()->id;
