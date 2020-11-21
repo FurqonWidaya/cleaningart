@@ -109,6 +109,6 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::post('/postorder', 'C_order_paket@postorder');
     Route::get('/checkout/{id}', 'C_order_paket@checkout');
     Route::get('/myorder', 'C_order_paket@myorder');
-    Route::post('/batal_order/{id}', 'C_order_paket@batal_order');
+    Route::get('/batal_order/{id}', 'C_order_paket@batal_order');
     Route::get('/myorderhistory', 'C_order_paket@myorderhistory');
 });

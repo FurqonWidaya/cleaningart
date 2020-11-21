@@ -58,7 +58,6 @@
         <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{url('/data_order')}}">Data Order Paket</a>
-            <a class="collapse-item" href="{{url('/data_riwayat_order')}}">Riwayat Order Paket</a>
           </div>
         </div>
       </li>

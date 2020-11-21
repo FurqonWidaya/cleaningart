@@ -42,7 +42,7 @@
               {{$peka->deskripsi_paket}}
             </p>
             <div class="add-to-cart mb-20" >
-              <a href="{{url('/paketpekerjaan/order/'.$peka->id)}}" style="border: 3px solid #6e8900;"><i class="fa fa-shopping-cart"></i>&nbsp;Pesan Paket</a>
+              <a href="{{url('/paketpekerjaan/order/'.$peka->id)}}" style="border: 3px solid #6e8900;"><i class="fa fa-shopping-cart"></i>&nbsp;Order Paket</a>
             </div>
           </div>
         </div>

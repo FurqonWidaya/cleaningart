@@ -61,7 +61,7 @@
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="{{url('/pesananku')}}">Pesananku</a>
+								<a href="{{url('/pesananku')}}">Orderanku</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
@@ -75,9 +75,9 @@
 									<li>
 										<a href="{{url('/errors')}}">Keuanganku</a>
 									</li>
-									<li>
+									<!-- <li>
 										<a href="{{url('/errors')}}">Riwayat Pesanan</a>
-									</li>
+									</li> -->
 									<li>
 										<a href="{{url('/profilku/setting/'.auth()->user()->id)}}">Setting</a>
 									</li>

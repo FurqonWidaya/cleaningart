@@ -63,6 +63,8 @@
                   <input type="text" name="status" value="2" readonly="" hidden="">
                 <button class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>Terima&nbsp;</button></form><br><br>
                 <form action="{{url('/tolak/'.$order->id)}}" method="post">
+                   <input type="number" name="sp" value="2" readonly="" hidden="">
+                  <input type="text" name="status" value="2" readonly="" hidden="">
                   {{csrf_field()}}
                   <input type="number" name="sp" value="2" readonly="" hidden="">
                 <button class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>Tolak&nbsp;</button></form>

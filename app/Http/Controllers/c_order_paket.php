@@ -16,8 +16,10 @@ use App\status_penerimaan;
 
 class c_order_paket extends Controller
 {
+
+
   //untuk master
-  //
+  //buat order
    public function klikorder($id)
    {
     $master = auth()->user()->masters;
@@ -28,24 +30,19 @@ class c_order_paket extends Controller
 		return view ('master.v_order_paket', compact('data_paket', 'art', 'bank', 'status', 'master'));
    }
 
-   //buatorder
+   //simpan order
    public function postorder(Request $request){
    	 $this->validate($request,[         
             'kecamatan'=>'required|min:3',
             'kodepos'=>'required',
-            'alamat'=>'required|min:4',
-              
+            'alamat'=>'required|min:4',         
         ],
         	[
             'kecamatan.required' => 'masukkan kecamatan anda untuk melanjutkan',
              'kodepos.required' => 'masukkan kodepos anda untuk melanjutkan',
               'alamat.required' => 'masukkan alamat anda untuk melanjutkan',
         ]
-        
     );
-   	   // $order = m_order_paket::create($request->all());
-   	   // return redirect('/checkout');
-   	   // return $request;
      $user =  \Auth::user()->id;
    	   $order = new m_order_paket;
         $order->id_art = $request->art_id;
@@ -53,6 +50,7 @@ class c_order_paket extends Controller
        	$order->id_paket = $request->paket_id;
         $order->id_bank = $request->bank_id;
         $order->id_status_penerimaan =$request->status_id;
+         $order->time_up = $request->time_up;
         $order->save();
         DB::table('master')
    ->where('user_id', $user )
@@ -60,17 +58,17 @@ class c_order_paket extends Controller
         "kecamatan"=>  $request->kecamatan,
         "alamat" => $request->alamat,
         "kodepos" => $request->kodepos, ]);
-    
         return redirect(url("/checkout/".$order->id))->with('success', 'pesanan berhasil dibuat');
    }
 
+   //tagihan order
    public function checkout($id)
    {
      $data_order = DB::table('order_art as oa')->join('bank as bn', 'bn.id', '=', 'oa.id_bank')->select(DB::raw('oa.id as id, bn.no_rekening as no_rekening, bn.nama as nama, bn.bank as bank'))->where('oa.id', $id)->first();
      // dd($data_order);
    	return view('master.v_checkout_paket', compact('data_order'));
-   
    }
+
    //lihat order
    public function myorder(request $request)
    {
@@ -83,13 +81,34 @@ class c_order_paket extends Controller
     ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
     ->join('bank as b', 'b.id', '=', 'oa.id_bank')
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
-    ->select(DB::raw('oa.id as id, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp'))->where('oa.id_master', $user)->whereNull('oa.deleted_at')
-     ->distinct()->get();
+    ->select(DB::raw('oa.id as id, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date'))->where('oa.id_master', $user)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+     ->get();
+     $batal_order = DB::table('order_art as oa')
+    ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
+    ->join('users as us', 'us.id', '=', 'ms.user_id')
+    ->join('art as ar', 'ar.user_id', '=', 'oa.id_art')
+    ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
+    ->join('bank as b', 'b.id', '=', 'oa.id_bank')
+    ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
+    ->select(DB::raw('oa.id as id, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp'))->where('oa.id_master', $user)->wherenotNull('oa.deleted_at')
+     ->orderBy('oa.created_at', 'desc')->get();
     // dd($request->all());
-    return view('master.v_orderan_master', compact('data_order'));
-   
+    //  DB::table('order_art')->select('*')
+    // ->where('created_at', '<', 'INTERVAL 1 MINUTE')->where('id_master', $user)->delete();
+    return view('master.v_orderan_master', compact('data_order','batal_order'));
    }
 
+//batalkan pesan
+     public function batal_order(request $request, $id)
+     {
+     
+      
+       // $order = DB::table('order_art')->where('id',$id);
+       // $order->delete();
+      \App\m_order_paket::where('id',$id)->delete();
+    
+       return redirect('/myorder')->with('success', 'pesanan telah dibatalkan');
+     }
 
 
    //untuk admin
@@ -105,7 +124,7 @@ class c_order_paket extends Controller
     ->leftjoin('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
     ->select(DB::raw('oa.id as nomor, us.username as username,ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat'))->whereNull('oa.deleted_at')
     ->where('nama_paket', 'LIKE', '%'
-          .$request->cari. '%')->get();
+          .$request->cari. '%')->orderBy('tanggal_dibuat', 'desc')->get();
     
       }else{
     $data_order = DB::table('order_art')
@@ -115,7 +134,7 @@ class c_order_paket extends Controller
     ->leftjoin('paket_pekerjaan', 'order_art.id_paket', '=', 'paket_pekerjaan.id')
     ->leftjoin('bank', 'order_art.id_bank', '=', 'bank.id')
     ->leftjoin('status_penerimaan', 'order_art.id_status_penerimaan', '=', 'status_penerimaan.id')
-    ->select(DB::raw('order_art.id as nomor,users.username as username, master.name as nama_master, art.name as nama_art, paket_pekerjaan.nama_paket as paket, paket_pekerjaan.harga_paket as harga, bank.bank as bank, status_penerimaan.status_penerimaan as status_penerimaan, order_art.created_at as tanggal_dibuat'))->whereNull('order_art.deleted_at')
+    ->select(DB::raw('order_art.id as nomor,users.username as username, master.name as nama_master, art.name as nama_art, paket_pekerjaan.nama_paket as paket, paket_pekerjaan.harga_paket as harga, bank.bank as bank, status_penerimaan.status_penerimaan as status_penerimaan, order_art.created_at as tanggal_dibuat'))->whereNull('order_art.deleted_at')->orderBy('tanggal_dibuat', 'desc')
     ->get();
      
     }
@@ -136,17 +155,9 @@ class c_order_paket extends Controller
      
      }
 
-     //batalkan pesan
-     public function batal_order(request $request, $id)
-     {
-      
-       // $order = DB::table('order_art')->where('id',$id);
-       // $order->delete();
-      \App\m_order_paket::where('id',$id)->delete();
-       return redirect('/myorder')->with('success', 'pesanan telah dibatalkan');
-     }
+     
 
-     //art
+     //art lihat order
      public function pesananku(request $request)
    {
      $user = \Auth::user()->id;
@@ -157,7 +168,7 @@ class c_order_paket extends Controller
     ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
     ->join('bank as b', 'b.id', '=', 'oa.id_bank')
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
-    ->select(DB::raw('oa.id as id, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp'))->where('oa.id_art', $user)->whereNull('oa.deleted_at')
+    ->select(DB::raw('oa.id as id, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp'))->where('oa.id_art', $user)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
     ->get();
 
     return view('art.v_orderan_art', compact('data_order'));
@@ -173,11 +184,14 @@ class c_order_paket extends Controller
       ]);
    return redirect()->back();
    }
+   
    public function tolak(request $request, $id)
    {
-     DB::table('order_art')->where('id', $id)
+     DB::table('order_art as oa')->join('art as ar', 'ar.user_id', '=', 'oa.id_art')->where('oa.id', $id)
    ->update([ 
-        "id_status_penerimaan" => $request['sp'],]);
+        "id_status_penerimaan" => $request['sp'],
+          "status" => $request['status'],
+      ]);
    return redirect()->back();
    }
 }

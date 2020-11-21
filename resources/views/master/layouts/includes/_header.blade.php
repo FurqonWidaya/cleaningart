@@ -56,7 +56,7 @@
 									<i class="ion-ios-plus-empty hidden-md-up"></i>
 								</li>
 								<li>
-									<a href="{{url('/paketpekerjaan')}}">Pesan Paket Pekerjaan</a>
+									<a href="{{url('/paketpekerjaan')}}">Order</a>
 					</li>
 					<li>
 						<a href="javascript:avoid(0);">Tim ART kami</a>
@@ -87,10 +87,7 @@
 								<a href="{{url('/myprofil/'.auth()->user()->id)}}">Profilku</a>
 							</li>
 							<li>
-								<a href="{{url('/myorder')}}">Pesanan saya</a>
-							</li>
-							<li>
-								<a href="{{url('/myorderhistory')}}">Riwayat Pesanan saya</a>
+								<a href="{{url('/myorder')}}">Orderan Saya</a>
 							</li>
 							<li>
 								<a href="{{url('/myprofil/setting/'.auth()->user()->id)}}">Setting</a>

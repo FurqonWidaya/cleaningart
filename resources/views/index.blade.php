@@ -106,17 +106,8 @@
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
-								<a href="javascript:avoid(0);">Pesan Layanan</a>
-								<i class="ion-ios-plus-empty hidden-md-up"></i>
-								<ul class="sub-nav">
-									<li>
-										<a href="/error">Semua Layanan</a>
-									</li>
-									<li>
-										<a href="/error">Detail layanan</a>
-									</li>
-
-								</ul>
+								<a href="{{url('/paketpekerjaan')}}">Order Paket Pekerjaan</a>
+								
 							</li>
 							<li>
 								<a href="javascript:avoid(0);">Tim ART kami</a>

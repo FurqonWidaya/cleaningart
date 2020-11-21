@@ -122,7 +122,8 @@
 														<input name="paket_id" value="{{$data_paket->id}}" hidden="">
 														<input name="status_id" value="3" hidden="">
 														{{$data_paket->nama_paket}} 
-
+														<input name="time_up" value="24:00:00" hidden="" readonly="">
+														{{$data_paket->nama_paket}} 
 														<span>
 													Rp {{$data_paket->harga_paket}}</span>
 													</li>
@@ -135,7 +136,7 @@
 													</li>
 													<li>
 														Pilih ART:<span>
-															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;" required=""> 
+															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;" required  oninvalid="alert('Pilih ART!');"> 
 															<option value="">
 																- pilih -
 															</option class="form-control mb-25" style="color: #000">
@@ -168,7 +169,7 @@
 												
 											</div>
 											<div class="text-center pt-15" >
-											<button class="btn-text white-btn " type="submit">CheckOut</button> <span></span>
+											<button class="btn-text white-btn " type="submit">Buat Order</button> <span></span>
 											</div>
 										</div>
 									</div>
