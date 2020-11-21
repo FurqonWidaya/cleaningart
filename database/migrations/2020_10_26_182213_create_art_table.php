@@ -27,7 +27,7 @@ class CreateArtTable extends Migration
             $table->enum('status', ['Available', 'Hired']);
             $table->text('deskripsi')->nullable();
 
-            $table->foreign('user_id')->references('id')->on('users');
+           // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
