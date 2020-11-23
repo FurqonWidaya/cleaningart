@@ -195,7 +195,7 @@
 <!-- How_it_Work_End -->
 
 <!-- Popular_Service_Section -->
-<section class="padding ptb-xs-40 gray-bg">
+<section class="padding ptb-xs-40 gray-bg" id="paket">
 	<div class="container">
 		<div class="row pb-60 pb-xs-40">
 			<div class="col-md-8 offset-md-2 text-center">
@@ -220,7 +220,7 @@
 							</figure>
 							<div class="apply_box d-flex align-items-center">
 								<div class="full_width">
-									<a href="/error" class="btn-text"><i class="fa fa-shopping-cart"></i>&nbsp;Pesan Paket</a>
+									<a href="{{url('/paketpekerjaan/order/'.$peka->id)}}" class="btn-text"><i class="fa fa-shopping-cart"></i>&nbsp;Order</a>
 								</div>
 							</div>
 						</div>

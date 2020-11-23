@@ -123,7 +123,7 @@
 														<input name="status_id" value="3" hidden="">
 														{{$data_paket->nama_paket}} 
 														<!-- <input name="time_up" value="24:00:00" hidden="" readonly=""> -->
-														{{$data_paket->nama_paket}} 
+														
 														<span>
 													Rp {{$data_paket->harga_paket}}</span>
 													</li>

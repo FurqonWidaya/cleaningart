@@ -17,7 +17,7 @@
 						<div class="col-md-4">
 							<div class="single_info__block">
 								<i class="fa fa-map-marker"></i>
-								<h4>123 Main Street, St. NW Ste, 1 Washington, DC,USA.<span>Monday-Friday, 9am-5pm</span></h4>
+								<h4> 123 Winery Street, Dawn Winery, Mondstadt, Teyvt.<span>Monday-Friday, 9am-5pm</span></h4>
 							</div>
 						</div>
 					</div>

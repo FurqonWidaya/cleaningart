@@ -44,32 +44,32 @@ Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
   Route::get('/dashboard', 'C_home@setviewhome');
   Route::get('/notfound', 'notfoundController@notfound');
 
-  //data art
+  //mengelola data art
   Route::get('/dataart', 'C_ART@dataart');
   Route::post('/dataart/create','C_ART@create');
   Route::get('/art/edit/{id}', 'C_ART@edit');
   Route::post('/art/{id}/update', 'C_ART@update');
   Route::get('/art/profile/{id}','C_ART@profilart');
 
-  //data master
+  //mengelola data master
   Route::get('/datamaster', 'C_Master@datamaster');
   Route::get('/master/profile/{id}','C_Master@profilmaster');
 
-  //profil admin
+  //mengelola profil admin
   Route::get('/dataku/{id}','C_ProfileAdmin@profiladmin');
   Route::get('/dataku/edit/{id}', 'C_ProfileAdmin@editadmin');
   Route::post('/admin/{id}/update', 'C_ProfileAdmin@updateadmin');
   Route::get('/dataku/edit/gantipassword/{id}', 'C_ProfileAdmin@gantipw');
   Route::post('/updatepassword/{id}', 'C_ProfileAdmin@updatepass');
   
-  //data paket pekerjaan
+  //mengelola data paket pekerjaan
   Route::get('/data_paket_pekerjaan', 'C_Paket_Pekerjaan@index');
   Route::post('/paket_pekerjaan/create','C_Paket_Pekerjaan@create');
   Route::get('/paket_pekerjaan/{id}', 'C_Paket_Pekerjaan@show');
   Route::get('/paket_pekerjaan/edit/{id}', 'C_Paket_Pekerjaan@edit');
   Route::post('/paket_pekerjaan/update/{id}', 'C_Paket_Pekerjaan@update');
 
-  //data order paket
+  //mengelola data order paket
    Route::get('/data_order', 'C_order_paket@lihatorder');
    Route::get('/data_riwayat_order', 'C_order_paket@lihatriwayat');
 });
@@ -107,8 +107,10 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
   Route::get('/paketpekerjaan/order/{id}', 'C_order_paket@klikorder');
   Route::post('/postorder', 'C_order_paket@postorder');
-    Route::get('/checkout/{id}', 'C_order_paket@checkout');
+    Route::get('/checkout/{nomor_order}', 'C_order_paket@checkout');
     Route::get('/myorder', 'C_order_paket@myorder');
     Route::get('/batal_order/{id}', 'C_order_paket@batal_order');
     Route::get('/myorderhistory', 'C_order_paket@myorderhistory');
+     Route::get('/bayarorder/{nomor_order}', 'C_transaksi_paket@bayarpaket');
+     Route::post('/postbayarorder/{nomor_order}', 'C_transaksi_paket@postbayarpaket');
 });

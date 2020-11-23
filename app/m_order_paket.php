@@ -4,11 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+\Carbon\Carbon::setToStringFormat('d-m-Y');
 class m_order_paket extends Model
 {
 	use SoftDeletes;
     protected $date = ['deleted_at'];
      protected $table = 'order_art';
+     protected $casts = [
+    'created_at' => 'date:hh:mm'
+];
     protected $fillable = ['id_art', 'id_master','id_paket','id_status_penerimaan','id_bank', 'waktu_kerja'];
 
     public function masters()

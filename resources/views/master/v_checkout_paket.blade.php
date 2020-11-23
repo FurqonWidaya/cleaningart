@@ -20,9 +20,9 @@
   <div class="container">
     <div class="row title">
       <div class="title_row">
-        <h1 data-title="Service"><span>Paket pekerjaan</span></h1>
+        <h1 data-title="Service"><span>Pembayaran Order</span></h1>
         <div class="page-breadcrumb">
-          <a href="{{url('/home')}}">Home</a>/ <span>Paket Pekerjaan</span>
+          <a href="{{url('/home')}}">Home</a>/ <span>Pembayaran Order</span>
         </div>
 
       </div>
@@ -46,7 +46,7 @@
             <div class="about-block clearfix">
              
                 <div class="box-title ">
-                  <h4 class="pb-50"> Silahkan Transfer ke rekening ini</h4>
+                  <h4 class="pb-50"> Silahkan Transfer ke nomor rekening ini</h4>
                   <button class="copy" id="no_rekening" onclick="copy(this)">
                     {{$data_order->no_rekening}}</button><span></span>
                    <h5>Bank {{$data_order->bank}}</h5>
@@ -54,9 +54,12 @@
        </div>
      
         </div>
-         <button class="btn btn-primary center">LANJUT PEMBAYARAN</button>
+        <a href="{{url('/bayarorder/'.$data_order->nomor_order)}}" class="btn btn-primary center">LANJUT PEMBAYARAN</a>
        </div>
-
+       <div class="col-lg-12">
+       <p class="col-lg-6 float-left">nomor order: {{$data_order->nomor_order}}</p>
+       <p class="col-lg-6 float-right text-right">waktu order: {{\Carbon\Carbon::parse($data_order->created_at)->format('d/m/Y H:i')}}</p>
+     </div>
        </div>
         </div>
        </div>

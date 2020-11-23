@@ -6,7 +6,7 @@
 					<div class="top_loction pull-left">
 						<ul>
 							<li>
-								<a href="#!"><i class="fa fa-map-marker"></i> 123 Main Street, St. NW Ste </a>
+								<a href="#!"><i class="fa fa-map-marker"></i> 123 Winery Street, Dawn Winery, Mondstadt, Teyvt</a>
 							</li>
 							<li>
 								<a href="mailto:cleaningart@bussiness.com"><i class="fa fa-envelope"></i> cleaningart@bussiness.com</a>
@@ -62,6 +62,9 @@
 						<a href="javascript:avoid(0);">Tim ART kami</a>
 						<i class="ion-ios-plus-empty hidden-md-up"></i>
 						<ul class="sub-nav">
+							<li>
+								<a href="#paket">Paket Pekerjaan</a>
+							</li>
 							<li>
 								<a href="#work">Gallery ART</a>
 							</li>

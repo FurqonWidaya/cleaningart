@@ -36,7 +36,7 @@
     <a class="nav-link active" id="belumbayar-tab" data-toggle="tab" href="#belumbayar" role="tab" aria-controls="belumbayar" aria-selected="true">Belum Bayar</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="menunggu-tab" data-toggle="tab" href="#menunggu" role="tab" aria-controls="menunggu" aria-selected="false">Menunggu Persetujuan</a>
+    <a class="nav-link" id="menunggu-tab" data-toggle="tab" href="#menunggu" role="tab" aria-controls="menunggu" aria-selected="false">Menunggu Verifikasi</a>
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="diterima-tab" data-toggle="tab" href="#diterima" role="tab" aria-controls="diterima" aria-selected="false">Order Diterima</a>
@@ -58,6 +58,7 @@
               <th>Nama Paket</th>
               <th>Total</th>
               <th>Nama Art</th>
+               <th>Status Penerimaan</th>
               <th>bayar sampai</th>
               <th>Tindakan</th>
           </tr>
@@ -68,8 +69,18 @@
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>
               <td>{{$order->nama_art}}</td>
-              <td>{{$order->due_date}}</td>
-              <td><a href="{{url('/checkout/'.$order->id)}}" class='btn btn-primary btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Bayar Paket</a><br><br>
+              @if($order->sp == 1)
+              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
+
+              @elseif($order->sp == 2)
+              <td><p class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
+
+              @else()
+              <td><p class='btn btn-warning btn-sm'><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> {{$order->status_penerimaan}}</p></td>
+              @endif
+
+              <td>{{\Carbon\Carbon::parse($order->due_date)->format('d-m-Y H:i')}}</td>
+              <td><a href="{{url('/checkout/'.$order->nomor_order)}}" class='btn btn-primary btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Bayar Paket</a><br><br>
                
                 <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#alertModal"><i class="fa fa-close fa-fw" aria-hidden="true" ></i>Batalkan Paket</button>
                        <!-- modal -->
@@ -153,7 +164,7 @@
               <td><p class='btn btn-warning btn-sm'><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> {{$batalorder->status_penerimaan}}</p></td>
               @endif
 
-              <td>{{$batalorder->tanggal_dibuat}}</td>
+              <td>{{ \Carbon\Carbon::parse($batalorder->tanggal_dibuat)->format('d-m-Y H:i')}}</td>
               <td><p class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>Dibatalkan</p>
               </td>
           </tr>

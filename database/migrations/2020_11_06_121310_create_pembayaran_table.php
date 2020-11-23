@@ -15,7 +15,12 @@ class CreatePembayaranTable extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->binary('bukti_transfer');
+            $table->bigInteger('id_statuspembayaran')->unsigned();
+            $table->datetime('day_start');
+            $table->datetime('day_over');
+            $table->string('kode_pembayaran')->nullable();
+            $table->biginteger('id_order')->unsigned();
         });
     }
 

@@ -103,7 +103,7 @@
               </div>
             </div>
           </div>
-          <p>Bergabung: {{auth()->user()->created_at}}</p>
+          <p>Bergabung pada: {{\Carbon\Carbon::parse(auth()->user()->created_at)->format('d-m-Y')}}</p>
         </div>
     </div>
 </div>
