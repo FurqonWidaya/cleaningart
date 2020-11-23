@@ -32,7 +32,7 @@
 8. terus buka xampp hidupin apache sm mySQL
 9. klik admin di mySQL
 10. terus buat database baru kasih nama DB_DATABASE sama dengan nomor langkah 7, "cleaningart"  tanpa td petik
-11. buka cmd lagi, ketik composer install (tunggu lama emang)
+11. buka cmd lagi, ketik composer install atau composer update (tunggu lama emang)
 12. kalo udah ketik php artisan key:generate
 13. php artisan migrate
 14. php artisan db:seed
