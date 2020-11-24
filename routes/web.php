@@ -112,5 +112,5 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
     Route::get('/batal_order/{id}', 'C_order_paket@batal_order');
     Route::get('/myorderhistory', 'C_order_paket@myorderhistory');
      Route::get('/bayarorder/{nomor_order}', 'C_transaksi_paket@bayarpaket');
-     Route::post('/postbayarorder/{nomor_order}', 'C_transaksi_paket@postbayarpaket');
+     Route::post('/posttransaksi', 'C_transaksi_paket@postbayarpaket');
 });

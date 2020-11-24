@@ -1,19 +1,6 @@
 @extends('master.layouts.master')
 <!-- Intro Section -->
 <style type="text/css">
-  .copy{
-  background-color: #ddd;
-  border: none;
-  color: black;
-  padding: 16px 32px;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition: 0.3s;
-  }
-  .copy:hover {
-  background-color: #3e8e41;
-  color: white;}
   .dp-field{
   display: flex;
     align-items: center;
@@ -58,9 +45,11 @@
         </button>
         </div>
        @endif
-      <div id="mission-section" class="ptb ptb-xs-180">
+     
       <div class="container">
+         <div id="mission-section" class="ptb ptb-xs-180">
         <h3 class="text-center">RINCIAN ORDER PAKET</h3>
+
         <div class="row">
           <div class="col-lg-12">
             <div class="about-block clearfix">        
@@ -68,11 +57,12 @@
                   <p style="margin: 0px"><i class="fa fa-file fa-fw"></i>&nbsp;Belum bayar</p>
                     <p>Mohon melakukan pembayaran sebelum <span>{{\Carbon\Carbon::parse($data_order->due_date)->format('d-m-Y h:i')}}</span>.&nbsp;Bila tidak, order ini akan dibatalkan secara otomatis</p>
                 </div>
+            </div>
           </div>
         </div>
-      </div>
+
       <div class="row">
-       <div class="col-lg-12 border">
+          <div class="col-lg-12 border">
             <div class="about-block clearfix">        
                 <div class="box-title ">
                 <div class="dp-field"><span class="dp-field-label">Nama Paket</span><span class="dp-field-value"style="font-weight: bold;">{{$data_order->nama_paket}}</span>
@@ -83,37 +73,37 @@
               <div class="dp-field"><span class="dp-field-label">Total Tagihan</span><span class="dp-field-value"style="font-weight: bold;">Rp&nbsp;{{$data_order->harga_paket}}</span>
                 </div>
               </div>
-          </div>
-      </div></div><br>
+            </div>
+         </div>
+      </div><br>
+
       <div class="row">
           <div class="col-md-45 col-lg-12 border text-center">
             <div class="about-block clearfix">
-              <form>
+            <form method="POST" action="#">
+                {{csrf_field()}}
                 <div class="box-title ">
                   <h4 class="pb-50">Silahkan Upload Bukti Pembayaran</h4>
-                  <input name="id_status_pembayran" value="1" readonly="" hidden="">
-                  <span class="input-group pb-50" style="left: 40%;">
-                  <input class="border" type="file" name="bukti_transfer">
-                  </span>
-                </div>
-         <button class="btn btn-primary center">Bayar Order</button>
-         </form>
-       </div>
-       </div>
-       <p>nomor order: {{$data_order->nomor_order}}</p>
+                  <input name="day_start" value="{{$data_order->due_date}}">
+                  <input name="day_over" value="{{$data_order->tanggal_dibuat}}" >
+                  <input name="id_status_pembayaran" value="1" readonly="" hidden="">
+                  <input name="id_order" value="{{$data_order->id_order}}" readonly="" hidden="">
+                  <div>
+                  <input class="border" type="file" name="bukti_transfer" value="{{old('bukti_transfer')}}">
+                  </div>
+                  @if($errors->has('bukti_transfer'))
+                          <span class="help-block " style="color: #c80000">{{($errors->first('bukti_transfer'))}}</span>
+                   @endif
+              </div>
+              <button class="btn btn-primary center" type="submit">Bayar Order</button>
+              </form>
+            </div>
+          </div>
      </div>
+
+     <p>nomor order: {{$data_order->nomor_order}}</p>
         </div>
        </div>
-     </div>
-<script type="text/javascript">
-function copy(that){
-var inp =document.createElement('input');
-document.body.appendChild(inp)
-inp.value =that.textContent
-inp.select();
-document.execCommand('copy',false);
-inp.remove();
- alert("Nomor Rekening telah disalin dalam clipboard!");
-}
-       </script>
+
+
 @endsection

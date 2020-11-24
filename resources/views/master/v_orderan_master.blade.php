@@ -33,7 +33,10 @@
                 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="belumbayar-tab" data-toggle="tab" href="#belumbayar" role="tab" aria-controls="belumbayar" aria-selected="true">Belum Bayar</a>
+    <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Menunggu Penerimaan</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="Pembayaran-tab" data-toggle="tab" href="#Pembayaran" role="tab" aria-controls="Pembayaran" aria-selected="true">Menunggu Pembayaran</a>
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="menunggu-tab" data-toggle="tab" href="#menunggu" role="tab" aria-controls="menunggu" aria-selected="false">Menunggu Verifikasi</a>
@@ -50,8 +53,71 @@
  
 <div class="tab-content">
   @if (isset($data_order) && count($data_order) > 0)
-  <div class="tab-pane active" id="belumbayar" role="tabpanel" aria-labelledby="belumbayar-tab">
+  <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
     <br>
+      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+          <thead class="dark-bg">
+          <tr>
+              <th>Nama Paket</th>
+              <th>Total</th>
+              <th>Nama Art</th>
+               <th>Status Penerimaan</th>
+              <th>Dibuat</th>
+              <th>Tindakan</th>
+          </tr>
+        </thead>
+              @foreach($data_order as $order)
+        <tbody>
+          <tr>
+              <td>{{$order->paket}}</td>
+              <td>Rp {{$order->harga}}</td>
+              <td>{{$order->nama_art}}</td>
+ <!--              @if($order->sp == 1)
+              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
+
+              @elseif($order->sp == 2)
+              <td><p class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
+
+              @else() -->
+              <td><p class='btn btn-warning btn-sm'><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> {{$order->status_penerimaan}}</p></td>
+              <!-- @endif -->
+
+              <td>{{\Carbon\Carbon::parse($order->tanggal_dibuat)->format('d-m-Y H:i')}}</td>
+              <td><!-- <a href="{{url('/checkout/'.$order->nomor_order)}}" class='btn btn-primary btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Bayar Paket</a><br><br> -->
+               
+                <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#alertModal"><i class="fa fa-close fa-fw" aria-hidden="true" ></i>Batalkan Order</button>
+                       <!-- modal -->
+    <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Peringatan !!</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">“Apakah anda yakin untuk membatalkan order yang telah diajukan? Jika anda menekan Ya, maka order yang telah anda lakukan akan dibatalkan dan tidak dapat diproses.”</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+            <a class="btn btn-primary" href="{{url('/batal_order/'.$order->id)}}">Ya</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end modal --> </td>
+          </tr>
+          </tbody>
+          @endforeach
+      </table>
+  </div>
+  <!-- penutup tab belum diterima-->
+  @else()
+  <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">belum ada data</div>
+  @endif
+
+  @if (isset($order_acc) && count($order_acc) > 0)
+  <!-- pembuka tab menunggu-->
+  <div class="tab-pane" id="Pembayaran" role="tabpanel" aria-labelledby="Pembayaran-tab"> <br>
       <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
           <thead class="dark-bg">
           <tr>
@@ -63,21 +129,13 @@
               <th>Tindakan</th>
           </tr>
         </thead>
-              @foreach($data_order as $order)
+              @foreach($order_acc as $order)
         <tbody>
           <tr>
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>
               <td>{{$order->nama_art}}</td>
-              @if($order->sp == 1)
               <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
-
-              @elseif($order->sp == 2)
-              <td><p class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
-
-              @else()
-              <td><p class='btn btn-warning btn-sm'><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> {{$order->status_penerimaan}}</p></td>
-              @endif
 
               <td>{{\Carbon\Carbon::parse($order->due_date)->format('d-m-Y H:i')}}</td>
               <td><a href="{{url('/checkout/'.$order->nomor_order)}}" class='btn btn-primary btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Bayar Paket</a><br><br>
@@ -105,11 +163,12 @@
           </tr>
           </tbody>
           @endforeach
-      </table>
-  </div>
-  <!-- penutup tab belum diterima-->
+      </table></div>
+  <!-- penutup tab-->
   @else()
-  <div class="tab-pane active" id="belumbayar" role="tabpanel" aria-labelledby="belumbayar-tab">belum ada data</div>
+   <!-- pembuka tab menunggu-->
+  <div class="tab-pane" id="Pembayaran" role="tabpanel" aria-labelledby="Pembayaran-tab">belum ada data</div>
+  <!-- penutup tab-->
   @endif
 
   @if (isset($data_order) && count($data_order) > 0)
@@ -144,7 +203,7 @@
               <th>Nama Art</th>
               <th>Status Penerimaan</th>
               <th>dibuat pada</th>
-              <th>Tindakan</th>
+              <th>Status Order</th>
           </tr>
         </thead>
               @foreach($batal_order as $batalorder)

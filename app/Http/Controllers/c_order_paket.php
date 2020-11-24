@@ -66,6 +66,7 @@ class c_order_paket extends Controller
         "alamat" => $request->alamat,
         "kodepos" => $request->kodepos, ]);
         return redirect(url("/checkout/".$order->nomor_order))->with('success', 'pesanan berhasil dibuat');
+        
    }
 
    //tagihan order
@@ -88,8 +89,19 @@ class c_order_paket extends Controller
     ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
     ->join('bank as b', 'b.id', '=', 'oa.id_bank')
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
-    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date'))->where('oa.id_master', $user)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',3)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
      ->get();    
+
+     $order_acc = DB::table('order_art as oa')
+    ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
+    ->join('users as us', 'us.id', '=', 'ms.user_id')
+    ->join('art as ar', 'ar.user_id', '=', 'oa.id_art')
+    ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
+    ->join('bank as b', 'b.id', '=', 'oa.id_bank')
+    ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
+    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',1)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+     ->get(); 
+
      $batal_order = DB::table('order_art as oa')
     ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
     ->join('users as us', 'us.id', '=', 'ms.user_id')
@@ -97,7 +109,7 @@ class c_order_paket extends Controller
     ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
     ->join('bank as b', 'b.id', '=', 'oa.id_bank')
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
-    ->select(DB::raw('oa.id as id, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, oa.nomor_order as nomor_order'))->where('oa.id_master', $user)->wherenotNull('oa.deleted_at')
+    ->select(DB::raw('oa.id as id, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, oa.nomor_order as nomor_order'))->where('oa.id_master', $user)->whereOr('sp.status_penerimaan','=',2)->wherenotNull('oa.deleted_at')
      ->orderBy('oa.created_at', 'desc')->get();
     // dd($request->all());
     //  DB::table('order_art')->select('*')
@@ -107,7 +119,7 @@ class c_order_paket extends Controller
      //      DB::table('order_art')->where('id_master', $user)->delete()
      //    }
      //    else{
-    return view('master.v_orderan_master', compact('data_order','batal_order'));
+    return view('master.v_orderan_master', compact('data_order','batal_order', 'order_acc'));
 
    }
 
