@@ -65,7 +65,7 @@ class c_order_paket extends Controller
         "kecamatan"=>  $request->kecamatan,
         "alamat" => $request->alamat,
         "kodepos" => $request->kodepos, ]);
-        return redirect(url("/checkout/".$order->nomor_order))->with('success', 'pesanan berhasil dibuat');
+        return redirect(url("/cekproses/".$order->nomor_order))->with('success', 'pesanan berhasil dibuat');
         
    }
 
@@ -76,7 +76,13 @@ class c_order_paket extends Controller
      // dd($data_order);
    	return view('master.v_checkout_paket', compact('data_order'));
    }
-
+   
+public function cekproses($id)
+   {
+     $data_order = DB::table('order_art as oa')->join('bank as bn', 'bn.id', '=', 'oa.id_bank')->select(DB::raw('oa.id as id, bn.no_rekening as no_rekening, bn.nama as nama, bn.bank as bank, oa.nomor_order as nomor_order, oa.created_at as created_at'))->where('oa.nomor_order', $id)->first();
+     // dd($data_order);
+    return view('master.v_edit_checkout_paket', compact('data_order'));
+   }
    //lihat order
    public function myorder(request $request)
    {

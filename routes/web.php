@@ -107,7 +107,8 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
   Route::get('/paketpekerjaan/order/{id}', 'C_order_paket@klikorder');
   Route::post('/postorder', 'C_order_paket@postorder');
-    Route::get('/checkout/{nomor_order}', 'C_order_paket@checkout');
+    Route::get('/checkout/{nomor_order}', 'C_order_paket@checkout'); Route::get('/cekproses/{nomor_order}', 'C_order_paket@cekproses');
+     Route::get('/checkout/{nomor_order}', 'C_order_paket@checkout');
     Route::get('/myorder', 'C_order_paket@myorder');
     Route::get('/batal_order/{id}', 'C_order_paket@batal_order');
     Route::get('/myorderhistory', 'C_order_paket@myorderhistory');

@@ -34,6 +34,6 @@ public function postbayarpaket(Request $request)
     	$pembayaran->day_over = $request->day_over;
     	$pembayaran->save();
 
-    	return redirect(url("/myorder"))->with('success', 'bukti transaski sedang diproses, mohon tunggu');
+    	return redirect('/error')->with('success', 'bukti transaski sedang diproses, mohon tunggu');
     }
 }
