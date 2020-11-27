@@ -17,7 +17,7 @@ $factory->define(\App\art::class, function (Faker $faker) {
         'kecamatan'=>$faker->citySuffix,
         'alamat'=>$faker->address,
         'kodepos'=>$faker->postcode,
-        'status'=>$faker->randomElement(['1','2']),
+        'status'=>1,
         'deskripsi'=>$faker->realText($maxNbChars = 200, $indexSize = 2),
     ];
 });

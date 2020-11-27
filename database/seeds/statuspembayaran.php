@@ -11,10 +11,10 @@ class statuspembayaran extends Seeder
      */
     public function run()
     {
-        DB::table('statuspembayaran')->insert([
+        DB::table('status_pembayaran')->insert([
             'statuspembayaran' => 1,
         ]);
-        DB::table('statuspembayaran')->insert([
+        DB::table('status_pembayaran')->insert([
             'statuspembayaran' => 2,
         ]);
     }

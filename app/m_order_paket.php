@@ -13,7 +13,7 @@ class m_order_paket extends Model
      protected $casts = [
     'created_at' => 'date:hh:mm'
 ];
-    protected $fillable = ['id_art', 'id_master','id_paket','id_status_penerimaan','id_bank', 'waktu_kerja'];
+    protected $fillable = ['id_art', 'id_master','id_paket','id_status_penerimaan','id_bank','nomor_order', 'waktu_kerja','mp'];
 
     public function masters()
     {

@@ -21,9 +21,9 @@ class C_master extends Controller
     public function datamaster(Request $request){
          if ($request->has('cari')){
             $data_master = \App\master::where('name', 'LIKE', '%'
-            .$request->cari. '%')->get();
+            .$request->cari. '%')->paginate(10);
         }else{
-            $data_master = \App\master::all();
+            $data_master = \App\master::paginate(10);
         }
         return view('admin.v_master',['data_master' => $data_master]);
     }

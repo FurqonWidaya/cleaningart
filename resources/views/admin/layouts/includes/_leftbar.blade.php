@@ -23,7 +23,7 @@
 
       <!-- Heading -->
 
-      <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Nav Item - Pages Collapse Menu pekerjaan-->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-people-carry"></i>
@@ -37,7 +37,7 @@
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
+      <!-- Nav Item - Utilities Collapse Menu pengguna-->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-people-arrows"></i>
@@ -61,10 +61,17 @@
           </div>
         </div>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/notfound')}}">
+       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefour" aria-expanded="true" aria-controls="collapsefour">
           <i class="fas fa-tasks"></i>
           <span>Data Transaksi</span></a>
+          <div id="collapsefour" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{url('/verifytransaski')}}">Verify Data Transaksi</a>
+            <a class="collapse-item" href="{{url('/datatransaksi')}}">Data Transaksi Sukses</a>
+          </div>
+        </div>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider">

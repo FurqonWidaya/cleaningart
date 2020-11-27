@@ -16,14 +16,16 @@
   </div>
 </section>
 @section('content')
+<!-- Table -->
 @if(session('success'))
-        <div class="alert alert-success" role="alert">
-         {{session('success')}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-       @endif
+<!-- Modal -->
+<div class="alert alert-success" role="alert">
+  {{session('success')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 <div id="mission-section" class="ptb ptb-xs-180">
       <div class="container">
         <div class="row">
@@ -43,6 +45,9 @@
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="diterima-tab" data-toggle="tab" href="#diterima" role="tab" aria-controls="diterima" aria-selected="false">Order Diterima</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="selesai-tab" data-toggle="tab" href="#selesai" role="tab" aria-controls="selesai" aria-selected="false">Orderan Selesai</a>
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="dibatalkan-tab" data-toggle="tab" href="#dibatalkan" role="tab" aria-controls="dibatalkan" aria-selected="false">Orderan Dibatalkan</a>
@@ -135,7 +140,7 @@
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>
               <td>{{$order->nama_art}}</td>
-              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
+              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>di{{$order->status_penerimaan}}</p></td>
 
               <td>{{\Carbon\Carbon::parse($order->due_date)->format('d-m-Y H:i')}}</td>
               <td><a href="{{url('/checkout/'.$order->nomor_order)}}" class='btn btn-primary btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Bayar Paket</a><br><br>
@@ -171,9 +176,46 @@
   <!-- penutup tab-->
   @endif
 
-  @if (isset($data_order) && count($data_order) > 0)
+<!-- menunggu verif -->
+  @if (isset($order_ver) && count($order_ver) > 0)
   <!-- pembuka tab menunggu-->
-  <div class="tab-pane" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">belum ada data</div>
+ <div class="tab-pane" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">
+    <br>
+      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+          <thead class="dark-bg">
+          <tr>
+              <th>Nama Paket</th>
+              <th>Total</th>
+              <th>Nama Art</th>
+              <th>Status Penerimaan</th>
+              <th>bayar pada</th>
+              <th>Status pembayaran</th>
+          </tr>
+        </thead>
+              @foreach($order_ver as $ver_order)
+        <tbody>
+          <tr>
+              <td>{{$ver_order->paket}}</td>
+              <td>Rp {{$ver_order->harga}}</td>
+              <td>{{$ver_order->nama_art}}</td>
+
+              @if($ver_order->sp == 1)
+              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>di{{$ver_order->status_penerimaan}}</p></td>
+
+              @elseif($ver_order->sp == 2)
+              <td><p class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>{{$ver_order->status_penerimaan}}</p></td>
+
+              @else()
+              <td><p class='btn btn-warning btn-sm'><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> {{$ver_order->status_penerimaan}}</p></td>
+              @endif
+
+              <td>{{ \Carbon\Carbon::parse($ver_order->buat)->format('d-m-Y H:i')}}</td>
+              <td><p class='btn btn-primary btn-sm'><i class="fa fa-spinner fa-fw" aria-hidden="true">&nbsp;</i>{{$ver_order->spp}}</p></td>
+          </tr>
+          </tbody>
+          @endforeach
+      </table>
+  </div>
   <!-- penutup tab-->
   @else()
    <!-- pembuka tab menunggu-->
@@ -181,13 +223,111 @@
   <!-- penutup tab-->
   @endif
 
-  @if (isset($data_order) && count($data_order) > 0)
+
+  @if (isset($trans_acc) && count($trans_acc) > 0)
   <!-- pembuka tab-->
-  <div class="tab-pane" id="diterima" role="tabpanel" aria-labelledby="diterima-tab">belum ada data</div>
+  <div class="tab-pane" id="diterima" role="tabpanel" aria-labelledby="diterima-tab">
+     <br>
+      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+          <thead class="dark-bg">
+          <tr>
+              <th>Nama Paket</th>
+              <th>Total</th>
+              <th>Nama Art</th>
+              <th>Status Penerimaan</th>
+              <th>bayar pada</th>
+              <th>Status Pembayaran</th>
+              <th>Status Pekerjaan</th>
+          </tr>
+        </thead>
+              @foreach($trans_acc as $trans)
+        <tbody>
+          <tr>
+              <td>{{$trans->paket}}</td>
+              <td>Rp {{$trans->harga}}</td>
+              <td>{{$trans->nama_art}}</td>
+
+              @if($trans->sp == 1)
+              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>di{{$trans->status_penerimaan}}</p></td>
+
+              @elseif($trans->sp == 2)
+              <td><p class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>{{$trans->status_penerimaan}}</p></td>
+
+              @else()
+              <td><p class='btn btn-warning btn-sm'><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> {{$trans->status_penerimaan}}</p></td>
+              @endif
+
+              <td>{{ \Carbon\Carbon::parse($trans->buat)->format('d-m-Y H:i')}}</td>
+              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true">&nbsp;</i>{{$trans->spp}}</p></td>
+              <td>
+                <form method="post" action="{{url('/selesai/'.$trans->id)}}">
+                 {{csrf_field()}}
+                  <input name="mp" hidden="" readonly="" value="3">
+                   <input name="status" hidden="" readonly="" value="1">
+                   <input name="id" value="{{$trans->id}}" hidden="" readonly="">
+                   <button class="btn btn-warning" type="submit">Konfirmasi Selesai</button>
+                </form>
+              </td>
+          </tr>
+          </tbody>
+          @endforeach
+      </table>
+  </div>
   <!-- penutup tab-->
   @else()
   <!-- pembuka tab-->
   <div class="tab-pane" id="diterima" role="tabpanel" aria-labelledby="diterima-tab">belum ada data</div>
+  <!-- penutup tab-->
+  @endif
+
+
+  @if (isset($done_order) && count($done_order) > 0)
+  <!-- pembuka tab-->
+  <div class="tab-pane" id="selesai" role="tabpanel" aria-labelledby="selesai-tab">
+     <br>
+      <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+          <thead class="dark-bg">
+          <tr>
+              <th>Nama Paket</th>
+              <th>Total</th>
+              <th>Nama Art</th>
+              <th>Status Penerimaan</th>
+              <th>bayar pada</th>
+              <th>Status Pembayaran</th>
+              <th>Status Pekerjaan</th>
+          </tr>
+        </thead>
+              @foreach($done_order as $done)
+        <tbody>
+          <tr>
+              <td>{{$done->paket}}</td>
+              <td>Rp {{$done->harga}}</td>
+              <td>{{$done->nama_art}}</td>
+
+              @if($done->sp == 1)
+              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>di{{$done->status_penerimaan}}</p></td>
+
+              @elseif($done->sp == 2)
+              <td><p class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>{{$done->status_penerimaan}}</p></td>
+
+              @else()
+              <td><p class='btn btn-warning btn-sm'><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i> {{$done->status_penerimaan}}</p></td>
+              @endif
+
+              <td>{{ \Carbon\Carbon::parse($done->buat)->format('d-m-Y H:i')}}</td>
+              <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true">&nbsp;</i>{{$done->spp}}</p></td>
+              <td>
+                   <button class="btn btn-success" type="button" data-dismiss="modal">Selesai</button>
+              </td>
+          </tr>
+          </tbody>
+          @endforeach
+      </table>
+  </div>
+  <!-- penutup tab-->
+  @else()
+  <!-- pembuka tab-->
+  <div class="tab-pane" id="selesai" role="tabpanel" aria-labelledby="selesai-tab">belum ada data</div>
   <!-- penutup tab-->
   @endif
 

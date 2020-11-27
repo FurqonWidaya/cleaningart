@@ -216,7 +216,7 @@
 					<div class="courses_popular border" style="padding:20px;">
 						<div class="top_cours">
 							<figure>
-								<img src="{{asset('assets/images/service/img_1.jpg')}}" alt="" />
+								<img src="{{$peka->getPhoto()}}" alt="" />
 							</figure>
 							<div class="apply_box d-flex align-items-center">
 								<div class="full_width">

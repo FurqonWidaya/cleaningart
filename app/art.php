@@ -9,8 +9,7 @@ class art extends User
     protected $table = 'art';
     protected $fillable= ['user_id', 'foto', 'name', 'nohp', 'tanggallahir', 'kecamatan', 'alamat',
     'kodepos', 'status', 'deskripsi'];
-    //protected $primaryKey = 'user_id';
-
+ 
     public function getPhoto(){
     	if(!$this->foto){
     		return asset('/images/default.png');

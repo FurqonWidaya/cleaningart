@@ -33,7 +33,7 @@
       <div class="col-md-6 col-lg-4 mb-30" style="padding:30px;">
         <div class="service_box" style="border: 1px solid #dedede;text-align:center;">
           <figure>
-            <a href="#"><img src="{{asset('assets/images/service/img_1.jpg')}}" alt="" /></a>
+            <a href="#"><img src="{{$peka->getPhoto()}}" alt="" /></a>
           </figure>
           <div class="product-details">
             <h3 class="text-center"><a href="#">{{$peka->nama_paket}}</a></h3>

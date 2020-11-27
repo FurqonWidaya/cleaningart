@@ -21,6 +21,7 @@ class CreatePembayaranTable extends Migration
             $table->datetime('day_over');
             $table->string('kode_pembayaran')->nullable();
             $table->biginteger('id_order')->unsigned();
+            $table->timestamps();
         });
     }
 

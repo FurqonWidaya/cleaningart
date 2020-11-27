@@ -80,13 +80,13 @@
       <div class="row">
           <div class="col-md-45 col-lg-12 border text-center">
             <div class="about-block clearfix">
-            <form action="{{url('/error')}}">
+            <form action="{{url('/posttransaksi')}}" method="POST"  enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="box-title ">
                   <h4 class="pb-50">Silahkan Upload Bukti Pembayaran</h4>
                   <input name="day_start" value="{{$data_order->due_date}}" hidden="">
                   <input name="day_over" value="{{$data_order->tanggal_dibuat}}" hidden="">
-                  <input name="id_status_pembayaran" value="1" readonly="" hidden="">
+                  <input name="id_statuspembayaran" value="1" readonly="" hidden="">
                   <input name="id_order" value="{{$data_order->id_order}}" readonly="" hidden="">
                   <div>
                   <input class="border" type="file" name="bukti_transfer" value="{{old('bukti_transfer')}}">

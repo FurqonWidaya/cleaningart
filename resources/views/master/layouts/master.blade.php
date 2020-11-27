@@ -14,6 +14,7 @@
 		<link href="{{asset('assets/css/ionicons.css')}}" rel="stylesheet" type="text/css">
 		<link href="{{asset('assets/css/jquery.fancybox.css')}}" rel="stylesheet" type="text/css">
 		<link href="{{asset('assets/css/magnific-popup.css')}}" type="text/css" rel="stylesheet">
+		<link href="{{asset('assets/datepickers/bootstrap-datetimepicker.min.css')}}" type="text/css" rel="stylesheet">
 
 		<!--Main Slider-->
 		<link href="{{asset('assets/css/settings.css')}}" type="text/css" rel="stylesheet" media="screen">
@@ -129,6 +130,8 @@
 		<script type="text/javascript" src="{{asset('assets/extensions/revolution.extension.navigation.min.js')}}"></script>
 		<script type="text/javascript" src="{{asset('assets/extensions/revolution.extension.parallax.min.js')}}"></script>
 		<script type="text/javascript" src="{{asset('assets/js/jquery.revolution.js')}}"></script>
+		<script type="text/javascript" src="{{asset('datepicker/js/bootstrap-datetimepicker.js')}}"></script>
+		<script type="text/javascript" src="{{asset('datepicker/js/locales/bootstrap-datetimepicker.fr.js')}}"></script>
 		<!-- custom Js -->
 		<script src="{{asset('assets/js/custom1.js')}}" type="text/javascript"></script>
 

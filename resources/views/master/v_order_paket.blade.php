@@ -136,7 +136,7 @@
 													</li>
 													<li>
 														Pilih ART:<span>
-															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;" required  oninvalid="alert('Pilih ART!');"> 
+															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;" required  oninvalid="alert('Pilih ART!');" > 
 															<option value="">
 																- pilih -
 															</option class="form-control mb-25" style="color: #000">
@@ -152,7 +152,7 @@
 													<span class="help-block " style="color: #c80000">{{($errors->first('art'))}}</span>
 													@endif
 													<li>
-														Pilih Waktu Kerja:<span><input type="date" name="waktu_kerja" style="color: #000; background-color: #fff;" ></span>
+														Pilih Waktu Kerja:<span><input type="datetime-local" name="waktu_kerja" style="color: #000; background-color: #fff;" ></span>
 														@if($errors->has('waktu_kerja'))
 													<span class="help-block " style="color: #c80000">{{($errors->first('waktu_kerja'))}}</span>
 													@endif

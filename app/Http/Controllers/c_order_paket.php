@@ -13,6 +13,7 @@ use App\art;
 use App\m_bank;
 use App\m_order_paket;
 use App\status_penerimaan;
+use App\pembayaran;
 
 class c_order_paket extends Controller
 {
@@ -36,7 +37,7 @@ class c_order_paket extends Controller
             'kecamatan'=>'required|min:3',
             'kodepos'=>'required',
             'alamat'=>'required|min:4',
-            'waktu_kerja' => 'required|date|date_format:Y-m-d|after:today|before:7 days',         
+            'waktu_kerja' => 'required|date|after:today|before:7 days|between:7,20 Hours',         
         ],
         	[
             'kecamatan.required' => 'masukkan kecamatan anda untuk melanjutkan',
@@ -44,28 +45,38 @@ class c_order_paket extends Controller
               'alamat.required' => 'masukkan alamat anda untuk melanjutkan',
               'waktu_kerja.required' => 'tentukan waktu kerja',
               'waktu_kerja.after' => 'pilihan waktu kerja harus diset setelah hari ini',
-              'waktu_kerja.before' => 'pilihan waktu kerja harus diset paling lama 7 hari kedepan'
+              'waktu_kerja.before' => 'pilihan waktu kerja harus diset paling lama 7 hari kedepan',
+              'waktu_kerja.between' => 'pilihan waktu kerja harus diset antara jam 8 hingga 20'
         ]
     );
      $user =  \Auth::user()->id;
    	   $order = new m_order_paket;
-       $pin = mt_rand(1000000000, 9999999999);
-        $nomor_order = str_shuffle($pin);
+       $pin = mt_rand(1000000, 9999999);
+       $nomor = 1;
+        $nomor_pb = str_shuffle($pin);
         $order->id_art = $request->art_id;
         $order->id_master = $request->master_id;
        	$order->id_paket = $request->paket_id;
         $order->id_bank = $request->bank_id;
         $order->id_status_penerimaan =$request->status_id;
          $order->waktu_kerja = $request->waktu_kerja;
-          $order->nomor_order = $nomor_order;
+          $order->nomor_order = $nomor_pb;
+          $order->mp = $nomor;
         $order->save();
+        //tambahan dulu
+         // $request->request->add(['order_id'=> $order->id]);
+         //  $pembayaran = new pembayaran;
+         //  $pembayaran->save();
+         //  $pembayaran->save();
+
+          ///end
         DB::table('master')
    ->where('user_id', $user )
    ->update([ 
         "kecamatan"=>  $request->kecamatan,
         "alamat" => $request->alamat,
         "kodepos" => $request->kodepos, ]);
-        return redirect(url("/cekproses/".$order->nomor_order))->with('success', 'pesanan berhasil dibuat');
+        return redirect(url("/orderproses/".$order->nomor_order))->with('success', 'pesanan berhasil dibuat');
         
    }
 
@@ -105,7 +116,40 @@ public function cekproses($id)
     ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
     ->join('bank as b', 'b.id', '=', 'oa.id_bank')
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
-    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',1)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',1)->where('oa.mp', '=', 1)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+     ->get(); 
+
+     $order_ver = DB::table('order_art as oa')
+    ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
+    ->join('users as us', 'us.id', '=', 'ms.user_id')
+    ->join('art as ar', 'ar.user_id', '=', 'oa.id_art')
+    ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
+    ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
+    ->join('pembayaran as pb', 'pb.id_order', '=', 'oa.id')
+    ->join('status_pembayaran as spp', 'spp.id', '=', 'pb.id_statuspembayaran')
+    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date, spp.statuspembayaran as spp, pb.created_at as buat, pb.id_statuspembayaran as id_statuspembayaran'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',1)->where('oa.mp', '=', 2)->where('pb.id_statuspembayaran','=',1)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+     ->get(); 
+
+     $trans_acc = DB::table('order_art as oa')
+    ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
+    ->join('users as us', 'us.id', '=', 'ms.user_id')
+    ->join('art as ar', 'ar.user_id', '=', 'oa.id_art')
+    ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
+    ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
+    ->join('pembayaran as pb', 'pb.id_order', '=', 'oa.id')
+    ->join('status_pembayaran as spp', 'spp.id', '=', 'pb.id_statuspembayaran')
+    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date, spp.statuspembayaran as spp, pb.created_at as buat, pb.id_statuspembayaran as id_statuspembayaran'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',1)->where('oa.mp', '=', 2)->where('pb.id_statuspembayaran','=',2)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+     ->get(); 
+
+     $done_order = DB::table('order_art as oa')
+    ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
+    ->join('users as us', 'us.id', '=', 'ms.user_id')
+    ->join('art as ar', 'ar.user_id', '=', 'oa.id_art')
+    ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
+    ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
+    ->join('pembayaran as pb', 'pb.id_order', '=', 'oa.id')
+    ->join('status_pembayaran as spp', 'spp.id', '=', 'pb.id_statuspembayaran')
+    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date, spp.statuspembayaran as spp, pb.created_at as buat, pb.id_statuspembayaran as id_statuspembayaran'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',1)->where('oa.mp', '=', 3)->where('pb.id_statuspembayaran','=',2)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
      ->get(); 
 
      $batal_order = DB::table('order_art as oa')
@@ -117,15 +161,8 @@ public function cekproses($id)
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
     ->select(DB::raw('oa.id as id, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, oa.nomor_order as nomor_order'))->where('oa.id_master', $user)->whereOr('sp.status_penerimaan','=',2)->wherenotNull('oa.deleted_at')
      ->orderBy('oa.created_at', 'desc')->get();
-    // dd($request->all());
-    //  DB::table('order_art')->select('*')
-    // ->where('created_at', '<', 'INTERVAL 1 MINUTE')->where('id_master', $user)->delete();
-     // if($data_order) {
-     //    if($data_order['due_date'] > date()) {
-     //      DB::table('order_art')->where('id_master', $user)->delete()
-     //    }
-     //    else{
-    return view('master.v_orderan_master', compact('data_order','batal_order', 'order_acc'));
+   
+    return view('master.v_orderan_master', compact('data_order','batal_order', 'order_acc', 'order_ver', 'trans_acc','done_order'));
 
    }
 
@@ -225,4 +262,36 @@ public function cekproses($id)
       ]);
    return redirect()->back();
    }
+
+   public function posttransaksi(Request $request)
+    {
+      $this->validate($request,[         
+            'bukti_transfer'=>'required',       
+        ],
+          [
+            'bukti_transfer.required' => 'masukkan upload bukti transfer pembayaran anda untuk melanjutkan',
+        ]
+    );
+      $transaksi = pembayaran::create($request->all());
+      //$transaksi->bukti_transfer = $request->bukti_transfer;
+      $transaksi->id_statuspembayaran  = $request->id_statuspembayaran;
+      $pin = mt_rand(1100000000111, 9999999999999);
+        $kode_pembayaran = str_shuffle($pin);
+        $transaksi->kode_pembayaran = $kode_pembayaran;
+      $transaksi->id_order  = $request->id_order;
+      $transaksi->day_start = $request->day_start;
+      $transaksi->day_over = $request->day_over;
+      if ($request->hasFile('bukti_transfer')) {
+          $request->file('bukti_transfer')->move('images', $request->file('bukti_transfer')->getClientOriginalName());
+          $transaksi->bukti_transfer = $request->file('bukti_transfer')->getClientOriginalName();
+      }
+      $transaksi->save();
+      $nomor = 2;
+      $id = $request->id_order;
+       DB::table('order_art')->where('id',$id)
+   ->update([ 
+        "mp"=>  $nomor,
+        ]);
+      return redirect('/myorder')->with('success', 'bukti transaski sedang diproses, mohon tunggu');
+    }
 }
