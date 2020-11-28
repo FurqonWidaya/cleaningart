@@ -15,7 +15,7 @@ class CreatePembayaranTable extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->binary('bukti_transfer');
+            $table->binary('bukti_transfer')->nullable();
             $table->bigInteger('id_statuspembayaran')->unsigned();
             $table->datetime('day_start');
             $table->datetime('day_over');

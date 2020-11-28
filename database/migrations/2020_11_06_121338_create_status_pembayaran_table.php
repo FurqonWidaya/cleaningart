@@ -16,7 +16,7 @@ class CreateStatusPembayaranTable extends Migration
         Schema::create('status_pembayaran', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->enum('statuspembayaran', ['proses', 'terverifikasi']);
+            $table->enum('statuspembayaran', ['proses', 'terverifikasi','belumbayar']);
 
         });
     }

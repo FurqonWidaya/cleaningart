@@ -65,11 +65,11 @@
       <li class="nav-item">
        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefour" aria-expanded="true" aria-controls="collapsefour">
           <i class="fas fa-tasks"></i>
-          <span>Data Transaksi</span></a>
+          <span>Data Pembayaran</span></a>
           <div id="collapsefour" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{url('/verifytransaski')}}">Verify Data Transaksi</a>
-            <a class="collapse-item" href="{{url('/datatransaksi')}}">Data Transaksi Sukses</a>
+            <a class="collapse-item" href="{{url('/verifytransaski')}}">Verifikasi Pembayaran</a>
+            <a class="collapse-item" href="{{url('/datatransaksi')}}">Data Pembayaran Sukses</a>
           </div>
         </div>
       </li>

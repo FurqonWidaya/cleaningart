@@ -46,7 +46,7 @@
               <td>{{$pembayaran->order_art->nomor_order}}</td>  
               <td>{{$pembayaran->created_at}}</td>
                <td> 
-                <button class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>&nbsp;{{$pembayaran->statuspembayaran->statuspembayaran}}</button>
+                <div class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>&nbsp;{{$pembayaran->statuspembayaran->statuspembayaran}}</div>
               </td>
           
           </tr>

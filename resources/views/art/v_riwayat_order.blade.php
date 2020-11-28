@@ -5,9 +5,9 @@
   <div class="container">
     <div class="row title">
       <div class="title_row">
-        <h1 data-title="Service"><span>Orderan Saya</span></h1>
+        <h1 data-title="Service"><span>Riwayat Orderan Saya</span></h1>
         <div class="page-breadcrumb">
-          <a href="{{url('/home')}}">Home</a>/ <span>Orderan Saya</span>
+          <a href="{{url('/home')}}">Home</a>/ <span>Riwayat Orderan Saya</span>
         </div>
 
       </div>
@@ -33,62 +33,42 @@
                 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="pesanan-tab" data-toggle="tab" href="#pesanan" role="tab" aria-controls="pesanan" aria-selected="false">Tawaran Pekerjaan</a>
+    <a class="nav-link" id="pesanan-tab" data-toggle="tab" href="#pesanan" role="tab" aria-controls="pesanan" aria-selected="false">Riwayat Order</a>
   </li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
+   @if (isset($data_order) && count($data_order) > 0)
   <div class="tab-pane active" id="pesanan" role="tabpanel" aria-labelledby="pesanan-tab">
     <br>
       <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
           <thead class="dark-bg">
           <tr>
-             <th>Nama master</th>
+             <th>Nomor Order</th>
+              <th>Nama Master</th>
               <th>Nama Paket</th>
-              <th>Total</th>
-              <th>Status Penerimaan</th>
+              <th>Waktu Kerja</th>
+              <th>Status</th>
           </tr>
         </thead>
               @foreach($data_order as $order)
         <tbody>
           <tr>
+            <td>{{$order->nomor_order}}</td>
             <td>{{$order->nama_master}}</td>
               <td>{{$order->paket}}</td>
-              <td>Rp {{$order->harga}}</td>
-              @if($order->sp == 3)
-              <td> <form action="{{url('/terima/'.$order->id)}}" method="post">
-                  {{csrf_field()}}
-                  <input type="number" name="id_status_penerimaan" value="1" readonly="" hidden="">
-                  <input type="text" name="status_kerja" value="2" readonly="" hidden="">
-                <button class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>Terima&nbsp;</button></form><br><br>
-                <form action="{{url('/tolak/'.$order->id)}}" method="post">
-                   <input type="number" name="id_status_penerimaan" value="2" readonly="" hidden="">
-                  <input type="text" name="status_kerja" value="1" readonly="" hidden="">
-
-                  {{csrf_field()}}
-                  <input type="number" name="sp" value="2" readonly="" hidden="">
-                <button class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>Tolak&nbsp;</button></form>
-              </td>
-              @elseif($order->sp == 1)
-              <td> 
-                <a class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>Telah diterima&nbsp;</a></<
-              </td>
-              @else()
-               <td> 
-               
-                <a class='btn btn-danger btn-sm'><i class="fa fa-close fa-fw" aria-hidden="true"></i>telah ditolak&nbsp;</button>
-              </td>
-              @endif
+              <td>{{\Carbon\Carbon::parse($order->waktu_kerja)->format('H:i d-m-Y')}}</td>
+              <td><button class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>Selesai</button></td>
           </tr>
           </tbody>
           @endforeach
       </table>
-
   </div>
+  @else()
   <div class="tab-pane" id="pesanan" role="tabpanel" aria-labelledby="pesanan-tab">belum ada data</div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">belum ada data</div>
 </div>
+@endif
         </div>
        </div>
        </div>

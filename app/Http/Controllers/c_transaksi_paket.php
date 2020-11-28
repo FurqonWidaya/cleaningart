@@ -18,12 +18,12 @@ class c_transaksi_paket extends Controller
     {
     	$data_order = DB::table('order_art as oa') 
     ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
-    ->select(DB::raw('pk.nama_paket as nama_paket, pk.harga_paket as harga_paket, oa.nomor_order as nomor_order, oa.created_at as tanggal_dibuat, oa.id_master as activeuser, oa.id as id_order, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 24 HOUR) as due_date'))->where('oa.nomor_order', $id)
+    ->select(DB::raw('pk.nama_paket as nama_paket, pk.harga_paket as harga_paket, oa.nomor_order as nomor_order, oa.created_at as tanggal_dibuat, oa.id_master as activeuser, oa.id as id_order, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date'))->where('oa.nomor_order', $id)
      ->first();    
     	return view('master.v_upload_transaksi', compact('data_order'));
     }
 
-public function postbayarpaket(Request $request)
+public function postbayarpaket(Request $request, $id)
     {
     	$this->validate($request,[         
             'bukti_transfer'=>'required',       
@@ -32,20 +32,13 @@ public function postbayarpaket(Request $request)
             'bukti_transfer.required' => 'masukkan upload bukti transfer pembayaran anda untuk melanjutkan',
         ]
     );
-    	 $transaksi = pembayaran::create($request->all());
+    	 $transaksi = pembayaran::find($id);
       //$transaksi->bukti_transfer = $request->bukti_transfer;
-      $transaksi->id_statuspembayaran  = $request->id_statuspembayaran;
-      $pin = mt_rand(1100000000111, 9999999999999);
-        $kode_pembayaran = str_shuffle($pin);
-        $transaksi->kode_pembayaran = $kode_pembayaran;
-      $transaksi->id_order  = $request->id_order;
-      $transaksi->day_start = $request->day_start;
-      $transaksi->day_over = $request->day_over;
       if ($request->hasFile('bukti_transfer')) {
           $request->file('bukti_transfer')->move('images', $request->file('bukti_transfer')->getClientOriginalName());
           $transaksi->bukti_transfer = $request->file('bukti_transfer')->getClientOriginalName();
       }
-      $transaksi->save();
+      $transaksi->update($request->all());
       $nomor = 1;
        DB::table('order_art')
    ->update([ 
@@ -103,4 +96,23 @@ public function postbayarpaket(Request $request)
    return redirect('/myorder')->with('success', 'orderan berhasil diselsaikan');
     }
     
+
+    ///art lihat riwayat order
+    public function riwayatart(request $request)
+   {
+     $user = \Auth::user()->id;
+      $data_order = DB::table('order_art as oa')
+    ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
+    ->join('users as us', 'us.id', '=', 'ms.user_id')
+    ->join('art as ar', 'ar.user_id', '=', 'oa.id_art')
+    ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
+    ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
+    ->join('pembayaran as pb', 'pb.id_order', '=', 'oa.id')
+    ->join('status_pembayaran as spp', 'spp.id', '=', 'pb.id_statuspembayaran')
+    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date, spp.statuspembayaran as spp, pb.created_at as buat, pb.id_statuspembayaran as id_statuspembayaran, oa.waktu_kerja as waktu_kerja'))->where('oa.id_art', $user)->where('sp.status_penerimaan','=',1)->where('oa.mp', '=', 3)->where('pb.id_statuspembayaran','=',2)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+     ->get(); 
+    
+    return view('art.v_riwayat_order', compact('data_order'));
+   
+   }
 }

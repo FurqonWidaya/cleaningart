@@ -54,7 +54,7 @@
        </div>
      
         </div>
-        <a href="{{url('/bayarorder/'.$data_order->nomor_order)}}" class="btn btn-primary center">LANJUT PEMBAYARAN</a>
+        <a href="{{url('/bayarorder/'.$data_order->nomor_order)}}" class="btn btn-primary center">LANJUTKAN PEMBAYARAN</a>
        </div>
        <div class="col-lg-12">
        <p class="col-lg-6 float-left">nomor order: {{$data_order->nomor_order}}</p>

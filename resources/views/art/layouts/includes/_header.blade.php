@@ -65,6 +65,10 @@
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 							</li>
 							<li>
+								<a href="{{url('/errors')}}">Customer Services</a>
+								<i class="ion-ios-plus-empty hidden-md-up"></i>
+							</li>
+							<li>
 								<a href="#">{{auth()->user()->username}}</a>
 								<i class="ion-ios-plus-empty hidden-md-up"></i>
 								<!-- Nav Dropdown -->
@@ -73,7 +77,7 @@
 										<a href="{{url('/profilku/'.auth()->user()->id)}}">Profilku</a>
 									</li>
 									<li>
-										<a href="{{url('/errors')}}">Keuanganku</a>
+										<a href="{{url('/riwayatorder')}}">Riwayat Order</a>
 									</li>
 									<!-- <li>
 										<a href="{{url('/errors')}}">Riwayat Pesanan</a>

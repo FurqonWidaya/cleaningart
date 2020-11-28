@@ -12,7 +12,7 @@
 					</span>
 						
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-						<input class="input100" type="text" name="username" placeholder="Username" id="username">
+						<input class="input100" type="text" name="username" placeholder="Username" id="username" value="{{old('username')}}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-envelope"></span>

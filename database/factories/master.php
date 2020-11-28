@@ -9,8 +9,8 @@ $factory->define(master::class, function (Faker $faker) {
     return [
       'name'=> $faker->name,
       'nohp'=>$faker->phoneNumber,
-      'kecamatan'=>$faker->citySuffix,
-      'alamat'=>$faker->address,
+      'kecamatan'=>'sumbersari',
+      'alamat'=>$faker->streetAddress ,
       'kodepos'=>$faker->postcode, 
     ];
 });

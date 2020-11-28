@@ -134,8 +134,15 @@
 													<li>
 														Total:<span>Rp {{$data_paket->harga_paket}}</span>
 													</li>
+													
 													<li>
-														Pilih ART:<span>
+														Waktu Kerja:<span><input type="datetime-local" name="waktu_kerja" style="color: #000; background-color: #fff;" ></span>
+													</li>
+														@if($errors->has('waktu_kerja'))
+													<span class="help-block " style="color: #c80000">{{($errors->first('waktu_kerja'))}}</span>
+													@endif
+													<li >
+														<p style="margin-bottom: 0px"> Pilih ART:</p><span>
 															<select name="art_id" class="form-control mb-25" style="color: #000; background-color: #fff;" required  oninvalid="alert('Pilih ART!');" > 
 															<option value="">
 																- pilih -
@@ -150,11 +157,6 @@
 													</li>
 													@if($errors->has('art'))
 													<span class="help-block " style="color: #c80000">{{($errors->first('art'))}}</span>
-													@endif
-													<li>
-														Pilih Waktu Kerja:<span><input type="datetime-local" name="waktu_kerja" style="color: #000; background-color: #fff;" ></span>
-														@if($errors->has('waktu_kerja'))
-													<span class="help-block " style="color: #c80000">{{($errors->first('waktu_kerja'))}}</span>
 													@endif
 												</ul>
 											</div><br>

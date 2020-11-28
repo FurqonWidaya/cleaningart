@@ -135,9 +135,9 @@
           </div>
         </div>
          </div>
-
           </div>
         </div>
+        <h5 ><a href="{{url('/riwayatorder')}}" style="color: #75c3e8">Lihat Riwayat Order</a></h5>
       </div>
     </div>
 @endsection

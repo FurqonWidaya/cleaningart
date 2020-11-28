@@ -95,6 +95,7 @@ Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
  Route::get('/pesananku', 'C_order_paket@pesananku');
  Route::post('/terima/{id}', 'C_order_paket@terima');
  Route::post('/tolak/{id}', 'C_order_paket@terima');
+  Route::get('/riwayatorder', 'C_transaksi_paket@riwayatart');
 });
 
 

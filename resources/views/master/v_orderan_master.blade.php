@@ -41,10 +41,10 @@
     <a class="nav-link" id="Pembayaran-tab" data-toggle="tab" href="#Pembayaran" role="tab" aria-controls="Pembayaran" aria-selected="true">Menunggu Pembayaran</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="menunggu-tab" data-toggle="tab" href="#menunggu" role="tab" aria-controls="menunggu" aria-selected="false">Menunggu Verifikasi</a>
+    <a class="nav-link" id="menunggu-tab" data-toggle="tab" href="#menunggu" role="tab" aria-controls="menunggu" aria-selected="false">Verifikasi Pembayaran</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="diterima-tab" data-toggle="tab" href="#diterima" role="tab" aria-controls="diterima" aria-selected="false">Order Diterima</a>
+    <a class="nav-link" id="diterima-tab" data-toggle="tab" href="#diterima" role="tab" aria-controls="diterima" aria-selected="false">Pembayaran Diterima</a>
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="selesai-tab" data-toggle="tab" href="#selesai" role="tab" aria-controls="selesai" aria-selected="false">Orderan Selesai</a>

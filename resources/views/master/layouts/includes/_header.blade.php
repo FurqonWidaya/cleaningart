@@ -78,7 +78,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="{{url('/contactus')}}">Aduan dan Saran</a>
+						<a href="{{url('/contactus')}}">Customer Services</a>
 						<i class="ion-ios-plus-empty hidden-md-up"></i>
 					</li>
 					<li>

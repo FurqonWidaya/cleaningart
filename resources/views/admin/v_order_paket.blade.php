@@ -32,7 +32,6 @@
           <thead style="background-color: #ddd;">
           <tr class="text-center">
              <th>Nomor</th>
-              <th>Id</th>
               <th>Nama Master</th>
               <th>Paket</th>
               <th>Total harga</th>
@@ -46,7 +45,6 @@
         <tbody>
           <tr class="text-center">
              <th>{{$i++}}</th>
-              <td>{{$order->nomor}}</td>
               <td>{{$order->nama_master}}<span style="font-weight: bold;">&nbsp;({{$order->username}})</span></td>
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>
