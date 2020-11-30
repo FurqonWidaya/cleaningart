@@ -57,11 +57,32 @@
               <td>{{$order->paket}}</td>
               <td>Rp {{$order->harga}}</td>
               @if($order->sp == 3)
-              <td> <form action="{{url('/terima/'.$order->id)}}" method="post">
+              <td> 
+                <button class='btn btn-success btn-sm' data-toggle="modal" data-target="#verif"><i class="fa fa-check fa-fw" aria-hidden="true"></i>Terima&nbsp;</button></form><br><br>
+                <!-- openmodal -->
+                <div class="modal fade" id="verif" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Peringatan !!</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">“Apakah anda yakin ingin memverifikasi order ini?”</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+            <form action="{{url('/terima/'.$order->id)}}" method="post">
                   {{csrf_field()}}
                   <input type="number" name="id_status_penerimaan" value="1" readonly="" hidden="">
                   <input type="text" name="status_kerja" value="2" readonly="" hidden="">
-                <button class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>Terima&nbsp;</button></form><br><br>
+            <button class="btn btn-primary" type="submit">Ya</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end modal --> 
                 <form action="{{url('/tolak/'.$order->id)}}" method="post">
                    <input type="number" name="id_status_penerimaan" value="2" readonly="" hidden="">
                   <input type="text" name="status_kerja" value="1" readonly="" hidden="">
