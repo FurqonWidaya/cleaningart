@@ -129,10 +129,11 @@
 													</li>
 
 													<li>
-														Pajak dll:<span>Rp --</span><hr>
+														Biaya Admin dll:<span>Rp {{$pajak->pajak}}</span><hr>
 													</li>
 													<li>
-														Total:<span>Rp {{$data_paket->harga_paket}}</span>
+														<input type="" name="total" value="{{$total}}" hidden="">
+														Total:<span>Rp {{$total}}</span>
 													</li>
 													
 													<li>

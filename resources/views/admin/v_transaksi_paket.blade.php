@@ -1,5 +1,11 @@
 @extends('admin.layouts.master')
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{asset('admin/css/zoom.css')}}">
+<div id="myModal1" class="modal1">
+  <span class="close">&times;</span>
+  <img class="modal1-content" id="img01">
+  <div id="caption"></div>
+</div>
   <ol class="breadcrumb">
     <li><i class="fa fa-home"></i><a href="{{url('/dashboard')}}">&nbsp;Home&nbsp;</a></li>
     <li>&#47;&nbsp;<i class="fa fa-users"></i>&nbsp;Data Transaksi</li>
@@ -34,6 +40,7 @@
              <th>Nomor</th>
               <th>nomor pembayaran</th>
               <th>nomor order</th>
+              <th>Bukti Pembayaran</th>
               <th>Tanggal Pembayaran</th>
               <th>Status Pembayaran</th>
           </tr>
@@ -43,7 +50,8 @@
           <tr class="text-center">
              <th>{{$i++}}</th>
               <td>{{$pembayaran->kode_pembayaran}}</td>
-              <td>{{$pembayaran->order_art->nomor_order}}</td>  
+              <td>{{$pembayaran->order_art->nomor_order}}</td> 
+              <th><img id="myImg" src="{{$pembayaran->getbukti()}}"  alt="bukti transfer" style="width:100%;max-width:300px;" /></th> 
               <td>{{$pembayaran->created_at}}</td>
                <td> 
                 <div class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>&nbsp;{{$pembayaran->statuspembayaran->statuspembayaran}}</div>
@@ -57,4 +65,28 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+var modal1 = document.getElementById("myModal1");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("myImg");
+var modal1Img = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal1.style.display = "block";
+  modal1Img.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal1.style.display = "none";
+}
+</script>
 @stop

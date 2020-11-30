@@ -14,7 +14,7 @@ use App\m_bank;
 use App\m_order_paket;
 use App\status_penerimaan;
 use App\pembayaran;
-
+use App\pajak;
 class c_order_paket extends Controller
 {
 
@@ -23,12 +23,18 @@ class c_order_paket extends Controller
   //buat order
    public function klikorder($id)
    {
+    
+    $pajaks = '1';
+    $total = 0;
     $master = auth()->user()->masters;
 		$art = art::where('status', '=', 1)->get();
 		$bank =m_bank::all();
 		$status = status_penerimaan::all();
 		$data_paket = \App\paket_pekerjaan::find($id);
-		return view ('master.v_order_paket', compact('data_paket', 'art', 'bank', 'status', 'master'));
+    $pajak = pajak::find($pajaks);
+    $total = $data_paket->harga_paket + $pajak->pajak;
+    // $total = DB::table('data_paket')->select(DB::raw('SUM(harga_paket', $pajak) as 'total'))->get();
+		return view ('master.v_order_paket', compact('data_paket', 'art', 'bank', 'status', 'master','pajak','total'));
    }
 
    //simpan order
@@ -62,6 +68,7 @@ class c_order_paket extends Controller
          $order->waktu_kerja = $request->waktu_kerja;
           $order->nomor_order = $nomor_pb;
           $order->mp = $nomor;
+          $order->total = $request->total;
         $order->save();
         //tambahan dulu
          // $request->request->add(['order_id'=> $order->id]);
@@ -106,7 +113,7 @@ public function cekproses($id)
     ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
     ->join('bank as b', 'b.id', '=', 'oa.id_bank')
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
-    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',3)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, total, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',3)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
      ->get();    
 
      $order_acc = DB::table('order_art as oa')
@@ -190,7 +197,7 @@ public function cekproses($id)
     ->leftjoin('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
     ->leftjoin('bank as b', 'b.id', '=', 'oa.id_bank')
     ->leftjoin('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
-    ->select(DB::raw('oa.id as nomor, us.username as username,ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat'))->whereNull('oa.deleted_at')
+    ->select(DB::raw('oa.id as nomor, total, oa.nomor_order as nomor_order, us.username as username,ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, oa.mp'))->whereNull('oa.deleted_at')
     ->where('nama_paket', 'LIKE', '%'
           .$request->cari. '%')->orderBy('tanggal_dibuat', 'desc')->get();
     
@@ -202,7 +209,7 @@ public function cekproses($id)
     ->leftjoin('paket_pekerjaan', 'order_art.id_paket', '=', 'paket_pekerjaan.id')
     ->leftjoin('bank', 'order_art.id_bank', '=', 'bank.id')
     ->leftjoin('status_penerimaan', 'order_art.id_status_penerimaan', '=', 'status_penerimaan.id')
-    ->select(DB::raw('order_art.id as nomor,users.username as username, master.name as nama_master, art.name as nama_art, paket_pekerjaan.nama_paket as paket, paket_pekerjaan.harga_paket as harga, bank.bank as bank, status_penerimaan.status_penerimaan as status_penerimaan, order_art.created_at as tanggal_dibuat'))->whereNull('order_art.deleted_at')->orderBy('tanggal_dibuat', 'desc')
+    ->select(DB::raw('order_art.id as nomor, total, order_art.nomor_order as nomor_order,users.username as username, master.name as nama_master, art.name as nama_art, paket_pekerjaan.nama_paket as paket, paket_pekerjaan.harga_paket as harga, bank.bank as bank, status_penerimaan.status_penerimaan as status_penerimaan, order_art.created_at as tanggal_dibuat, order_art.mp'))->whereNull('order_art.deleted_at')->orderBy('tanggal_dibuat', 'desc')
     ->get();
      
     }
@@ -224,7 +231,6 @@ public function cekproses($id)
      }
 
      
-
      //art lihat order
      public function pesananku(request $request)
    {
@@ -236,7 +242,7 @@ public function cekproses($id)
     ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
     ->join('bank as b', 'b.id', '=', 'oa.id_bank')
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
-    ->select(DB::raw('oa.id as id, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp'))->where('oa.id_art', $user)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+    ->select(DB::raw('oa.id as id,total, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp'))->where('oa.id_art', $user)->whereNull('oa.deleted_at')->orderBy('tanggal_dibuat', 'desc')
     ->get();
     
     return view('art.v_orderan_art', compact('data_order'));

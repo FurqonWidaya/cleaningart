@@ -14,7 +14,7 @@ $factory->define(\App\art::class, function (Faker $faker) {
         'name'=> $faker->name,
         'nohp'=>$faker->phoneNumber,
         'tanggallahir'=>$faker->dateTimeBetween($startDate = '-60 years', $endDate = '2001-03-15', $timezone = null),
-        'kecamatan'=>'sumbersari',
+        'kecamatan'=>$faker->citySuffix,
         'alamat'=>$faker->streetAddress ,
         'kodepos'=>$faker->postcode,
         'status'=>1,

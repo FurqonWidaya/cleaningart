@@ -32,12 +32,14 @@
           <thead style="background-color: #ddd;">
           <tr class="text-center">
              <th>Nomor</th>
+             <th>Nomor Order</th>
               <th>Nama Master</th>
               <th>Paket</th>
               <th>Total harga</th>
               <th>Nama Art</th>
               <th>Status Penerimaan</th>
               <th>Tanggal Dibuat</th>
+              <th>Status Order</th>
           </tr>
         </thead>
              
@@ -45,12 +47,20 @@
         <tbody>
           <tr class="text-center">
              <th>{{$i++}}</th>
+             <th>{{$order->nomor_order}}</th>
               <td>{{$order->nama_master}}<span style="font-weight: bold;">&nbsp;({{$order->username}})</span></td>
               <td>{{$order->paket}}</td>
-              <td>Rp {{$order->harga}}</td>
+              <td>Rp {{$order->total}}</td>
               <td>{{$order->nama_art}}</td>
               <td>{{$order->status_penerimaan}}</td>
-              <td>{{$order->tanggal_dibuat}}</td>
+              <td>{{\Carbon\Carbon::parse($order->tanggal_dibuat)->format('d-m-Y H:i')}}</td>
+              @if($order->mp == 1)
+              <td><p class="btn btn-warning">Belum Bayar</p></td>
+              @elseif($order->mp == 2)
+              <td><p class="btn btn-succes">Bayar</p></td>
+              @else
+              <td><p class="btn btn-primary">Selesai</p></td>
+              @endif
           </tr>
           </tbody>
           @endforeach

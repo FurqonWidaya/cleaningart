@@ -49,7 +49,7 @@
              <th>Nomor</th>
               <th>nomor pembayaran</th>
               <th>nomor order</th>
-             
+              <th>Total Tagihan</th>
               <th>Bukti Pembayaran</th>
               <th>Status Pembayaran</th>
               <th>Tanggal Pembayaran</th>
@@ -62,6 +62,7 @@
              <th>{{$i++}}</th>
               <td>{{$pembayaran->kode_pembayaran}}</td>
               <td>{{$pembayaran->order_art->nomor_order}}</td>
+              <td>Rp {{$pembayaran->order_art->total}}</td>
               <td><img id="myImg" src="{{$pembayaran->getbukti()}}" alt="bukti transfer" style="width:100%;max-width:300px" /></td>
               <td>{{$pembayaran->statuspembayaran->statuspembayaran}}</td>
               <td>{{$pembayaran->created_at}}</td>

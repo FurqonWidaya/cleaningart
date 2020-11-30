@@ -15,10 +15,10 @@ class C_ART extends Controller
 	public function dataart(Request $request){
 
 	    if ($request->has('cari')){
-	        $data_art = \App\art::where('name', 'LIKE', '%'
+	        $data_art = \App\art::orderBy('created_at', 'DESC')->where('name', 'LIKE', '%'
 	        .$request->cari. '%')->paginate(10);
 	    }else{
-	        $data_art = \App\art::paginate(10);
+	        $data_art = \App\art::orderBy('created_at', 'DESC')->paginate(10);
 	    }
 	    return view('admin.v_art',['data_art' => $data_art]);
 	}

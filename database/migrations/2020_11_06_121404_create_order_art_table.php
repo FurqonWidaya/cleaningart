@@ -25,6 +25,7 @@ class CreateOrderArtTable extends Migration
             $table->string('nomor_order')->unique();
             $table->datetime('waktu_kerja');
             $table->enum('mp',['notpay', 'pay','done']);
+            $table->string('total');
              // $table->time('time_up');
             //$table->softDeletes();
         });

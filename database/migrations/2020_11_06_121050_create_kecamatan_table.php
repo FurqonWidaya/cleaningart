@@ -16,7 +16,7 @@ class CreateKecamatanTable extends Migration
         Schema::create('kecamatan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->string('kecamatan')->unique();
+            $table->string('kecamatan');
         });
     }
 

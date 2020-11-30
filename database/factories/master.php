@@ -9,7 +9,7 @@ $factory->define(master::class, function (Faker $faker) {
     return [
       'name'=> $faker->name,
       'nohp'=>$faker->phoneNumber,
-      'kecamatan'=>'sumbersari',
+      'kecamatan'=>$faker->citySuffix,
       'alamat'=>$faker->streetAddress ,
       'kodepos'=>$faker->postcode, 
     ];

@@ -75,7 +75,7 @@
         <tbody>
           <tr>
               <td>{{$order->paket}}</td>
-              <td>Rp {{$order->harga}}</td>
+              <td>Rp {{$order->total}}</td>
               <td>{{$order->nama_art}}</td>
  <!--              @if($order->sp == 1)
               <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>{{$order->status_penerimaan}}</p></td>
@@ -260,13 +260,33 @@
               <td>{{ \Carbon\Carbon::parse($trans->buat)->format('d-m-Y H:i')}}</td>
               <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true">&nbsp;</i>{{$trans->spp}}</p></td>
               <td>
-                <form method="post" action="{{url('/selesai/'.$trans->id)}}">
+                
+                   <button class="btn btn-warning"data-toggle="modal" data-target="#selesai">Konfirmasi Selesai</button>
+                    <div class="modal fade" id="selesai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Peringatan !!</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">“Apakah anda yakin ingin menyelesaikan status pekerjaan art”</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+            <form method="post" action="{{url('/selesai/'.$trans->id)}}">
                  {{csrf_field()}}
                   <input name="mp" hidden="" readonly="" value="3">
                    <input name="status" hidden="" readonly="" value="1">
                    <input name="id" value="{{$trans->id}}" hidden="" readonly="">
-                   <button class="btn btn-warning" type="submit">Konfirmasi Selesai</button>
-                </form>
+            <button class="btn btn-primary" type="submit">Ya</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end modal --> 
+                
               </td>
           </tr>
           </tbody>
@@ -317,7 +337,7 @@
               <td>{{ \Carbon\Carbon::parse($done->buat)->format('d-m-Y H:i')}}</td>
               <td><p class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true">&nbsp;</i>{{$done->spp}}</p></td>
               <td>
-                   <button class="btn btn-success" type="button" data-dismiss="modal">Selesai</button>
+                   <p class="btn btn-success btn-sm" aria-hidden='true'>Selesai</p>
               </td>
           </tr>
           </tbody>

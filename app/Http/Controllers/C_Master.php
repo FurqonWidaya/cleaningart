@@ -20,10 +20,10 @@ class C_master extends Controller
     //liat data master
     public function datamaster(Request $request){
          if ($request->has('cari')){
-            $data_master = \App\master::where('name', 'LIKE', '%'
+            $data_master = \App\master::orderBy('created_at', 'DESC')->where('name', 'LIKE', '%'
             .$request->cari. '%')->paginate(10);
         }else{
-            $data_master = \App\master::paginate(10);
+            $data_master = \App\master::orderBy('created_at', 'DESC')->paginate(10);
         }
         return view('admin.v_master',['data_master' => $data_master]);
     }
