@@ -158,7 +158,7 @@
           </div>
           <div class="modal-body">“Apakah anda yakin untuk membatalkan order yang telah diajukan? Jika anda menekan Ya, maka order yang telah anda lakukan akan dibatalkan dan tidak dapat diproses.”</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
             <a class="btn btn-primary" href="{{url('/batal_order/'.$order->id)}}">Ya</a>
           </div>
         </div>
@@ -274,7 +274,7 @@
           </div>
           <div class="modal-body">“Apakah anda yakin ingin menyelesaikan status pekerjaan art”</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
             <form method="post" action="{{url('/selesai/'.$trans->id)}}">
                  {{csrf_field()}}
                   <input name="mp" hidden="" readonly="" value="3">

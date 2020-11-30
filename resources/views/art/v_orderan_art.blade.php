@@ -71,7 +71,7 @@
           </div>
           <div class="modal-body">“Apakah anda yakin ingin memverifikasi order ini?”</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">tidak</button>
             <form action="{{url('/terima/'.$order->id)}}" method="post">
                   {{csrf_field()}}
                   <input type="number" name="id_status_penerimaan" value="1" readonly="" hidden="">
