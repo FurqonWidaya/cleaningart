@@ -77,6 +77,8 @@ Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
    Route::get('/verifytransaski', 'C_transaksi_paket@verifytrans');
    Route::get('/datatransaksi', 'C_transaksi_paket@lihattrans');
    Route::post('/konfirmasi', 'C_transaksi_paket@konfirmasi');
+    Route::post('/ditolak/{id}', 'C_transaksi_paket@ditolak');
+    Route::get('/tolak_verif/{id}', 'C_transaksi_paket@tolak_verif');
 });
 
 
@@ -94,7 +96,7 @@ Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
   Route::get('/about_us', 'ArtController@about');
  Route::get('/pesananku', 'C_order_paket@pesananku');
  Route::post('/terima/{id}', 'C_order_paket@terima');
- Route::post('/tolak/{id}', 'C_order_paket@terima');
+ Route::post('/tolak/{id}', 'C_order_paket@tolak');
   Route::get('/riwayatorder', 'C_transaksi_paket@riwayatart');
 });
 

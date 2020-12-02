@@ -8,10 +8,6 @@ class kecamatan extends Model
 {
     public $timestamps = false;
     protected $table = 'kecamatan';
-    protected $fillable = ['kecamatan','user_id'];
+    protected $fillable = ['kecamatan'];
 
-    public function user()
-        {
-             return $this->hasOne(User::class);
-        }
 }

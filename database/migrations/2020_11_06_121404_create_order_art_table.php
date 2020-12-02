@@ -24,7 +24,7 @@ class CreateOrderArtTable extends Migration
             $table->biginteger('id_status_penerimaan')->unsigned();
             $table->string('nomor_order')->unique();
             $table->datetime('waktu_kerja');
-            $table->enum('mp',['notpay', 'pay','done']);
+            $table->enum('mp',['Belum Bayar', 'Bayar','Selesai', 'Batal']);
             $table->string('total');
              // $table->time('time_up');
             //$table->softDeletes();

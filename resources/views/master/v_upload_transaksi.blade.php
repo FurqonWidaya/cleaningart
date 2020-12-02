@@ -70,7 +70,7 @@
                 <div class="dp-field"><span class="dp-field-label">Harga Paket</span><span class="dp-field-value"style="font-weight: bold;">Rp&nbsp;{{$data_order->harga_paket}}</span>
                 </div>
                 <hr>
-              <div class="dp-field"><span class="dp-field-label">Total Tagihan</span><span class="dp-field-value"style="font-weight: bold;">Rp&nbsp;{{$data_order->harga_paket}}</span>
+              <div class="dp-field"><span class="dp-field-label">Total Tagihan</span><span class="dp-field-value"style="font-weight: bold;">Rp&nbsp;{{$data_order->total}}</span>
                 </div>
               </div>
             </div>

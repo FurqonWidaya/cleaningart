@@ -1,5 +1,14 @@
 @extends('admin.layouts.master')
 @section('content')
+@if(session('success'))
+<!-- Modal -->
+<div class="alert alert-success" role="alert">
+  {{session('success')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 <link rel="stylesheet" type="text/css" href="{{asset('admin/css/zoom.css')}}">
 <div id="myModal1" class="modal1">
   <span class="close">&times;</span>

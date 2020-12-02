@@ -18,7 +18,7 @@ class c_transaksi_paket extends Controller
     {
     	$data_order = DB::table('order_art as oa') 
     ->join('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
-    ->select(DB::raw('pk.nama_paket as nama_paket, pk.harga_paket as harga_paket, oa.nomor_order as nomor_order, oa.created_at as tanggal_dibuat, oa.id_master as activeuser, oa.id as id_order, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date'))->where('oa.nomor_order', $id)
+    ->select(DB::raw('pk.nama_paket as nama_paket, total, pk.harga_paket as harga_paket, oa.nomor_order as nomor_order, oa.created_at as tanggal_dibuat, oa.id_master as activeuser, oa.id as id_order, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date'))->where('oa.nomor_order', $id)
      ->first();    
     	return view('master.v_upload_transaksi', compact('data_order'));
     }
@@ -85,6 +85,22 @@ public function postbayarpaket(Request $request, $id)
       ]);
    return redirect('/datatransaksi')->with('success', 'pembayaran berhasil diverifikasi');
     }
+
+    public function ditolak(request $request, $id)
+    {
+        DB::table('pembayaran as pb')->join('status_pembayaran as sp', 'sp.id', '=', 'pb.id_statuspembayaran')->where('pb.id', $id)
+   ->update([ 
+        "id_statuspembayaran" => $request['id_statuspembayaran'],
+      ]);
+   return redirect()->back()->with('gagal', 'pembayaran ditolak');
+    }
+
+    public function tolak_verif(request $request, $id)
+    {     
+      \App\m_order_paket::where('id',$id)->delete();
+       return redirect('/data_order')->with('gagal', 'pembayaran ditolak');
+    }
+
     public function selesai(request $request)
     {
         $id=$request->id;

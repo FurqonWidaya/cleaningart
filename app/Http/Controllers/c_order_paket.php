@@ -15,6 +15,7 @@ use App\m_order_paket;
 use App\status_penerimaan;
 use App\pembayaran;
 use App\pajak;
+use App\kecamatan;
 class c_order_paket extends Controller
 {
 
@@ -23,7 +24,7 @@ class c_order_paket extends Controller
   //buat order
    public function klikorder($id)
    {
-    
+    $kecamatan = kecamatan::all();
     $pajaks = '1';
     $total = 0;
     $master = auth()->user()->masters;
@@ -34,13 +35,13 @@ class c_order_paket extends Controller
     $pajak = pajak::find($pajaks);
     $total = $data_paket->harga_paket + $pajak->pajak;
     // $total = DB::table('data_paket')->select(DB::raw('SUM(harga_paket', $pajak) as 'total'))->get();
-		return view ('master.v_order_paket', compact('data_paket', 'art', 'bank', 'status', 'master','pajak','total'));
+		return view ('master.v_order_paket', compact('data_paket', 'art', 'bank', 'status', 'master','pajak','total','kecamatan'));
    }
 
    //simpan order
    public function postorder(Request $request){
    	 $this->validate($request,[         
-            'kecamatan'=>'required|min:3',
+            'kecamatan'=>'required',
             'kodepos'=>'required',
             'alamat'=>'required|min:4',
             'waktu_kerja' => 'required|after:23 hours|before: 168 Hours',         
@@ -197,7 +198,7 @@ public function cekproses($id)
     ->leftjoin('paket_pekerjaan as pk', 'pk.id', '=', 'oa.id_paket')
     ->leftjoin('bank as b', 'b.id', '=', 'oa.id_bank')
     ->leftjoin('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
-    ->select(DB::raw('oa.id as nomor, total, oa.nomor_order as nomor_order, us.username as username,ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, oa.mp'))->whereNull('oa.deleted_at')
+    ->select(DB::raw('oa.id as nomor, total, mp, oa.nomor_order as nomor_order, us.username as username,ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat'))
     ->where('nama_paket', 'LIKE', '%'
           .$request->cari. '%')->orderBy('tanggal_dibuat', 'desc')->get();
     
@@ -209,7 +210,7 @@ public function cekproses($id)
     ->leftjoin('paket_pekerjaan', 'order_art.id_paket', '=', 'paket_pekerjaan.id')
     ->leftjoin('bank', 'order_art.id_bank', '=', 'bank.id')
     ->leftjoin('status_penerimaan', 'order_art.id_status_penerimaan', '=', 'status_penerimaan.id')
-    ->select(DB::raw('order_art.id as nomor, total, order_art.nomor_order as nomor_order,users.username as username, master.name as nama_master, art.name as nama_art, paket_pekerjaan.nama_paket as paket, paket_pekerjaan.harga_paket as harga, bank.bank as bank, status_penerimaan.status_penerimaan as status_penerimaan, order_art.created_at as tanggal_dibuat, order_art.mp'))->whereNull('order_art.deleted_at')->orderBy('tanggal_dibuat', 'desc')
+    ->select(DB::raw('order_art.id as nomor, total, order_art.nomor_order as nomor_order,users.username as username, master.name as nama_master, art.name as nama_art, paket_pekerjaan.nama_paket as paket, paket_pekerjaan.harga_paket as harga, bank.bank as bank, status_penerimaan.status_penerimaan as status_penerimaan, order_art.created_at as tanggal_dibuat, mp'))->whereNull('order_art.deleted_at')->orderBy('tanggal_dibuat', 'desc')
     ->get();
      
     }
@@ -257,7 +258,7 @@ public function cekproses($id)
         "status" => $request['status_kerja'],
       ]);
   
-   return redirect()->back();
+   return redirect()->back()->with('success', 'order berhasil diterima');
    }
 
    public function tolak(request $request, $id)
@@ -267,7 +268,7 @@ public function cekproses($id)
         "id_status_penerimaan" => $request['id_status_penerimaan'],
           "status" => $request['status'],
       ]);
-   return redirect()->back();
+   return redirect()->back()->with('gagal', 'order telah ditolak');
    }
 
    public function posttransaksi(Request $request)

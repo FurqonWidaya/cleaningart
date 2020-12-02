@@ -1,5 +1,23 @@
 @extends('admin.layouts.master')
 @section('content')
+@if(session('success'))
+<!-- Modal -->
+<div class="alert alert-success" role="alert">
+  {{session('success')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+@if(session('gagal'))
+<!-- Modal -->
+<div class="alert alert-warning" role="alert">
+  {{session('gagal')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
   <ol class="breadcrumb">
     <li><i class="fa fa-home"></i><a href="{{url('/dashboard')}}">&nbsp;Home&nbsp;</a></li>
     <li>&#47;&nbsp;<i class="fa fa-users"></i>&nbsp;Data Order Paket</li>
@@ -54,12 +72,14 @@
               <td>{{$order->nama_art}}</td>
               <td>{{$order->status_penerimaan}}</td>
               <td>{{\Carbon\Carbon::parse($order->tanggal_dibuat)->format('d-m-Y H:i')}}</td>
-              @if($order->mp == 1)
-              <td><p class="btn btn-warning">Belum Bayar</p></td>
-              @elseif($order->mp == 2)
-              <td><p class="btn btn-succes">Bayar</p></td>
-              @else
-              <td><p class="btn btn-primary">Selesai</p></td>
+              @if($order->mp == 'Belum Bayar')
+              <td><p class="btn btn-warning btn-sm">Belum Bayar</p></td>
+              @elseif($order->mp == 'Bayar')
+              <td><p class="btn btn-success btn-sm">Sudah Bayar</p></td>
+              @elseif($order->mp == 'Selesai')
+              <td><p class="btn btn-primary btn-sm">Selesai</p></td>
+              @else()
+              <td><p class="btn btn-danger btn-sm">Batal</p></td>
               @endif
           </tr>
           </tbody>

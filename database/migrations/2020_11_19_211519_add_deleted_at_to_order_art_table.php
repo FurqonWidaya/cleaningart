@@ -10,6 +10,7 @@ class AddDeletedAtToOrderArtTable extends Migration
     {
         Schema::table('order_art', function (Blueprint $table) {
              $table->softDeletes();
+            
         });
     }
 
@@ -19,5 +20,6 @@ class AddDeletedAtToOrderArtTable extends Migration
         Schema::table('order_art', function (Blueprint $table) {
              $table->dropSoftDeletes();
         });
+        
     }
 }

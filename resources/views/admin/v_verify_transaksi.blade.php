@@ -13,10 +13,10 @@
 <div class="row">
 </div>
 <!-- Table -->
-@if(session('success'))
+@if(session('gagal'))
 <!-- Modal -->
-<div class="alert alert-success" role="alert">
-  {{session('success')}}
+<div class="alert alert-warning" role="alert">
+  {{session('gagal')}}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -67,10 +67,34 @@
               <td>{{$pembayaran->statuspembayaran->statuspembayaran}}</td>
               <td>{{$pembayaran->created_at}}</td>
               
-               <td> <form action="{{url('/konfirmasi')}}" method="post">
+               <td>
+                <button class='btn btn-primary' data-toggle="modal" data-target="#verifikasi"></i>verifikasi</button><br>
+
+                  <div class="modal fade" id="verifikasi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Peringatan !!</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" style="color: #f00;transform: translate(25px, -10px);">×</span>
+            </button>
+          </div>
+          <div class="modal-body">“Apakah anda yakin untuk memverifikasi pembayaran order ini”</div>
+          <div class="modal-footer">
+                 <form action="{{url('/ditolak/'.$pembayaran->id)}}" method="post">
+                  {{csrf_field()}}
+                   <input type="number" name="id_statuspembayaran" value="4" readonly="" hidden="">            
+                  
+                <button class='btn btn-danger'></i>Tolak&nbsp;</button></form>
+                <!-- <a class="btn btn-danger" href="{{url('/tolak_verif/'.$pembayaran->order_art->id)}}">Tolak</a> -->
+           <form action="{{url('/konfirmasi')}}" method="post">
                   {{csrf_field()}}
                   <input type="number" name="statuspembayaran" value="2" readonly="" hidden="">
-                <button class='btn btn-primary btn-sm'><i class="fa fa-spinner fa-fw" aria-hidden="true"></i>verifikasi&nbsp;</button></form>
+                <button class='btn btn-primary' data-toggle="modal" data-target="#verifikasi"></i>Terima</button></form>
+          </div>
+        </div>
+      </div>
+    </div>
               </td>
           
           </tr>

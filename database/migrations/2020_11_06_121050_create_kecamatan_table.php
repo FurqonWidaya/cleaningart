@@ -15,8 +15,33 @@ class CreateKecamatanTable extends Migration
     {
         Schema::create('kecamatan', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->string('kecamatan');
+            $table->enum('kecamatan',['Kencong',
+'Gumukmas',
+'Puger',
+'Wuluhan',
+'Ambulu',
+'Tempurejo',
+'Jenggawah',
+'Ajung',
+'Rambipuji',
+'Balung',
+'Semboro',
+'Sumberbaru',
+'Tanggul',
+'Bangsalsari',
+'Panti',
+'Sukorambi',
+'Arjasa',
+'Pakusari',
+'Kalisat',
+'Ledokombo',
+'Sumberjambe',
+'Sukowono',
+'Jelbuk',
+'Kaliwates',
+'Sumbersari',
+'Patrang',
+]);
         });
     }
 

@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
          $this->call(bank::class);
         $this->call(status_penerimaan::class);
         $this->call(statuspembayaran::class);
+        $this->call(kecamatan::class);
     }
 }

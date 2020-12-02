@@ -48,7 +48,17 @@
 												<div class="row">
 												<div class="col-sm-6">
 													<span>kecamatan:</span>
-													<input type="text" name="kecamatan" value="{{old('kecamatan')}}" placeholder="silahkan isi kecamatan" class="form-control @error('kecamatan') is-invalid @enderror" style="margin-bottom: 0px">
+													<select name="kecamatan" class="form-control mb-25" style="color: #000; background-color: #fff;" > 
+															<option value="">
+																- pilih kecamatan -
+															</option class="form-control mb-25" style="color: #000">
+															@foreach($kecamatan as $kec)
+															<option value="{{$kec->kecamatan}}" class="form-control mb-25" style="color: #000;" >
+																{{$kec->kecamatan}}
+															</option>
+															@endforeach
+															</select> 
+													<!-- <input type="text" name="kecamatan" value="{{old('kecamatan')}}" placeholder="silahkan isi kecamatan" class="form-control @error('kecamatan') is-invalid @enderror" style="margin-bottom: 0px"> -->
 													@if($errors->has('kecamatan'))
 													<span class="help-block" style="color: #c80000">{{($errors->first('kecamatan'))}}</span>
 													@endif

@@ -24,6 +24,14 @@
         </button>
         </div>
        @endif
+       @if(session('gagal'))
+        <div class="alert alert-warning" role="alert">
+         {{session('gagal')}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+       @endif
 <div id="mission-section" class="ptb ptb-xs-180">
       <div class="container">
         <div class="row">
@@ -69,7 +77,7 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">“Apakah anda yakin ingin memverifikasi order ini?”</div>
+          <div class="modal-body">“Apakah anda yakin ingin menerima order ini?”</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">tidak</button>
             <form action="{{url('/terima/'.$order->id)}}" method="post">
