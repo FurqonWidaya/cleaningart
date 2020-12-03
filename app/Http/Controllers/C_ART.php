@@ -26,14 +26,16 @@ class C_ART extends Controller
     //buat data art
     public function create(Request $request){
         $this->validate($request,[
-            'name' => 'required|min:4',
-            'username'=>'required|min:5|unique:users|regex:/^\S*$/u',
+            'name' => 'required|min:4|max: 30',
+            'username'=>'required|min:5|max:15|unique:users|regex:/^\S*$/u',
             'email'=>'required|email',
-            'password'=>'required|min:5',
+            'password'=>'required|min:5|max:15',
             'foto' => 'mimes:jpg,png,jpeg',
             'tanggallahir' => 'date|after:1960-12-12|before:2001-12-12|nullable',
             'nohp'=>'required|min:11|max:13|regex:/(0)[0-9]{10}/',
-            'kodepos' => 'numeric|min:4|nullable'
+            'kodepos' => 'numeric|min:4|max:5|nullable',
+            'alamat' => 'min:5|max:60|nullable',
+            'kecamatan' => 'min:4|max:20|nullable',
         ]);
         $user = \App\user::create($request->all());
         $user->password = bcrypt($user->password);
@@ -57,6 +59,15 @@ class C_ART extends Controller
 
     //update dataart
     public function update(Request $request, $id){
+        $this->validate($request,[
+            'name' => 'required|min:4|max: 30',
+            'foto' => 'mimes:jpg,png,jpeg',
+            'tanggallahir' => 'date|after:1960-12-12|before:2001-12-12|nullable',
+            'nohp'=>'required|min:11|max:13|regex:/(0)[0-9]{10}/',
+            'kodepos' => 'numeric|min:4|max:5|nullable',
+            'alamat' => 'min:5|max:60|nullable',
+            'kecamatan' => 'min:4|max:20|nullable',
+        ]);
          $art = \App\art::find($id);
          $art->update($request->all());
         if ($request->hasFile('foto')) {

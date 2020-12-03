@@ -17,10 +17,12 @@ class C_daftar extends Controller
     }
 
 	public function daftarAction(Request $request){
-        $this->validate($request,[         
+        $this->validate($request,[    
+            
             'username'=>'required|min:5|unique:users|regex:/^\S*$/u',
             'email'=>'required|email',
             'password'=>'required|min:5',
+
         ]);
         $user = \App\User::create($request->all());
 		$user->role= $request->role;
@@ -42,11 +44,14 @@ class C_daftar extends Controller
 
     public function daftarActionnaster(Request $request){
         $this->validate($request,[
-            'name' => 'required|min:4',
+            'name' => 'required|min:4|max:30',
             'nohp'=>'required|min:11|max:13|regex:/(08)[0-9]{9}/',
-          'username'=>'required|min:5|unique:users|regex:/^\S*$/u',
-            'email'=>'required|email',
-            'password'=>'required|min:5',
+            'username'=>'required|min:5|max:15|unique:users|regex:/^\S*$/u',
+            'email'=>'required|email|max:60',
+            'password'=>'required|min:5|max:15',
+            'alamat' => 'max: 60',
+            'kecamatan' => 'max: 20',
+            'kodepos' => 'max: 5',
 
         ]);
         $user = new \App\User;

@@ -41,9 +41,9 @@ class c_order_paket extends Controller
    //simpan order
    public function postorder(Request $request){
    	 $this->validate($request,[         
-            'kecamatan'=>'required',
-            'kodepos'=>'required',
-            'alamat'=>'required|min:4',
+            'kecamatan'=>'required|min:4|max:20',
+            'kodepos'=>'required|min:4|max:5',
+            'alamat'=>'required|min:4|max:60',
             'waktu_kerja' => 'required|after:23 hours|before: 168 Hours',         
         ],
         	[
@@ -199,7 +199,7 @@ public function cekproses($id)
     ->leftjoin('bank as b', 'b.id', '=', 'oa.id_bank')
     ->leftjoin('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
     ->select(DB::raw('oa.id as nomor, total, mp, oa.nomor_order as nomor_order, us.username as username,ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat'))
-    ->where('nama_paket', 'LIKE', '%'
+    ->where('nomor_order', 'LIKE', '%'
           .$request->cari. '%')->orderBy('tanggal_dibuat', 'desc')->get();
     
       }else{
@@ -266,7 +266,7 @@ public function cekproses($id)
      DB::table('order_art as oa')->join('art as ar', 'ar.user_id', '=', 'oa.id_art')->where('oa.id', $id)
    ->update([ 
         "id_status_penerimaan" => $request['id_status_penerimaan'],
-          "status" => $request['status'],
+          "status" => $request['status_kerja'],
       ]);
    return redirect()->back()->with('gagal', 'order telah ditolak');
    }

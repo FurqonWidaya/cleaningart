@@ -32,26 +32,44 @@
   <div class="form-group">
     <label >Nama</label>
     <input name="name" type="text" class="form-control" id="name" value="{{$art->name}}" >
+    @if($errors->has('name'))
+            <span class="help-block">{{($errors->first('name'))}}</span>
+    @endif
   </div>
   <div class="form-group">
           <label >No Hp</label>
           <input name="nohp" type="text" class="form-control" id="nohp" value="{{$art->nohp}}">
+          @if($errors->has('nohp'))
+            <span class="help-block">{{($errors->first('nohp'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >Tanggal Lahir</label>
           <input type="date" class="form-control" id="tanggallahir" name="tanggallahir" value="{{$art->tanggallahir}}">
+          @if($errors->has('tanggallahir'))
+            <span class="help-block">{{($errors->first('tanggallahir'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >Kecamatan</label>
           <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{$art->kecamatan}}">
+          @if($errors->has('kecamatan'))
+            <span class="help-block">{{($errors->first('kecamatan'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >Alamat</label>
           <input type="text" class="form-control" id="alamat" name="alamat" value="{{$art->alamat}}">
+          @if($errors->has('alamat'))
+            <span class="help-block">{{($errors->first('alamat'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >kode Pos</label>
           <input type="text" class="form-control" id="kodepos" name="kodepos" value="{{$art->kodepos}}">
+          @if($errors->has('kodepos'))
+            <span class="help-block">{{($errors->first('kodepos'))}}</span>
+          @endif
         </div>
         <div class="form-group">
           <label >status</label>

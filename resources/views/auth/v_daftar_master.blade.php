@@ -53,7 +53,7 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">DAFTARKAN DIRI ANDA SEKARANG</h2>
+                    <h2 class="title center">DAFTARKAN DIRI ANDA SEKARANG</h2>
                     <form method="POST" action="{{url('/postregis')}}" >
                         {{csrf_field()}}
                         <input type="text" placeholder="master" name="role" value="2" hidden >
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                      <div class="row row-space">
+                        <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Foto</label>
@@ -119,7 +119,41 @@
                                  @endif
                             </div>
                             </div>
-                        </div><hr>
+                        </div>
+                          <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Kecamatan</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4" type="text" name="kecamatan" value="{{old('kecamatan')}}">
+                                        @if($errors->has('kecamatan'))
+                                            <span class="help-block">{{($errors->first('kecamatan'))}}</span>
+                                     @endif
+                                    </div>
+                                </div>
+                            </div>  
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Kode Pos</label>
+                                <input class="input--style-4" type="text" name="kodepos" value="{{old('kodepos')}}">
+                                @if($errors->has('kodepos'))
+                                        <span class="help-block">{{($errors->first('kodepos'))}}</span>
+                                 @endif
+                            </div>
+                            </div>
+                        </div>
+                          <div class="row row-space">
+                            <div class="max" style="width: 200%">
+                            <div class="input-group">
+                                <label class="label">Alamat</label>
+                                <input class="input--style-4" type="text" name="alamat" value="{{old('alamat')}}">
+                                @if($errors->has('alamat'))
+                                        <span class="help-block">{{($errors->first('alamat'))}}</span>
+                                 @endif
+                            </div>
+                            </div>
+                        </div>
+                        <hr>
                         <div class="p-t-15" style="text-align: center;">
                             <button class="btn btn--radius-2 btn--blue" type="submit" name="submit">Daftar</button>
                         </div>

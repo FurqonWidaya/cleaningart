@@ -38,7 +38,7 @@
     <form  method="get" action="{{url('data_order')}}" role="search">
     <div class="col-sm-12 col-md-4">
       <div id="dataTable_filter" class="dataTables_filter">
-        <label>Search:<input name="cari" type="text" class="form-control form-control-sm" placeholder="cari nama paket" aria-describedby="basic-addon2" ></label>
+        <label>Search:<input name="cari" type="text" class="form-control form-control-sm" placeholder="cari nomor order" aria-describedby="basic-addon2" ></label>
         <button class="btn btn-outline-info" type="submit" style="height: 2rem" >
           <i class="fas fa-search fa-sm"></i>
         </button>

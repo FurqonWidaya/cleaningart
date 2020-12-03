@@ -70,6 +70,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{url('/verifytransaski')}}">Verifikasi Pembayaran</a>
             <a class="collapse-item" href="{{url('/datatransaksi')}}">Data Pembayaran Sukses</a>
+             <a class="collapse-item" href="{{url('/faileddatatransaksi')}}">Data Pembayaran Gagal</a>
           </div>
         </div>
       </li>

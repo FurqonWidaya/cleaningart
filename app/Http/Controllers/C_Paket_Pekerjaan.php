@@ -28,9 +28,9 @@ class C_Paket_Pekerjaan extends Controller
     public function create(Request $request)
     {
       $this->validate($request,[
-          'nama_paket' => 'required|min:5|unique:paket_pekerjaan',
+          'nama_paket' => 'required|min:5|max:30|unique:paket_pekerjaan',
           'harga_paket'=>'required|numeric|min:30000',
-          'deskripsi_paket' => '|min:20|'
+          'deskripsi_paket' => '|min:15|'
       ]);
       $data_paket = \App\paket_pekerjaan::create($request->all());
        if ($request->hasFile('foto_paket')) {
@@ -59,9 +59,9 @@ class C_Paket_Pekerjaan extends Controller
     public function update(Request $request, $id)
     {
        $this->validate($request,[
-          'nama_paket' => 'required|min:5|',
+          'nama_paket' => 'required|min:5|max:30',
           'harga_paket'=>'required|numeric|min:30000|max:10000000',
-          'deskripsi_paket' => '|min:20|'
+          'deskripsi_paket' => '|min:15|'
       ]);
       $data_paket = \App\paket_pekerjaan::find($id);
       $data_paket->update($request->all());

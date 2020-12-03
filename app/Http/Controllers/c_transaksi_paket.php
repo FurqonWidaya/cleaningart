@@ -76,6 +76,18 @@ public function postbayarpaket(Request $request, $id)
     }
        return view('admin.v_transaksi_paket', compact('transaksi'));
     }
+
+    public function failedtrans(request $request)
+    {
+        if ($request->has('cari')){
+         $transaksi = \App\pembayaran::orderBy('created_at', 'DESC')
+    ->where('kode_pembayaran', 'LIKE', '%'
+          .$request->cari. '%')->where('id_statuspembayaran','=',4)->paginate(5);
+      }else{
+        $transaksi = \App\pembayaran::orderBy('created_at', 'DESC')->where('id_statuspembayaran','=',4)->paginate(5);
+    }
+       return view('admin.v_transaksigagal_paket', compact('transaksi'));
+    }
        
     public function konfirmasi(request $request)
     {
@@ -92,7 +104,7 @@ public function postbayarpaket(Request $request, $id)
    ->update([ 
         "id_statuspembayaran" => $request['id_statuspembayaran'],
       ]);
-   return redirect()->back()->with('gagal', 'pembayaran ditolak');
+   return redirect('/faileddatatransaksi')->with('gagal', 'pembayaran ditolak');
     }
 
     public function tolak_verif(request $request, $id)

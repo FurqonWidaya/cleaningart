@@ -174,13 +174,13 @@
               <td><a href="{{url('/art/profile/'.$art->id)}}">{{$art->user->username}}</a></td>
               <td><a href="{{url('/art/profile/'.$art->id)}}">{{$art->name}}</a></td>
               <td>{{$art->nohp}}</td>
-              <td>{{$art->tanggallahir}}</td>
+              <td style="width:40%">{{\Carbon\Carbon::parse($art->tanggallahir)->format('d-m-Y')}}</td>
               <td>{{$art->kecamatan}}</td>
-              <td>{{$art->alamat}}</td>
+              <td style="width:30%">{{$art->alamat}}</td>
               <td>{{$art->kodepos}}</td>
               <td>{{$art->status}}</td>
               <td style="width: 50%">{{$art->deskripsi}}</td>
-              <td><a href="{{url('/art/edit/'.$art->id)}}" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a></td>
+              <td style="width:20%"><a href="{{url('/art/edit/'.$art->id)}}" class='btn btn-warning btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a></td>
           </tr>
           </tbody>
           @endforeach
