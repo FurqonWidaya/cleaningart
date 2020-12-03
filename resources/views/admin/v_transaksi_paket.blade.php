@@ -60,7 +60,9 @@
              <th>{{$i++}}</th>
               <td>{{$pembayaran->kode_pembayaran}}</td>
               <td>{{$pembayaran->order_art->nomor_order}}</td> 
-              <th><img id="myImg" src="{{$pembayaran->getbukti()}}"  alt="bukti transfer" style="width:100%;max-width:300px;" /></th> 
+              <th><img id="myImg" src="{{$pembayaran->getbukti()}}"  alt="bukti transfer" style="width:100%;max-width:300px;" />
+                   <a href="{{$pembayaran->getbukti()}}" style="width:50%;"><i class="fa fa-search-plus"></i></a>
+              </th> 
               <td>{{$pembayaran->created_at}}</td>
                <td> 
                 <div class='btn btn-success btn-sm'><i class="fa fa-check fa-fw" aria-hidden="true"></i>&nbsp;{{$pembayaran->statuspembayaran->statuspembayaran}}</div>

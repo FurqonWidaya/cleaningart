@@ -89,9 +89,9 @@ public function postbayarpaket(Request $request, $id)
        return view('admin.v_transaksigagal_paket', compact('transaksi'));
     }
        
-    public function konfirmasi(request $request)
+    public function konfirmasi(request $request, $id)
     {
-         DB::table('pembayaran')
+         DB::table('pembayaran')->where('id',$id)
    ->update([ 
         "id_statuspembayaran" => $request['statuspembayaran'],
       ]);

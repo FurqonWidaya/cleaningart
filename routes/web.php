@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
    Route::get('/verifytransaski', 'C_transaksi_paket@verifytrans');
    Route::get('/datatransaksi', 'C_transaksi_paket@lihattrans');
    Route::get('/faileddatatransaksi', 'C_transaksi_paket@failedtrans');
-   Route::post('/konfirmasi', 'C_transaksi_paket@konfirmasi');
+   Route::post('/konfirmasi/{id}', 'C_transaksi_paket@konfirmasi');
     Route::post('/ditolak/{id}', 'C_transaksi_paket@ditolak');
     Route::get('/tolak_verif/{id}', 'C_transaksi_paket@tolak_verif');
 });

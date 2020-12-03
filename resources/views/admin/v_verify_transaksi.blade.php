@@ -63,7 +63,9 @@
               <td>{{$pembayaran->kode_pembayaran}}</td>
               <td>{{$pembayaran->order_art->nomor_order}}</td>
               <td>Rp {{$pembayaran->order_art->total}}</td>
-              <td><img id="myImg" src="{{$pembayaran->getbukti()}}" alt="bukti transfer" style="width:100%;max-width:300px" /></td>
+              <td><img id="myImg" src="{{$pembayaran->getbukti()}}" alt="bukti transfer" style="width:100%;max-width:300px" />
+                <a href="{{$pembayaran->getbukti()}}" style="width:50%;"><i class="fa fa-search-plus"></i></a>
+              </td>
               <td>{{$pembayaran->statuspembayaran->statuspembayaran}}</td>
               <td>{{$pembayaran->created_at}}</td>
               
@@ -87,7 +89,7 @@
                   
                 <button class='btn btn-danger'></i>Tolak&nbsp;</button></form>
                 <!-- <a class="btn btn-danger" href="{{url('/tolak_verif/'.$pembayaran->order_art->id)}}">Tolak</a> -->
-           <form action="{{url('/konfirmasi')}}" method="post">
+           <form action="{{url('/konfirmasi/'.$pembayaran->id)}}" method="post">
                   {{csrf_field()}}
                   <input type="number" name="statuspembayaran" value="2" readonly="" hidden="">
                 <button class='btn btn-primary' data-toggle="modal" data-target="#verifikasi"></i>Terima</button></form>
@@ -105,6 +107,7 @@
     </div>
   </div>
 </div>
+
 <script>
 // Get the modal
 var modal1 = document.getElementById("myModal1");
