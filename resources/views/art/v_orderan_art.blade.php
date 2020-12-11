@@ -43,10 +43,14 @@
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="pesanan-tab" data-toggle="tab" href="#pesanan" role="tab" aria-controls="pesanan" aria-selected="false">Tawaran Pekerjaan</a>
   </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="Pekerjaan-tab" data-toggle="tab" href="#Pekerjaan" role="tab" aria-controls="Pekerjaan" aria-selected="false">Pekerjaan Aktif</a>
+  </li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
+   @if (isset($data_order) && count($data_order) > 0)
   <div class="tab-pane active" id="pesanan" role="tabpanel" aria-labelledby="pesanan-tab">
     <br>
       <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
@@ -84,6 +88,10 @@
                   {{csrf_field()}}
                   <input type="number" name="id_status_penerimaan" value="1" readonly="" hidden="">
                   <input type="text" name="status_kerja" value="2" readonly="" hidden="">
+                  <input name="day_start" value="{{$order->tanggal_dibuat}}" hidden="">
+                  <input name="day_over" value="{{$order->due_date}}" hidden="">
+                  <input name="id_statuspembayaran" value="0" readonly="" hidden="">
+                  <input name="id_order" value="{{$order->id}}" readonly="" hidden="">
             <button class="btn btn-primary" type="submit">Ya</button>
             </form>
           </div>
@@ -115,8 +123,9 @@
       </table>
 
   </div>
-  <div class="tab-pane" id="pesanan" role="tabpanel" aria-labelledby="pesanan-tab">belum ada data</div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">belum ada data</div>
+  @else
+  <div class="tab-pane active" id="pesanan" role="tabpanel" aria-labelledby="pesanan-tab">belum ada tawaran</div>
+  @endif
 </div>
         </div>
        </div>

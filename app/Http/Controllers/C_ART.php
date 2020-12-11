@@ -33,7 +33,7 @@ class C_ART extends Controller
             'foto' => 'mimes:jpg,png,jpeg',
             'tanggallahir' => 'date|after:1960-12-12|before:2001-12-12|nullable',
             'nohp'=>'required|min:11|max:13|regex:/(0)[0-9]{10}/',
-            'kodepos' => 'numeric|min:4|max:5|nullable',
+            
             'alamat' => 'min:5|max:60|nullable',
             'kecamatan' => 'min:4|max:20|nullable',
         ]);

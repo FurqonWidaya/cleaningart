@@ -63,7 +63,7 @@
           <div class="col-md-12 col-lg-12 border">
             <div class="about-block clearfix">
               <div class="fl width-25per box-shadow mt-15 mb-xs-15">
-                <img class="img-responsive" src="{{auth()->user()->masters->getPhoto()}}" alt="Photo">
+                <img class="img-responsive" src="{{auth()->user()->masters->getPhoto()}}" alt="Photo" style="width: 100%">
               </div>
               <div class="text-box pt-45 pb-15 pl-70 pl-xs-0 width-75per fl">
                 <div class="box-title">

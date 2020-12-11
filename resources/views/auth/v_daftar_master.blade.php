@@ -54,7 +54,7 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title center">DAFTARKAN DIRI ANDA SEKARANG</h2>
-                    <form method="POST" action="{{url('/postregis')}}" >
+                    <form method="POST" action="{{url('/postregis')}}" enctype="multipart/form-data" >
                         {{csrf_field()}}
                         <input type="text" placeholder="master" name="role" value="2" hidden >
                         <input type="text"  name="remember_token" value="" hidden >

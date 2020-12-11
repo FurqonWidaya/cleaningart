@@ -13,7 +13,7 @@ class pembayaran extends Model
      public function getbukti()
      {
      	if(!$this->bukti_transfer){
-     		return asset('images/default.png');
+     		'no foto';
      	}
      	return asset('images/'.$this->bukti_transfer);
      }

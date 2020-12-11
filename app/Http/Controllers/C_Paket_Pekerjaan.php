@@ -89,4 +89,11 @@ class C_Paket_Pekerjaan extends Controller
       return view('art.v_paket_pekerjaan', ['paket' => $paket]);
 
     }
+
+    //lihat detail paket
+    public function detailpaket($id)
+    {
+       $paket =paket_pekerjaan::find($id);
+     return view('art.v_detail_paket_pekerjaan', compact('paket'));
+    }
 }

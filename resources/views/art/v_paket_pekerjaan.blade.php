@@ -41,7 +41,7 @@
               {{$peka->deskripsi_paket}}
             </p>
             <div class="add-to-cart mb-20" >
-              <a href="/errors" style="border: 3px solid #6e8900;"><i class="fa fa-eye"></i>&nbsp;Lihat Paket</a>
+              <a href="{{url('/paket_pekerjaan/'.$peka->id)}}" style="border: 3px solid #6e8900;"><i class="fa fa-eye"></i>&nbsp;Lihat Paket</a>
             </div>
           </div>
         </div>

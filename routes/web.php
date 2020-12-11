@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
 Route::group(['middleware' => ['auth', 'checkrole:art']], function(){
   Route::get('/index', 'C_home@setviewhomeart');
   Route::get('/paket_pekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan_art');
+   Route::get('/paket_pekerjaan/{id}', 'C_Paket_Pekerjaan@detailpaket');
   Route::get('/errors', 'ArtController@error');
   Route::get('/profilku/{id}', 'ArtController@profilart');
   Route::get('/profilku/setting/{id}', 'ArtController@settingart');
@@ -116,12 +117,13 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
   Route::get('/paketpekerjaan/order/{id}', 'C_order_paket@klikorder');
   Route::post('/postorder', 'C_order_paket@postorder');
-    Route::get('/checkout/{nomor_order}', 'C_order_paket@checkout'); Route::get('/orderproses/{nomor_order}', 'C_order_paket@cekproses');
+    Route::get('/checkout/{nomor_order}', 'C_order_paket@checkout'); 
+    Route::get('/orderproses/{nomor_order}', 'C_order_paket@cekproses');
      Route::get('/checkout/{nomor_order}', 'C_order_paket@checkout');
     Route::get('/myorder', 'C_order_paket@myorder');
     Route::get('/batal_order/{id}', 'C_order_paket@batal_order');
     Route::get('/myorderhistory', 'C_order_paket@myorderhistory');
      Route::get('/bayarorder/{nomor_order}', 'C_transaksi_paket@bayarpaket');
-     Route::post('/posttransaksi', 'c_order_paket@posttransaksi');
+     Route::post('/posttransaksi', 'C_order_paket@posttransaksi');
      Route::post('/selesai/{id}', 'C_transaksi_paket@selesai');
 });

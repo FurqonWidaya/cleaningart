@@ -1,5 +1,6 @@
 @extends('master.layouts.master')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/tab/templatemo-style.css')}}">
+
 <!-- Intro Section -->
 <section class="inner-intro bg-img light-color overlay-before parallax-background">
   <div class="container">
@@ -38,7 +39,7 @@
     <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Menunggu Penerimaan</a>
   </li>
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="Pembayaran-tab" data-toggle="tab" href="#Pembayaran" role="tab" aria-controls="Pembayaran" aria-selected="true">Menunggu Pembayaran</a>
+    <a class="nav-link" id="Pembayaran-tab" data-toggle="tab" href="#Pembayaran" role="tab" aria-controls="Pembayaran" aria-selected="false">Menunggu Pembayaran</a>
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="menunggu-tab" data-toggle="tab" href="#menunggu" role="tab" aria-controls="menunggu" aria-selected="false">Verifikasi Pembayaran</a>
@@ -145,9 +146,9 @@
               <td>{{\Carbon\Carbon::parse($order->due_date)->format('d-m-Y H:i')}}</td>
               <td><a href="{{url('/checkout/'.$order->nomor_order)}}" class='btn btn-primary btn-sm'><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Bayar Paket</a><br><br>
                
-                <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#alertModal"><i class="fa fa-close fa-fw" aria-hidden="true" ></i>Batalkan Paket</button>
+                <button class='btn btn-danger btn-sm' data-toggle="modal" data-target="#batal"><i class="fa fa-close fa-fw" aria-hidden="true" ></i>Batalkan Paket</button>
                        <!-- modal -->
-    <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="batal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog  modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -411,5 +412,6 @@
       $(this).tab('show')
       })
       </script>
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 @endsection

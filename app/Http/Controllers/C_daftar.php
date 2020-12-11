@@ -24,7 +24,7 @@ class C_daftar extends Controller
             'password'=>'required|min:5',
 
         ]);
-        $user = \App\User::create($request->all());
+    $user = \App\User::create($request->all());
 		$user->role= $request->role;
 		$user->email= $request->email;
 		$user->username= $request->username;
@@ -63,10 +63,14 @@ class C_daftar extends Controller
           $user ->password=bcrypt($user ->password);
           $user->remember_token = str_random(60);
           $user->active_token=rand(100000,999999);
-          //$user->active=null;
           $user->save();
           $request->request->add(['user_id'=> $user->id]);
           $master = \App\master::create($request->all());
+          if ($request->hasFile('foto')) {
+            $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());
+            $master->foto = $request->file('foto')->getClientOriginalName();
+            $master->save();
+        }
           return redirect('/login')->with('sukses','Akun Berhasil Dibuat');
         }
 }

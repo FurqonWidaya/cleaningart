@@ -141,7 +141,7 @@
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
   <div class="row">
-    <form  method="get" action="/dataart" role="search">
+    <form  method="get" action="{{url('/dataart')}}" role="search">
     <div class="col-sm-12 col-md-4">
       <div id="dataTable_filter" class="dataTables_filter">
         <label>Search:<input name="cari" type="text" class="form-control form-control-sm" placeholder="" aria-describedby="basic-addon2"></label>

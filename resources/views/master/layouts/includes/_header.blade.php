@@ -63,7 +63,7 @@
 						<i class="ion-ios-plus-empty hidden-md-up"></i>
 						<ul class="sub-nav">
 							<li>
-								<a href="#paket">Paket Pekerjaan</a>
+								<a href="{{url('/paketpekerjaan')}}">Paket Pekerjaan</a>
 							</li>
 							<li>
 								<a href="#work">Gallery ART</a>
