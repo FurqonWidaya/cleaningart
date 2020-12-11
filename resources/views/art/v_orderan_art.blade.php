@@ -41,7 +41,7 @@
                 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <a class="nav-link" id="pesanan-tab" data-toggle="tab" href="#pesanan" role="tab" aria-controls="pesanan" aria-selected="false">Tawaran Pekerjaan</a>
+    <a class="nav-link active" id="pesanan-tab" data-toggle="tab" href="#pesanan" role="tab" aria-controls="pesanan" aria-selected="false">Tawaran Pekerjaan</a>
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="Pekerjaan-tab" data-toggle="tab" href="#Pekerjaan" role="tab" aria-controls="Pekerjaan" aria-selected="false">Pekerjaan Aktif</a>

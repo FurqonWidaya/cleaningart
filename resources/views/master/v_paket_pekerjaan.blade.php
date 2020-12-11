@@ -31,7 +31,7 @@
       @if (isset($paket) && count($paket) > 0)
       @foreach($paket as $peka)
       <div class="col-md-6 col-lg-4 mb-30" style="padding:30px;">
-        <div class="service_box" style="border: 1px solid #dedede;text-align:center;">
+        <div class="service_box" style="border: 1px solid #dedede;text-align:center; margin: 5px">
           <figure>
             <a href="#"><img src="{{$peka->getPhoto()}}" alt="" /></a>
           </figure>
@@ -39,7 +39,7 @@
             <h3 class="text-center"><a href="#">{{$peka->nama_paket}}</a></h3>
             <h4 class="text-color text-center">Rp {{$peka->harga_paket}}</h4>
             <p>
-              {{$peka->deskripsi_paket}}
+              {{ substr($peka->deskripsi_paket, 0, 50)}}... <a href="#" style="color: blue">lihat selengkapnya</a>
             </p>
             <div class="add-to-cart mb-20" >
               <a href="{{url('/paketpekerjaan/order/'.$peka->id)}}" style="border: 3px solid #6e8900;"><i class="fa fa-shopping-cart"></i>&nbsp;Order Paket</a>
