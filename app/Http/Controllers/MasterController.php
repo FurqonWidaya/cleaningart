@@ -130,14 +130,14 @@ class MasterController extends Controller
     ->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
     ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
     ->join('users as us', 'us.id', '=', 'ms.user_id')
-     ->select(DB::raw('rating, review, us.username as username, rw.created_at as buat'))
+     ->select(DB::raw('rating, review, us.username as username, rw.created_at as buat, rw.foto as fotos'))
     ->where('oa.id_art',$art->user->id)->get();
-
+    $foto = \App\m_review::all();
       $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
      ->select(DB::raw('AVG(rating) as nilai, oa.id_art'))
                      ->groupBy('oa.id_art')
                      ->first();
 
-        return view('master.v_detail_art', compact('art','review','count'));
+        return view('master.v_detail_art', compact('art','review','count', 'foto'));
     }
 }

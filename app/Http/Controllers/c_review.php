@@ -9,6 +9,11 @@ class C_Review extends Controller
 {
     public function simpanreview(Request $request, $id)
     {
+      $this->validate($request,[
+      'rating' => 'required',
+      'review'=>'nullable',
+      'foto' => 'mimes:jpg,png,jpeg|nullable',
+    ]);
     	$review = m_review::create($request->all());
     	 if ($request->hasFile('foto')) {
           $request->file('foto')->move('images', $request->file('foto')->getClientOriginalName());

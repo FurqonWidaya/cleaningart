@@ -21,4 +21,10 @@ class m_review extends Model
     {
         return $this->belongsTo(art::class);
     }
+     public function getPhoto(){
+        if(!$this->foto){
+            return asset('images/default.png');
+        }
+        return asset('images/'.$this->foto);
+    }
 }

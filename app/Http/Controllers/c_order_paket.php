@@ -129,9 +129,6 @@ public function cekproses($id)
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
     ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, b.bank as bank, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 1 Minute) as due_date'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',1)->where('oa.mp', '=', 1)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
      ->get(); 
-      
-    
-
 
      $order_ver = DB::table('order_art as oa')
     ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')

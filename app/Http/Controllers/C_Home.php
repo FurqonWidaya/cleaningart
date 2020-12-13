@@ -19,14 +19,20 @@ class c_Home extends Controller
   }
 
   //homenya master
-  public function setviewhomemaster ()
+  public function setviewhomemaster (Request $request)
   {
-    $review = \App\m_review::inRandomOrder()->take(3)->get();
-    $crev = \App\m_review::first();
-    $data_art = \App\art::inRandomOrder()->paginate(4);
+    $id = $request->user_id;
+   // $review = \App\m_review::inRandomOrder()->take(3)->get();
+    $crev = \App\m_review::all(); 
+     $review = DB::table('review as rw')
+    ->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
+    ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
+    ->join('users as us', 'us.id', '=', 'ms.user_id')->where('oa.id_art', $id)
+   ->get();
+    $data_art = \App\art::paginate(4);
      $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
      ->select(DB::raw('AVG(rating) as nilai, oa.id_art'))
-                     ->groupBy('oa.id_art')
+                     ->groupBy('oa.id_art', $id)
                      ->first();
 
     // $paket = \App\paket_pekerjaan::paginate(3);

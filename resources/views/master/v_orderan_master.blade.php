@@ -96,6 +96,15 @@
   </button>
 </div>
 @endif
+@if($errors->has([]))
+<!-- Modal -->
+    <div class="alert alert-danger" role="alert">
+           <span class="help-block">Review tidak boleh kosong / Review yang diisi tidak valid, isi data dengan benar</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  @endif
 <div id="mission-section" class="ptb ptb-xs-180">
   <div class="container">
     <div class="row">
@@ -104,31 +113,38 @@
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" id="myTab" role="tablist">
+
             <li class="nav-item" role="presentation">
-              <a class="active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Menunggu Penerimaan</a>
+              <a class="nav-link active" id="Penerimaan-tab" data-toggle="tab" href="#Penerimaan" role="tab" aria-controls="Penerimaan" aria-selected="true">Menunggu Penerimaan</a>
             </li>
+
             <li class="nav-item" role="presentation">
-              <a  id="Pembayaran-tab" data-toggle="tab" href="#Pembayaran" role="tab" aria-controls="Pembayaran" aria-selected="true">Menunggu Pembayaran</a>
+              <a class="nav" id="Pembayaran-tab" data-toggle="tab" href="#Pembayaran" role="tab" aria-controls="Pembayaran" aria-selected="false">Menunggu Pembayaran</a>
             </li>
+
             <li class="nav-item" role="presentation">
-              <a  id="menunggu-tab" data-toggle="tab" href="#menunggu" role="tab" aria-controls="menunggu" aria-selected="true">Verifikasi Pembayaran</a>
+              <a  class="nav"id="menunggu-tab" data-toggle="tab" href="#menunggu" role="tab" aria-controls="menunggu" aria-selected="false">Verifikasi Pembayaran</a>
             </li>
+
             <li class="nav-item" role="presentation">
-              <a  id="diterima-tab" data-toggle="tab" href="#diterima" role="tab" aria-controls="diterima" aria-selected="true">Orderan Diterima</a>
+              <a class="nav" id="diterima-tab" data-toggle="tab" href="#diterima" role="tab" aria-controls="diterima" aria-selected="false">Orderan Diterima</a>
             </li>
+
             <li class="nav-item" role="presentation">
-              <a  id="done-tab" data-toggle="tab" href="#done" role="tab" aria-controls="done" aria-selected="true">Orderan Selesai</a>
+              <a class="nav"  id="done-tab" data-toggle="tab" href="#done" role="tab" aria-controls="done" aria-selected="false">Orderan Selesai</a>
             </li>
+
             <li class="nav-item" role="presentation">
-              <a  id="dibatalkan-tab" data-toggle="tab" href="#dibatalkan" role="tab" aria-controls="dibatalkan" aria-selected="true">Orderan Dibatalkan</a>
+              <a   class="nav"id="dibatalkan-tab" data-toggle="tab" href="#dibatalkan" role="tab" aria-controls="dibatalkan" aria-selected="false">Orderan Dibatalkan</a>
             </li>
+
           </ul>
 
           <!-- Tab panes -->
 
           <div class="tab-content">
             @if (isset($data_order) && count($data_order) > 0)
-            <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">
+            <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab" aria-expanded="true">
               <br>
               <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                 <thead class="dark-bg">
@@ -187,7 +203,7 @@
               </div>
               <!-- penutup tab belum diterima-->
               @else()
-              <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab">belum ada data</div>
+              <div class="tab-pane active" id="Penerimaan" role="tabpanel" aria-labelledby="Penerimaan-tab" aria-expanded="true">belum ada data</div>
               @endif
 
               @if (isset($order_acc) && count($order_acc) > 0)
@@ -452,6 +468,9 @@
                                             <span class="icon">★</span>
                                             <span class="icon">★</span>
                                           </label>
+                                            @if($errors->has('rating'))
+                                            <span class="help-block" style="color: #c80000">{{($errors->first('rating'))}}</span>
+                                            @endif
                                         </div>
                                       </div>
 
@@ -459,11 +478,17 @@
                                       <div class="form-group">
                                         <label for="">Upload Gambar</label>
                                         <input type="file" class="form-control" name="foto">
+                                        @if($errors->has('foto'))
+                                            <span class="help-block" style="color: #c80000">{{($errors->first('foto'))}}</span>
+                                            @endif
                                       </div>
 
                                       <div class="form-group">
                                         <label for="">Beri Review</label>
                                         <textarea class="form-control" name="review"></textarea>
+                                        @if($errors->has('review'))
+                                            <span class="help-block" style="color: #c80000">{{($errors->first('review'))}}</span>
+                                            @endif
                                       </div>
 
 

@@ -568,11 +568,29 @@
 						<div class="team_detail">
 							<h3><a href="{{url('/detailart/'.$art->id)}}">{{$art->name}}</a></h3>
 							<span>Status:&nbsp;{{$art->status}}</span>
+							 <input type="" name="id_art" value="{{$art->user->id}}">
+							   
+							   
 							
 						</div>
 					</div>
 				</div>
 				@endforeach
+				@if ( count($review) > 0)
+							   @foreach($review as $rev)
+							    
+									<div class="star-rating">
+										@for ($i = 0; $i < $count->nilai; $i++)			
+										<i class="fa fa-star"></i>
+										@endfor
+									</div>	
+									@endforeach
+									@else
+									<div class="star-rating">
+										<span>belum ada rating</span>
+									</div>	
+									
+							@endif
 				<span style="transform: translate(445px, 10px);">{{$data_art->links()}}</span>
 				@else
 				@for($i = 0; $i < 4; $i++ )
