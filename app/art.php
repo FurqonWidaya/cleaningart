@@ -26,5 +26,8 @@ class art extends User
     {
         return $this->belongsTo(User::class);
     }
-
+         public function arts()
+    {
+        return $this->hasMany(master::class, 'id_art');
+    }
 }

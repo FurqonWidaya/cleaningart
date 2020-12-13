@@ -43,9 +43,9 @@
   <li class="nav-item" role="presentation">
     <a class="nav-link active" id="pesanan-tab" data-toggle="tab" href="#pesanan" role="tab" aria-controls="pesanan" aria-selected="false">Tawaran Pekerjaan</a>
   </li>
-  <li class="nav-item" role="presentation">
+  <!-- <li class="nav-item" role="presentation">
     <a class="nav-link" id="Pekerjaan-tab" data-toggle="tab" href="#Pekerjaan" role="tab" aria-controls="Pekerjaan" aria-selected="false">Pekerjaan Aktif</a>
-  </li>
+  </li> -->
 </ul>
 
 <!-- Tab panes -->
@@ -124,7 +124,7 @@
 
   </div>
   @else
-  <div class="tab-pane active" id="pesanan" role="tabpanel" aria-labelledby="pesanan-tab">belum ada tawaran</div>
+  <div class="tab-pane active" id="pesanan" role="tabpanel" aria-labelledby="pesanan-tab">belum ada tawaran dalam 24 jam terakhir</div>
   @endif
 </div>
         </div>

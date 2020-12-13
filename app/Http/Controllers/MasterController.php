@@ -121,4 +121,23 @@ class MasterController extends Controller
         $user->save();
         return redirect(url('/myprofil/{id}'))->with('success', 'password telah berganti');
     }
+
+    public function detailart($id)
+    {
+        $art = \App\art::find($id);
+        // $nomor = \App\art::find($id)->pluck('user_id');
+        $review = DB::table('review as rw')
+    ->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
+    ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
+    ->join('users as us', 'us.id', '=', 'ms.user_id')
+     ->select(DB::raw('rating, review, us.username as username, rw.created_at as buat'))
+    ->where('rw.id_art',$art->user->id)->get();
+
+      $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
+     ->select(DB::raw('AVG(rating) as nilai, oa.id_art'))
+                     ->groupBy('oa.id_art')
+                     ->first();
+
+        return view('master.v_detail_art', compact('art','review','count'));
+    }
 }

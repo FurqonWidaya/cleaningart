@@ -39,7 +39,7 @@
             <h3 class="text-center"><a href="#">{{$peka->nama_paket}}</a></h3>
             <h4 class="text-color text-center">Rp {{$peka->harga_paket}}</h4>
             <p>
-              {{ substr($peka->deskripsi_paket, 0, 50)}}... <a href="#" style="color: blue">lihat selengkapnya</a>
+              {{ substr($peka->deskripsi_paket, 0, 50)}}... <a href="{{url('/paketpekerjaan/'.$peka->id)}}" style="color: blue">lihat selengkapnya</a>
             </p>
             <div class="add-to-cart mb-20" >
               <a href="{{url('/paketpekerjaan/order/'.$peka->id)}}" style="border: 3px solid #6e8900;"><i class="fa fa-shopping-cart"></i>&nbsp;Order Paket</a>

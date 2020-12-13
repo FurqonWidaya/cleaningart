@@ -350,7 +350,7 @@
 			<div class="row pb-60 pb-xs-40 light-color">
 				<div class="col-md-8 offset-md-2 text-center">
 					<div class="section_tit">
-						<h2>Testimoni Master</h2>
+						<h2>Review Master</h2>
 						<span class="three_line"></span>
 					</div>
 				</div>
@@ -360,7 +360,35 @@
 				<div class="col-md-12">
 
 					<div class="say_testimonial dots_style owl-carousel">
+						 @if (isset($review) && count($review) > 3)
+						 @foreach($review as $rev)
+							<div class="item_testimonial">
+							<div class="patient_head d-flex align-items-stretch">
+								<div class="patient_img">
+									<figure>
+										<img src="{{$rev->order->masters->getPhoto()}}" alt="" />
+									</figure>
+								</div>
+								<div class="patient_detail d-flex align-items-center">
+									<div>
+										<h3>{{$rev->order->masters->name}}</h3>
 
+									</div>
+								</div>
+							</div>
+							<div class="patient_text">
+								<p>
+									{{$rev->review}}<br/>
+									<div class="star-rating">
+										@for ($i = 0; $i < $rev->rating; $i++)			
+										<i class="fa fa-star"></i>
+										@endfor
+									</div>	
+								</p>
+							</div>
+						</div>
+						@endforeach
+						@else()
 						<div class="item_testimonial">
 							<div class="patient_head d-flex align-items-stretch">
 								<div class="patient_img">
@@ -507,7 +535,7 @@
 								</p>
 							</div>
 						</div>
-
+							@endif
 					</div>
 
 				</div>
@@ -538,21 +566,14 @@
 							</figure>
 						</div>
 						<div class="team_detail">
-							<h3>{{$art->name}}</h3>
+							<h3><a href="{{url('/detailart/'.$art->id)}}">{{$art->name}}</a></h3>
 							<span>Status:&nbsp;{{$art->status}}</span>
-							<hr>
-						</div>
-						<div class="team_text">
-							<p>@if($art->deskripsi == null)
-								Tidak ada deskripsi terbaru
-								@else()
-								{{$art->deskripsi}}
-								@endif
-							</p>
+							
 						</div>
 					</div>
 				</div>
 				@endforeach
+				<span style="transform: translate(445px, 10px);">{{$data_art->links()}}</span>
 				@else
 				@for($i = 0; $i < 4; $i++ )
 				<div class="col-lg-3 col-md-6 border" name>
@@ -565,7 +586,7 @@
 						<div class="team_detail">
 							<h3>Dummy</h3>
 							<span>Status:&nbsp;Available</span>
-							<hr>
+							<hr> 
 						</div>
 						<div class="team_text">
 							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.

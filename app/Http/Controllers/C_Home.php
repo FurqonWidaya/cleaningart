@@ -21,10 +21,17 @@ class c_Home extends Controller
   //homenya master
   public function setviewhomemaster ()
   {
-    $data_art = \App\art::inRandomOrder()->take(4)->get();
+    $review = \App\m_review::inRandomOrder()->take(3)->get();
+    $crev = \App\m_review::first();
+    $data_art = \App\art::inRandomOrder()->paginate(4);
+     $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
+     ->select(DB::raw('AVG(rating) as nilai, oa.id_art'))
+                     ->groupBy('oa.id_art')
+                     ->first();
+
     // $paket = \App\paket_pekerjaan::paginate(3);
     $paket = \App\paket_pekerjaan::inRandomOrder()->take(3)->get();
-    return view('master.v_home_master',['data_art' => $data_art, 'paket' => $paket]);
+    return view('master.v_home_master',['data_art' => $data_art, 'paket' => $paket, 'count' => $count, 'review' => $review, 'crev'=>$crev]);
 
   }
 

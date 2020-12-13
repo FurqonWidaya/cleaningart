@@ -21,7 +21,7 @@ class master extends User
     }
 
 
-     public function User()
+    public function User()
     {
         return $this->belongsTo(User::class);
     }

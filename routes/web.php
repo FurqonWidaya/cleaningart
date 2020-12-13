@@ -80,6 +80,9 @@ Route::group(['middleware' => ['auth', 'checkrole:admin']], function(){
    Route::post('/konfirmasi/{id}', 'C_transaksi_paket@konfirmasi');
     Route::post('/ditolak/{id}', 'C_transaksi_paket@ditolak');
     Route::get('/tolak_verif/{id}', 'C_transaksi_paket@tolak_verif');
+
+    //mengelola review
+     Route::get('/datareview/', 'C_Review@review');
 });
 
 
@@ -114,7 +117,9 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
   Route::post('/myprofil/update/{id}', 'MasterController@update');
   Route::get('/myprofil/changepassword/{id}', 'MasterController@changepass');
   Route::post('/postpassword/{id}', 'MasterController@postpass');
+  Route::get('/detailart/{id}', 'MasterController@detailart');
   Route::get('/paketpekerjaan', 'C_Paket_Pekerjaan@paket_pekerjaan');
+   Route::get('/paketpekerjaan/{id}', 'C_Paket_Pekerjaan@show_paket');
   Route::get('/paketpekerjaan/order/{id}', 'C_order_paket@klikorder');
   Route::post('/postorder', 'C_order_paket@postorder');
     Route::get('/checkout/{nomor_order}', 'C_order_paket@checkout'); 
@@ -126,4 +131,5 @@ Route::group(['middleware' => ['auth', 'checkrole:master']], function(){
      Route::get('/bayarorder/{nomor_order}', 'C_transaksi_paket@bayarpaket');
      Route::post('/posttransaksi', 'C_order_paket@posttransaksi');
      Route::post('/selesai/{id}', 'C_transaksi_paket@selesai');
+     Route::post('/simpanreview/{id}', 'C_Review@simpanreview');
 });

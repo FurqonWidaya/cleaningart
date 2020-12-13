@@ -54,8 +54,24 @@
               </div>
               <div class="text-box pt-15 pb-0 pl-70 pl-xs-0 width-75per fl">
                 <div class="box-title">
-                  <h3>{{auth()->user()->arts->name}}</h3>
+                   @if ( count($review) > 0)
+                  <div class="star-rating">
+                    <span>Rating: </span>
+                    @for ($i = 0; $i < $count->nilai; $i++)     
+                    <i class="fa fa-star"></i>
+                    @endfor
+                  </div>  
+                  @else
+                  <div class="star-rating">
+                    <span>belum ada rating</span>
+                  </div>  
+                  @endif
                 </div>
+                  <h3>{{auth()->user()->arts->name}}</h3>
+                   <div class="product-rating pull-right">
+                  
+                </div>
+               
                 <div class="text-content">
                   <h5><i class="fa fa-user"></i>&nbsp;Status: <span></span>{{auth()->user()->arts->status}}</h5>
                   <p><i class="fa fa-envelope"></i>&nbsp;Email: <span></span>{{auth()->user()->email}}</p>
@@ -137,7 +153,59 @@
          </div>
           </div>
         </div>
-        <h5 ><a href="{{url('/riwayatorder')}}" style="color: #75c3e8">Lihat Riwayat Order</a></h5>
+        <h5 ><a href="{{url('/riwayatorder')}}" style="color: #75c3e8">Lihat Riwayat Orderan</a></h5>
+        <div class="row top-pad-50">
+              <div class="col-md-12">
+                <div role="tabpanel">
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="nav-item">
+                      <a href="#messages" class="nav-link active" aria-controls="messages" class="nav-link" role="tab" data-toggle="tab">Review</a>
+                    </li>
+                  </ul>
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                      <div class="item" style="background-color: #538e32;"><br/><hr/>
+                         @if (isset($review) && count($review) > 0)
+                        @foreach($review as $rev)
+                        
+                        <div class="post-meta" style="background-color:#e6e1e1;padding: 5px;margin: 15px;">
+                          <!-- Author  -->
+                          <span class="author"> <i class="fa fa-user"></i>&nbsp;{{$rev->username}}</span>
+                          <!-- Meta Date -->
+
+                          <span class="time" style="font-size: 10px"> <i class="fa fa-calendar"></i>&nbsp;{{$rev->buat}}</span>
+                          <!-- Category -->
+
+                          <div class="star-rating pull-right">
+                            <span class="pull-right"> 
+                            @for ($i = 0; $i < $rev->rating; $i++)
+                            @if ($i < $rev->rating)
+                            <span class="fa fa-star"></span>
+                            @else
+                            <span class="fa fa-star"></span>
+                            @endif
+                            @endfor</span>
+                          </div>
+                          <h5>
+                          {{$rev->review}}
+                          </h5>
+                        </div>
+                      
+                      <hr />
+                      @endforeach
+                      @else()
+                      <div class="post-meta" style="background-color:#e6e1e1;padding: 5px;margin: 15px;"><p>Belum ada Review</p></div><hr/>
+                      @endif
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
       </div>
+
     </div>
 @endsection

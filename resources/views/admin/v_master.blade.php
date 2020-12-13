@@ -45,7 +45,7 @@
         <tbody>
           <tr class="text-center">
               <td><img src="{{$master->getPhoto()}}" style="width: 50px"></td>
-              <td><a href="/master/profile/{{$master->id}}">{{$master->name}}</a></td>
+              <td><a href="{{url('/master/profile/'.$master->id)}}">{{$master->name}}</a></td>
               <td>{{$master->user->username}}</td>
               <td>{{$master->user->email}}</td>
               <td>{{$master->nohp}}</td>

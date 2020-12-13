@@ -15,11 +15,27 @@ class m_order_paket extends Model
 // ];
     protected $fillable = ['id_art', 'id_master','id_paket','id_status_penerimaan','id_bank','nomor_order', 'waktu_kerja','mp','total'];
 
+    public function master()
+    {
+        return $this->hasMany(master::class, 'id_master', 'user_id');
+    }
     public function masters()
     {
-        return $this->hasOne(master::class);
+        return $this->belongsto(master::class, 'id_master', 'user_id');
+    }
+    public function orders()
+    {
+        return $this->hasOne(m_order_paket::class, 'order_id');
     }
 
+    public function arts()
+    {
+        return $this->hasMany(art::class, 'id_art');
+    }
+    public function art()
+    {
+        return $this->belongsto(art::class, 'id_art','user_id');
+    }
      public function paket(){
         return $this->hasOne(paket_pekerjaan::class);
     }

@@ -15,6 +15,10 @@ class CreateReviewTable extends Migration
     {
         Schema::create('review', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('order_id')->unsigned();
+            $table->binary('foto')->nullable();
+            $table->integer('rating');
+            $table->text('review')->nullable();
             $table->timestamps();
         });
     }

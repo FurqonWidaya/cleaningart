@@ -121,7 +121,12 @@
 		<script src="{{asset('assets/js/jquery.appear.js')}}" type="text/javascript"></script>
 		<!-- Mail Function Js -->
 		<script src="{{asset('assets/js/mail.js')}}" type="text/javascript"></script>
-
+		<!--prettyPhotoprettyPhoto-->
+		<script type="text/javascript" src="{{asset('assets/js/jquery.prettyPhoto.js')}}"></script>
+		<!-- Fun Factor / Counter -->
+		<script type="text/javascript" src="{{('assets/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+		<!-- Price Filter -->
+		<script type="text/javascript" src="{{('assets/js/price-filter.js')}}"></script>
 		<!-- revolution Js -->
 		<script type="text/javascript" src="{{asset('assets/js/jquery.themepunch.tools.min.js')}}"></script>
 		<script type="text/javascript" src="{{asset('assets/js/jquery.themepunch.revolution.min.js')}}"></script>

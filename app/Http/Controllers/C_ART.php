@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use Illuminate\Http\Request;
 use Auth;
 use Session;
@@ -9,6 +9,7 @@ use Hash;
 use App\User;
 use App\master;
 use App\art;
+use DB;
 class C_ART extends Controller
 {
 	//lihat semua art
@@ -80,9 +81,21 @@ class C_ART extends Controller
 	}
 
 	//liat profil data art
-	public function profilart($id){
+	public function profilart(Request $request, $id){
 		$art = \App\art::find($id);
-		return view('admin.v_profileart', ['art' => $art]);
+		$user = $request->user_id;
+		$order = \App\m_order_paket::where('id_art', $art->user->id)->first();
+
+		$review = DB::table('review as rw')
+    ->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
+     ->select(DB::raw('rating'))
+    ->where('oa.id_art','=',$order)->get();
+
+      $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
+     ->select(DB::raw('AVG(rating) as nilai, oa.id_art'))
+                     ->groupBy('oa.id_art')
+                     ->first(); 
+		return view('admin.v_profileart', compact('art','review','count','order'));
 	}
 
 

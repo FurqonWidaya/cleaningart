@@ -74,6 +74,17 @@
           </div>
         </div>
       </li>
+
+      <li class="nav-item">
+       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#five" aria-expanded="true" aria-controls="five">
+          <i class="fas fa-tasks"></i>
+          <span>Data Review</span></a>
+          <div id="five" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{url('/datareview')}}">Review ART</a>
+          </div>
+        </div>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
 

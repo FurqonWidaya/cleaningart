@@ -22,7 +22,18 @@ class ArtController extends Controller
   //liat profil art
   public function profilart($id)
   {
-    return view('art.v_profil');
+   $art = \App\art::find($id);
+     $review = DB::table('review as rw')
+    ->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
+    ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
+    ->join('users as us', 'us.id', '=', 'ms.user_id')
+     ->select(DB::raw('rating, review, us.username as username, rw.created_at as buat'))
+    ->where('oa.id_art',$id)->get();
+     $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
+     ->select(DB::raw('AVG(rating) as nilai, oa.id_art'))
+                     ->groupBy('oa.id_art')
+                     ->first();
+    return view('art.v_profil', compact('review','count','art'));
   }
 
   //edit data art

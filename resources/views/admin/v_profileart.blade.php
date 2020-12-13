@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('content')
+@section('content') 
 <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="/dashboard">&nbsp;Home&nbsp;</a></li>
               <li>&#47;&nbsp;<i class="fa fa-users"></i><a href="/dataart">&nbsp;Data ART&nbsp;</a></li>
@@ -15,12 +15,17 @@
                   <div class="img rounded-circle" style="text-align: center">
                     <img src="{{$art->getPhoto()}}" alt="foto" style="width: 90px;  margin-bottom: 15px;">
                   </div>
+                  <h5 style="text-align: center">@<span></span>{{$art->user->username}}</h5>
                   <h6 style="text-align: center">ART</h6>
                   <div class="text-center" style=" margin-bottom: 10px">
                   	<a href="/art/edit/{{$art->id}}" class="btn btn-danger">Edit</a>
                   </div>
                 </div>
+              
                 <div class="col-xl-4 sm-4 md-4">
+
+                 
+                  
                   <p style="margin-top: 30px; margin-bottom: 1rem;" class="text-justify">Deskripsi: {{$art->deskripsi}}</p>
                  <!--  <p>@ {{$art->username}}</p> -->
                   <h6>

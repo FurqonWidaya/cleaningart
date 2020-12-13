@@ -10,7 +10,7 @@ use App\user;
 use auth;
 use Session;
 use Illuminate\Support\Facades\Input;
-class c_transaksi_paket extends Controller
+class C_transaksi_paket extends Controller
 {
 
     // mengelola transaksi --- master
@@ -121,7 +121,7 @@ public function postbayarpaket(Request $request, $id)
         "mp" => $request['mp'],
         "status" => $request['status'],
       ]);
-   return redirect('/myorder')->with('success', 'orderan berhasil diselsaikan');
+   return redirect('/myorder')->with('success', 'orderan berhasil diselesaikan');
     }
     
 
@@ -137,7 +137,7 @@ public function postbayarpaket(Request $request, $id)
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
     ->join('pembayaran as pb', 'pb.id_order', '=', 'oa.id')
     ->join('status_pembayaran as spp', 'spp.id', '=', 'pb.id_statuspembayaran')
-    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date, spp.statuspembayaran as spp, pb.created_at as buat, pb.id_statuspembayaran as id_statuspembayaran, oa.waktu_kerja as waktu_kerja'))->where('oa.id_art', $user)->where('sp.status_penerimaan','=',1)->where('oa.mp', '=', 3)->where('pb.id_statuspembayaran','=',2)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date, spp.statuspembayaran as spp, pb.created_at as buat, pb.id_statuspembayaran as id_statuspembayaran, oa.waktu_kerja as waktu_kerja'))->where('oa.id_art', $user)->where('sp.status_penerimaan','=',1)->whereIN('oa.mp', [3, 5])->where('pb.id_statuspembayaran','=',2)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
      ->get(); 
     
     return view('art.v_riwayat_order', compact('data_order'));

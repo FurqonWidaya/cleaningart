@@ -80,6 +80,11 @@ class C_Paket_Pekerjaan extends Controller
     $paket = \App\paket_pekerjaan::paginate(6);
     return view('master.v_paket_pekerjaan',['paket' => $paket]);
   }
+   public function show_paket($id)
+    {
+        $paket = \App\paket_pekerjaan::find($id);
+          return view ('master.v_detail_paket_pekerjaan', compact('paket'));
+    }
 
   //art
   //lihat paket untuk art
