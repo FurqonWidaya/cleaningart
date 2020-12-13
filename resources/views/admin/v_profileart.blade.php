@@ -23,8 +23,20 @@
                 </div>
               
                 <div class="col-xl-4 sm-4 md-4">
-
-                 
+                  Rating: 
+                 <div class="a">
+                   @if ( count($review) > 0)
+                  <div class="star-rating">
+                    @for ($i = 0; $i < $count->nilai; $i++)     
+                    <i class="fa fa-star"></i>
+                    @endfor
+                  </div>  
+                  @else
+                  <div class="star-rating">
+                    <span>belum ada rating</span>
+                  </div>  
+                  @endif
+                </div>
                   
                   <p style="margin-top: 30px; margin-bottom: 1rem;" class="text-justify">Deskripsi: {{$art->deskripsi}}</p>
                  <!--  <p>@ {{$art->username}}</p> -->

@@ -89,7 +89,7 @@ class C_ART extends Controller
 		$review = DB::table('review as rw')
     ->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
      ->select(DB::raw('rating'))
-    ->where('oa.id_art','=',$order)->get();
+    ->where('oa.id_art','=',$art->user->id)->get();
 
       $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
      ->select(DB::raw('AVG(rating) as nilai, oa.id_art'))

@@ -131,7 +131,7 @@ class MasterController extends Controller
     ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
     ->join('users as us', 'us.id', '=', 'ms.user_id')
      ->select(DB::raw('rating, review, us.username as username, rw.created_at as buat'))
-    ->where('rw.id_art',$art->user->id)->get();
+    ->where('oa.id_art',$art->user->id)->get();
 
       $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
      ->select(DB::raw('AVG(rating) as nilai, oa.id_art'))
