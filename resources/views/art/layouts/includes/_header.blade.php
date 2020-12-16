@@ -86,7 +86,7 @@
 										<a href="{{url('/profilku/setting/'.auth()->user()->id)}}">Setting</a>
 									</li>
 									<li>
-										<a href="{{url('/logout')}}">Log Out</a>
+										<a href="#" data-toggle="modal" data-target="#logoutModal">log out</a>
 									</li>
 								</ul>
 								<!-- End Nav Dropdown -->

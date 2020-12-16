@@ -30,34 +30,45 @@
           <span class="b-line l-left line-h"></span>
         </div>
         <!-- Contact FORM -->
-        <form class="contact-form " id="contact">
+        <form class="contact-form " id="contact" action="" method="">
           <!-- IF MAIL SENT SUCCESSFULLY -->
           <div id="success">
             <div role="alert" class="alert alert-success">
-              <strong>Thanks</strong> for using our template. Your message has been sent.
+              <strong>Terima kasih </strong> telah menggunakan layanan paket pekerja kami.
             </div>
           </div>
           <!-- END IF MAIL SENT SUCCESSFULLY -->
           <div class="row">
             <div class="col-lg-6">
               <div class="form-field">
-                <input class="input-sm form-full" id="name" type="text" name="form-name" placeholder="Your Name">
+                <input class="input-sm form-full" id="name" type="text" name="name" placeholder="Your Name" readonly="" value="{{auth()->user()->masters->name}}">
               </div>
               <div class="form-field">
-                <input class="input-sm form-full" id="email" type="text" name="form-email" placeholder="Email" >
-              </div>
-              <div class="form-field">
-                <input class="input-sm form-full" id="sub" type="text" name="form-subject" placeholder="Subject">
+                <input class="email-sm form-full" id="email" type="text" name="email" placeholder="Email" >
               </div>
             </div>
             <div class="col-lg-6">
               <div class="form-field">
-                <textarea class="form-full" id="message" rows="7" name="form-message" placeholder="Your Message" ></textarea>
+                <input class="input-sm form-full" id="name" type="text" name="username" placeholder="Your Name" readonly="" value="{{auth()->user()->username}}">
+              </div>
+              <div class="form-field">
+                <select class="input-sm form-full" name="subjek">
+                  <option value="1">Masalah Akun</option>
+                   <option value="2">Masalah Pembayaran</option>
+                   <option value="3">Masalah Orderan</option>
+                   <option value="4">Komplain ART</option>
+                   <option value="5">Lainnya</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-field">
+                <textarea class="form-full" id="message" rows="7" name="laporan" placeholder="Ex: Nomor Order: 000000, &#10;Nomor Pembayaran: 000000, &#10;Isi Laporan: Hello, World!!" ></textarea>
               </div>
             </div>
             <div class="col-lg-12 mt-30">
-              <button class="btn-text" type="button" id="submit" name="button">
-                Send Message
+              <button class="btn-text" type="submit" id="submit" name="button">
+                Kirim Pesan
               </button>
             </div>
           </div>
@@ -77,10 +88,10 @@
               <div class="icon ion-ios-location"></div>
               <div class="content">
                 <p>
-                  123 Main Street, St. NW Ste,
+                 123 Winery Street, Dawn Winery,
                 </p>
                 <p>
-                  1 Washington, DC,USA.
+                  Mondstadt, Teyvt
                 </p>
               </div>
             </li>
@@ -100,10 +111,7 @@
               <div class="icon ion-ios-email"></div>
               <div class="content">
                 <p>
-                  Support@yourmail.com
-                </p>
-                <p>
-                  http://admin@.com
+                  <a href="mailto:cleaningart@bussiness.com">cleaningart@bussiness.com</a>
                 </p>
               </div>
             </li>

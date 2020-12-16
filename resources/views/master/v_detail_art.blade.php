@@ -105,8 +105,12 @@
 													<h5>
 													{{$rev->review}}
 													</h5>
+														@if($rev->fotos != null)
 													<figure style="border: 1px"><img src="{{ URL::to('/images/' . $rev->fotos) }}" width="100" height="200">
 													</figure>
+													@else
+													<span></span>
+													@endif
 												</div>
 											
 											<hr />

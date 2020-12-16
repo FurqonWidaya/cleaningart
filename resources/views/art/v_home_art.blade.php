@@ -213,7 +213,7 @@
 									</figure>
 									<div class="apply_box d-flex align-items-center">
 										<div class="full_width">
-											<a href="/error" class="btn-text"><i class="fa fa-shopping-cart"></i>&nbsp;Ambil Pesanan</a>
+											<a href="{{url('/paket_pekerjaan/'.$peka->id)}}" class="btn-text"><i class="fa fa-shopping-cart"></i>&nbsp;Lihat Paket</a>
 										</div>
 									</div>
 								</div>

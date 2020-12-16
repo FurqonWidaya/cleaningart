@@ -44,7 +44,44 @@
 				<div class="sk-circle12 sk-child"></div>
 			</div>
 		</div>
+			<style media="screen">
+		.modal-dialog-centered {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-align: center;
+		align-items: center;
+		min-height: calc(100% - 1rem);
+		}
 
+		.modal-dialog-centered::before {
+		display: block;
+		height: calc(100vh - 1rem);
+		height: -webkit-min-content;
+		height: -moz-min-content;
+		height: min-content;
+		content: "";
+		}
+
+		</style>
+		<!-- modal logout -->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog  modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Apakah anda yakin akan keluar?</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Tekan logout untuk keluar</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+						<a class="btn btn-primary" href="{{url('/logout')}}">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end modal -->
 		<!--loader-->
 
 		<!-- HEADER -->

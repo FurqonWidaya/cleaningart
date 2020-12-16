@@ -10,10 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-  return view('index');
-});
+Auth::routes();
+// Route::get('/', function () {
+//   return view('index');
+// });
+ Route::get('/', 'C_home@homeall');
+ 
 Route::get('/noaccess', function () {
   return view('welcome');
 });

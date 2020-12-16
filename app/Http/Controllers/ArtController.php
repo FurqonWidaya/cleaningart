@@ -83,7 +83,7 @@ class ArtController extends Controller
         ]);
       }
 
-      return redirect(url('/profilku/{id}'))->with('success', 'data berhasil diubah');
+      return redirect(url('/profilku/'.$id))->with('success', 'data berhasil diubah');
     }
 
     public function updatedesk(Request $request, $id){
@@ -92,7 +92,7 @@ class ArtController extends Controller
       ->update([
         "deskripsi" => $request->deskripsi,
       ]);
-      return redirect(url('/profilku/{id}'))->with('sukses', 'data berhasil diubah');
+      return redirect('/profilku/'.$id)->with('success', 'deskripsi berhasil diubah');
     }
 
     public function editpass($id)

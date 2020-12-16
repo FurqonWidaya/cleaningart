@@ -90,13 +90,13 @@
 								<a href="{{url('/myprofil/'.auth()->user()->id)}}">Profilku</a>
 							</li>
 							<li>
-								<a href="{{url('/myorder')}}">Orderan Saya</a>
+								<a  onclick="window.location.reload(true)" id="reload_page" href="{{url('/myorder')}}">Orderan Saya</a>
 							</li>
 							<li>
 								<a href="{{url('/myprofil/setting/'.auth()->user()->id)}}">Setting</a>
 							</li>
 							<li>
-								<a href="{{url('/logout')}}" data-toggle="modal" data-target="#logoutModal">log out</a>
+								<a href="#" data-toggle="modal" data-target="#logoutModal">log out</a>
 							</li>
 						</ul>
 						<!-- End Nav Dropdown -->

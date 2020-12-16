@@ -36,6 +36,6 @@ class C_Review extends Controller
     }else{
       $review = \App\m_review::orderBy('created_at', 'DESC')->paginate(10);
     }
-    return view('admin.v_review',compact('data_art','review'));
+    return view('admin.v_review',compact('review'));
     }
 }

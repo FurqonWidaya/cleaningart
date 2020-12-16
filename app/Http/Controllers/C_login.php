@@ -24,6 +24,7 @@ class C_login extends Controller
         $user = \App\User::All();
         if(Auth::attempt($request->only('username','password'))){
             $user = \App\User::where('username', $request->username)->first();
+            Auth::check();
             if($user->role == 'admin'){
                     //Auth::guard('admin')->LoginUsingId($user->id);
                     return redirect('/dashboard');

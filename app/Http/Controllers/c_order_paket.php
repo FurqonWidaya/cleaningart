@@ -149,7 +149,7 @@ public function cekproses($id)
     ->join('status_penerimaan as sp', 'sp.id', '=', 'oa.id_status_penerimaan')
     ->join('pembayaran as pb', 'pb.id_order', '=', 'oa.id')
     ->join('status_pembayaran as spp', 'spp.id', '=', 'pb.id_statuspembayaran')
-    ->select(DB::raw('oa.id as id, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date, spp.statuspembayaran as spp, pb.created_at as buat, pb.id_statuspembayaran as id_statuspembayaran'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',1)->where('oa.mp', '=', 2)->where('pb.id_statuspembayaran','=',2)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
+    ->select(DB::raw('oa.id as id, oa.waktu_kerja as waktukerja, oa.nomor_order as nomor_order, oa.id_master as master, ms.name as nama_master, ar.name as nama_art, pk.nama_paket as paket, pk.harga_paket as harga, sp.status_penerimaan as status_penerimaan, oa.created_at as tanggal_dibuat, us.username as username, oa.id_master as activeuser, oa.id_status_penerimaan as sp, DATE_ADD(oa.created_at, INTERVAL 10 HOUR) as due_date, spp.statuspembayaran as spp, pb.created_at as buat, pb.id_statuspembayaran as id_statuspembayaran'))->where('oa.id_master', $user)->where('sp.status_penerimaan','=',1)->where('oa.mp', '=', 2)->where('pb.id_statuspembayaran','=',2)->whereNull('oa.deleted_at')->orderBy('oa.created_at', 'desc')
      ->get(); 
 
      $done_order = DB::table('order_art as oa')
@@ -176,14 +176,15 @@ public function cekproses($id)
    
     $batalinorder = m_order_paket::where('mp','=',1)->where('updated_at', '<', Carbon::now()->subDays(1))->get();
       $status = 1;
+    if($batalinorder){
     foreach ($batalinorder as $orderbodong) {
         DB::table('order_art as oa')->join('art as ar', 'ar.user_id', '=', 'oa.id_art')
    ->update([ 
         "status" => $status,
       ]);
         $orderbodong->delete();
-    }
-    return view('master.v_orderan_master', compact('data_order','batal_order', 'order_acc', 'order_ver', 'trans_acc','done_order'));
+    }}
+    return view('master.v_orderan_master', compact('data_order','batal_order', 'order_acc', 'order_ver', 'trans_acc','done_order', 'batalinorder'));
 
    }
 

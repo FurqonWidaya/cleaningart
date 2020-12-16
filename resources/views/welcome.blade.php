@@ -13,10 +13,11 @@
   <body>
   
 <div class="alert alert-danger" role="alert">
+  <figure><img src="https://p1.hiclipart.com/preview/93/421/223/internet-security-icon-alert-icon-warning-icon-red-triangle-sign-png-clipart.jpg"></figure>
   <h4 class="alert-heading">No Access Rights !!!</h4>
-  <p>The details of this user are not available to you</p>
+  <p>Halaman ini tidak bisa diakses oleh anda</p>
   <hr>
-  <p class="mb-0">please log back in according to the roles</p>
+  <p class="mb-0">mohon, kembali atau keluar untuk masuk sesuai rolenya</p>
 </div>
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
