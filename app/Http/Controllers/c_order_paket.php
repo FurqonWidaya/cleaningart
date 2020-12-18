@@ -176,14 +176,27 @@ public function cekproses($id)
    
     $batalinorder = m_order_paket::where('mp','=',1)->where('updated_at', '<', Carbon::now()->subDays(1))->get();
       $status = 1;
+      $mp = 4;
     if($batalinorder){
     foreach ($batalinorder as $orderbodong) {
-        DB::table('order_art as oa')->join('art as ar', 'ar.user_id', '=', 'oa.id_art')
+        DB::table('order_art as oa')->join('art as ar', 'ar.user_id', '=', 'oa.id_art')->whereIn('oa.mp',[1, 2])->where('oa.updated_at', '<', Carbon::now()->subDays(1))
    ->update([ 
         "status" => $status,
+        "mp" => $mp,
       ]);
         $orderbodong->delete();
     }}
+
+     $autoselesai = m_order_paket::where('mp','=',2)->where('waktu_kerja', '<', Carbon::now()->subDays(1))->get();
+      $mp = 3;
+    if($autoselesai){
+    foreach ($autoselesai as $autoselesai) {
+        DB::table('order_art')->where('mp','=',2)->where('waktu_kerja', '<', Carbon::now()->subDays(1))
+   ->update([ 
+        "mp" => $mp,
+      ]);
+    }}
+
     return view('master.v_orderan_master', compact('data_order','batal_order', 'order_acc', 'order_ver', 'trans_acc','done_order', 'batalinorder'));
 
    }

@@ -78,12 +78,12 @@
 										</li>
 									</ul>
 									<!-- Tab panes -->
-									<div class="tab-content">
+														<div class="tab-content">
 										<div role="tabpanel" class="tab-pane active" id="home">
 											<div class="item" style="background-color: #538e32;"><br/><hr/>
 												 @if (isset($review) && count($review) > 0)
 												@foreach($review as $rev)
-												
+
 												<div class="post-meta" style="background-color:#e6e1e1;padding: 5px;margin: 15px;">
 													<!-- Author  -->
 													<span class="author"> <i class="fa fa-user"></i>&nbsp;{{$rev->username}}</span>
@@ -93,7 +93,7 @@
 													<!-- Category -->
 
 													<div class="star-rating pull-right">
-														<span class="pull-right"> 
+														<span class="pull-right">
 														@for ($i = 0; $i < $rev->rating; $i++)
 														@if ($i < $rev->rating)
 														<span class="fa fa-star"></span>
@@ -105,14 +105,14 @@
 													<h5>
 													{{$rev->review}}
 													</h5>
-														@if($rev->fotos != null)
+													@if($rev->fotos != null)
 													<figure style="border: 1px"><img src="{{ URL::to('/images/' . $rev->fotos) }}" width="100" height="200">
 													</figure>
 													@else
 													<span></span>
 													@endif
 												</div>
-											
+
 											<hr />
 											@endforeach
 											@else()

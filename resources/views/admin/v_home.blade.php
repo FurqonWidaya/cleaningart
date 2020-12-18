@@ -20,7 +20,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah ART</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total ART</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$count}}</div>
                     </div>
                     <div class="col-auto">
@@ -37,7 +37,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Master</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Master</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$counts}}</div>
                     </div>
                     <div class="col-auto">
@@ -101,7 +101,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Transaksi</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -129,7 +129,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Transaksi Bulan Lalu</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -145,22 +145,152 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                  <h3 style="text-align: center;">Rp {{$c_trans}}</h3>
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="myPieChart"></canvas>
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
+                      <i class="fas fa-circle text-primary"></i> Harga Bersih
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
+                      <i class="fas fa-circle text-success"></i> Pajak Paket
                     </span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+  <!-- Page level plugins -->
+  <script src="{{asset('admin/vendor/chart.js/Chart.min.js')}}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
+  <script src="{{asset('admin/js/demo/chart-pie-demo.js')}}"></script>
+  <script src="{{asset('admin/js/demo/chart-bar-demo.js')}}"></script>
+<script type="text/javascript">
+  // Pie Chart Example
+var ctx = document.getElementById("myPieChart");
+var myPieChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ["Harga Bersih", "Pajak Paket"],
+    datasets: [{
+      data: [{!!$hasil_bersih!!},{!!$pajak!!}],
+      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+  },
+});
+
+// Area Chart Example
+var ctx = document.getElementById("myAreaChart");
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: [{
+      label: "Earnings",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 7
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return '$' + number_format(value);
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      intersect: false,
+      mode: 'index',
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+        }
+      }
+    }
+  }
+});
+
+</script>
 @stop

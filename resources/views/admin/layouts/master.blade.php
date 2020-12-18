@@ -100,7 +100,23 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{asset('admin/js/sb-admin-2.min.js')}}"></script>
+   <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
+    
 
+    <!-- Page level plugins -->
+   <!--  <script src="{{asset('admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script> -->
+
+    <!-- Page level custom scripts -->
+   <!--  <script src="{{asset('admin/js/demo/datatables-demo.js')}}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/af-2.3.5/sp-1.2.2/datatables.min.js"></script>
+<script type="text/javascript">
+    
+    $(document).ready( function () {
+    $('#dataTable').DataTable();
+});
+  </script>
+ -->
 </body>
 
 </html>

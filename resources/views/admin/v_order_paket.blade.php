@@ -78,6 +78,8 @@
               <td><p class="btn btn-success btn-sm">Sudah Bayar</p></td>
               @elseif($order->mp == 'Selesai')
               <td><p class="btn btn-primary btn-sm">Selesai</p></td>
+                @elseif($order->mp == 'Tereview')
+              <td><p class="btn btn-primary btn-sm">Selesai</p></td>
               @else()
               <td><p class="btn btn-danger btn-sm">Batal</p></td>
               @endif
