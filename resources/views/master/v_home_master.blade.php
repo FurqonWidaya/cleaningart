@@ -360,8 +360,8 @@
 				<div class="col-md-12">
 
 					<div class="say_testimonial dots_style owl-carousel">
-						 @if (isset($review) && count($review) > 3)
-						 @foreach($review as $rev)
+						 @if (isset($crev) && count($crev) > 3)
+						 @foreach($crev as $rev)
 							<div class="item_testimonial">
 							<div class="patient_head d-flex align-items-stretch">
 								<div class="patient_img">
@@ -568,7 +568,7 @@
 						<div class="team_detail">
 							<h3><a href="{{url('/detailart/'.$art->id)}}">{{$art->name}}</a></h3>
 							<span>Status:&nbsp;{{$art->status}}</span>
-							 <input type="" name="id_art" value="{{$art->user->id}}">
+							 <!-- <input type="" name="id_art" value="{{$art->user->id}}"> -->
 							   
 							   
 							
@@ -576,7 +576,7 @@
 					</div>
 				</div>
 				@endforeach
-				@if ( count($review) > 0)
+				<!-- @if ( count($review) > 0)
 							   @foreach($review as $rev)
 							    
 									<div class="star-rating">
@@ -590,7 +590,7 @@
 										<span>belum ada rating</span>
 									</div>	
 									
-							@endif
+							@endif -->
 				<span style="transform: translate(445px, 10px);">{{$data_art->links()}}</span>
 				@else
 				@for($i = 0; $i < 4; $i++ )

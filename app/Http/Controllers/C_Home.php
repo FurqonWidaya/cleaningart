@@ -72,7 +72,7 @@ class c_Home extends Controller
      $review = DB::table('review as rw')
     ->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
     ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
-    ->join('users as us', 'us.id', '=', 'ms.user_id')->where('oa.id_art', $id)
+    ->join('users as us', 'us.id', '=', 'ms.user_id')
    ->get();
     $data_art = \App\art::paginate(4);
      $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')

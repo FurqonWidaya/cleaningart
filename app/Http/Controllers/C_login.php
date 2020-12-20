@@ -20,7 +20,7 @@ class C_login extends Controller
             'username'=>'required|exists:users',
             'password'=>'required',
         ],[
-            'username.required' => 'username tidak ditemukan'
+            'username.exists' => 'username tidak ditemukan'
         ]
     );
         $user = \App\User::All();
