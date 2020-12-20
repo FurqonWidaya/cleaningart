@@ -16,30 +16,11 @@ class c_Home extends Controller
   {
     if (Auth::check()) {
             if (Auth::user()->role == 'admin') {
-                $count_art = DB::table('art')->count();
-                $count_mast = DB::table('master')->count();
-                $count_paket = DB::table('paket_pekerjaan')->count();
-                $count_order = DB::table('order_art')->count();
-                 $$c_trans = DB::table('order_art')->where('mp', 3)->where('created_at', '<', Carbon::now()->startOfMonth()->subMonth()->endOfMonth()->toDateTimeString())->sum('total');
-                return view ('admin.v_home', ['count' => $count_art,'counts' => $count_mast, 'paket' => $count_paket,'order' => $count_order], compact('c_trans'));
+               return $this->setviewhome();
             }elseif(Auth::user()->role == 'master'){
-                $id = $request->user_id;
-                $crev = \App\m_review::all(); 
-                $review = DB::table('review as rw')
-                ->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
-                ->join('master as ms', 'ms.user_id', '=', 'oa.id_master')
-                ->join('users as us', 'us.id', '=', 'ms.user_id')->where('oa.id_art', $id)
-                ->get();
-                $data_art = \App\art::paginate(4);
-                $count = DB::table('review  as rw')->join('order_art as oa', 'oa.id', '=', 'rw.order_id')
-                ->select(DB::raw('AVG(rating) as nilai, oa.id_art'))
-                   ->groupBy('oa.id_art', $id)
-                   ->first();
-                $paket = \App\paket_pekerjaan::inRandomOrder()->take(3)->get();
-                return view('master.v_home_master',['data_art' => $data_art, 'paket' => $paket, 'count' => $count, 'review' => $review, 'crev'=>$crev]);
+               return $this->setviewhomemaster($request);
             }else{
-                $paket = \App\paket_pekerjaan::paginate(3);
-                return view ('art.v_home_art', [ 'paket' => $paket]);
+               return $this->setviewhomeart();
             }
         }else{
             return view('index');
@@ -47,13 +28,19 @@ class c_Home extends Controller
   }
   //homenya admin
   public function setviewhome (){
-    $dataorder = \App\m_order_paket::whereIn('mp', [3, 5])->get();
+    $dataorder = \App\m_order_paket::selectRaw("DATE_FORMAT(created_at,'%M') date")
+    ->groupBy('date')->orderby('date', 'desc')->whereIn('mp', [3, 5])->distinct('date')->get();
+
     $count_art = DB::table('art')->count();
     $count_mast = DB::table('master')->count();
     $count_paket = DB::table('paket_pekerjaan')->count();
     $count_order = DB::table('order_art')->count();
 
     $count_transaksi = DB::table('order_art')->whereIN('mp', [3, 5])->where('created_at', '<', Carbon::now()->startOfMonth()->subMonth()->endOfMonth()->toDateTimeString())->count();
+
+    $yy = DB::table('order_art')->whereIN('mp', [3, 5])->where('created_at', '>', Carbon::now()->startOfMonth()->subMonth()->endOfMonth()->toDateTimeString())->sum('total');
+
+     $zz = DB::table('order_art')->whereIN('mp', [3, 5])->where('created_at', '>', Carbon::now()->startOfMonth()->subMonth()->endOfMonth()->toDateTimeString())->sum('total');
 
      $c_trans = DB::table('order_art')->whereIN('mp', [3, 5])->where('created_at', '<', Carbon::now()->startOfMonth()->subMonth()->endOfMonth()->toDateTimeString())->sum('total');
 
@@ -63,12 +50,17 @@ class c_Home extends Controller
      $hasil_bersih = $c_trans - $pajak;
      $pajaks=[];
      $bersih=[];
+
+     // \App\m_order_paket::select(DB::raw('DATE_PART(\'MONTH\', created_at) AS MONTH'))->whereIn('mp', [3, 5])->groupBy('MONTH')->distinct()->pluck('MONTH');
      foreach ($dataorder as $order) {
-       $bulans[]=$bulan;
+       $bulans[]=$order->date;
+
      }
-    
+
+    //dd($bulans);
      
-    return view ('admin.v_home', ['count' => $count_art,'counts' => $count_mast, 'paket' => $count_paket,'order' => $count_order], compact('c_trans', 'count_transaksi', 'pajak', 'hasil_bersih','dataorder'));
+    return view ('admin.v_home', ['count' => $count_art,'counts' => $count_mast, 'paket' => $count_paket,'order' => $count_order], compact('c_trans', 'count_transaksi', 'pajak', 'hasil_bersih','dataorder','bulans','yy', 'zz'));
+    
   }
 
   //homenya master

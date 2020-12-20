@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 class C_login extends Controller
 {
+
+    
     //login all
     public function klikLogin (){
         return view ('auth.v_login');

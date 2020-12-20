@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Illuminate\Support\Carbon;
+use Illuminate\Support\ServiceProvider;
 class m_order_paket extends Model
 {
 	use SoftDeletes;
@@ -13,6 +14,7 @@ class m_order_paket extends Model
 //      protected $casts = [
 //     'created_at', 'updated_at'
 // ];
+
     protected $fillable = ['id_art', 'id_master','id_paket','id_status_penerimaan','id_bank','nomor_order', 'waktu_kerja','mp','total'];
 
     public function master()
@@ -39,4 +41,10 @@ class m_order_paket extends Model
      public function paket(){
         return $this->hasOne(paket_pekerjaan::class);
     }
+    
+    public function getFormattedDateAttribute()
+    {
+    return Carbon::createFromFormat($this->created_at)->format('m');
+    }
+
 }
